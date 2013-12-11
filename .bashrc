@@ -93,17 +93,19 @@ fi
 export COLORFGBG='lightgray;black'
 
 # prompt stuff
-color1="\[\033[0;34m\]" # unused
-color2="\[\033[1;34m\]" # blue
-color3="\[\033[0;37m\]" # unused
-color4="\[\033[0m\]"    # default
+blue1="\033[1;34m"
+blue2="\[$blue1\]"
+default1="\033[0m"
+default2="\[$default1\]"
 
-PS1="$color4[$color2\!$color4] $color2\h $color4:$color2 \w$color4 "
+PS1="$default2[$blue2\!$default2] $blue2\h $default2:$blue2 \w$default2 "
 
 if exists git && [ -f ~/.git-prompt.sh ]; then
     source ~/.git-prompt.sh
     export GIT_PS1_SHOWDIRTYSTATE=true
-    PS1=$PS1'$(__git_ps1 "(\[\033[1;34m\]%s\[\033[0m\]) ")'
+    # PS1=$PS1'$(__git_ps1 "(\[\033[1;34m\]%s\[\033[0m\]) ")'
+    GIT_BRANCH_COLORED="($blue1%s$default1)"
+    PS1=$PS1'$(__git_ps1 "$GIT_BRANCH_COLORED ")'
 fi
 
 case `/usr/bin/whoami` in
@@ -111,8 +113,8 @@ case `/usr/bin/whoami` in
   * ) PS1=$PS1"\$ " ;;
 esac
 
-PS1=$PS1$color4
-unset color1 color2 color3 color4
+PS1=$PS1$default2
+unset blue1 blue2 default1 default2
 
 if [[ "$TERM" =~ xterm|rxvt|screen ]]; then
     PS1="\[\033]0;[ \u @ \h ] - "`tty | sed 's!/dev/!!'`" : \w\007\]$PS1"
