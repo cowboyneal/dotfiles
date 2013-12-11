@@ -103,6 +103,8 @@ PS1="$default2[$blue2\!$default2] $blue2\h $default2:$blue2 \w$default2 "
 if exists git && [ -f ~/.git-prompt.sh ]; then
     source ~/.git-prompt.sh
     export GIT_PS1_SHOWDIRTYSTATE=true
+    export GIT_PS1_SHOWSTASHSTATE=true
+    export GIT_PS1_SHOWUPSTREAM="auto"
     # PS1=$PS1'$(__git_ps1 "(\[\033[1;34m\]%s\[\033[0m\]) ")'
     GIT_BRANCH_COLORED="($blue1%s$default1)"
     PS1=$PS1'$(__git_ps1 "$GIT_BRANCH_COLORED ")'
