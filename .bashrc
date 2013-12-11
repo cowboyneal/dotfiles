@@ -105,9 +105,8 @@ if exists git && [ -f ~/.git-prompt.sh ]; then
     export GIT_PS1_SHOWDIRTYSTATE=true
     export GIT_PS1_SHOWSTASHSTATE=true
     export GIT_PS1_SHOWUPSTREAM="auto"
-    # PS1=$PS1'$(__git_ps1 "(\[\033[1;34m\]%s\[\033[0m\]) ")'
-    GIT_BRANCH_COLORED="($blue1%s$default1)"
-    PS1=$PS1'$(__git_ps1 "$GIT_BRANCH_COLORED ")'
+    git_branch_colored="($blue1%s$default1)"
+    PS1=$PS1'$(__git_ps1 "$git_branch_colored ")'
 fi
 
 case `/usr/bin/whoami` in
