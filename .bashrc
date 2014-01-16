@@ -38,10 +38,10 @@ export CDPATH=.:..
 
 # set pager smartly
 if exists less; then
-	PAGER=less
-	export LESS='-ir'
+    PAGER=less
+    export LESS='-ir'
     export LESSOPEN='|~/.lessfilter %s'
-	alias 'more'='less'
+    alias 'more'='less'
 else
 	PAGER=more
 fi
@@ -92,37 +92,46 @@ fi
 
 export COLORFGBG='lightgray;black'
 
-# prompt stuff
-blue1="\033[1;34m"
-blue2="\[$blue1\]"
-default1="\033[0m"
-default2="\[$default1\]"
+set_bash_prompt() {
+    # prompt stuff
+    local blue1="\033[1;34m"
+    local blue2="\[$blue1\]"
+    local default1="\033[0m"
+    local default2="\[$default1\]"
+    
+    PS1="$default2[$blue2\!$default2] $blue2\h $default2:$blue2 \w$default2 "
+    
+    if exists git && [ -f ~/.git-prompt.sh ]; then
+        source ~/.git-prompt.sh
+        export GIT_PS1_SHOWDIRTYSTATE=true
+        export GIT_PS1_SHOWSTASHSTATE=true
+        export GIT_PS1_SHOWUPSTREAM="auto"
 
-PS1="$default2[$blue2\!$default2] $blue2\h $default2:$blue2 \w$default2 "
+        local git_info=$(__git_ps1 "%s")
 
-if exists git && [ -f ~/.git-prompt.sh ]; then
-    source ~/.git-prompt.sh
-    export GIT_PS1_SHOWDIRTYSTATE=true
-    export GIT_PS1_SHOWSTASHSTATE=true
-    export GIT_PS1_SHOWUPSTREAM="auto"
-    git_branch_colored="($blue1%s$default1)"
-    PS1=$PS1'$(__git_ps1 "$git_branch_colored ")'
-fi
+        if [ -n "$git_info" ];
+        then
+            PS1="$PS1($blue2$git_info$default2) "
+        fi
+    fi
+    
+    case `/usr/bin/whoami` in
+      root* ) PS1=$PS1'# ' ;;
+      * ) PS1=$PS1"\$ " ;;
+    esac
+    
+    PS1=$PS1$default2
+    
+    if [[ "$TERM" =~ xterm|rxvt|screen ]]; then
+        PS1="\[\033]0;[ \u @ \h ] - "`tty | sed 's!/dev/!!'`" : \w\007\]$PS1"
+    fi
 
-case `/usr/bin/whoami` in
-  root* ) PS1=$PS1'# ' ;;
-  * ) PS1=$PS1"\$ " ;;
-esac
+    export PS1
+}
 
-PS1=$PS1$default2
-unset blue1 blue2 default1 default2
-
-if [[ "$TERM" =~ xterm|rxvt|screen ]]; then
-    PS1="\[\033]0;[ \u @ \h ] - "`tty | sed 's!/dev/!!'`" : \w\007\]$PS1"
-fi
-
-export PS1 PS2
+export PS2
 export PROMPT_DIRTRIM=3
+export PROMPT_COMMAND=set_bash_prompt
 
 # Set aliases proper. Uncomment the following line to pull in more external
 # aliases.
@@ -183,14 +192,14 @@ if [[ "$UNAME" =~ BSD|Darwin ]]; then
 fi
 
 # Shell Functions, because copying tiny scripts sucks, amirite
-slay () { # What we used on Solaris because killall killed all procs
+slay() { # What we used on Solaris because killall killed all procs
   local p
   for p in `ps ${bsd1}axc -o pid= -o command= | awk /"$1"/'{print $1}'`; do
     kill $p
   done
 }
 
-got () { # got <process name>?
+got() { # got <process name>?
   local proc=${1%\?}
   local pids=$( ps ${bsd1}axc -o pid= -o command= | awk /"$proc"/'{print $1}' )
   if [ -n "$pids" ]; then
@@ -219,9 +228,6 @@ fi
 #if [ -z "$SSH_AGENT_PID" ]; then
 #  eval $(ssh-agent) > /dev/null 2>&1
 #fi
-
-# unset anything internal so we don't confuse other programs later
-unset -f exists
 
 [[ "$UNAME" =~ CYGWIN ]] && cd ~ # hack for mintty
 
