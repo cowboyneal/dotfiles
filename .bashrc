@@ -5,16 +5,16 @@
 
 # Internal functions
 exists () { # returns true if $1 is an executable file in our path
-	local exe=`type -path -all "$1" | head -n 1`
-	[ -x "$exe" ]
+    local exe=`type -path -all "$1" | head -n 1`
+    [ -x "$exe" ]
 }
 # end of internal functions
 
 # Set up path carefully
-PATH=~/bin					# script overrides for EoU
-PATH=$PATH:/usr/local/bin:/usr/local/sbin	# local first for mit k5
-PATH=$PATH:/bin:/usr/bin:/usr/games		# usual path
-PATH=$PATH:/sbin:/usr/sbin			# sudo/root stuff
+PATH=~/bin                                  # script overrides for EoU
+PATH=$PATH:/usr/local/bin:/usr/local/sbin   # local first for mit k5
+PATH=$PATH:/bin:/usr/bin:/usr/games         # usual path
+PATH=$PATH:/sbin:/usr/sbin                  # sudo/root stuff
 
 [ -d /opt/local/share/man ] && export MANPATH=$MANPATH:/opt/local/share/man
 
@@ -22,16 +22,16 @@ PATH=$PATH:/sbin:/usr/sbin			# sudo/root stuff
 UNAME=`uname`
 
 case $UNAME in
-	Darwin* )
-		PATH=/opt/local/bin:/opt/local/sbin:$PATH
-		unset PROMPT_COMMAND
-		;;
-	CYGWIN* )
-		PATH=$PATH:/cygdrive/c/Windows/system32:/cygdrive/c/Windows
-		PATH=$PATH:/cygdrive/c/Windows/System32/Wbem
-		PATH=$PATH:/cygdrive/c/Windows/System32/WindowsPowerShell/v1.0/
-		PATH="$PATH:/cygdrive/c/Program Files (x86)/MIT/Kerberos/bin"
-		;;
+    Darwin* )
+        PATH=/opt/local/bin:/opt/local/sbin:$PATH
+        unset PROMPT_COMMAND
+        ;;
+    CYGWIN* )
+        PATH=$PATH:/cygdrive/c/Windows/system32:/cygdrive/c/Windows
+        PATH=$PATH:/cygdrive/c/Windows/System32/Wbem
+        PATH=$PATH:/cygdrive/c/Windows/System32/WindowsPowerShell/v1.0/
+        PATH="$PATH:/cygdrive/c/Program Files (x86)/MIT/Kerberos/bin"
+        ;;
 esac
 export PATH
 export CDPATH=.:..
@@ -43,18 +43,18 @@ if exists less; then
     export LESSOPEN='|~/.lessfilter %s'
     alias 'more'='less'
 else
-	PAGER=more
+    PAGER=more
 fi
 export PAGER
 
 # set editor smartly
 if exists vim; then
-	EDITOR=vim
-	alias 'view'='vim -R' # for read-only!
+    EDITOR=vim
+    alias 'view'='vim -R' # for read-only!
 elif exists nvi; then
-	EDITOR=nvi
+    EDITOR=nvi
 else
-	EDITOR=vi
+    EDITOR=vi
 fi
 export EDITOR
 
@@ -84,7 +84,7 @@ fi
 # try to set DISPLAY smart
 if [ -z "$DISPLAY" ] && [[ "$TERM" =~ xterm|rxvt ]] && [ -n "$SSH_CLIENT" ];
 then
-	export DISPLAY="`echo $SSH_CLIENT | awk '{ print $1 }'`:0.0"
+    export DISPLAY="`echo $SSH_CLIENT | awk '{ print $1 }'`:0.0"
 fi
 
 # Make BSD look like GNU
@@ -140,9 +140,9 @@ export PROMPT_COMMAND=set_bash_prompt
 alias 'reload'='source ~/.bashrc'
 
 case $UNAME in
-	*BSD | Darwin* )	lsopts='-GF' ;;
-	Linux | CYGWIN* )	lsopts='--color=auto -F' ;;
-	* )			lsopts='-F' ;;
+    *BSD | Darwin* )	lsopts='-GF' ;;
+    Linux | CYGWIN* )	lsopts='--color=auto -F' ;;
+    * )			lsopts='-F' ;;
 esac
 
 alias 'ls'="ls $lsopts"
@@ -167,8 +167,8 @@ alias 'fgrep'='fgrep --color=auto'
 exists tmux && alias 'tmux'='tmux attach -d'
 
 if exists irssi; then
-	alias 'irc'='irssi'
-	exists dtach && alias 'irssi'="dtach -A /tmp/${USER}-irssi irssi"
+    alias 'irc'='irssi'
+    exists dtach && alias 'irssi'="dtach -A /tmp/${USER}-irssi irssi"
 fi
 
 exists mutt && alias 'mail'='mutt'
@@ -178,8 +178,8 @@ exists emacs && alias 'dunnet'='emacs -batch -l dunnet'
 exists qw-server && exists dtach && alias 'qwsv'="dtach -A /tmp/${USER}-qwsv qw-server +gamedir ctf"
 
 if [[ "$TERM" =~ screen ]]; then
-	exists vim && alias 'vim'='vim -T xterm'
-	exists w3m && alias 'w3m'='w3m -title=xterm'
+    exists vim && alias 'vim'='vim -T xterm'
+    exists w3m && alias 'w3m'='w3m -title=xterm'
 fi
 
 # Portability vars
@@ -187,41 +187,41 @@ bsd1=
 bsd2=
 
 if [[ "$UNAME" =~ BSD|Darwin ]]; then
-	bsd1=-
-	bsd2="${bsd1}p "
+    bsd1=-
+    bsd2="${bsd1}p "
 fi
 
 # Shell Functions, because copying tiny scripts sucks, amirite
 slay() { # What we used on Solaris because killall killed all procs
-  local p
-  for p in `ps ${bsd1}axc -o pid= -o command= | awk /"$1"/'{print $1}'`; do
-    kill $p
-  done
+    local p
+    for p in `ps ${bsd1}axc -o pid= -o command= | awk /"$1"/'{print $1}'`; do
+        kill $p
+    done
 }
 
 got() { # got <process name>?
-  local proc=${1%\?}
-  local pids=$( ps ${bsd1}axc -o pid= -o command= | awk /"$proc"/'{print $1}' )
-  if [ -n "$pids" ]; then
-    ps w ${bsd2}$pids
-  else
-    echo "$proc not found"
-  fi
+    local proc=${1%\?}
+    local pids=$( ps ${bsd1}axc -o pid= -o command= | awk /"$proc"/'{print $1}' )
+    if [ -n "$pids" ]; then
+        ps w ${bsd2}$pids
+    else
+        echo "$proc not found"
+    fi
 }
 
 # IRC stuff
 if exists epic || exists BitchX || exists bitchx || exists ircii; then
-	export EMAIL=cowboyneal@gmail.com
-	export IRCNICK=CowboyNeal
-	export IRCSERVER=us.slashnet.org
-	export IRCPORT=6667
+    export EMAIL=cowboyneal@gmail.com
+    export IRCNICK=CowboyNeal
+    export IRCSERVER=us.slashnet.org
+    export IRCPORT=6667
 fi
 
 # CVS stuff
 if exists cvs; then
-	export CVS_RSH=ssh
-	export CVSUMASK=002
-	export CVS_USER=$USER
+    export CVS_RSH=ssh
+    export CVSUMASK=002
+    export CVS_USER=$USER
 fi
 
 # Let's get an ssh agent ready
@@ -233,14 +233,14 @@ fi
 
 # Enable bash-completion on a plethora of systems
 if [[ "$UNAME" =~ BSD ]] && [ -f /usr/local/etc/bash_completion ]; then
-  unset UNAME
-  . /usr/local/etc/bash_completion
+    unset UNAME
+    . /usr/local/etc/bash_completion
 elif [[ "$UNAME" =~ Darwin ]] && [ -f /opt/local/etc/bash_completion ]; then
-  unset UNAME
-  . /opt/local/etc/bash_completion
+    unset UNAME
+    . /opt/local/etc/bash_completion
 elif [ -f /etc/bash_completion ]; then
-  unset UNAME
-  . /etc/bash_completion
+    unset UNAME
+    . /etc/bash_completion
 else
-  unset UNAME
+    unset UNAME
 fi
