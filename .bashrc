@@ -92,6 +92,13 @@ fi
 
 export COLORFGBG='lightgray;black'
 
+if exists git && [ -f ~/.git-prompt.sh ]; then
+    source ~/.git-prompt.sh
+    export GIT_PS1_SHOWDIRTYSTATE=true
+    export GIT_PS1_SHOWSTASHSTATE=true
+    export GIT_PS1_SHOWUPSTREAM="auto"
+fi
+
 set_bash_prompt() {
     # prompt stuff
     local blue1="\033[1;34m"
@@ -101,16 +108,17 @@ set_bash_prompt() {
     
     PS1="$default2[$blue2\!$default2] $blue2\h $default2:$blue2 \w$default2 "
     
-    if exists git && [ -f ~/.git-prompt.sh ]; then
-        source ~/.git-prompt.sh
-        export GIT_PS1_SHOWDIRTYSTATE=true
-        export GIT_PS1_SHOWSTASHSTATE=true
-        export GIT_PS1_SHOWUPSTREAM="auto"
-
+    if [ -n "$GIT_PS1_SHOWDIRTYSTATE" ]; then
         local git_info=$(__git_ps1 "%s")
 
-        if [ -n "$git_info" ];
-        then
+        if [ -n "$git_info" ]; then
+            if [[ "$git_info" =~ ^\(.+\) ]]; then
+                local tag=`echo "$git_info" | grep -oP '\(.*?\)'`
+                local new_tag=${tag#(}
+                new_tag=${new_tag%)}
+                git_info=${git_info/$tag/$new_tag}
+            fi
+
             PS1="$PS1($blue2$git_info$default2) "
         fi
     fi
@@ -140,9 +148,9 @@ export PROMPT_COMMAND=set_bash_prompt
 alias 'reload'='source ~/.bashrc'
 
 case $UNAME in
-    *BSD | Darwin* )	lsopts='-GF' ;;
-    Linux | CYGWIN* )	lsopts='--color=auto -F' ;;
-    * )			lsopts='-F' ;;
+    *BSD | Darwin* )    lsopts='-GF' ;;
+    Linux | CYGWIN* )   lsopts='--color=auto -F' ;;
+    * )                 lsopts='-F' ;;
 esac
 
 alias 'ls'="ls $lsopts"
