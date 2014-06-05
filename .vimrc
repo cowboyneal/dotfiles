@@ -4,12 +4,14 @@ syntax on
 set title
 set t_Co=256
 set background=dark
+colorscheme default
 
 set autoindent
 set smartindent
 set tabstop=4
 set shiftwidth=4
 set expandtab
+set smarttab
 
 set textwidth=0
 
@@ -19,6 +21,9 @@ set noswapfile
 
 set nocompatible
 filetype plugin indent on
+
+set wildmode=longest:full
+set wildmenu
 
 map <C-J> gqap
 map <C-R> :r ~/doc/

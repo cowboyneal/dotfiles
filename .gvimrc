@@ -8,8 +8,8 @@ hi PmenuSel ctermbg=gray ctermfg=black guibg=black guifg=grey75
 hi PmenuSbar ctermbg=gray guibg=black
 hi PmenuThumb cterm=reverse gui=reverse
 
-"set lines=82 columns=116
-set lines=82 columns=160
+set lines=82 columns=116
+"set lines=82 columns=160
 
 set number
 set ruler

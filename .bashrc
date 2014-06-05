@@ -216,6 +216,10 @@ if [[ "$TERM" =~ screen ]]; then
     exists w3m && alias 'w3m'='w3m -title=xterm'
 fi
 
+if [[ "$TERM" =~ screen-256color ]]; then
+    exists vim && alias 'vim'='vim -T xterm-256color'
+fi
+
 # Portability vars
 bsd1=
 bsd2=
