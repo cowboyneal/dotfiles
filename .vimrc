@@ -4,7 +4,7 @@ syntax on
 set title
 set t_Co=256
 set background=dark
-colorscheme default
+colorscheme paterscheme
 
 set autoindent
 set smartindent
