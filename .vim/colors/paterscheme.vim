@@ -91,5 +91,5 @@ if v:version >= 700
 	hi TabLineSel cterm=bold ctermbg=none ctermfg=none gui=none	guibg=#bbbbbb guifg=#000000
 	hi TabLineFill 	cterm=inverse	ctermbg=none	ctermfg=none	gui=none	guibg=#bbbbbb	guifg=#000000
 
-	hi MatchParen	cterm=bold	ctermbg=none	ctermfg=green	gui=bold	guibg=bg	guifg=#44ff44
+	hi MatchParen	cterm=bold	ctermbg=none	ctermfg=magenta gui=bold	guibg=bg	guifg=#ff00ff
 endif
