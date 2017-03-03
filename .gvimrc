@@ -8,15 +8,15 @@ set guifont=Fixed\ Medium\ Semi-Condensed\ 9.5
 "hi PmenuSbar ctermbg=gray guibg=black
 "hi PmenuThumb cterm=reverse gui=reverse
 
-set lines=82 columns=116
-"set lines=82 columns=160
+"set lines=82 columns=116
+set lines=83 columns=168
 
-set number
-set ruler
 set laststatus=2
 set showmatch
 set showmode
-set fillchars=vert:\ 
+"set number
+"set ruler
+"set fillchars=vert:\ 
 set visualbell
 set cursorline
 

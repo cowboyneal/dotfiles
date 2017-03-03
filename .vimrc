@@ -6,6 +6,10 @@ set t_Co=256
 set background=dark
 colorscheme paterscheme
 
+set number
+set ruler
+set fillchars=vert:\ 
+
 set autoindent
 set smartindent
 set tabstop=4
