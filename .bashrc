@@ -12,6 +12,7 @@ exists () { # returns true if $1 is an executable file in our path
 
 # Set up path carefully
 PATH=~/bin                                  # script overrides for EoU
+PATH=$PATH:~/.local/bin                     # Python installed packages
 PATH=$PATH:/usr/local/bin:/usr/local/sbin   # local first for mit k5
 PATH=$PATH:/bin:/usr/bin:/usr/games         # usual path
 PATH=$PATH:/sbin:/usr/sbin                  # sudo/root stuff
@@ -245,6 +246,13 @@ got() { # got <process name>?
     else
         echo "$proc not found"
     fi
+}
+
+c() {
+    local calc=${1}
+    echo -e "$calc\nquit" > /tmp/bc-$USER
+    bc -q /tmp/bc-$USER
+    rm /tmp/bc-$USER
 }
 
 # IRC stuff
