@@ -1,0 +1,132 @@
+# Conky, a system monitor, based on torsmo
+#
+# Any original torsmo code is licensed under the BSD license
+#
+# All code written since the fork of torsmo is licensed under the GPL
+#
+# Please see COPYING for details
+#
+# Copyright (c) 2004, Hannu Saransaari and Lauri Hakkarainen
+# Copyright (c) 2005-2010 Brenden Matthews, Philip Kovacs, et. al. (see AUTHORS)
+# All rights reserved.
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+alignment top_left
+background no
+border_width 1
+cpu_avg_samples 2
+default_color white
+default_outline_color white
+default_shade_color white
+draw_borders no
+draw_graph_borders yes
+draw_outline no
+draw_shades no
+use_xft no
+font Fixed:medium:style=SemiCondensed:size=10
+#xftfont Fixed:medium:style=Bold SemiCondensed:size=9.5
+#xftfont Silkscreen:size=9
+#gap_x 1690
+gap_x 3577
+#gap_y 16
+gap_y 5
+#minimum_size 5 5
+net_avg_samples 2
+no_buffers yes
+out_to_console no
+out_to_stderr no
+extra_newline no
+own_window yes
+own_window_class Conky
+own_window_type normal
+own_window_transparent no
+own_window_hints undecorated,below,skip_taskbar,skip_pager,sticky
+own_window_argb_visual true
+own_window_argb_value 128
+stippled_borders 0
+update_interval 1.0
+uppercase no
+use_spacer none
+show_graph_scale no
+show_graph_range no
+mail_spool /var/mail/pater
+double_buffer yes
+temperature_unit fahrenheit
+
+TEXT
+${color grey}$nodename_short ${alignr}$sysname $kernel${color}
+${stippled_hr 2}
+${color grey}Uptime:$color $uptime_short ${alignr}${color grey}Load:$color $loadavg
+${loadgraph a0a0a0 ffffff -t}
+${color grey}CPU0 Usage:$color ${cpu cpu1}% ${alignr}${color grey}CPU1 Usage:$color ${cpu cpu2}%
+${cpubar cpu1 6,128} ${alignr}${cpubar cpu2 6,128}
+${cpugraph cpu1 24,128 a0a0a0 ffffff -t} ${alignr}${cpugraph cpu2 24,128 a0a0a0 ffffff -t}
+${color grey}CPU2 Usage:$color ${cpu cpu3}% ${alignr}${color grey}CPU3 Usage:$color ${cpu cpu4}%
+${cpubar cpu3 6,128} ${alignr}${cpubar cpu4 6,128}
+${cpugraph cpu3 24,128 a0a0a0 ffffff -t} ${alignr}${cpugraph cpu4 24,128 a0a0a0 ffffff -t}
+${color grey}CPU4 Usage:$color ${cpu cpu5}% ${alignr}${color grey}CPU5 Usage:$color ${cpu cpu6}%
+${cpubar cpu5 6,128} ${alignr}${cpubar cpu6 6,128}
+${cpugraph cpu5 24,128 a0a0a0 ffffff -t} ${alignr}${cpugraph cpu6 24,128 a0a0a0 ffffff -t}
+${color grey}CPU6 Usage:$color ${cpu cpu7}% ${alignr}${color grey}CPU7 Usage:$color ${cpu cpu8}%
+${cpubar cpu7 6,128} ${alignr}${cpubar cpu8 6,128}
+${cpugraph cpu7 24,128 a0a0a0 ffffff -t} ${alignr}${cpugraph cpu8 24,128 a0a0a0 ffffff -t}
+${color grey}RAM Usage:$color $mem/$memmax ${color grey}-${color} $memperc%
+${membar 6}
+${memgraph a0a0a0 ffffff -t}
+${color grey}Swap Usage:$color $swap/$swapmax ${color grey}-${color} $swapperc%
+${swapbar 6}
+${stippled_hr 2}
+${color grey}Disk IO:$color $diskio
+${color grey}Read: ${color}$diskio_read $alignr ${color grey}Write: ${color}$diskio_write
+${diskiograph_read 24,128 a0a0a0 ffffff -t} ${alignr}${diskiograph_write 24,128 a0a0a0 ffffff -t}
+${color grey}File systems:
+${color grey} /    $color${fs_used /}/${fs_size /}  ${fs_bar 6 /}
+${stippled_hr 2}
+${color grey}Processes:$color $processes ${alignr}${color grey}Running:$color $running_processes
+${color grey}Name                       PID   CPU%   MEM%
+${color grey} ${top name 1}        ${color}${top pid 1} ${top cpu 1} ${top mem 1}
+${color grey} ${top name 2}        ${color}${top pid 2} ${top cpu 2} ${top mem 2}
+${color grey} ${top name 3}        ${color}${top pid 3} ${top cpu 3} ${top mem 3}
+${color grey} ${top name 4}        ${color}${top pid 4} ${top cpu 4} ${top mem 4}
+${color grey}Memory Usage
+${color grey} ${top_mem name 1}        ${color}${top_mem pid 1} ${top_mem cpu 1} ${top_mem mem 1}
+${color grey} ${top_mem name 2}        ${color}${top_mem pid 2} ${top_mem cpu 2} ${top_mem mem 2}
+${color grey} ${top_mem name 3}        ${color}${top_mem pid 3} ${top_mem cpu 3} ${top_mem mem 3}
+${color grey} ${top_mem name 4}        ${color}${top_mem pid 4} ${top_mem cpu 4} ${top_mem mem 4}
+${stippled_hr 2}
+${color grey}Network:
+Down:$color ${downspeed eth0} ${alignr}${color grey}Up:$color ${upspeed eth0}
+${downspeedgraph eth0 24,128 a0a0a0 ffffff -t} ${alignr}${upspeedgraph eth0 24,128 a0a0a0 ffffff -t}
+${color grey}Inbound Connection ${alignr} Local Service/Port$color
+ ${color grey}${tcp_portmon 1 32767 rhost 0} ${alignr} ${color}${tcp_portmon 1 32767 lservice 0}
+ ${color grey}${tcp_portmon 1 32767 rhost 1} ${alignr} ${color}${tcp_portmon 1 32767 lservice 1}
+ ${color grey}${tcp_portmon 1 32767 rhost 2} ${alignr} ${color}${tcp_portmon 1 32767 lservice 2}
+ ${color grey}${tcp_portmon 1 32767 rhost 3} ${alignr} ${color}${tcp_portmon 1 32767 lservice 3}
+ ${color grey}${tcp_portmon 1 32767 rhost 4} ${alignr} ${color}${tcp_portmon 1 32767 lservice 4}
+${color grey}Outbound Connection ${alignr} Remote Service/Port$color
+ ${color grey}${tcp_portmon 32768 61000 rhost 0} ${alignr} ${color}${tcp_portmon 32768 61000 rservice 0}
+ ${color grey}${tcp_portmon 32768 61000 rhost 1} ${alignr} ${color}${tcp_portmon 32768 61000 rservice 1}
+ ${color grey}${tcp_portmon 32768 61000 rhost 2} ${alignr} ${color}${tcp_portmon 32768 61000 rservice 2}
+ ${color grey}${tcp_portmon 32768 61000 rhost 3} ${alignr} ${color}${tcp_portmon 32768 61000 rservice 3}
+ ${color grey}${tcp_portmon 32768 61000 rhost 4} ${alignr} ${color}${tcp_portmon 32768 61000 rservice 4}
+#${stippled_hr 2}
+#${color grey}Mail:$color $mails ${color grey}message(s)${color}
+#${stippled_hr 2}
+#${color grey}${execi 1800 /home/pater/bin/weather/weather.sh 43235}
+#${color grey}Weather as of ${weather http://weather.noaa.gov/pub/data/observations/metar/stations/ KARB last_update} UTC$color
+#${weather http://weather.noaa.gov/pub/data/observations/metar/stations/ KARB temperature}F                  ${weather http://weather.noaa.gov/pub/data/observations/metar/stations/ KARB humidity}% ${color grey}humidity${color}
+#${weather http://weather.noaa.gov/pub/data/observations/metar/stations/ KARB pressure} ${color grey}mb pressure${color}     ${weather http://weather.noaa.gov/pub/data/observations/metar/stations/ KARB wind_speed} ${color grey}km/h${color} ${weather http://weather.noaa.gov/pub/data/observations/metar/stations/ KARB wind_dir} ${color grey}wind${color}
+#${weather http://weather.noaa.gov/pub/data/observations/metar/stations/ KARB cloud_cover, }${weather http://weather.noaa.gov/pub/data/observations/metar/stations/ KARB weather}
+#${weather http://weather.noaa.gov/pub/data/observations/metar/stations/ KARB cloud_cover}${color grey},${color} ${weather http://weather.noaa.gov/pub/data/observations/metar/stations/ KARB weather}
