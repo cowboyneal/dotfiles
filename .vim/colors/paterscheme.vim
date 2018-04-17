@@ -23,7 +23,7 @@ hi ErrorMsg	ctermbg=darkred		ctermfg=white		guibg=#880000	guifg=#ffffff
 hi Folded	ctermbg=black		ctermfg=darkblue	guibg=black	guifg=#000088
 hi link FoldColumn Folded
 hi IncSearch	ctermbg=black		ctermfg=gray		guibg=#000000	guifg=#bbcccc
-hi LineNr guifg=#808080 ctermfg=green cterm=none
+hi LineNr guifg=#808080 ctermfg=gray cterm=none
 hi ModeMsg				ctermfg=white				guifg=#ffffff
 hi MoreMsg				ctermfg=green				guifg=#44ff44
 hi NonText				ctermfg=blue				guifg=#4444ff
