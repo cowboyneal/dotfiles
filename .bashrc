@@ -264,6 +264,11 @@ if exists epic || exists BitchX || exists bitchx || exists ircii; then
     export IRCPORT=6667
 fi
 
+# mosh prefs
+if exists mosh; then
+    export MOSH_TITLE_NOPREFIX=1
+fi
+
 # CVS stuff
 if exists cvs; then
     export CVS_RSH=ssh
