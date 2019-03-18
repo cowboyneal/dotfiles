@@ -192,7 +192,7 @@ alias 'h'='history'
 alias 'j'='jobs -l'
 alias 'xon'='ssh -X'
 alias 'nuke'='kill -9'
-alias 'cdd'='cd $OLDPWD'
+alias 'cdd'='cd "$OLDPWD"'
 alias 'psme'="ps x | $PAGER"
 alias 'pss'="ps aux | $PAGER"
 alias 'grep'='grep --color=auto'
