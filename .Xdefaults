@@ -1,0 +1,77 @@
+! ===========================================================================
+!  OpenWindows Olwm Olvwn
+! ===========================================================================
+!
+OpenWindows.AutoRaise:	false
+OpenWindows.AutoReReadMenuFile:	true
+OpenWindows.Beep:	never
+OpenWindows.ClickMoveThreshold:	5
+OpenWindows.DragRightDistance:	50
+OpenWindows.DragThreshold:	5
+OpenWindows.FocusLenience:	true
+OpenWindows.IconFlashCount:	3
+OpenWindows.IconLocation:	bottom
+OpenWindows.MinimalDecor:	Virtual xload xmem xsysinfo xosview xbiff xclock xeyes
+OpenWindows.MultiClickTimeout:	4
+OpenWindows.PaintWorkspace:	true
+OpenWindows.PopupJumpCursor:	true
+OpenWindows.RubberBandThickness:	1
+OpenWindows.ScrollbarPlacement:	right
+OpenWindows.SelectDisplaysMenu:	False
+OpenWindows.SelectToggleStacking:	true
+OpenWindows.SelectWindows:	true
+OpenWindows.ServerGrabs:	true
+OpenWindows.SetInput:	followmouse
+OpenWindows.ShowMoveGeometry:	true
+OpenWindows.ShowResizeGeometry:	true
+OpenWindows.SnapToGrid:	true
+OpenWindows.Use3D:	true
+OpenWindows.Use3DFrames:	true
+OpenWindows.Use3DResize:	true
+OpenWindows.VirtualDesktop:	2x2
+OpenWindows.VirtualGrid:	none
+OpenWindows.VirtualSticky:	Virtual xload xmem xsysinfo xosview xbiff xclock swissclock
+!OpenWindows.WindowColor:	#b2b2b2
+!OpenWindows.WorkspaceColor:	gray
+
+! Netscape*backgroundPixmap:      /home/pater/images/gradient.xpm
+Netscape*background:                            #b6c3d7
+Netscape*foreground:                            #000000
+Netscape*fontList:              -adobe-helvetica-medium-r-normal-*-*-100-*-*-p-*-iso8859-1
+! Netscape*fontList:              -b&h-lucida-medium-r-normal-*-*-100-*-*-p-*-iso8859-1
+
+real*background:                            #1e2e4c
+real*foreground:                            #ffffff
+
+URxvt*geometry: 80x90
+URxvt*background: black
+URxvt*foreground: light grey
+URxvt*font: xft:Monospace:size=9
+URxvt*letterSpace: -1
+URxvt*scrollBar_right: true
+URxvt*saveLines: 1024
+URxvt*termName: xterm-color
+URxvt*loginShell: true
+URxvt*transparent: true
+URxvt*tintColor: white
+URxvt*shading: 25
+URxvt*scrollstyle: next
+URxvt*scrollTtyOutput: false
+URxvt*scrollWithBuffer: false
+URxvt*scrollTtyKeypress: false
+
+XTerm.termName: xterm-color
+XTerm*background: white
+XTerm*cursorColor: white
+XTerm*foreground: white
+XTerm*geometry: 80x24
+XTerm*rightScrollBar: true
+XTerm*saveLines: 1024
+XTerm*loginShell: true
+XTerm*scrollbar: true
+
+Xft.dpi: 96
+Xft.antialias: true
+Xft.rgba: rgb
+Xft.hinting: true
+Xft.hintstyle: hintslight
