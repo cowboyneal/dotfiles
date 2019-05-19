@@ -1,3 +1,3 @@
 #!/bin/sh
 
-sysctl vm.loadavg | awk '{ print "Load:", $3, $4, $5; }'
+sysctl vm.loadavg | awk '{ print $3, $4, $5; }'
