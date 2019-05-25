@@ -55,6 +55,7 @@ module-margin-right = 1
 font-0 = Arial:bold:size=10
 font-1 = Font Awesome 5 Free Solid:size=10;0
 font-2 = Font Awesome 5 Free:size=10;0
+font-3 = Font Awesome 5 Brands:size=10,0
 
 modules-left = i3 xwindow
 modules-center = 
@@ -413,7 +414,7 @@ menu-2-1-exec = menu-open-0
 [module/osversion]
 type = custom/script
 exec = ~/.config/polybar/osver.sh
-label = %output%
+label =   %output%
 
 [module/diskusage]
 type = custom/script

@@ -51,13 +51,13 @@ set $right semicolon
 floating_modifier Mod1
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec --no-startup-id urxvt
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu2_run -fn "Arial-12"
+bindsym $mod+d exec dmenu2_run -fn "Arial-10:bold"
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -212,3 +212,15 @@ for_window [class=".*"] border pixel 5
 gaps inner 20
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.bash
+
+# In your i3 configuration file, you can autostart i3-msg like this:
+# (Note that those lines will quickly become long, so typically you would store
+#  them in a script with proper indentation.)
+exec --no-startup-id "i3-msg 'workspace 1; append_layout ~/.config/i3/workspace-1.json'"
+
+exec --no-startup-id urxvt
+exec --no-startup-id urxvt
+exec --no-startup-id urxvt
+exec --no-startup-id urxvt
+exec gvim
+exec chrome
