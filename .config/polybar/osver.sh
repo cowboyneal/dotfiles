@@ -1,3 +1,3 @@
 #1/bin/sh
 
-uname -s -r
+echo $(uname -s) $(freebsd-version)
