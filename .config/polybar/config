@@ -59,7 +59,7 @@ font-3 = Font Awesome 5 Brands:size=10,0
 
 modules-left = i3 xwindow
 modules-center = 
-modules-right = osversion diskusage memusage loadavg date
+modules-right = osversion diskusage memusage loadavg metar date
 
 tray-position = right
 tray-padding = 1
@@ -410,6 +410,12 @@ menu-2-0 = power off
 menu-2-0-exec = sudo poweroff
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
+
+[module/metar]
+type = custom/script
+exec = ~/.config/polybar/metar.sh
+interval = 180
+label =  %output%°F
 
 [module/osversion]
 type = custom/script
