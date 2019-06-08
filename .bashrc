@@ -250,10 +250,7 @@ got() { # got <process name>?
 }
 
 c() {
-    local calc=${1}
-    echo -e "$calc\nquit" > /tmp/bc-$USER
-    bc -q /tmp/bc-$USER
-    rm /tmp/bc-$USER
+    echo ${1} | bc -l
 }
 
 # IRC stuff
