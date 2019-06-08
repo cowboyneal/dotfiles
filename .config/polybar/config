@@ -413,7 +413,7 @@ menu-2-1-exec = menu-open-0
 
 [module/metar]
 type = custom/script
-exec = ~/.config/polybar/metar.sh
+exec = ~/.config/polybar/metar.sh KOSU
 interval = 180
 label =  %output%°F
 
