@@ -157,7 +157,7 @@ set_bash_prompt() {
     
     PS1=$PS1$default2
     
-    if [[ "$TERM" =~ xterm|rxvt|screen ]]; then
+    if [[ "$TERM" =~ xterm|rxvt|screen|tmux ]]; then
         PS1="\[\033]0;[ \u @ \h ] - "`tty | sed 's!/dev/!!'`" : \w\007\]$PS1"
     fi
 
