@@ -41,7 +41,6 @@ export CDPATH=.:..
 if exists less; then
     PAGER=less
     export LESS='-ir'
-    export LESSOPEN='|~/.lessfilter %s'
     alias 'more'='less'
 else
     PAGER=more
@@ -119,36 +118,40 @@ unset local256
 
 export COLORFGBG='lightgray;black'
 
-if exists git && [ -f ~/.git-prompt.sh ]; then
-    source ~/.git-prompt.sh
-    export GIT_PS1_SHOWDIRTYSTATE=true
-    export GIT_PS1_SHOWSTASHSTATE=true
-    export GIT_PS1_SHOWUPSTREAM="auto"
-fi
+# if exists git && [ -f ~/.git-prompt.sh ]; then
+#     source ~/.git-prompt.sh
+#     export GIT_PS1_SHOWDIRTYSTATE=true
+#     export GIT_PS1_SHOWSTASHSTATE=true
+#     export GIT_PS1_SHOWUPSTREAM="auto"
+# fi
 
 set_bash_prompt() {
     # prompt stuff
-    local blue1="\033[1;34m"
-    local blue2="\[$blue1\]"
+    #local blue1="\033[1;34m"
+    #local blue2="\[$blue1\]"
     local default1="\033[0m"
     local default2="\[$default1\]"
-    
-    PS1="$default2[$blue2\!$default2] $blue2\h $default2:$blue2 \w$default2 "
-    
-    if [ -n "$GIT_PS1_SHOWDIRTYSTATE" ]; then
-        local git_info=$(__git_ps1 "%s")
+    local cyan_blue="\[\033[0;36;44m\]"
+    local white_blue="\[\033[0;0;44m\]"
 
-        if [ -n "$git_info" ]; then
-            if [[ "$git_info" =~ ^\(.+\) ]]; then
-                local tag=`echo "$git_info" | grep -oP '\(.*?\)'`
-                local new_tag=${tag#(}
-                new_tag=${new_tag%)}
-                git_info=${git_info/$tag/$new_tag}
-            fi
+    PS1="$cyan_blue[$white_blue\!$cyan_blue]$PS1"
 
-            PS1="$PS1($blue2$git_info$default2) "
-        fi
-    fi
+#    PS1="$default2[$blue2\!$default2] $blue2\h $default2:$blue2 \w$default2 "
+#
+#    if [ -n "$GIT_PS1_SHOWDIRTYSTATE" ]; then
+#        local git_info=$(__git_ps1 "%s")
+#
+#        if [ -n "$git_info" ]; then
+#            if [[ "$git_info" =~ ^\(.+\) ]]; then
+#                local tag=`echo "$git_info" | grep -oP '\(.*?\)'`
+#                local new_tag=${tag#(}
+#                new_tag=${new_tag%)}
+#                git_info=${git_info/$tag/$new_tag}
+#            fi
+#
+#            PS1="$PS1($blue2$git_info$default2) "
+#        fi
+#    fi
     
     case `/usr/bin/whoami` in
       root* ) PS1=$PS1'# ' ;;
@@ -167,6 +170,12 @@ set_bash_prompt() {
 export PS2
 export PROMPT_DIRTRIM=3
 export PROMPT_COMMAND=set_bash_prompt
+
+powerline-daemon -q
+POWERLINE_BASH_CONTINUATION="1"
+POWERLINE_BASH_SELECT="1"
+
+. /usr/share/powerline/bindings/bash/powerline.sh
 
 # Set aliases proper. Uncomment the following line to pull in more external
 # aliases.
