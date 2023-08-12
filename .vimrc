@@ -1,5 +1,6 @@
 execute pathogen#infect()
 
+set encoding=UTF-8
 syntax on
 set title
 set t_Co=256
