@@ -171,11 +171,14 @@ export PS2
 export PROMPT_DIRTRIM=3
 export PROMPT_COMMAND=set_bash_prompt
 
-powerline-daemon -q
-POWERLINE_BASH_CONTINUATION="1"
-POWERLINE_BASH_SELECT="1"
+if exists powerline-daemon; then
+    powerline-daemon -q
+    POWERLINE_BASH_CONTINUATION="1"
+    POWERLINE_BASH_SELECT="1"
 
-. /usr/share/powerline/bindings/bash/powerline.sh
+    test -e /usr/share/powerline/bindings/bash/powerline.sh && \
+        . /usr/share/powerline/bindings/bash/powerline.sh
+fi
 
 # Set aliases proper. Uncomment the following line to pull in more external
 # aliases.
