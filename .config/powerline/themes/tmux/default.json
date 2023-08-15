@@ -3,7 +3,7 @@
 		"right": [
 			{
 				"function": "powerline.segments.common.sys.system_load",
-                "before": "load  ",
+                "before": "load: ",
                 "args": {
                     "format": "{avg:.2f}"
                 },
