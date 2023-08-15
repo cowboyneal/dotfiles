@@ -80,6 +80,7 @@ fi
 # Some programs support several languages for their output.
 # If you want them to use english, please uncomment the following line.
 #export LANG='en_US.UTF-8'
+export LC_ALL='en_US.UTF-8'
 
 # try to set DISPLAY smart
 if [ -z "$DISPLAY" ] && [[ "$TERM" =~ xterm|rxvt ]] && [ -n "$SSH_CLIENT" ];
@@ -131,10 +132,11 @@ set_bash_prompt() {
     #local blue2="\[$blue1\]"
     local default1="\033[0m"
     local default2="\[$default1\]"
-    local cyan_blue="\[\033[0;36;44m\]"
+    #local cyan_blue="\[\033[0;36;44m\]"
+    local black_blue="\[\033[0;30;44m\]"
     local white_blue="\[\033[0;0;44m\]"
 
-    PS1="$cyan_blue[$white_blue\!$cyan_blue]$PS1"
+    PS1=" \! $black_blue$white_blue$PS1"
 
 #    PS1="$default2[$blue2\!$default2] $blue2\h $default2:$blue2 \w$default2 "
 #
