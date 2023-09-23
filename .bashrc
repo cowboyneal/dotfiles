@@ -180,6 +180,9 @@ if exists powerline-daemon; then
 
     test -e /usr/share/powerline/bindings/bash/powerline.sh && \
         . /usr/share/powerline/bindings/bash/powerline.sh
+
+    test -e /usr/local/lib/python3.9/site-packages/powerline/bindings/bash/powerline.sh && \
+        . /usr/local/lib/python3.9/site-packages/powerline/bindings/bash/powerline.sh
 fi
 
 # Set aliases proper. Uncomment the following line to pull in more external
