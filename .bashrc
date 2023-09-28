@@ -215,7 +215,7 @@ alias 'pss'="ps aux | $PAGER"
 alias 'grep'='grep --color=auto'
 alias 'egrep'='egrep --color=auto'
 alias 'fgrep'='fgrep --color=auto'
-alias 'rsync'='rsync -avzhe ssh --progress'
+exists rsync && alias 'rsync'='rsync -avzhe ssh --progress'
 
 exists tmux && alias 'tmux'='tmux attach -d'
 
