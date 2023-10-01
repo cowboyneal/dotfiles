@@ -1,0 +1,223 @@
+#
+# Set up colors here
+#
+color hdrdefault blue default
+color quoted     default default
+color signature  default default
+color attachment cyan default
+color markers    black brightwhite
+#color status     cyan  blue
+color status     default blue
+color indicator  black       cyan
+color normal     default default
+color tree       cyan default
+#color index	 cyan        default
+color tilde      default default
+color error      default default
+color message    default default
+color header     cyan default ^Date:
+color header     cyan default ^From:
+color header     cyan default ^To:
+color header     cyan default ^Reply-To:
+color header     cyan default ^Cc:
+color header     cyan default ^Subject:
+color header	 blue default ^X-
+color body       default default [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+
+color body       default default (http|ftp)://[\-\.\,/%~_:?\#a-zA-Z0-9]+
+
+#
+# Format settings go here
+#
+set folder_format="%2C %t %N %F %2l %-8.8u %-8.8g %8s %d %f"
+set index_format="%4C %Z %{%b %d} %-15.15L (%4l) %s"
+set status_format="-%r-Mutt: %f [Msgs:%?M?%M/?%m%?n? New:%n?%?o? Old:%o?%?d? Del:%d?%?F? Flag:%F?%?t? Tag:%t?%?p? Post:%p?%?b? Inc:%b?%?l? %l?]---(%s/%S)-%>-(%P)---"
+set attach_format="%u%D%I %t%4n %T%.40d%> [%.7m/%.10M, %.6e%?C?, %C?, %s] "
+set date_format="!%a, %b %d, %Y at %I:%M:%S%p %Z"
+
+#
+# Other random settings go here.
+#
+set askcc
+set beep_new
+set use_domain
+set use_from
+set from=pater@thule
+set hostname=thule
+set sort=threads
+set sort_aux=date-received
+set editor='vim "+set wrapmargin=5" "+syntax off"'
+set signature='~/bin/randsig3.pl ~/.sig ~/.randsig |'
+set record=+sent-mail
+set postponed=+postponed
+set spoolfile=+INBOX
+set status_on_top
+set abort_unmodified=no
+set pager_index_lines=6
+#set pgp_autosign
+#set pgp_timeout=3600
+unset move
+unset mark_old
+unset markers
+unset edit_headers
+unset arrow_cursor
+set smart_wrap
+set print_command="a2ps"
+
+#set pop_delete=yes
+#set pop_host=
+#set pop_user=
+#set pop_pass=
+
+#
+# specify boxes which receive mail
+#
+mailboxes +INBOX
+
+#
+# Set the order of the header fields.
+#
+unignore date from to cc subject reply-to
+hdr_order Date: From: To: Cc: Subject: Reply-To:
+
+#
+# I almost always want group-reply, so I make r use it instead
+# of reply here, and unbind g as well.
+#
+bind index r group-reply
+bind pager r group-reply
+bind attach r group-reply
+bind index g noop
+bind pager g noop
+bind attach g noop
+
+#
+# To emulate Pine, I'll use c to compose a message,
+# and l to change folders, and p and n too.
+#
+bind index c mail
+bind pager c mail
+bind index m noop
+bind pager m noop
+bind index l change-folder
+bind pager l change-folder
+bind index p previous-undeleted
+bind index n next-undeleted
+bind pager p previous-undeleted
+bind pager n next-undeleted
+
+# Bind a key to print
+bind index P print-message
+bind pager P print-message
+
+#
+# Rebind arrows in the pager
+#
+bind pager <Up> previous-line
+bind pager <Down> next-line
+
+#
+# Set up Macros here
+#
+macro generic z l+INBOX<enter>
+macro index z l+INBOX<enter>
+macro pager z l+INBOX<enter>
+
+#
+# Mailing Lists
+#
+#lists debian-devel@lists.debian.org
+#subscribe debian-devel@lists.debian.org
+
+#
+# what if I want to save a list message? do that here
+#
+#save-hook '~t ^all@valinux\.com$' +all
+
+# -*-muttrc-*-
+#
+# Command formats for gpg.
+#
+# This version uses gpg-2comp from
+#   http://muppet.faveve.uni-stuttgart.de/~gero/gpg-2comp.tar.gz
+#
+# $Id: gpg.rc,v 1.12 2001/12/11 09:33:57 roessler Exp $
+#
+# %p    The empty string when no passphrase is needed,
+#       the string "PGPPASSFD=0" if one is needed.
+#
+#       This is mostly used in conditional % sequences.
+#
+# %f    Most PGP commands operate on a single file or a file
+#       containing a message.  %f expands to this file's name.
+#
+# %s    When verifying signatures, there is another temporary file
+#       containing the detached signature.  %s expands to this
+#       file's name.
+#
+# %a    In "signing" contexts, this expands to the value of the
+#       configuration variable $pgp_sign_as.  You probably need to
+#       use this within a conditional % sequence.
+#
+# %r    In many contexts, mutt passes key IDs to pgp.  %r expands to
+#       a list of key IDs.
+
+# Note that we explicitly set the comment armor header since GnuPG, when used
+# in some localiaztion environments, generates 8bit data in that header, thereby
+# breaking PGP/MIME.
+
+# decode application/pgp
+### set pgp_decode_command="/usr/local/bin/gpg   --status-fd=2 %?p?--passphrase-fd 0? --no-verbose --quiet  --batch  --output - %f"
+
+# verify a pgp/mime signature
+### set pgp_verify_command="/usr/local/bin/gpg   --status-fd=2 --no-verbose --quiet  --batch  --output - --verify %s %f"
+
+# decrypt a pgp/mime attachment
+### set pgp_decrypt_command="/usr/local/bin/gpg   --status-fd=2 --passphrase-fd 0 --no-verbose --quiet  --batch  --output - %f"
+
+# create a pgp/mime signed attachment
+# set pgp_sign_command="/usr/bin/gpg-2comp --comment '' --no-verbose --batch  --output - --passphrase-fd 0 --armor --detach-sign --textmode %?a?-u %a? %f"
+### set pgp_sign_command="/usr/local/bin/gpg    --no-verbose --batch --quiet   --output - --passphrase-fd 0 --armor --detach-sign --textmode %?a?-u %a? %f"
+
+# create a application/pgp signed (old-style) message
+# set pgp_clearsign_command="/usr/bin/gpg-2comp --comment ''  --no-verbose --batch  --output - --passphrase-fd 0 --armor --textmode --clearsign %?a?-u %a? %f"
+### set pgp_clearsign_command="/usr/local/bin/gpg   --no-verbose --batch --quiet   --output - --passphrase-fd 0 --armor --textmode --clearsign %?a?-u %a? %f"
+
+# create a pgp/mime encrypted attachment
+# set pgp_encrypt_only_command="pgpewrap gpg-2comp  -v --batch  --output - --encrypt --textmode --armor --always-trust -- -r %r -- %f"
+### set pgp_encrypt_only_command="pgpewrap /usr/local/bin/gpg    --batch  --quiet  --no-verbose --output - --encrypt --textmode --armor --always-trust -- -r %r -- %f"
+
+# create a pgp/mime encrypted and signed attachment
+# set pgp_encrypt_sign_command="pgpewrap gpg-2comp  --passphrase-fd 0 -v --batch  --output - --encrypt --sign %?a?-u %a? --armor --always-trust -- -r %r -- %f"
+### set pgp_encrypt_sign_command="pgpewrap /usr/local/bin/gpg  --passphrase-fd 0  --batch --quiet  --no-verbose  --textmode --output - --encrypt --sign %?a?-u %a? --armor --always-trust -- -r %r -- %f"
+
+# import a key into the public key ring
+### set pgp_import_command="/usr/local/bin/gpg  --no-verbose --import -v %f"
+
+# export a key from the public key ring
+### set pgp_export_command="/usr/local/bin/gpg   --no-verbose --export --armor %r"
+
+# verify a key
+### set pgp_verify_key_command="/usr/local/bin/gpg   --verbose --batch  --fingerprint --check-sigs %r"
+
+# read in the public key ring
+### set pgp_list_pubring_command="/usr/local/bin/gpg   --no-verbose --batch --quiet   --with-colons --list-keys %r"
+
+# read in the secret key ring
+### set pgp_list_secring_command="/usr/local/bin/gpg   --no-verbose --batch --quiet   --with-colons --list-secret-keys %r"
+
+# fetch keys
+# set pgp_getkeys_command="pkspxycwrap %r"
+
+# pattern for good signature - may need to be adapted to locale!
+
+# set pgp_good_sign="^gpg: Good signature from"
+
+# OK, here's a version which uses gnupg's message catalog:
+# set pgp_good_sign="`gettext -d gnupg -s 'Good signature from "' | tr -d '"'`"
+
+# This version uses --status-fd messages
+### set pgp_good_sign="^\\[GNUPG:\\] GOODSIG"
+
+#
+# Finally, some aliases
+#
