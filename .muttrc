@@ -221,3 +221,4 @@ macro pager z l+INBOX<enter>
 #
 # Finally, some aliases
 #
+source ~/.mutt_aliases
