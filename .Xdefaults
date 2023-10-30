@@ -43,49 +43,49 @@ Netscape*fontList:              -adobe-helvetica-medium-r-normal-*-*-100-*-*-p-*
 real*background:                            #1e2e4c
 real*foreground:                            #ffffff
 
-URxvt*geometry: 80x90
-!URxvt*background: black
-!URxvt*foreground: light grey
-URxvt*font: xft:Monospace:size=9
+URxvt*geometry: 80x52
+! URxvt*background: black
+URxvt*foreground: white
+! URxvt*font: fixed
+URxvt*font: xft:Deja Vu Sans Mono for Powerline:size=8.5
 URxvt*letterSpace: -1
 URxvt*scrollBar_right: true
+URxvt*scrollstyle: next
 URxvt*saveLines: 1024
 URxvt*termName: xterm-color
 URxvt*loginShell: true
-URxvt*transparent: true
-URxvt*tintColor: white
-URxvt*shading: 25
-URxvt*scrollstyle: next
+! URxvt*transparent: true
+! URxvt*tintColor: white
+! URxvt*shading: 50
+URxvt*depth: 32
+URxvt*background: rgba:0000/0000/0000/c800
 URxvt*scrollTtyOutput: false
 URxvt*scrollWithBuffer: false
 URxvt*scrollTtyKeypress: false
-! Colors
-URxvt*background: #000000
-URxvt*foreground: #B2B2B2
-! black
-URxvt*color0:  #000000
-URxvt*color8:  #686868
-! red
-URxvt*color1:  #B21818
-URxvt*color9:  #FF5454
-! green
-URxvt*color2:  #18B218
-URxvt*color10: #54FF54
-! yellow
-URxvt*color3:  #B26818
-URxvt*color11: #FFFF54
-! blue
-URxvt*color4:  #1818B2
-URxvt*color12: #5454FF
-! purple
-URxvt*color5:  #B218B2
-URxvt*color13: #FF54FF
-! cyan
-URxvt*color6:  #18B2B2
-URxvt*color14: #54FFFF
-! white
-URxvt*color7:  #B2B2B2
-URxvt*color15: #FFFFFF
+
+URxvt*color0: #000000
+URxvt*color1: #cd0000
+URxvt*color2: #00cd00
+URxvt*color3: #cdcd00
+URxvt*color4: #0000cd
+URxvt*color5: #cd00cd
+URxvt*color6: #00cdcd
+URxvt*color7: #cdcdcd
+URxvt*color8: #5c5c5c
+URxvt*color9: #ff0000
+URxvt*color10: #00ff00
+URxvt*color11: #ffff00
+URxvt*color12: #5c5cff
+URxvt*color13: #ff00ff
+URxvt*color14: #00ffff
+URxvt*color15: #ffffff
+
+mutt.loginShell: false
+mutt*scrollBar: false
+mutt*geometry: 80x52+0+0
+irssi.loginShell: false
+irssi*scrollBar: false
+irssi.geometry: 80x52+0+765
 
 XTerm.termName: xterm-color
 XTerm*background: white
@@ -97,7 +97,7 @@ XTerm*saveLines: 1024
 XTerm*loginShell: true
 XTerm*scrollbar: true
 
-Xft.dpi: 96
+Xft.dpi: 100
 Xft.antialias: true
 Xft.rgba: rgb
 Xft.hinting: true
