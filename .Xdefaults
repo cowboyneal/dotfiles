@@ -2,77 +2,77 @@
 !  OpenWindows Olwm Olvwn
 ! ===========================================================================
 !
-OpenWindows.AutoRaise: false
-OpenWindows.AutoReReadMenuFile: true
-OpenWindows.Beep: never
-OpenWindows.ClickMoveThreshold: 5
-OpenWindows.DragRightDistance: 50
-OpenWindows.DragThreshold: 5
-OpenWindows.FocusLenience: true
-OpenWindows.IconFlashCount:	3
-OpenWindows.IconLocation: bottom
+OpenWindows.AutoRaise:            false
+OpenWindows.AutoReReadMenuFile:   true
+OpenWindows.Beep:                 never
+OpenWindows.ClickMoveThreshold:   5
+OpenWindows.DragRightDistance:    50
+OpenWindows.DragThreshold:        5
+OpenWindows.FocusLenience:        true
+OpenWindows.IconFlashCount:	      3
+OpenWindows.IconLocation:         bottom
 OpenWindows.MinimalDecor: Virtual xload xmem xsysinfo xosview xbiff xclock xeyes
-OpenWindows.MultiClickTimeout: 4
-OpenWindows.PaintWorkspace: true
-OpenWindows.PopupJumpCursor: true
-OpenWindows.RubberBandThickness: 1
-OpenWindows.ScrollbarPlacement: right
-OpenWindows.SelectDisplaysMenu: False
+OpenWindows.MultiClickTimeout:    4
+OpenWindows.PaintWorkspace:       true
+OpenWindows.PopupJumpCursor:      true
+OpenWindows.RubberBandThickness:  1
+OpenWindows.ScrollbarPlacement:   right
+OpenWindows.SelectDisplaysMenu:   False
 OpenWindows.SelectToggleStacking: true
-OpenWindows.SelectWindows: true
-OpenWindows.ServerGrabs: true
-OpenWindows.SetInput: followmouse
-OpenWindows.ShowMoveGeometry: true
-OpenWindows.ShowResizeGeometry: true
-OpenWindows.SnapToGrid: true
-OpenWindows.Use3D: true
-OpenWindows.Use3DFrames: true
-OpenWindows.Use3DResize: true
-OpenWindows.VirtualDesktop: 2x2
-OpenWindows.VirtualGrid: none
-OpenWindows.VirtualSticky: Virtual xload xmem xsysinfo xosview xbiff xclock swissclock
+OpenWindows.SelectWindows:        true
+OpenWindows.ServerGrabs:          true
+OpenWindows.SetInput:             followmouse
+OpenWindows.ShowMoveGeometry:     true
+OpenWindows.ShowResizeGeometry:   true
+OpenWindows.SnapToGrid:           true
+OpenWindows.Use3D:                true
+OpenWindows.Use3DFrames:          true
+OpenWindows.Use3DResize:          true
+OpenWindows.VirtualDesktop:       2x2
+OpenWindows.VirtualGrid:          none
+OpenWindows.VirtualSticky: Virtual xload xmem xsysinfo xosview xbiff xclock
 ! OpenWindows.WindowColor: #b2b2b2
 ! OpenWindows.WorkspaceColor: gray
 
 ! Netscape*backgroundPixmap: /home/pater/images/gradient.xpm
 Netscape*background: #b6c3d7
 Netscape*foreground: #000000
-Netscape*fontList: -adobe-helvetica-medium-r-normal-*-*-100-*-*-p-*-iso8859-1
+Netscape*fontList:   -adobe-helvetica-medium-r-normal-*-*-100-*-*-p-*-iso8859-1
 ! Netscape*fontList: -b&h-lucida-medium-r-normal-*-*-100-*-*-p-*-iso8859-1
 
 real*background: #1e2e4c
 real*foreground: #ffffff
 
-URxvt*geometry: 80x52
+URxvt*geometry:          80x52
 ! URxvt*background: black
-URxvt*foreground: white
+URxvt*foreground:        white
 ! URxvt*font: fixed
-URxvt*font: xft:Deja Vu Sans Mono for Powerline:size=8.5
-URxvt*letterSpace: -1
-URxvt*scrollBar_right: true
-URxvt*scrollstyle: next
-URxvt*saveLines: 1024
-URxvt*termName: xterm-color
-URxvt*loginShell: true
-! URxvt*transparent: true
-! URxvt*tintColor: white
-! URxvt*shading: 50
-URxvt*depth: 32
-URxvt*background: rgba:0000/0000/0000/c800
-URxvt*scrollTtyOutput: false
-URxvt*scrollWithBuffer: false
+URxvt*font:              xft:Deja Vu Sans Mono for Powerline:size=8.5
+URxvt*letterSpace:       -1
+URxvt*scrollBar_right:   true
+URxvt*scrollstyle:       next
+URxvt*saveLines:         1024
+URxvt*termName:          xterm-color
+URxvt*loginShell:        true
+! URxvt*transparent:       true
+! URxvt*tintColor:         white
+! URxvt*shading:           50
+URxvt*depth:             32
+URxvt*background:        rgba:0000/0000/0000/c800
+URxvt*scrollTtyOutput:   false
+URxvt*scrollWithBuffer:  false
 URxvt*scrollTtyKeypress: false
 
-URxvt*color0: #000000
-URxvt*color1: #cd0000
-URxvt*color2: #00cd00
-URxvt*color3: #cdcd00
-URxvt*color4: #0000cd
-URxvt*color5: #cd00cd
-URxvt*color6: #00cdcd
-URxvt*color7: #cdcdcd
-URxvt*color8: #5c5c5c
-URxvt*color9: #ff0000
+URxvt*color0:  #000000
+URxvt*color1:  #cd0000
+URxvt*color2:  #00cd00
+URxvt*color3:  #cdcd00
+URxvt*color4:  #0000cd
+URxvt*color5:  #cd00cd
+URxvt*color6:  #00cdcd
+URxvt*color7:  #cdcdcd
+URxvt*color8:  #5c5c5c
+URxvt*color9:  #ff0000
 URxvt*color10: #00ff00
 URxvt*color11: #ffff00
 URxvt*color12: #5c5cff
@@ -80,25 +80,25 @@ URxvt*color13: #ff00ff
 URxvt*color14: #00ffff
 URxvt*color15: #ffffff
 
-mutt*loginShell: false
-mutt*scrollBar: false
-mutt*geometry: 80x52+0+0
+mutt*loginShell:  false
+mutt*scrollBar:   false
+mutt*geometry:    80x52+0+0
 irssi*loginShell: false
-irssi*scrollBar: false
-irssi*geometry: 80x52+0+765
+irssi*scrollBar:  false
+irssi*geometry:   80x52+0+765
 
-XTerm.termName: xterm-color
-XTerm*background: black
-XTerm*cursorColor: white
-XTerm*foreground: white
-XTerm*geometry: 80x24
+XTerm.termName:       xterm-color
+XTerm*background:     black
+XTerm*cursorColor:    white
+XTerm*foreground:     white
+XTerm*geometry:       80x24
 XTerm*rightScrollBar: true
-XTerm*saveLines: 1024
-XTerm*loginShell: true
-XTerm*scrollbar: true
+XTerm*saveLines:      1024
+XTerm*loginShell:     true
+XTerm*scrollbar:      true
 
-Xft.dpi: 100
+Xft.dpi:       100
 Xft.antialias: true
-Xft.rgba: rgb
-Xft.hinting: true
+Xft.rgba:      rgb
+Xft.hinting:   true
 Xft.hintstyle: hintslight
