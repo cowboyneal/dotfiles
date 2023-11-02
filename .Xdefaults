@@ -43,10 +43,12 @@ Netscape*fontList:   -adobe-helvetica-medium-r-normal-*-*-100-*-*-p-*-iso8859-1
 real*background: #1e2e4c
 real*foreground: #ffffff
 
-URxvt*geometry:          80x52
-! URxvt*background: black
+Xcursor.theme: Jimmac
+
+URxvt*geometry:          80x50
+! URxvt*background:        black
 URxvt*foreground:        white
-! URxvt*font: fixed
+! URxvt*font:              fixed
 URxvt*font:              xft:Deja Vu Sans Mono for Powerline:size=8.5
 URxvt*letterSpace:       -1
 URxvt*scrollBar_right:   true
@@ -80,12 +82,22 @@ URxvt*color13: #ff00ff
 URxvt*color14: #00ffff
 URxvt*color15: #ffffff
 
-mutt*loginShell:  false
-mutt*scrollBar:   false
-mutt*geometry:    80x52+0+0
-irssi*loginShell: false
-irssi*scrollBar:  false
-irssi*geometry:   80x52+0+765
+mutt*loginShell:    false
+mutt*scrollBar:     false
+mutt*geometry:      80x50+15+15
+mutt*font:          xft:Deja Vu Sans Mono:size=8.5
+irssi*loginShell:   false
+irssi*scrollBar:    false
+irssi*geometry:     80x50+15+767
+irssi*font:         xft:Deja Vu Sans Mono:size=8.5
+console*loginShell: false
+console*scrollBar:  false
+console*geometry:   225x6+1280-2
+console*font:       xft:Deja Vu Sans Mono:size=6
+top*loginShell:     false
+top*scrollBar:      false
+top*geometry:       80x24
+top*font:           xft:Deja Vu Sans Mono:size=8.5
 
 XTerm.termName:       xterm-color
 XTerm*background:     black
