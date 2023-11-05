@@ -17,12 +17,21 @@ PATH=$PATH:/usr/local/bin:/usr/local/sbin   # local first for mit k5
 PATH=$PATH:/bin:/usr/bin:/usr/games         # usual path
 PATH=$PATH:/sbin:/usr/sbin                  # sudo/root stuff
 
-[ -d /opt/local/share/man ] && export MANPATH=$MANPATH:/opt/local/share/man
+MANPATH=/usr/share/man:/usr/local/share/man
+[ -d /usr/pkg/man ] && MANPATH=$MANPATH:/usr/pkg/man
+[ -d /usr/X11R7/man ] && MANPATH=$MANPATH:/usr/X11R7/man
+[ -d /opt/man ] && MANPATH=$MANPATH:/opt/man
+[ -d /opt/local/man ] && MANPATH=$MANPATH:/opt/local/man
+export MANPATH
 
 # Determine host type
 UNAME=`uname`
 
 case $UNAME in
+    NetBSD* )
+        PATH=$PATH:/usr/pkg/bin:/usr/pkg/sbin
+        PATH=$PATH:/usr/X11R7/bin
+        ;;
     Darwin* )
         PATH=/opt/local/bin:/opt/local/sbin:$PATH
         unset PROMPT_COMMAND
@@ -89,7 +98,7 @@ then
 fi
 
 # Make BSD look like GNU
-[[ "$UNAME" =~ BSD|Darwin ]] && export LSCOLORS=ExGxFxdxCxDxDxhbadExEx
+[[ "$UNAME" =~ FreeBSD|Darwin ]] && export LSCOLORS=ExGxFxdxCxDxDxhbadExEx
 
 # Enable 256 color capabilities for appropriate terminals
 
@@ -128,8 +137,8 @@ export COLORFGBG='lightgray;black'
 
 set_bash_prompt() {
     # prompt stuff
-    #local blue1="\033[1;34m"
-    #local blue2="\[$blue1\]"
+    local blue1="\033[1;34m"
+    local blue2="\[$blue1\]"
     local default1="\033[0m"
     local default2="\[$default1\]"
     #local cyan_blue="\[\033[0;36;44m\]"
@@ -138,8 +147,10 @@ set_bash_prompt() {
 
     PS1=" \! $black_blue$white_blue$PS1"
 
-#    PS1="$default2[$blue2\!$default2] $blue2\h $default2:$blue2 \w$default2 "
-#
+    if [[ "$TERM" =~ wsvt25 ]]; then
+      PS1="$default2[$blue2\!$default2] $blue2\h $default2:$blue2 \w$default2 "
+    fi
+
 #    if [ -n "$GIT_PS1_SHOWDIRTYSTATE" ]; then
 #        local git_info=$(__git_ps1 "%s")
 #
@@ -173,16 +184,25 @@ export PS2
 export PROMPT_DIRTRIM=3
 export PROMPT_COMMAND=set_bash_prompt
 
-if exists powerline-daemon; then
+if exists powerline-daemon && [[ ! "$TERM" =~ wsvt25 ]]; then
     powerline-daemon -q
     POWERLINE_BASH_CONTINUATION="1"
     POWERLINE_BASH_SELECT="1"
 
-    test -e /usr/share/powerline/bindings/bash/powerline.sh && \
-        . /usr/share/powerline/bindings/bash/powerline.sh
-
-    test -e /usr/local/lib/python3.9/site-packages/powerline/bindings/bash/powerline.sh && \
-        . /usr/local/lib/python3.9/site-packages/powerline/bindings/bash/powerline.sh
+    case $UNAME in
+        Linux* )
+            test -e /usr/share/powerline/bindings/bash/powerline.sh && \
+                . /usr/share/powerline/bindings/bash/powerline.sh
+            ;;
+        FreeBSD* )
+            test -e /usr/local/lib/python3.9/site-packages/powerline/bindings/bash/powerline.sh && \
+                . /usr/local/lib/python3.9/site-packages/powerline/bindings/bash/powerline.sh
+            ;;
+        NetBSD* )
+            test -e /usr/pkg/lib/python3.11/site-packages/powerline/bindings/bash/powerline.sh && \
+                . /usr/pkg/lib/python3.11/site-packages/powerline/bindings/bash/powerline.sh
+            ;;
+    esac
 fi
 
 # Set aliases proper. Uncomment the following line to pull in more external
@@ -192,7 +212,7 @@ fi
 alias 'reload'='source ~/.bashrc'
 
 case $UNAME in
-    *BSD | Darwin* )    lsopts='-GF' ;;
+    FreeBSD | Darwin* ) lsopts='-GF' ;;
     Linux | CYGWIN* )   lsopts='--color=auto -F' ;;
     * )                 lsopts='-F' ;;
 esac
@@ -229,6 +249,7 @@ exists kftp && alias 'ftp'='kftp'
 exists vncserver && alias 'vnc'='vncserver -geometry 1280x1024 -depth 24'
 exists emacs && alias 'dunnet'='emacs -batch -l dunnet'
 exists qw-server && exists dtach && alias 'qwsv'="dtach -A /tmp/${USER}-qwsv qw-server +gamedir ctf"
+exists alacritty && alias 'alasmitty'='alacritty -o "window.dimensions.lines=26"'
 
 if [[ "$TERM" =~ screen ]]; then
     exists vim && alias 'vim'='vim -T xterm'
@@ -298,15 +319,14 @@ fi
 [[ "$UNAME" =~ CYGWIN ]] && cd ~ # hack for mintty
 
 # Enable bash-completion on a plethora of systems
-if [[ "$UNAME" =~ BSD ]] && [ -f /usr/local/etc/bash_completion ]; then
-    unset UNAME
-    . /usr/local/etc/bash_completion
+if [[ "$UNAME" =~ FreeBSD ]] && [ -f /usr/local/share/bash-completion/bash_completion ]; then
+    . /usr/local/share/bash-completion/bash_completion
+elif [[ "$UNAME" =~ NetBSD ]] && [ -f /usr/pkg/share/bash-completion/bash_completion ]; then
+    . /usr/pkg/share/bash-completion/bash_completion
 elif [[ "$UNAME" =~ Darwin ]] && [ -f /opt/local/etc/bash_completion ]; then
-    unset UNAME
     . /opt/local/etc/bash_completion
 elif [ -f /etc/bash_completion ]; then
-    unset UNAME
     . /etc/bash_completion
-else
-    unset UNAME
 fi
+
+unset UNAME
