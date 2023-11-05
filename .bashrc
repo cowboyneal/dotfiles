@@ -19,6 +19,7 @@ PATH=$PATH:/sbin:/usr/sbin                  # sudo/root stuff
 
 MANPATH=/usr/share/man:/usr/local/share/man
 [ -d /usr/pkg/man ] && MANPATH=$MANPATH:/usr/pkg/man
+[ -d /usr/X11R6/man ] && MANPATH=$MANPATH:/usr/X11R6/man
 [ -d /usr/X11R7/man ] && MANPATH=$MANPATH:/usr/X11R7/man
 [ -d /opt/man ] && MANPATH=$MANPATH:/opt/man
 [ -d /opt/local/man ] && MANPATH=$MANPATH:/opt/local/man
@@ -28,6 +29,9 @@ export MANPATH
 UNAME=`uname`
 
 case $UNAME in
+    OpenBSD* )
+	PATH=$PATH:/usr/X11R6/bin
+	;;
     NetBSD* )
         PATH=$PATH:/usr/pkg/bin:/usr/pkg/sbin
         PATH=$PATH:/usr/X11R7/bin
@@ -147,7 +151,7 @@ set_bash_prompt() {
 
     PS1=" \! $black_blue$white_blue$PS1"
 
-    if [[ "$TERM" =~ wsvt25 ]]; then
+    if ! exists powerline-daemon || [[ "$TERM" =~ wsvt25|vt220 ]]; then
       PS1="$default2[$blue2\!$default2] $blue2\h $default2:$blue2 \w$default2 "
     fi
 
@@ -184,7 +188,7 @@ export PS2
 export PROMPT_DIRTRIM=3
 export PROMPT_COMMAND=set_bash_prompt
 
-if exists powerline-daemon && [[ ! "$TERM" =~ wsvt25 ]]; then
+if exists powerline-daemon && [[ ! "$TERM" =~ wsvt25|vt220 ]]; then
     powerline-daemon -q
     POWERLINE_BASH_CONTINUATION="1"
     POWERLINE_BASH_SELECT="1"
@@ -319,7 +323,7 @@ fi
 [[ "$UNAME" =~ CYGWIN ]] && cd ~ # hack for mintty
 
 # Enable bash-completion on a plethora of systems
-if [[ "$UNAME" =~ FreeBSD ]] && [ -f /usr/local/share/bash-completion/bash_completion ]; then
+if [[ "$UNAME" =~ FreeBSD|OpenBSD ]] && [ -f /usr/local/share/bash-completion/bash_completion ]; then
     . /usr/local/share/bash-completion/bash_completion
 elif [[ "$UNAME" =~ NetBSD ]] && [ -f /usr/pkg/share/bash-completion/bash_completion ]; then
     . /usr/pkg/share/bash-completion/bash_completion
