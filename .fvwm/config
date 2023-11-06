@@ -181,7 +181,7 @@ Style * EdgeMoveDelay 350, EdgeMoveResistance 350
 # EwmhBaseStruts [left] [right] [top] [bottom]
 # Reserves space along the edge(s) of the Screen that will not
 # be covered when maximizing or placing windows.
-EwmhBaseStruts 15 390 15 107
+EwmhBaseStruts 15 220 15 107
 
 # This sets the ClickTime and MoveThreshold used to determine
 # Double Clicks, Hold and Move for the mouse.
@@ -240,6 +240,8 @@ Style RightPanel !Title, !Handles, Sticky, WindowListSkip, NeverFocus, \
 Style dclock     !Title, !Handles, Sticky, WindowListSkip, NeverFocus, \
       StaysOnBottom
 Style console    !Title, !Handles, Sticky, WindowListSkip, NeverFocus, \
+      StaysOnBottom
+Style xosview !Title, !Handles, Sticky, WindowListSkip, NeverFocus, \
       StaysOnBottom
 
 #######
@@ -551,7 +553,7 @@ AddButtonStyle 1 Vector 3 23x58@0 77x58@0 77x42@0
 AddButtonStyle 1 Vector 3 23x58@1 23x42@1 77x42@1
 #AddButtonStyle 2 Active Vector 4 35x35@3 65x65@3 65x35@4 35x65@3
 AddButtonStyle 2 Vector 7 25x65@1 35x75@0 50x59@0 65x75@0 75x65@0 \
-                 59x50@0 75x35@0
+                 59x50@0 75x35@0  
 AddButtonStyle 2 Vector 7 75x35@0 65x25@1 50x40@1 35x25@1 25x35@1 \
                  40x50@1 25x65@1
 #AddButtonStyle 4 Active Vector 8 30x70@3 30x30@3 70x30@3 70x70@3 30x70@3 \
@@ -610,15 +612,15 @@ DestroyModuleConfig FvwmScript:*
 # Note - To use the system tray you must have "stalonetray" installed.
 DestroyModuleConfig RightPanel:*
 #*RightPanel: Geometry 120x$[vp.height]-0+0
-*RightPanel: Geometry 150x75-213+0
+*RightPanel: Geometry 200x100-0-94
 *RightPanel: Colorset 10
 #*RightPanel: Rows $[vp.height]
-*RightPanel: Rows 75 
-*RightPanel: Columns 150
+*RightPanel: Rows 100 
+*RightPanel: Columns 200
 *RightPanel: Frame 0
 *RightPanel: Font "xft:Arial:Bold:size=10:antialias=True"
 #*RightPanel: (120x45, Icon "fvwm-logo-small.png", Frame 0)
-*RightPanel: (150x5, Frame 0)
+*RightPanel: (200x5, Frame 0)
 #*RightPanel: (120x45, Swallow DateTime 'Module FvwmScript FvwmScript-DateTime',\
     Frame 0)
 #*RightPanel: (10x20, Frame 0)
@@ -635,10 +637,10 @@ DestroyModuleConfig RightPanel:*
 #Test (x stalonetray) *RightPanel: (120x20, Swallow(NoClose,UseOld) \
 #    stalonetray 'Exec exec stalonetray --config \
 #    "$[FVWM_DATADIR]/default-config/.stalonetrayrc"', Frame 0)
-*RightPanel: (5x65, Frame 0)
-*RightPanel: (140x65, Swallow FvwmPager 'Module FvwmPager *', Frame 0)
-*RightPanel: (5x65, Frame 0)
-*RightPanel: (150x5, Frame 0)
+*RightPanel: (5x90, Frame 0)
+*RightPanel: (190x90, Swallow FvwmPager 'Module FvwmPager *', Frame 0)
+*RightPanel: (5x90, Frame 0)
+*RightPanel: (200x5, Frame 0)
 
 # FvwmPager
 #

@@ -43,16 +43,16 @@ Netscape*fontList:   -adobe-helvetica-medium-r-normal-*-*-100-*-*-p-*-iso8859-1
 real*background: #1e2e4c
 real*foreground: #ffffff
 
-Xcursor.theme: Jimmac
+Xcursor.theme: jimmac
 
-URxvt*geometry:          80x50
+URxvt*geometry:          80x24
 ! URxvt*background:        black
 URxvt*foreground:        white
 ! URxvt*font:              fixed
-URxvt*font:              xft:Deja Vu Sans Mono for Powerline:size=8.5
+URxvt*font:              xft:Deja Vu Sans Mono for Powerline:size=9.5
 URxvt*letterSpace:       -1
 URxvt*scrollBar_right:   true
-URxvt*scrollstyle:       next
+URxvt*scrollstyle:       plain
 URxvt*saveLines:         1024
 URxvt*termName:          xterm-color
 URxvt*loginShell:        true
@@ -92,8 +92,8 @@ irssi*geometry:     80x50+15+767
 irssi*font:         xft:Deja Vu Sans Mono:size=8.5
 console*loginShell: false
 console*scrollBar:  false
-console*geometry:   225x6+1280-2
-console*font:       xft:Deja Vu Sans Mono:size=6
+console*geometry:   160x6-212-0
+console*font:       xft:Deja Vu Sans Mono:size=7
 top*loginShell:     false
 top*scrollBar:      false
 top*geometry:       80x24
@@ -114,3 +114,53 @@ Xft.antialias: true
 Xft.rgba:      rgb
 Xft.hinting:   true
 Xft.hintstyle: hintslight
+
+dclock*foreground: SkyBlue
+dclock*background: DarkBlue
+dclock*bell:       false
+dclock*scroll:     true
+dclock*seconds:    true
+dclock*tails:      true
+dclock*date:       %W, %M %d, %Y
+! dclock*font:       fixed
+dclock*font:       -adobe-helvetica-bold-r-normal--12-120-75-75-p-70-iso8859-1
+dclock*geometry:   200x82-0-0
+
+xosview*geometry:          200x250-10-216
+xosview*transparent:       False
+xosview*meterLabelColor:   SkyBlue
+xosview*background:        DarkBlue
+xosview*foreground:        white
+xosview*font:              xft:Deja Vu Sans Mono:bold:size=7
+xosview*loadProcColor:     SkyBlue
+xosview*loadIdleColor:     DarkBlue
+xosview*loadWarnColor:     SkyBlue1
+xosview*loadCritColor:     white
+xosview*cpuUserColor:      SkyBlue3
+xosview*cpuNiceColor:      SkyBlue2
+xosview*cpuSystemColor:    SkyBlue1
+xosview*cpuInterruptColor: SkyBlue4
+xosview*cpuFreeColor:      DarkBlue
+xosview*memWiredColor:     white
+xosview*memActiveColor:    SkyBlue
+xosview*memInactiveColor:  SkyBlue4
+xosview*memCacheColor:     SkyBlue3
+xosview*memFreeColor:      DarkBlue
+xosview*swapUsedColor:     SkyBlue
+xosview*swapFreeColor:     DarkBlue
+xosview*irqrateUsedColor:  SkyBlue
+xosview*irqrateIdleColor:  DarkBlue
+xosview*pageInColor:       SkyBlue
+xosview*pageOutColor:      SkyBlue4
+xosview*pageIdleColor:     DarkBlue
+xosview*netInColor:        SkyBlue
+xosview*netOutColor:       SkyBlue4
+xosview*netBackground:     DarkBlue
+xosview*intOnColor:        SkyBlue
+xosview*intOffColor:       DarkBlue
+xosview*diskReadColor:     SkyBlue
+xosview*diskWriteColor:    SkyBlue4
+xosview*diskIdleColor:     DarkBlue
+xosview*filesysMounts:     /
+xosview*filesysFGColor:    SkyBlue
+xosview*filesysBGColor:    DarkBlue
