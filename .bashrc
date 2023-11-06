@@ -17,7 +17,7 @@ PATH=$PATH:/usr/local/bin:/usr/local/sbin   # local first for mit k5
 PATH=$PATH:/bin:/usr/bin:/usr/games         # usual path
 PATH=$PATH:/sbin:/usr/sbin                  # sudo/root stuff
 
-MANPATH=/usr/share/man:/usr/local/share/man
+MANPATH=/usr/share/man:/usr/local/man:/usr/local/share/man
 [ -d /usr/pkg/man ] && MANPATH=$MANPATH:/usr/pkg/man
 [ -d /usr/X11R6/man ] && MANPATH=$MANPATH:/usr/X11R6/man
 [ -d /usr/X11R7/man ] && MANPATH=$MANPATH:/usr/X11R7/man
@@ -30,8 +30,8 @@ UNAME=`uname`
 
 case $UNAME in
     OpenBSD* )
-	PATH=$PATH:/usr/X11R6/bin
-	;;
+	    PATH=$PATH:/usr/X11R6/bin
+	    ;;
     NetBSD* )
         PATH=$PATH:/usr/pkg/bin:/usr/pkg/sbin
         PATH=$PATH:/usr/X11R7/bin
