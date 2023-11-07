@@ -270,7 +270,7 @@ Style xosview !Title, !Handles, Sticky, WindowListSkip, NeverFocus, \
 #      14 - FvwmIconMan Iconified Button
 ###########
 Colorset 0  fg #ffffff, bg #00008b, hi, sh, Plain, NoShape
-Colorset 1  fg #000000, bg #808080, hi, sh, fgsh #c0c0c0, Plain, NoShape
+Colorset 1  fg #000000, bg #808080, hi, sh, fgsh #555555, Plain, NoShape
 Colorset 2  fg #ffffff, bg #00008b, hi, sh, fgsh, Plain, NoShape
 #Colorset 3  fg black, bg #4d4d4d, hi #676767, sh #303030, Plain, NoShape
 Colorset 3  fg #000000, bg #808080, hi, sh, Plain, NoShape
@@ -285,6 +285,7 @@ Colorset 11 fg #ffffff, bg #87ceeb, hi #ffffff, sh #ffffff, Plain, NoShape
 Colorset 12 fg #2d2d2d, bg #ffffff, hi, sh, Plain, NoShape
 Colorset 13 fg #000000, bg #b0b0b0, hi, sh, fgsh, Plain, NoShape
 Colorset 14 fg #555555, bg #00008b, hi #aaaaaa, sh #999999, Plain, NoShape
+Colorset 15 fg #808080, bg #000000, hi, sh, fgsh, Plain, NoShape
 
 #######
 # 4: Menus
@@ -530,12 +531,15 @@ Mouse 3 I    A Menu MenuIconOps
 #   4 - Maximize
 #   6 - Minimize
 ###########
-TitleStyle  AllInactive -- Raised
-TitleStyle  AllActive -- Raised
-ButtonStyle All Simple -- UseTitleStyle
-BorderStyle Simple
-ButtonStyle All -- Raised
-TitleStyle  LeftJustified Height MinHeight 25 -- Raised
+TitleStyle     AllInactive -- Raised
+TitleStyle     AllActive -- Raised
+#ButtonStyle    All Simple -- UseTitleStyle
+ButtonStyle    All Simple -- Raised
+BorderStyle    Simple
+ButtonStyle    All -- Raised
+TitleStyle     LeftJustified Height MinHeight 25 -- Raised
+AddTitleStyle  Active HGradient 128 DarkBlue SkyBlue
+AddTitleStyle  Inactive HGradient 128 black #808080
 #ButtonStyle All ActiveUp Vector 5 15x15@4 15x85@3 85x85@3 85x15@3 \
 #                15x15@3 -- Flat
 #ButtonStyle All ToggledActiveUp Vector 5 15x15@4 15x85@3 85x85@3 \
@@ -549,9 +553,11 @@ TitleStyle  LeftJustified Height MinHeight 25 -- Raised
 #ButtonStyle All Inactive Vector 5 47x47@3 57x53@3 53x53@3 53x47@3 \
                 47x47@3 -- Flat
 #AddButtonStyle 1 Active Vector 5 45x45@3 55x45@3 55x55@3 45x55@3 45x45@3
+AddButtonStyle 1 Inactive Colorset 15
 AddButtonStyle 1 Vector 3 23x58@0 77x58@0 77x42@0
 AddButtonStyle 1 Vector 3 23x58@1 23x42@1 77x42@1
 #AddButtonStyle 2 Active Vector 4 35x35@3 65x65@3 65x35@4 35x65@3
+AddButtonStyle 2 Active Colorset 11
 AddButtonStyle 2 Vector 7 25x65@1 35x75@0 50x59@0 65x75@0 75x65@0 \
                  59x50@0 75x35@0  
 AddButtonStyle 2 Vector 7 75x35@0 65x25@1 50x40@1 35x25@1 25x35@1 \
@@ -560,9 +566,11 @@ AddButtonStyle 2 Vector 7 75x35@0 65x25@1 50x40@1 35x25@1 25x35@1 \
 #                 30x50@4 50x50@3 50x70@3
 #AddButtonStyle 4 ToggledActiveUp Vector 8 30x70@3 30x30@3 70x30@3 70x70@3 \
 #                 30x70@3 50x30@4 50x50@3 70x50@3
+AddButtonStyle 4 Active Colorset 11
 AddButtonStyle 4 Vector 3 21x79@0 79x79@0 79x21@0
 AddButtonStyle 4 Vector 3 21x79@1 21x21@1 79x21@1
 #AddButtonStyle 6 Active Vector 5 35x60@3 65x60@3 65x50@3 35x50@3 35x60@3
+AddButtonStyle 6 Active Colorset 11
 AddButtonStyle 6 Vector 3 42x58@0 58x58@0 58x42@0
 AddButtonStyle 6 Vector 3 42x58@1 42x42@1 58x42@1
 
