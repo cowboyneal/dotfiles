@@ -48,6 +48,7 @@ Xcursor.theme: jimmac
 URxvt*geometry:          80x24
 ! URxvt*background:        black
 URxvt*foreground:        white
+URxvt*intensityStyles:   False
 ! URxvt*font:              fixed
 URxvt*font:              xft:Deja Vu Sans Mono for Powerline:size=9.5
 URxvt*letterSpace:       -1
@@ -92,7 +93,7 @@ irssi*geometry:     80x50+15+767
 irssi*font:         xft:Deja Vu Sans Mono:size=8.5
 console*loginShell: false
 console*scrollBar:  false
-console*geometry:   160x6-212-0
+console*geometry:   167x6-212-0
 console*font:       xft:Deja Vu Sans Mono:size=7
 top*loginShell:     false
 top*scrollBar:      false
