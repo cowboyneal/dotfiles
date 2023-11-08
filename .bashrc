@@ -206,6 +206,10 @@ if exists powerline-daemon && [[ ! "$TERM" =~ wsvt25|vt100|vt220 ]]; then
             test -e /usr/pkg/lib/python3.11/site-packages/powerline/bindings/bash/powerline.sh && \
                 . /usr/pkg/lib/python3.11/site-packages/powerline/bindings/bash/powerline.sh
             ;;
+        OpenBSD* )
+            test -e /usr/local/lib/python3.10/site-packages/powerline/bindings/bash/powerline.sh && \
+                . /usr/local/lib/python3.10/site-packages/powerline/bindings/bash/powerline.sh
+            ;;
     esac
 fi
 
@@ -236,9 +240,17 @@ alias 'nuke'='kill -9'
 alias 'cdd'='cd "$OLDPWD"'
 alias 'psme'="ps x | $PAGER"
 alias 'pss'="ps aux | $PAGER"
-alias 'grep'='grep --color=auto'
-alias 'egrep'='egrep --color=auto'
-alias 'fgrep'='fgrep --color=auto'
+
+case $UNAME in
+    OpenBSD* )
+        ;;
+    * )
+        alias 'grep'='grep --color=auto'
+        alias 'egrep'='egrep --color=auto'
+        alias 'fgrep'='fgrep --color=auto'
+        ;;
+esac
+
 exists rsync && alias 'rsync'='rsync -avzhe ssh --progress'
 
 exists tmux && alias 'tmux'='tmux attach -d'
