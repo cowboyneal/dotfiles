@@ -428,7 +428,7 @@ AddToMenu   MenuSendToPage
 # Fvwm Man Pages (Help) Menu
 DestroyMenu MenuFvwmManPages
 AddToMenu   MenuFvwmManPages "Help" Title
-+ "fvwm"                ViewManPage fvwm
++ "fvwm"                ViewManPage fvwm3
 + "FvwmAnimate"         ViewManPage FvwmAnimate
 + "FvwmAuto"            ViewManPage FvwmAuto
 + "FvwmBacker"          ViewManPage FvwmBacker
@@ -540,6 +540,7 @@ ButtonStyle    All -- Raised
 TitleStyle     LeftJustified Height MinHeight 25 -- Raised
 AddTitleStyle  Active HGradient 128 DarkBlue SkyBlue
 AddTitleStyle  Inactive HGradient 128 black #808080
+
 #ButtonStyle All ActiveUp Vector 5 15x15@4 15x85@3 85x85@3 85x15@3 \
 #                15x15@3 -- Flat
 #ButtonStyle All ToggledActiveUp Vector 5 15x15@4 15x85@3 85x85@3 \
@@ -567,6 +568,7 @@ AddButtonStyle 2 Vector 7 75x35@0 65x25@1 50x40@1 35x25@1 25x35@1 \
 #AddButtonStyle 4 ToggledActiveUp Vector 8 30x70@3 30x30@3 70x30@3 70x70@3 \
 #                 30x70@3 50x30@4 50x50@3 70x50@3
 AddButtonStyle 4 Active Colorset 11
+AddButtonStyle 4 ToggledActive Colorset 11
 AddButtonStyle 4 Vector 3 21x79@0 79x79@0 79x21@0
 AddButtonStyle 4 Vector 3 21x79@1 21x21@1 79x21@1
 #AddButtonStyle 6 Active Vector 5 35x60@3 65x60@3 65x50@3 35x50@3 35x60@3
