@@ -19,9 +19,10 @@ PATH=$PATH:/sbin:/usr/sbin                  # sudo/root stuff
 [ -d /opt/bin ] && PATH=$PATH:/opt/bin
 
 MANPATH=/usr/share/man:/usr/local/share/man
-[ -d /usr/pkg/man ] && MANPATH=$MANPATH:/usr/pkg/man
+[ -d /usr/local/man ] && MANPATH=$MANPATH:/usr/local/man
 [ -d /usr/X11R6/man ] && MANPATH=$MANPATH:/usr/X11R6/man
 [ -d /usr/X11R7/man ] && MANPATH=$MANPATH:/usr/X11R7/man
+[ -d /usr/pkg/man ] && MANPATH=$MANPATH:/usr/pkg/man
 [ -d /opt/man ] && MANPATH=$MANPATH:/opt/man
 [ -d /opt/local/man ] && MANPATH=$MANPATH:/opt/local/man
 export MANPATH
