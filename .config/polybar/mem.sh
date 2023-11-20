@@ -1,3 +1,4 @@
 #!/bin/sh
 
-freecolor -m -o | grep ^Mem | awk '{ printf "%sM/%sM Used (%sM Free)", $3, $2, $4; }'
+free -m | grep ^Mem | awk '{ printf "%sM used | %sM free", $3, $4; }'
+echo

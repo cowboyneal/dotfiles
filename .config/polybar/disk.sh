@@ -1,3 +1,14 @@
 #!/bin/sh
 
-df -h | grep $1$ | awk '{ printf "%s: %s/%s (%s)", $6, $3, $2, $5}'
+i=0
+
+for a in $@; do
+    df -h | grep $a$ | awk '{ printf "%s: %s", $6, $5}'
+    i=$((i+1))
+
+    if [[ $i -lt $# ]]; then
+        printf " | "
+    fi
+done
+
+echo
