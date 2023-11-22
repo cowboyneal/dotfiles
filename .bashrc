@@ -153,7 +153,7 @@ set_bash_prompt() {
 
     PS1=" \! $black_blue$white_blue$PS1"
 
-    if ! exists powerline-daemon || [[ "$TERM" =~ wsvt25|vt100|vt220 ]]; then
+    if ! exists powerline-daemon || [[ "$TERM" =~ wsvt25|vt100|vt220|linux ]]; then
       PS1="$default2[$blue2\!$default2] $blue2\h $default2:$blue2 \w$default2 "
     fi
 
@@ -190,7 +190,7 @@ export PS2
 export PROMPT_DIRTRIM=3
 export PROMPT_COMMAND=set_bash_prompt
 
-if exists powerline-daemon && [[ ! "$TERM" =~ wsvt25|vt100|vt220 ]]; then
+if exists powerline-daemon && [[ ! "$TERM" =~ wsvt25|vt100|vt220|linux ]]; then
     powerline-daemon -q
     POWERLINE_BASH_CONTINUATION="1"
     POWERLINE_BASH_SELECT="1"
