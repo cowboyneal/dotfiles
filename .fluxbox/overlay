@@ -1,10 +1,20 @@
 ! The following line will prevent styles from setting the background.
 !background: none
 
-menu*font: Arial-11:bold
+menu.title.font: Arial-11:bold
+menu.frame.font: Arial-11
 toolbar.workspace.font: Arial-11:bold
 toolbar.clock.font: Arial-11:bold
-*font: Arial-11:bold
+window.font: Arial-11:bold
+
+window.font.effect: halo
+window.label.focus.textColor:           #ffffff
+window.label.unfocus.textColor:         #9c9c9c
+window.font.halo.color:                 #121212
+!window.font.halo.color: #ffffff
+
+toolbar.iconbar.focused.textColor:      #ffffff
+toolbar.iconbar.unfocused.textColor:    #9c9c9c
 
 background: aspect
 background.pixmap: /home/pater/Pictures/Wallpapers/pexels-stein-egil-liland-3374210.jpg 
