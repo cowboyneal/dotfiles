@@ -253,7 +253,7 @@ case $UNAME in
         ;;
 esac
 
-exists rsync && alias 'rsync'='rsync -avzhe ssh --progress'
+exists rsync && alias 'rsync'='rsync -avzhPe ssh'
 
 exists tmux && alias 'tmux'='tmux attach -d'
 
