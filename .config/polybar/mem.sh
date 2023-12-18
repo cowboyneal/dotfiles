@@ -1,4 +1,5 @@
 #!/bin/sh
 
-free -m | grep ^Mem | awk '{ printf "%sM used | %sM free", $3, $4; }'
+free | grep ^Mem | awk '{ printf "%s used | %s free ", $3, $4; }'
+free | grep ^Swap | awk '{ printf "| %s swap", $3;}'
 echo
