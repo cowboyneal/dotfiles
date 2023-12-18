@@ -4,10 +4,8 @@
 #  ) (__  _  _  _    _
 # (   __)( \/ )( \/\/ )/\/\
 #  ) (    \  /  \    //    \
-# (___)    \/    \/\/(_/\/\_) 2.6
+# (___)    \/    \/\/(_/\/\_) 3
 #
-#
-#  This is the default configuration file shipped with fvwm.
 #
 #  This config file is organized as follows:
 #
@@ -234,15 +232,15 @@ Style * Icon
 #Style RightPanel !Title, !Borders, !Handles, Sticky, \
 #                 WindowListSkip, NeverFocus
 Style ConfirmQuit !Title, PositionPlacement Center, WindowListSkip, Layer 6
-Style FvwmIdent WindowListSkip
-Style RightPanel !Title, !Handles, Sticky, WindowListSkip, NeverFocus, \
-      StaysOnBottom
-Style dclock     !Title, !Handles, Sticky, WindowListSkip, NeverFocus, \
-      StaysOnBottom
-Style console    !Title, !Handles, Sticky, WindowListSkip, NeverFocus, \
-      StaysOnBottom
-Style xosview !Title, !Handles, Sticky, WindowListSkip, NeverFocus, \
-      StaysOnBottom
+Style FvwmIdent   WindowListSkip
+Style RightPanel  BorderColorset 4, !Title, Sticky, WindowListSkip, \
+      NeverFocus, StaysOnBottom
+Style dclock      BorderColorset 4, !Title, Sticky, WindowListSkip, \
+      NeverFocus, StaysOnBottom
+Style console     BorderColorset 4, !Title, Sticky, WindowListSkip, \
+      NeverFocus, StaysOnBottom
+Style xosview     BorderColorset 4, !Title, Sticky, WindowListSkip, \
+      NeverFocus, StaysOnBottom
 
 #######
 # 3: Colorsets
@@ -273,7 +271,7 @@ Colorset 0  fg #ffffff, bg #00008b, hi, sh, Plain, NoShape
 Colorset 1  fg #000000, bg #808080, hi, sh, fgsh #555555, Plain, NoShape
 Colorset 2  fg #ffffff, bg #00008b, hi, sh, fgsh, Plain, NoShape
 #Colorset 3  fg black, bg #4d4d4d, hi #676767, sh #303030, Plain, NoShape
-Colorset 3  fg #000000, bg #808080, hi, sh, Plain, NoShape
+Colorset 3  fg #808080, bg #000000, hi, sh, Plain, NoShape
 #Colorset 4  fg black, bg #2d2d2d, hi #474747, sh #101010, Plain, NoShape
 Colorset 4  fg #ffffff, bg #00008b, hi, sh, Plain, NoShape
 Colorset 5  fg #000000, bg #b0b0b0, hi, sh, fgsh, Plain, NoShape
@@ -294,8 +292,8 @@ MenuStyle * MenuColorset 5, ActiveColorset 6, GreyedColorset 7, TitleColorset 8
 MenuStyle * Hilight3DOff, HilightBack, HilightTitleBack, SeparatorsLong
 MenuStyle * TrianglesSolid, TrianglesUseFore
 MenuStyle * ItemFormat "%|%3.1i%5.3l%5.3>%|"
-MenuStyle * Font "xft:Arial:size=12:antialias=True"
-MenuStyle * TitleFont "Shadow=3 0 All:xft:Arial:bold:size=12:antialias=True"
+MenuStyle * Font "xft:Arimo Nerd Font:size=10:antialias=True"
+MenuStyle * TitleFont "Shadow=3 0 All:xft:Arial:bold:size=10:antialias=True"
 
 # Root Menu
 #
@@ -327,6 +325,7 @@ PipeRead "fvwm-menu-desktop -e"
 DestroyMenu MenuPrograms
 AddToMenu   MenuPrograms "  Programs  " Title
 Test (x chromium) + "Chromium" Exec exec chromium
+Test (x seamonkey) + "SeaMonkey" Exec exec seamonkey
 Test (x firefox) + "Firefox" Exec exec firefox
 Test (x google-chrome) + "Google-Chrome" Exec exec google-chrome
 Test (x midori) + "Midori" Exec exec midori
