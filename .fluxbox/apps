@@ -8,3 +8,11 @@
   [Sticky]  {yes}
   [Hidden]  {yes}
 [end]
+[app] (name=polybar)
+  [Layer]   {4}
+  [Hidden]  {yes}
+[end]
+[app] (name=colortail)
+  [Layer]   {4}
+  [Hidden]  {yes}
+[end]
