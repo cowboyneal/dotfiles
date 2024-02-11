@@ -233,13 +233,13 @@ Style * Icon
 #                 WindowListSkip, NeverFocus
 Style ConfirmQuit !Title, PositionPlacement Center, WindowListSkip, Layer 6
 Style FvwmIdent   WindowListSkip
-Style RightPanel  BorderColorset 4, !Title, Sticky, WindowListSkip, \
+Style RightPanel  BorderColorset 4, !Title, !Handles, Sticky, WindowListSkip, \
       NeverFocus, StaysOnBottom
-Style dclock      BorderColorset 4, !Title, Sticky, WindowListSkip, \
+Style dclock      BorderColorset 4, !Title, !Handles, Sticky, WindowListSkip, \
       NeverFocus, StaysOnBottom
-Style console     BorderColorset 4, !Title, Sticky, WindowListSkip, \
+Style console     BorderColorset 4, !Title, !Handles, Sticky, WindowListSkip, \
       NeverFocus, StaysOnBottom
-Style xosview     BorderColorset 4, !Title, Sticky, WindowListSkip, \
+Style xosview     BorderColorset 4, !Title, !Handles, Sticky, WindowListSkip, \
       NeverFocus, StaysOnBottom
 
 #######
