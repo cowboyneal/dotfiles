@@ -269,12 +269,12 @@ exists emacs && alias 'dunnet'='emacs -batch -l dunnet'
 exists qw-server && exists dtach && alias 'qwsv'="dtach -A /tmp/${USER}-qwsv qw-server +gamedir ctf"
 exists alacritty && alias 'alasmitty'='alacritty -o "window.dimensions.lines=26"'
 
-if [[ "$TERM" =~ screen*|tmux* ]]; then
+if [[ "$TERM" =~ screen|tmux ]]; then
     exists vim && alias 'vim'='vim -T xterm'
     exists w3m && alias 'w3m'='w3m -title=xterm'
 fi
 
-if [[ "$TERM" =~ screen-256color ]]; then
+if [[ "$TERM" =~ screen-256color|tmux-256color ]]; then
     exists vim && alias 'vim'='vim -T xterm-256color'
 fi
 
