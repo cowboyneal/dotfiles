@@ -94,7 +94,7 @@ fi
 
 # Some programs support several languages for their output.
 # If you want them to use english, please uncomment the following line.
-#export LANG='en_US.UTF-8'
+export LANG='en_US.UTF-8'
 export LC_ALL='en_US.UTF-8'
 
 # try to set DISPLAY smart
@@ -133,6 +133,7 @@ fi
 unset local256
 
 export COLORFGBG='lightgray;black'
+export PF_COL3=1
 
 # if exists git && [ -f ~/.git-prompt.sh ]; then
 #     source ~/.git-prompt.sh
@@ -217,7 +218,7 @@ fi
 
 # Set aliases proper. Uncomment the following line to pull in more external
 # aliases.
-#test -e ~/.alias && . ~/.alias
+test -e ~/.alias && . ~/.alias
 
 alias 'reload'='source ~/.bashrc'
 
@@ -228,6 +229,15 @@ case $UNAME in
 esac
 
 alias 'ls'="ls $lsopts"
+
+case $UNAME in
+    NetBSD | OpenBSD )
+        if exists gls; then
+            alias 'ls'="gls --color=auto -F"
+        fi
+        ;;
+esac
+
 alias 'la'='ls -a'
 alias 'll'='la -l'
 alias 'lh'='ll -h'
@@ -245,6 +255,9 @@ alias 'pss'="ps aux | $PAGER"
 
 case $UNAME in
     OpenBSD* )
+        exists ggrep && alias 'grep'='ggrep --color=auto'
+        exists gegrep && alias 'egrep'='gegrep --color=auto'
+        exists gfgrep && alias 'fgrep'='gfgrep --color=auto'
         ;;
     * )
         alias 'grep'='grep --color=auto'
@@ -254,7 +267,6 @@ case $UNAME in
 esac
 
 exists rsync && alias 'rsync'='rsync -avzhPe ssh'
-
 exists tmux && alias 'tmux'='tmux attach -d'
 
 if exists irssi; then
@@ -315,6 +327,11 @@ if exists epic || exists BitchX || exists bitchx || exists ircii; then
     export IRCNICK=CowboyNeal
     export IRCSERVER=us.slashnet.org
     export IRCPORT=6667
+fi
+
+# Usenet vars
+if exists slrn; then
+    export NNTPSERVER=news.eternal-september.org
 fi
 
 # mosh prefs
