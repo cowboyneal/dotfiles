@@ -23,7 +23,7 @@ MANPATH=/usr/share/man:/usr/local/share/man
 [ -d /usr/X11R6/man ] && MANPATH=$MANPATH:/usr/X11R6/man
 [ -d /usr/X11R7/man ] && MANPATH=$MANPATH:/usr/X11R7/man
 [ -d /usr/pkg/man ] && MANPATH=$MANPATH:/usr/pkg/man
-[ -d /opt/man ] && MANPATH=$MANPATH:/opt/man
+[ -d /opt/share/man ] && MANPATH=$MANPATH:/opt/share/man
 [ -d /opt/local/man ] && MANPATH=$MANPATH:/opt/local/man
 export MANPATH
 
