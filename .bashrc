@@ -260,9 +260,16 @@ case $UNAME in
         exists gfgrep && alias 'fgrep'='gfgrep --color=auto'
         ;;
     * )
-        alias 'grep'='grep --color=auto'
-        alias 'egrep'='egrep --color=auto'
-        alias 'fgrep'='fgrep --color=auto'
+        if exists ggrep; then
+            alias 'ggrep'='ggrep --color=auto'
+            alias 'grep'='ggrep'
+            alias 'egrep'='ggrep -E'
+            alias 'fgrep'='ggrep -F'
+        else
+            alias 'grep'='grep --color=auto'
+            alias 'egrep'='egrep --color=auto'
+            alias 'fgrep'='fgrep --color=auto'
+        fi
         ;;
 esac
 
