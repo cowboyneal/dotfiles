@@ -198,8 +198,11 @@ if exists powerline-daemon && [[ ! "$TERM" =~ wsvt25|vt100|vt220|linux ]]; then
 
     case $UNAME in
         Linux* )
-            test -e /usr/share/powerline/bindings/bash/powerline.sh && \
+            if [ -e /usr/share/powerline/bindings/bash/powerline.sh ]; then
                 . /usr/share/powerline/bindings/bash/powerline.sh
+            elif [ -e /usr/share/powerline/bash/powerline.sh ]; then
+                . /usr/share/powerline/bash/powerline.sh
+            fi
             ;;
         FreeBSD* )
             test -e /usr/local/lib/python3.9/site-packages/powerline/bindings/bash/powerline.sh && \
