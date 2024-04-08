@@ -23,9 +23,9 @@
 [end]
 [submenu] (Net)
 [submenu] (Browsers)
-      [exec]   (seamonkey) {seamonkey}
-      [exec]   (chromium) {chrome}
       [exec]   (firefox) {firefox}
+      [exec]   (seamonkey) {seamonkey}
+      [exec]   (chromium) {ungoogled-chromium}
       [exec]   (w3m) {urxvt -e w3m fluxbox.org}
 [end]
 [submenu] (Mail)
