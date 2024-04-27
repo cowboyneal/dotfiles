@@ -29,6 +29,8 @@
 # that FvwmConsole uses. Change this to your terminal of choice
 InfoStoreAdd terminal urxvt
 
+ModulePath +:${HOME}/.fvwm/modules
+
 ###########
 # 1: Functions
 #
@@ -56,10 +58,19 @@ AddToFunc   StartFunction
 + I Test (Init) InitBackground
 + I Module FvwmButtons RightPanel
 + I Module FvwmEvent EventNewDesk
++ I Module FvwmMFL
++ I Module FvwmTransFocus 1 0.8 1
++ I Test (Init) Exec exec spice-vdagent
 + I Test (Init) Exec exec pipewire &
 + I Test (Init) Exec exec pipewire-pulse &
-+ I Module FvwmMFL
 + I Test (Init) Exec exec polybar &
+
+DestroyFunc ExitFunction
+AddToFunc ExitFunction
++ I Exec exec pkill pipewire-pulse
++ I Exec exec pkill pipewire
++ I Exec exec pkill -U $[USER] spice-vdagent
++ I Exec exec pkill -U $[USER] dbus-daemon
 
 # Function to set background when fvwm starts
 DestroyFunc InitBackground
@@ -83,6 +94,22 @@ DestroyFunc MoveToCurrent
 AddToFunc MoveToCurrent
 + I ThisWindow MoveToPage
 + I ThisWindow MoveToDesk
+
+DestroyFunc MaximizeLeft
+AddToFunc MaximizeLeft
++ I ThisWindow ("URxvt") ResizeMove 80c 58c 0 0
++ I ThisWindow ("URxvt") Break
++ I ThisWindow (!"Gvim") ResizeMove 793p -85p 0 0
++ I ThisWindow (!"Gvim") Break
++ I ThisWindow ResizeMove 111c 54c 0 0
+
+DestroyFunc MaximizeRight
+AddToFunc MaximizeRight
++ I ThisWindow ("URxvt") ResizeMove 80c 58c -0 0
++ I ThisWindow ("URxvt") Break
++ I ThisWindow (!"Gvim") ResizeMove 793p -85p -0 0
++ I ThisWindow (!"Gvim") Break
++ I ThisWindow ResizeMove 111c 54c -0 0
 
 # Function: ViewManPage $0
 #
@@ -111,7 +138,6 @@ AddToFunc   SetBG
 + I Exec exec ln -fs $[FVWM_DATADIR]/default-config/images/background/$0 \
     $[FVWM_USERDIR]/.BGdefault
 
-
 # Function: IconManClick
 #
 # This function is run from FvwmIconMan when the button is clicked.
@@ -122,7 +148,7 @@ AddToFunc   IconManClick
 + I ThisWindow WindowShade off
 + I ThisWindow Iconify off
 + I ThisWindow Raise
-+ I ThisWindow MoveToPage
++ I ThisWindow MoveToCurrent
 + I ThisWindow (AcceptsFocus) FlipFocus
 
 # Function: ToggleTitle
@@ -375,6 +401,10 @@ AddToMenu   MenuWindowOps
 + "Resize"    Resize
 + "Iconify"   Iconify
 + "Maximize"  Maximize
++ "Maximize Left"  MaximizeLeft
++ "Maximize Right"  MaximizeRight
++ "Send To Upper Left" ResizeMove 80c 24c 0 0
++ "Send To Lower Left" ResizeMove 80c 31c 0 -0
 + "Shade"     WindowShade
 + "Stick"     Stick
 + "" Nop
@@ -514,6 +544,8 @@ Silent Key Left A 4  GotoPage -1p 0p
 Silent Key Right A 4 GotoPage +1p 0p
 Silent Key Space A 4 FvwmForm RunProgram
 #Silent Key Super_R A A Exec exec $[infostore.terminal]
+Silent Key Home A 4  MaximizeLeft
+Silent Key End A 4   MaximizeRight
 
 # Window Buttons: [1 3 5 7 9  TTTTT  0 8 6 4 2]
 #   1 - Open the WindowOps menu.

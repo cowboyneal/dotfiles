@@ -1,0 +1,12 @@
+${font2}${font} ${color1}Outbound Connection${alignr}Remote Port$color
+ ${color1}${scroll 30 ${tcp_portmon 32768 61000 rhost 0}}${alignr}${color}${tcp_portmon 32768 61000 rport 0} 
+ ${color1}${scroll 30 ${tcp_portmon 32768 61000 rhost 1}}${alignr}${color}${tcp_portmon 32768 61000 rport 1} 
+ ${color1}${scroll 30 ${tcp_portmon 32768 61000 rhost 2}}${alignr}${color}${tcp_portmon 32768 61000 rport 2} 
+ ${color1}${scroll 30 ${tcp_portmon 32768 61000 rhost 3}}${alignr}${color}${tcp_portmon 32768 61000 rport 3} 
+ ${color1}${scroll 30 ${tcp_portmon 32768 61000 rhost 4}}${alignr}${color}${tcp_portmon 32768 61000 rport 4} 
+${font2}${font} ${color1}Inbound Connection${alignr}Local Port$color
+ ${color1}${scroll 30 ${tcp_portmon 1 32767 rhost 0}}${alignr}${color}${tcp_portmon 1 32767 lport 0} 
+ ${color1}${scroll 30 ${tcp_portmon 1 32767 rhost 1}}${alignr}${color}${tcp_portmon 1 32767 lport 1} 
+ ${color1}${scroll 30 ${tcp_portmon 1 32767 rhost 2}}${alignr}${color}${tcp_portmon 1 32767 lport 2} 
+ ${color1}${scroll 30 ${tcp_portmon 1 32767 rhost 3}}${alignr}${color}${tcp_portmon 1 32767 lport 3} 
+ ${color1}${scroll 30 ${tcp_portmon 1 32767 rhost 4}}${alignr}${color}${tcp_portmon 1 32767 lport 4} 
