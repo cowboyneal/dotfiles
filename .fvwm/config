@@ -29,7 +29,7 @@
 # that FvwmConsole uses. Change this to your terminal of choice
 InfoStoreAdd terminal urxvt
 
-ModulePath +:${HOME}/.fvwm/modules
+ModulePath +:$[HOME]/.fvwm/modules
 
 ###########
 # 1: Functions
