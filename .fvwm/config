@@ -804,6 +804,7 @@ DestroyModuleConfig EventNewDesk:*
 DestroyModuleConfig  RunProgram: *
 *RunProgram: GrabServer
 *RunProgram: WarpPointer
+*RunProgram: PadVText 0
 # Layout
 *RunProgram: Line         center 
 *RunProgram: Text         "Run Program..."
@@ -820,6 +821,7 @@ DestroyModuleConfig  QuitVerify: *
 *QuitVerify: PadVText 10
 *QuitVerify: Line           expand
 *QuitVerify: Text           "Do you really want to quit Fvwm?"
+*QuitVerify: Line           expand
 *QuitVerify: Line           center
 *QuitVerify: Button         quit        "Quit"
 *QuitVerify: Command          Quit
