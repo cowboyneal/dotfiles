@@ -1,0 +1,4 @@
+#!/bin/sh
+
+amixer get Master | grep \[[0-9]*%\] | sed '1q;d' | awk '{ print $5; }' | \
+    sed -E 's/\[|\]//g'

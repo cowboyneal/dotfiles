@@ -1,0 +1,3 @@
+#!/bin/sh
+
+bluetoothctl connect 00:22:D9:00:1B:DD
