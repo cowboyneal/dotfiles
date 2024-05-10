@@ -1,5 +1,19 @@
 #!/usr/bin/env bash
 
+me=$(basename $0)
+
+case "$1" in
+    -h | -help | --help | '')
+        cat << HELP_MESSAGE
+Usage: $me <airport code>
+
+An airport code for your local airport can be found at
+https://www.iata.org/en/publications/directories/code-search/
+HELP_MESSAGE
+        exit
+        ;;
+esac
+
 metar=$(pymetar "$1")
 time_hour=$(echo "$metar" | sed '1q;d' | sed -r 's/^.*[[:space:]](.*)$/\1/' \
     | awk 'BEGIN { FS = ":" } ; { print $1 }' | sed 's/^0//')
