@@ -810,7 +810,7 @@ DestroyModuleConfig IconManPager:*
 *IconManPager: Frame 0
 *IconManPager: Font "xft:Arial:Bold:size=10:antialias=True"
 #*RightPanel: (120x45, Icon "fvwm-logo-small.png", Frame 0)
-*IconManPager: (260x5, Frame 0)
+*IconManPager: (265x5, Frame 0)
 #*RightPanel: (120x45, Swallow DateTime 'Module FvwmScript FvwmScript-DateTime',\
     Frame 0)
 #*RightPanel: (10x20, Frame 0)
@@ -827,12 +827,12 @@ DestroyModuleConfig IconManPager:*
 #Test (x stalonetray) *RightPanel: (120x20, Swallow(NoClose,UseOld) \
 #    stalonetray 'Exec exec stalonetray --config \
 #    "$[FVWM_DATADIR]/default-config/.stalonetrayrc"', Frame 0)
-*IconManPager: (6x75, Frame 0)
-*IconManPager: (125x75, Swallow FvwmIconMan 'Module FvwmIconMan', Frame 0)
-*IconManPager: (6x75, Frame 0)
-*IconManPager: (120x75, Swallow FvwmPager 'Module FvwmPager *', Frame 0)
 *IconManPager: (5x75, Frame 0)
-*IconManPager: (260x5, Frame 0)
+*IconManPager: (125x75, Swallow FvwmIconMan 'Module FvwmIconMan', Frame 0)
+*IconManPager: (5x75, Frame 0)
+*IconManPager: (125x75, Swallow FvwmPager 'Module FvwmPager *', Frame 0)
+*IconManPager: (5x75, Frame 0)
+*IconManPager: (265x5, Frame 0)
 
 # FvwmPager
 #
