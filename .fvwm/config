@@ -58,7 +58,7 @@ AddToFunc   StartFunction
 + I Test (Init) Exec exec $[HOME]/bin/btconnect &
 + I Test (Init) Exec exec picom &
 + I Test (Init) InitBackground
-+ I Module FvwmButtons RightPanel
++ I Module FvwmButtons IconManPager
 + I Module FvwmEvent EventNewDesk
 + I Module FvwmMFL
 + I Test (Init) Exec exec polybar &
@@ -294,7 +294,7 @@ Style RunProgram  !Title, PositionPlacement Center, WindowListSkip, Layer 6, \
                   !Handles
 Style VolumeLevel !Title, PositionPlacement Center, Layer 6, !Handles, !Borders
 Style FvwmIdent   WindowListSkip
-Style RightPanel  BorderColorset 4, !Title, !Handles, Sticky, WindowListSkip, \
+Style IconManPager BorderColorset 4, !Title, !Handles, Sticky, WindowListSkip, \
       NeverFocus, StaysOnBottom
 Style dclock      BorderColorset 4, !Title, !Handles, Sticky, WindowListSkip, \
       NeverFocus, StaysOnBottom
@@ -307,6 +307,7 @@ Style polybar     !Borders, !Title, !Handles, Sticky, WindowListSkip, \
 Style Conky       !Borders, !Title, !Handles, Sticky, WindowListSkip, \
       NeverFocus, StaysOnBottom
 Style audacious           !Borders, !Title, !Handles, Sticky, Layer 4
+#Style audacious           !Borders, Title, !Handles, Sticky, Layer 4
 Style Google-chrome       !Borders, !Title, !Handles
 Style easyeffects         !Borders, !Title, !Handles
 Style eog                 !Borders, !Title, !Handles
@@ -350,24 +351,23 @@ Colorset 1  fg grey, bg #0c0c38, hi grey30, sh black, fgsh grey20, \
 Colorset 2  fg white, bg MidnightBlue, hi grey30, sh black, fgsh grey20, \
             Plain, NoShape
 Colorset 3  fg grey50, bg #0c0c38, hi grey30, sh black, Plain, NoShape
-Colorset 4  fg white, bg indigo, hi grey30, sh black, Plain, NoShape
-Colorset 5  DGradient 128 #0c0c38 #260041, fg grey, \
-            hi grey30, sh black, fgsh, NoShape
+Colorset 4  fg white, bg MidnightBlue, hi grey30, sh black, Plain, NoShape
+Colorset 5  fg grey93, bg grey5, hi grey30, sh black, fgsh, NoShape
 Colorset 6  fg white, bg #6464ff, hi, sh, Plain, NoShape
 Colorset 7  fg grey30, bg white, hi, sh, Plain, NoShape
-Colorset 8  HGradient 128 MidnightBlue indigo, fg white, hi grey30, \
-            sh black, fgsh grey20, NoShape
-Colorset 10 DGradient 128 MidnightBlue indigo, fg grey, hi grey30, \
-            sh black, NoShape
+Colorset 8  HGradient 128 2 MidnightBlue 66 indigo 33 #6464ff, \
+            fg white, hi grey30, sh black, fgsh grey20, NoShape
+Colorset 10 DGradient 128 3 #6464ff 25 MidnightBlue 50 indigo 25 grey15, \
+            fg grey, hi grey30, sh black, NoShape
 Colorset 11 fg white, bg #6464ff, hi grey30, sh black, fgsh grey20, \
             Plain, NoShape
 Colorset 12 fg grey20, bg white, hi, sh, Plain, NoShape
 Colorset 13 fg white, bg #3232e0, hi grey30, sh black, fgsh grey20, \
             Plain, NoShape
-Colorset 14 HGradient 128 MidnightBlue indigo, fg white, hi grey30, \
-            sh black, fgsh grey20, NoShape
-Colorset 15 fg grey, bg #260041, hi grey30, sh black, fgsh, Plain, NoShape
-Colorset 16 fg white, bg indigo, hi grey30, sh black, fgsh, Plain, NoShape
+Colorset 14 HGradient 128 2 MidnightBlue 66 indigo 33 #6464ff, \
+            fg white, hi grey30, sh black, fgsh grey20, NoShape
+Colorset 15 fg grey, bg MidnightBlue, hi grey30, sh black, fgsh, Plain, NoShape
+Colorset 16 fg white, bg #6464ff, hi grey30, sh black, fgsh, Plain, NoShape
 
 #######
 # 4: Menus
@@ -406,7 +406,17 @@ Test (x gnome-screenshot) + "Take Screenshot..." \
 + "&Quit%images/icons/quit.png%" Module FvwmForm QuitVerify
 
 # Generate XDGMenu
-PipeRead "fvwm-menu-desktop -e"
+# PipeRead "fvwm-menu-desktop -e"
+
+# ScreenSaver Menu
+#
+DestroyMenu MenuScreenSaver
+AddToMenu MenuScreenSaver "  XScreenSaver  " Title
+Test (x xscreensaver-settings) + "Settings" Exec exec xscreensaver-settings
+Test (x xscreensaver-command) + "Activate" \
+    Exec exec xscreensaver-command --activate
+Test (x xscreensaver-command) + "Lock Screen" \
+    Exec exec xscreensaver-command --lock
 
 # Programs Menu
 #
@@ -419,51 +429,11 @@ AddToMenu   MenuPrograms "  Programs  " Title
 + "Media%images/icons/apps.png%" Popup MenuMedia
 + "Graphics%images/icons/apps.png%" Popup MenuGraphics
 + "Games%images/icons/apps.png%" Popup MenuGames
-Test (x irssi) + "irssi" Exec exec urxvt -name irssi -e \
-    dtach -A /tmp/$[USER]-irssi irssi
-Test (x discord) + "Discord" Exec exec discord
-Test (x thunderbird) + "Thunderbird" Exec exec thunderbird
++ "Net%images/icons/apps.png%" Popup MenuNet
 Test (x gvim) + "Vim" Exec exec gvim
-Test (x transmission-remote-gtk) + "Transmission Remote" \
-    Exec exec transmission-remote-gtk
+Test (x gnome-calculator) + "Calculator" Exec exec gnome-calculator
 Test (x virt-manager) + "QEMU" Exec exec virt-manager
 Test (x CubicSDR) + "CubicSDR" Exec exec CubicSDR
-Test (x gnome-calculator) + "Calculator" Exec exec gnome-calculator
-#Test (x firefox) + "Firefox" Exec exec firefox
-
-# Media Menu
-#
-DestroyMenu MenuMedia
-AddToMenu MenuMedia "  Media  " Title
-Test (x jellyfinmediaplayer) + "Jellyfin Media Player" \
-    Exec exec jellyfinmediaplayer
-Test (x audacious) + "Audacious" Exec exec audacious
-Test (x easyeffects) + "Easy Effects" Exec exec easyeffects
-Test (x mixxx) + "Mixxx" Exec exec mixxx
-Test (x $[HOME]/bin/btconnect) + "Reconnect AudioEngine B2" \
-    Exec exec $[HOME]/bin/btconnect &
-#Test (x vlc) + "VLC" Exec exec vlc
-
-# ScreenSaver Menu
-#
-DestroyMenu MenuScreenSaver
-AddToMenu MenuScreenSaver "  XScreenSaver  " Title
-Test (x xscreensaver-settings) + "Settings" Exec exec xscreensaver-settings
-Test (x xscreensaver-command) + "Activate" \
-    Exec exec xscreensaver-command --activate
-Test (x xscreensaver-command) + "Lock Screen" \
-    Exec exec xscreensaver-command --lock
-
-# Graphics Menu
-#
-DestroyMenu MenuGraphics
-AddToMenu MenuGraphics "  Graphics  " Title
-Test (x eog) + "Eye of Gnome" Exec exec eog
-Test (x gimp) + "Gimp" Exec exec gimp
-Test (x darktable) + "Darktable" Exec exec darktable
-Test (x inkscape) + "Inkscape" Exec exec inkscape
-Test (x krita) + "Krita" Exec exec krita
-Test (x display) + "ImageMagick" Exec exec display
 
 # Google Menu
 #
@@ -476,13 +446,57 @@ Test (x google-chrome) + "Messages" \
 Test (x google-chrome) + "Chat" \
     Exec exec google-chrome --app-id=mdpkiolbdkhdjpekfbkbmhigcaggjagi
 
+# Media Menu
+#
+DestroyMenu MenuMedia
+AddToMenu MenuMedia "  Media  " Title
+Test (x jellyfinmediaplayer) + "Jellyfin Media Player" \
+    Exec exec jellyfinmediaplayer
+Test (x audacious) + "Audacious" Exec exec audacious
+Test (x easyeffects) + "Easy Effects" Exec exec easyeffects
+Test (x mixxx) + "Mixxx" Exec exec mixxx
+Test (x vlc) + "VLC" Exec exec vlc
+Test (x cheese) + "Cheese" Exec exec cheese
+Test (x $[HOME]/bin/btconnect) + "Reconnect AudioEngine B2" \
+    Exec exec $[HOME]/bin/btconnect &
+
+# Graphics Menu
+#
+DestroyMenu MenuGraphics
+AddToMenu MenuGraphics "  Graphics  " Title
+Test (x eog) + "Eye of Gnome" Exec exec eog
+Test (x gimp) + "Gimp" Exec exec gimp
+Test (x darktable) + "Darktable" Exec exec darktable
+Test (x inkscape) + "Inkscape" Exec exec inkscape
+Test (x krita) + "Krita" Exec exec krita
+Test (x display) + "ImageMagick" Exec exec display
+
 # Games Menu
 #
 DestroyMenu MenuGames
 AddToMenu MenuGames "  Games  " Title
 Test (x gnome-sudoku) + "Sudoku" Exec exec gnome-sudoku
+Test (x sol) + "Solitaire" Exec exec sol
 Test (x pcsxr) + "PCSXR" Exec exec pcsxr
 + "PCSX2" Exec exec flatpak run net.pcsx2.PCSX2
+
+# Net Menu
+#
+DestroyMenu MenuNet
+AddToMenu MenuNet "  Net  " Title
+Test (x irssi) + "irssi" Exec exec urxvt -name irssi -e \
+    dtach -A /tmp/$[USER]-irssi irssi
+Test (x discord) + "Discord" Exec exec discord
+Test (x thunderbird) + "Thunderbird" Exec exec thunderbird
+Test (x transmission-remote-gtk) + "Transmission Remote" \
+    Exec exec transmission-remote-gtk
+Test (x hexchat) + "HexChat" Exec exec hexchat
+Test (x gftp) + "gFTP" Exec exec gftp
+Test (x mtr) + "mtr" Exec exec mtr
+Test (x wireshark) + "Wireshark" Exec exec wireshark
+Test (x ettercap) + "Ettercap" Exec exec ettercap -G
+Test (x nicotine) + "Nicotine" Exec exec nicotine
+Test (x firefox) + "Firefox" Exec exec firefox
 
 # Background Menu
 #
@@ -642,6 +656,7 @@ Silent Key Down A 4  GotoPage 0p +1p
 Silent Key Left A 4  GotoPage -1p 0p
 Silent Key Right A 4 GotoPage +1p 0p
 Silent Key Space A 4 FvwmForm RunProgram
+Silent Key Space A M FvwmForm RunProgram
 #Silent Key Super_R A A Exec exec $[infostore.terminal]
 Silent Key Home A 4  MaximizeLeft
 Silent Key End A 4   MaximizeRight
@@ -697,8 +712,8 @@ TitleStyle     AllActive -- Raised
 ButtonStyle    All Simple -- Raised
 BorderStyle    Simple
 TitleStyle     LeftJustified Height MinHeight 25 -- Raised
-AddTitleStyle  Active HGradient 128 MidnightBlue Indigo
-AddTitleStyle  Inactive HGradient 128 #0c0c38 #260041
+AddTitleStyle  Active HGradient 128 2 MidnightBlue 66 Indigo 33 #6464ff
+AddTitleStyle  Inactive HGradient 128 2 #0c0c38 66 #260041 33 MidnightBlue
 
 #ButtonStyle All ActiveUp Vector 5 15x15@4 15x85@3 85x85@3 85x15@3 \
 #                15x15@3 -- Flat
@@ -784,18 +799,18 @@ DestroyModuleConfig FvwmScript:*
 # FvwmIconMan (list of running windows), and a clock.
 #
 # Note - To use the system tray you must have "stalonetray" installed.
-DestroyModuleConfig RightPanel:*
+DestroyModuleConfig IconManPager:*
 #*RightPanel: Geometry 120x$[vp.height]-0+0
 #*RightPanel: Geometry 200x100-0-94
-*RightPanel: Geometry 265x85-0-0
-*RightPanel: Colorset 10
+*IconManPager: Geometry 265x85-0-0
+*IconManPager: Colorset 10
 #*RightPanel: Rows $[vp.height]
-*RightPanel: Rows 85 
-*RightPanel: Columns 265
-*RightPanel: Frame 0
-*RightPanel: Font "xft:Arial:Bold:size=10:antialias=True"
+*IconManPager: Rows 85 
+*IconManPager: Columns 265
+*IconManPager: Frame 0
+*IconManPager: Font "xft:Arial:Bold:size=10:antialias=True"
 #*RightPanel: (120x45, Icon "fvwm-logo-small.png", Frame 0)
-*RightPanel: (260x5, Frame 0)
+*IconManPager: (260x5, Frame 0)
 #*RightPanel: (120x45, Swallow DateTime 'Module FvwmScript FvwmScript-DateTime',\
     Frame 0)
 #*RightPanel: (10x20, Frame 0)
@@ -812,12 +827,12 @@ DestroyModuleConfig RightPanel:*
 #Test (x stalonetray) *RightPanel: (120x20, Swallow(NoClose,UseOld) \
 #    stalonetray 'Exec exec stalonetray --config \
 #    "$[FVWM_DATADIR]/default-config/.stalonetrayrc"', Frame 0)
-*RightPanel: (5x75, Frame 0)
-*RightPanel: (125x75, Swallow FvwmIconMan 'Module FvwmIconMan', Frame 0)
-*RightPanel: (10x75, Frame 0)
-*RightPanel: (120x75, Swallow FvwmPager 'Module FvwmPager *', Frame 0)
-*RightPanel: (5x75, Frame 0)
-*RightPanel: (260x5, Frame 0)
+*IconManPager: (6x75, Frame 0)
+*IconManPager: (125x75, Swallow FvwmIconMan 'Module FvwmIconMan', Frame 0)
+*IconManPager: (6x75, Frame 0)
+*IconManPager: (120x75, Swallow FvwmPager 'Module FvwmPager *', Frame 0)
+*IconManPager: (5x75, Frame 0)
+*IconManPager: (260x5, Frame 0)
 
 # FvwmPager
 #
@@ -915,10 +930,6 @@ DestroyModuleConfig  QuitVerify: *
 *QuitVerify: Button         quit        "Cancel"    ^[
 *QuitVerify: Command          Nop
 *QuitVerify: Line           expand
-
-DestroyModuleConfig  ShowVolume: *
-*ShowVolume: Line center
-*ShowVolume: Text "$(amixer get Master | grep \[[0-9]*%\] | sed '1q;d' | awk '{ print $5; }')"
 
 # Local configuration file. For use with the default-config.
 #

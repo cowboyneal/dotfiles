@@ -32,6 +32,9 @@ weather=$(echo "$metar" | grep Weather: | sed -r 's/^Weather:[[:space:]]//' \
 sky=$(echo "$metar" | grep ^Sky \
     | sed -r 's/^Sky[[:space:]]Conditions:[[:space:]]//' \
     | tr '[[:upper:]]' '[[:lower:]]' | sed 's/none//')
+pressure=$(echo "$metar" | grep ^Pressure | awk '{ print $2 }' | sed 's/none//')
+[ -n "$pressure" ] && pressure=$(echo "$pressure * 0.7500637554" | bc -l \
+    | sed -r 's/^([0-9]*)\.[0-9]*$/\1/')
 
 if (( $(echo "$temp_f >= 90" | bc -l) )); then
     printf ""
@@ -53,8 +56,10 @@ if [ -n "$winddir$windspeed" ]; then
     [ -n "$windspeed" ] && printf " %s mph" "$windspeed"
 fi
 
+[ -n "$pressure" ] && printf "  %s mmHg" "$pressure"
+
 if [ -n "$sky" ] && [ -n "$weather" ]; then
-    if [ "$sky" != "$weather" ]; then
+    if [ "$sky" != "$weather" ] && [[ ! "$weather" =~ "$sky" ]]; then
         skyweather=" $sky, $weather"
     else
         skyweather=" $weather"
@@ -69,17 +74,17 @@ case "$skyweather" in
     *tornado*)                          wicon='' ;;
     *thunder* | *lightning*)            wicon='' ;;
     *snow* | *hail* | *flurries*)       wicon='' ;;
-    "*heavy rain*")                     wicon='' ;;
+    *heavy\ rain*)                      wicon='' ;;
     *rain* | *drizzle*)                 wicon='' ;;
     *mist* | *fog* | *smog* | *haze*)   wicon='' ;;
-    *partly* | *broken*)
+    *broken\ clouds* | *few\ clouds*)
         if [ $time_hour -ge 8 ] && [ $time_hour -lt 20 ]; then
                                         wicon=''
         else
                                         wicon=''
         fi
         ;;
-    *cloud* | *overcast*)               wicon='' ;;
+    *cloudy* | *overcast*)              wicon='' ;;
     *sun*)                              wicon='' ;;
     *moon*)                             wicon='' ;;
     *clear*)
