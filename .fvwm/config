@@ -276,7 +276,7 @@ IgnoreModifiers L25
 #Style * BorderColorset 3, HilightBorderColorset 4
 Style * Colorset 1, HilightColorset 2, \
         BorderColorset 3, HilightBorderColorset 4, \
-        BorderWidth 6, HandleWidth 6, \
+        BorderWidth 5, HandleWidth 5, \
         MWMBorder, DepressableBorder, \
         MWMButtons
 #Style * HilightBorderColorset 8 4 4 4 8 0 0 0
