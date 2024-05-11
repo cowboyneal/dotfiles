@@ -344,6 +344,7 @@ Style gnome-calculator    !Borders, !Title, !Handles
 #      14 - FvwmIconMan Iconified Button
 #  15 - Inactive Buttons Right of Title
 #  16 - Active Buttons Right of Title
+#  17 - FvwmIconMan default
 ###########
 Colorset 0  fg white, bg MidnightBlue, hi grey30, sh black, Plain, NoShape
 Colorset 1  fg grey, bg #0c0c38, hi grey30, sh black, fgsh grey20, \
@@ -368,6 +369,7 @@ Colorset 14 HGradient 128 2 MidnightBlue 66 indigo 33 #6464ff, \
             fg white, hi grey30, sh black, fgsh grey20, NoShape
 Colorset 15 fg grey, bg MidnightBlue, hi grey30, sh black, fgsh, Plain, NoShape
 Colorset 16 fg white, bg #6464ff, hi grey30, sh black, fgsh, Plain, NoShape
+Colorset 17 Transparent, fg grey, hi grey30, sh black, NoShape
 
 #######
 # 4: Menus
@@ -862,7 +864,8 @@ DestroyModuleConfig FvwmIconMan:*
 *FvwmIconMan: ShowOnlyIcons true
 *FvwmIconMan: ButtonGeometry 125x25
 *FvwmIconMan: ManagerGeometry 125x75
-*FvwmIconMan: Colorset 10
+*FvwmIconMan: Colorset 17
+*FvwmIconMan: Style FvwmButtons ParentalRelativity
 *FvwmIconMan: FocusColorset 11
 *FvwmIconMan: IconColorset 14
 *FvwmIconMan: FocusAndSelectColorset 11
