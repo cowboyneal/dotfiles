@@ -793,42 +793,16 @@ DestroyModuleConfig FvwmScript:*
 *FvwmScript: DefaultColorset 10
 *FvwmScript: Font "xft:Arial:size=10:antialias=True"
 
-# FvwmButtons - RightPanel
+# FvwmButtons - IconManPager
 #
-# FvwmButtons is a powerful module that can be used to build custom
-# panels and docks. This config uses FvwmButtons to build the RightPanel.
-# The panel contains buttons to switch desks, FvwmPager, a system tray,
-# FvwmIconMan (list of running windows), and a clock.
-#
-# Note - To use the system tray you must have "stalonetray" installed.
 DestroyModuleConfig IconManPager:*
-#*RightPanel: Geometry 120x$[vp.height]-0+0
-#*RightPanel: Geometry 200x100-0-94
 *IconManPager: Geometry 265x85-0-0
 *IconManPager: Colorset 10
-#*RightPanel: Rows $[vp.height]
 *IconManPager: Rows 85 
 *IconManPager: Columns 265
 *IconManPager: Frame 0
 *IconManPager: Font "xft:Arial:Bold:size=10:antialias=True"
-#*RightPanel: (120x45, Icon "fvwm-logo-small.png", Frame 0)
 *IconManPager: (265x5, Frame 0)
-#*RightPanel: (120x45, Swallow DateTime 'Module FvwmScript FvwmScript-DateTime',\
-    Frame 0)
-#*RightPanel: (10x20, Frame 0)
-#*RightPanel: (25x20, Id desk0, Title "0", Action (Mouse 1) GotoDesk 0 0, Colorset 11, ActiveColorset 12, Frame 0)
-#*RightPanel: (25x20, Id desk1, Title "1", Action (Mouse 1) GotoDesk 0 1, ActiveColorset 12, Frame 0)
-#*RightPanel: (25x20, Id desk2, Title "2", Action (Mouse 1) GotoDesk 0 2, ActiveColorset 12, Frame 0)
-#*RightPanel: (25x20, Id desk3, Title "3", Action (Mouse 1) GotoDesk 0 3, ActiveColorset 12, Frame 0)
-#*RightPanel: (10x20, Frame 0)
-#*RightPanel: (120x5, Frame 0)
-#Test (x stalonetray) PipeRead 'echo "*RightPanel: (120x$(($[vp.height]-225)), \
-#    Top, Swallow FvwmIconMan \'Module FvwmIconMan\', Frame 0)"'
-#Test (!x stalonetray) PipeRead 'echo "*RightPanel: (120x$(($[vp.height]-205)),\
-#    Top, Swallow FvwmIconMan \'Module FvwmIconMan\', Frame 0)"'
-#Test (x stalonetray) *RightPanel: (120x20, Swallow(NoClose,UseOld) \
-#    stalonetray 'Exec exec stalonetray --config \
-#    "$[FVWM_DATADIR]/default-config/.stalonetrayrc"', Frame 0)
 *IconManPager: (5x75, Frame 0)
 *IconManPager: (125x75, Swallow FvwmIconMan 'Module FvwmIconMan', Frame 0)
 *IconManPager: (5x75, Frame 0)
