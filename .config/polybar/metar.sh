@@ -1,25 +1,29 @@
 #!/usr/bin/env bash
 
 me=$(basename $0)
+DELIMITER='|'
 
-GETOPT=$(getopt -o 'hcmwpsn' --long 'help,no-humidity,no-wind,no-glyphs' \
-    --long 'no-pressure,no-sky-conditions,use-metric,si' -n "$me" -- "$@")
+GETOPT=$(getopt -o 'h?cmwpsnd:' --long 'help,no-humidity,no-wind,no-glyphs' \
+    --long 'no-pressure,no-sky-conditions,use-metric,si,delimiter:' \
+    -n "$me" -- "$@")
 eval set -- "$GETOPT"
 unset GETOPT
 
 while true; do
     case "$1" in
-        '-h'|'--help')
+        '-h'|'-?'|'--help')
             cat << HELP_MESSAGE
-Usage: $me [OPTIONS] <AIRPORT CODE>
+Usage: $me [OPTIONS] [--] <AIRPORT CODE>
 
-  -h, --help                This message
-  -c, --use-metric, --si    Use metric units
-  -m, --no-humidity         Don't print humidity information
-  -w, --no-wind             Don't print wind speed/direction
-  -p, --no-pressure         Don't print atmospheric pressure
-  -s, --no-sky-conditions   Don't print sky conditions
-  -n, --no-glyphs           Don't print FontAwesome glyphs
+  -h, -?,   --help              This message
+  -c,       --use-metric, --si  Use metric units
+  -m,       --no-humidity       Don't print humidity information
+  -w,       --no-wind           Don't print wind speed/direction
+  -p,       --no-pressure       Don't print atmospheric pressure
+  -s,       --no-sky-conditions Don't print sky conditions
+  -n,       --no-glyphs         Don't print FontAwesome glyphs
+  -d<char>, --delimiter=<char>  Use <char> as a delimiter instead of "|",
+                                only works with glyphs turned off.
 
 An airport code for your local airport can be found at
 https://www.iata.org/en/publications/directories/code-search/
@@ -34,6 +38,7 @@ HELP_MESSAGE
         '-p'|'--no-pressure')       NO_PRESSURE=true;       shift; continue ;;
         '-s'|'--no-sky-conditions') NO_SKY_CONDITIONS=true; shift; continue ;;
         '-n'|'--no-glyphs')         NO_GLYPHS=true;         shift; continue ;;
+        '-d'|'--delimiter') d="$2"; DELIMITER=${d:0:1};   shift 2; continue ;;
         '--')                                               shift; break    ;;
     esac
 done
@@ -117,7 +122,7 @@ if [ -n "$humidity" ]; then
     if [ -z "$NO_GLYPHS" ]; then
         printf "  "
     else
-        printf " | "
+        printf " $DELIMITER "
     fi
 
     printf "%s" "$humidity"
@@ -127,7 +132,7 @@ if [ -n "$winddir$windspeed" ]; then
     if [ -z "$NO_GLYPHS" ]; then
         printf " "
     else
-        printf " |"
+        printf " $DELIMITER"
     fi
 
     [ -n "$winddir" ] && printf " %s" "$winddir"
@@ -143,7 +148,7 @@ if [ -n "$pressure" ]; then
     if [ -z "$NO_GLYPHS" ]; then
         printf " "
     else
-        printf " |"
+        printf " $DELIMITER"
     fi
 fi
 
@@ -194,7 +199,7 @@ esac
 if [ -n "$wicon" ] && [ -z "$NO_GLYPHS" ]; then
     printf " %s" "$wicon"
 else
-    [ -n "$skyweather" ] && printf " |"
+    [ -n "$skyweather" ] && printf " $DELIMITER"
 fi
 
 [ -n "$skyweather" ] && printf "%s" "$skyweather"
