@@ -2,7 +2,7 @@
 
 me=$(basename $0)
 
-GETOPT=$(getopt -o 'hmwpsc' --long 'help,no-humidity,no-wind' \
+GETOPT=$(getopt -o 'hcmwpsn' --long 'help,no-humidity,no-wind,no-glyphs' \
     --long 'no-pressure,no-sky-conditions,use-metric,si' -n "$me" -- "$@")
 eval set -- "$GETOPT"
 unset GETOPT
@@ -14,11 +14,12 @@ while true; do
 Usage: $me [OPTIONS] <AIRPORT CODE>
 
   -h, --help                This message
+  -c, --use-metric, --si    Use metric units
   -m, --no-humidity         Don't print humidity information
   -w, --no-wind             Don't print wind speed/direction
   -p, --no-pressure         Don't print atmospheric pressure
   -s, --no-sky-conditions   Don't print sky conditions
-  -c, --use-metric, --si    Use metric units
+  -n, --no-glyphs           Don't print FontAwesome glyphs
 
 An airport code for your local airport can be found at
 https://www.iata.org/en/publications/directories/code-search/
@@ -27,11 +28,12 @@ If the glyphs are not showing up, make sure that you have Font Awesome 6
 Free installed. Some fonts may also override the Font Awesome glyphs.
 HELP_MESSAGE
             exit                                                            ;;
+        '-c'|'--use-metric'|'--si') USE_METRIC=true;        shift; continue ;;
         '-m'|'--no-humidity')       NO_HUMIDITY=true;       shift; continue ;;
         '-w'|'--no-wind')           NO_WIND=true;           shift; continue ;;
         '-p'|'--no-pressure')       NO_PRESSURE=true;       shift; continue ;;
         '-s'|'--no-sky-conditions') NO_SKY_CONDITIONS=true; shift; continue ;;
-        '-c'|'--use-metric'|'--si') USE_METRIC=true;        shift; continue ;;
+        '-n'|'--no-glyphs')         NO_GLYPHS=true;         shift; continue ;;
         '--')                                               shift; break    ;;
     esac
 done
@@ -49,7 +51,8 @@ fi
 
 time_hour=$(date +%H | sed 's/^0//')
 temp_f=$(echo "$metar" | grep Temperature | awk '{ print $5 }')
-temp_c=$(echo "$metar" | grep Temperature | awk '{ print $2 }')
+[ -n "$USE_METRIC" ] && temp_c=$(echo "$metar" | grep Temperature \
+    | awk '{ print $2 }')
 [ -z "$NO_HUMIDITY" ] && humidity=$(echo "$metar" | grep ^Rel \
     | awk '{ print $3 }')
 
@@ -88,28 +91,45 @@ fi
 weather=$(echo "$metar" | grep Weather: | sed -r 's/^Weather:[[:space:]]//' \
     | tr '[[:upper:]]' '[[:lower:]]' | sed 's/none//')
 
-if (( $(echo "$temp_f >= 90" | bc -l) )); then
-    printf ""
-elif (( $(echo "$temp_f >= 70" | bc -l) )); then
-    printf ""
-elif (( $(echo "$temp_f >= 50" | bc -l) )); then
-    printf ""
-elif (( $(echo "$temp_f >= 30" | bc -l) )); then
-    printf ""
-else
-    printf ""
+if [ -z "$NO_GLYPHS" ]; then
+    if (( $(echo "$temp_f >= 90" | bc -l) )); then
+        printf ""
+    elif (( $(echo "$temp_f >= 70" | bc -l) )); then
+        printf ""
+    elif (( $(echo "$temp_f >= 50" | bc -l) )); then
+        printf ""
+    elif (( $(echo "$temp_f >= 30" | bc -l) )); then
+        printf ""
+    else
+        printf ""
+    fi
+
+    printf " "
 fi
 
 if [ -n "$USE_METRIC" ]; then
-    printf " %s°C" "$temp_c"
+    printf "%s°C" "$temp_c"
 else
-    printf " %s°F" "$temp_f"
+    printf "%s°F" "$temp_f"
 fi
 
-[ -n "$humidity" ] && printf "  %s" "$humidity"
+if [ -n "$humidity" ]; then
+    if [ -z "$NO_GLYPHS" ]; then
+        printf "  "
+    else
+        printf " | "
+    fi
+
+    printf "%s" "$humidity"
+fi
 
 if [ -n "$winddir$windspeed" ]; then
-    printf " "
+    if [ -z "$NO_GLYPHS" ]; then
+        printf " "
+    else
+        printf " |"
+    fi
+
     [ -n "$winddir" ] && printf " %s" "$winddir"
 
     if [ -n "$USE_METRIC" ]; then
@@ -119,7 +139,13 @@ if [ -n "$winddir$windspeed" ]; then
     fi
 fi
 
-[ -n "$pressure" ] && printf " "
+if [ -n "$pressure" ]; then
+    if [ -z "$NO_GLYPHS" ]; then
+        printf " "
+    else
+        printf " |"
+    fi
+fi
 
 if [ -n "$USE_METRIC" ]; then
     [ -n "$pressure" ] && printf " %s kPa" "$pressure"
@@ -140,32 +166,37 @@ elif [ -n "$sky" ]; then
 fi
 
 case "$skyweather" in
-    *tornado*)                          wicon='' ;;
-    *thunder* | *lightning*)            wicon='' ;;
-    *snow* | *flurries*)                wicon='' ;;
-    *heavy\ rain* | *hail*)             wicon='' ;;
-    *rain* | *drizzle*)                 wicon='' ;;
-    *mist* | *fog* | *smog* | *haze*)   wicon='' ;;
+    *tornado*)                                  wicon='' ;;
+    *thunder* | *lightning*)                    wicon='' ;;
+    *snow* | *flurries*)                        wicon='' ;;
+    *heavy\ rain* | *hail*)                     wicon='' ;;
+    *rain* | *drizzle*)                         wicon='' ;;
+    *mist* | *fog* | *smog* | *haze* | *smoke*) wicon='' ;;
     *broken\ clouds* | *few\ clouds* | *scattered\ clouds*)
         if [ $time_hour -ge 8 ] && [ $time_hour -lt 20 ]; then
-                                        wicon=''
+                                                wicon=''
         else
-                                        wicon=''
+                                                wicon=''
         fi
         ;;
-    *cloud* | *overcast*)               wicon='' ;;
+    *cloud* | *overcast*)                       wicon='' ;;
     *clear*)
         if [ $time_hour -ge 8 ] && [ $time_hour -lt 20 ]; then
-                                        wicon=''
+                                                wicon=''
         else
-                                        wicon=''
+                                                wicon=''
         fi
         ;;
-    *sun*)                              wicon='' ;;
-    *moon*)                             wicon='' ;;
+    *sun*)                                      wicon='' ;;
+    *moon*)                                     wicon='' ;;
 esac
 
-[ -n "$wicon" ] && printf " %s" "$wicon"
+if [ -n "$wicon" ] && [ -z "$NO_GLYPHS" ]; then
+    printf " %s" "$wicon"
+else
+    [ -n "$skyweather" ] && printf " |"
+fi
+
 [ -n "$skyweather" ] && printf "%s" "$skyweather"
 
 printf "\n"

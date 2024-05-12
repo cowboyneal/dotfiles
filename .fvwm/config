@@ -206,7 +206,7 @@ AddToFunc   ToggleTitle
 #
 # Fvwm has both Virtual Desktops and Pages. Each Desktop is built from
 # a grid of Pages. The following sets the name of four Desktops and then
-# divides each Desktop into a 2x2 grid of Pages that are positioned as
+# divides each Desktop into a 3x3 grid of Pages that are positioned as
 #
 #   +---+---+---+
 #   |   |   |   |
@@ -225,8 +225,6 @@ DesktopSize 3x3
 # for how long the mouse as at the edge before it scrolls.
 #
 # Set EdgeScroll 0 0 and/or EdgeResistance -1 to disable.
-#EdgeScroll 100 100
-#EdgeResistance 450
 EdgeScroll 0 0
 EdgeResistance -1
 EdgeThickness 1
@@ -244,7 +242,6 @@ MoveThreshold 3
 
 # Sets the focus style to SloppyFocus and a mouse click
 # in a window will Raise it.
-#Style * SloppyFocus, MouseFocusClickRaises
 Style * MouseFocus, MouseFocusClickRaises
 
 # Default Font
@@ -271,23 +268,17 @@ Style * WindowShadeScrolls, WindowShadeSteps 10
 IgnoreModifiers L25
 
 # Decor Styles
-#Style * BorderWidth 5, HandleWidth 5, MWMButtons, FvwmBorder, FirmBorder
-#Style * Colorset 1, HilightColorset 2
-#Style * BorderColorset 3, HilightBorderColorset 4
 Style * Colorset 1, HilightColorset 2, \
         BorderColorset 3, HilightBorderColorset 4, \
         BorderWidth 5, HandleWidth 5, \
         MWMBorder, DepressableBorder, \
         MWMButtons
-#Style * HilightBorderColorset 8 4 4 4 8 0 0 0
 
 # Disable Icons from appearing on desktop.
 # Comment this out or use Style * Icon to get the icons back.
 Style * NoIcon
 
 # Window Specific Styles
-#Style RightPanel !Title, !Borders, !Handles, Sticky, \
-#                 WindowListSkip, NeverFocus
 Style QuitVerify  !Title, PositionPlacement Center, WindowListSkip, Layer 6, \
                   !Handles
 Style RunProgram  !Title, PositionPlacement Center, WindowListSkip, Layer 6, \
@@ -345,6 +336,7 @@ Style gnome-calculator    !Borders, !Title, !Handles
 #  15 - Inactive Buttons Right of Title
 #  16 - Active Buttons Right of Title
 #  17 - FvwmIconMan default
+#  18 - FvwmScript items default
 ###########
 Colorset 0  fg white, bg MidnightBlue, hi grey30, sh black, Plain, NoShape
 Colorset 1  fg grey, bg #0c0c38, hi grey30, sh black, fgsh grey20, \
@@ -370,6 +362,8 @@ Colorset 14 HGradient 128 2 MidnightBlue 66 indigo 33 #6464ff, \
 Colorset 15 fg grey, bg MidnightBlue, hi grey30, sh black, fgsh, Plain, NoShape
 Colorset 16 fg white, bg #6464ff, hi grey30, sh black, fgsh, Plain, NoShape
 Colorset 17 Transparent, fg grey, hi grey30, sh black, NoShape
+Colorset 18 DGradient 128 2 MidnightBlue 50 indigo 25 grey15, \
+            fg grey, hi grey30, sh black, NoShape
 
 #######
 # 4: Menus
@@ -392,11 +386,11 @@ AddToMenu   MenuFvwmRoot "Fvwm" Title
 #+ "XDG &Menu%images/icons/apps.png%" Popup XDGMenu
 + "Ur&xvt%images/icons/terminal.png%" Exec exec $[infostore.terminal]
 Test (x nautilus) + "Files" Exec exec nautilus
-+ "XScreenSaver%images/icons/apps.png%" Popup MenuScreenSaver
-Test (x gnome-screenshot) + "Take Screenshot..." \
-    Exec exec gnome-screenshot -i
 + "Run Program...%images/icons/run_arrow.png%" \
   Module FvwmForm RunProgram
+Test (x gnome-screenshot) + "Take Screenshot..." \
+    Exec exec gnome-screenshot -i
++ "XScreenSaver%images/icons/apps.png%" Popup MenuScreenSaver
 + "" Nop
 + "Fvwm&Console%images/icons/terminal.png%" Module FvwmConsole -terminal $[infostore.terminal]
 #+ "&Wallpapers%icons/wallpaper.png%" Popup BGMenu
@@ -414,6 +408,9 @@ Test (x gnome-screenshot) + "Take Screenshot..." \
 #
 DestroyMenu MenuScreenSaver
 AddToMenu MenuScreenSaver "  XScreenSaver  " Title
+Test (x xscreensaver-command) + "Stop" \
+    Exec exec xscreensaver-command --exit
+Test (x xscreensaver) + "Start" Exec exec xscreensaver --no-splash &
 Test (x xscreensaver-settings) + "Settings" Exec exec xscreensaver-settings
 Test (x xscreensaver-command) + "Activate" \
     Exec exec xscreensaver-command --activate
@@ -570,27 +567,15 @@ AddToMenu   MenuIconOps
 DestroyMenu MenuSendTo
 AddToMenu MenuSendTo
 + "Current" MoveToCurrent
-+ "Page" PopUp MenuSendToPage
-#+ "Desk" PopUp MenuSendToDesk
-
-#DestroyMenu MenuSendToDesk
-#AddToMenu   MenuSendToDesk
-#+ "Desk 0"	MoveToDesk 0 0
-#+ "Desk 1"	MoveToDesk 0 1
-#+ "Desk 2"	MoveToDesk 0 2
-#+ "Desk 3"	MoveToDesk 0 3
-
-DestroyMenu MenuSendToPage
-AddToMenu   MenuSendToPage
-+ "Page (0,0)"	MoveToPage 0 0
-+ "Page (0,1)"	MoveToPage 0 1
-+ "Page (0,2)"	MoveToPage 0 2
-+ "Page (1,0)"	MoveToPage 1 0
-+ "Page (1,1)"	MoveToPage 1 1
-+ "Page (1,2)"	MoveToPage 1 2
-+ "Page (2,0)"	MoveToPage 2 0
-+ "Page (2,1)"	MoveToPage 2 1
-+ "Page (2,2)"	MoveToPage 2 2
++ "Top Right"       MoveToPage 0 0
++ "Center Right"    MoveToPage 0 1
++ "Bottom Right"    MoveToPage 0 2
++ "Top Center"	    MoveToPage 1 0
++ "Center"	        MoveToPage 1 1
++ "Bottom Center"	MoveToPage 1 2
++ "Top Left"	    MoveToPage 2 0
++ "Center Left"	    MoveToPage 2 1
++ "Bottom Left"     MoveToPage 2 2
 
 
 # Fvwm Man Pages (Help) Menu
@@ -649,10 +634,6 @@ AddToMenu   MenuFvwmManPages "Help" Title
 Silent Key F2 A M Menu MenuFvwmRoot
 Silent Key Menu A A Menu MenuFvwmRoot
 Silent Key Tab A M WindowList Root c c NoDeskSort, SelectOnRelease Meta_L
-#Silent Key F1 A C GotoDesk 0 0
-#Silent Key F2 A C GotoDesk 0 1
-#Silent Key F3 A C GotoDesk 0 2
-#Silent Key F4 A C GotoDesk 0 3
 Silent Key Up A 4    GotoPage 0p -1p
 Silent Key Down A 4  GotoPage 0p +1p
 Silent Key Left A 4  GotoPage -1p 0p
@@ -693,7 +674,7 @@ Mouse 4	T    A WindowShade True
 Mouse 5	T    A WindowShade False
 Mouse 1	R    A Menu MenuFvwmRoot
 Mouse 2	R    A WindowList
-Mouse 3	R    A Menu MenuWindowOpsLong
+#Mouse 3	R    A Menu MenuWindowOpsLong
 Mouse 1	I    A RaiseMoveX Move "Iconify off"
 Mouse 3	T    A Menu MenuWindowOps
 Mouse 3 I    A Menu MenuIconOps
@@ -873,7 +854,7 @@ DestroyModuleConfig EventNewDesk:*
 # form. Used with fvwm-menu-desktop-config.fpl.
 # This sets the default colorsets.
 *FvwmFormDefault: Colorset 10
-*FvwmFormDefault: ItemColorset 10
+*FvwmFormDefault: ItemColorset 18
 *FvwmFormDefault: Font "xft:Arial:style=bold:size=11:antialias=True"
 *FvwmFormDefault: InputFont "xft:Arial:style=bold:size=11:antialias=True"
 *FvwmFormDefault: ButtonFont "xft:Arial:style=bold:size=11:antialias=True"
