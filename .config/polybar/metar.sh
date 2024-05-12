@@ -15,15 +15,15 @@ while true; do
             cat << HELP_MESSAGE
 Usage: $me [OPTIONS] [--] <AIRPORT CODE>
 
-  -h, -?,   --help              This message
-  -c,       --use-metric, --si  Use metric units
-  -m,       --no-humidity       Don't print humidity information
-  -w,       --no-wind           Don't print wind speed/direction
-  -p,       --no-pressure       Don't print atmospheric pressure
-  -s,       --no-sky-conditions Don't print sky conditions
-  -n,       --no-glyphs         Don't print FontAwesome glyphs
-  -d<char>, --delimiter=<char>  Use <char> as a delimiter instead of "|",
-                                only works with glyphs turned off.
+  -h, -?,    --help                 This message
+  -c,        --use-metric, --si     Use metric units
+  -m,        --no-humidity          Don't print humidity information
+  -w,        --no-wind              Don't print wind speed/direction
+  -p,        --no-pressure          Don't print atmospheric pressure
+  -s,        --no-sky-conditions    Don't print sky conditions
+  -n,        --no-glyphs            Don't print FontAwesome glyphs
+  -d <char>, --delimiter <char>     Use <char> as a delimiter instead of "|",
+                                    only works with glyphs turned off.
 
 An airport code for your local airport can be found at
 https://www.iata.org/en/publications/directories/code-search/
