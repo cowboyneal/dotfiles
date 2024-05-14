@@ -38,7 +38,7 @@ HELP_MESSAGE
         '-p'|'--no-pressure')       NO_PRESSURE=true;       shift; continue ;;
         '-s'|'--no-sky-conditions') NO_SKY_CONDITIONS=true; shift; continue ;;
         '-n'|'--no-glyphs')         NO_GLYPHS=true;         shift; continue ;;
-        '-d'|'--delimiter') d="$2"; DELIMITER=${d:0:1};   shift 2; continue ;;
+        '-d'|'--delimiter')         DELIMITER=${2:0:1};   shift 2; continue ;;
         '--')                                               shift; break    ;;
     esac
 done
