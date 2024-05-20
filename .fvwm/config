@@ -59,13 +59,14 @@ AddToFunc   StartFunction
 + I Test (Init) Exec exec picom &
 + I Test (Init) InitBackground
 + I Module FvwmButtons IconManPager
++ I Module FvwmButtons DockApp
 + I Module FvwmEvent EventNewDesk
 + I Module FvwmMFL
 + I Test (Init) Exec exec polybar &
 + I Test (Init) Exec exec conky &
 + I Test (Init) Exec exec xscreensaver --no-splash &
 #+ I Test (Init) Exec exec urxvt -geometry 80x24+15+40 &
-#+ I Test (Init) Exec exec urxvt -geometry 80x31+15+502 &
+#+ I Test (Init) Exec exec urxvt -geometry 80x29+15+502 &
 
 DestroyFunc ExitFunction
 AddToFunc ExitFunction
@@ -100,30 +101,30 @@ AddToFunc ToUpperLeft
 
 DestroyFunc ToLowerLeft
 AddToFunc ToLowerLeft
-+ I ThisWindow ("URxvt") ResizeMove 80c 31c 0 -0
++ I ThisWindow ("URxvt") ResizeMove 80c 29c 0 -0
 
 DestroyFunc MaximizeLeft
 AddToFunc MaximizeLeft
-+ I ThisWindow ("URxvt") ResizeMove 80c 58c 0 0
++ I ThisWindow ("URxvt") ResizeMove 80c 56c 0 0
 + I ThisWindow ("URxvt") Break
-+ I ThisWindow ("Gvim") ResizeMove 111c 54c 0 0
++ I ThisWindow ("Gvim") ResizeMove 112c 52c 0 0
 + I ThisWindow ("Gvim") Break
 + I ThisWindow ("discord") Break
-+ I ThisWindow ("Google-chrome") ResizeMove 800p -50p 0 0
++ I ThisWindow ("Google-chrome") ResizeMove 800p -88p 0 0
 + I ThisWindow ("Google-chrome") Break
-+ I ThisWindow ResizeMove 800p -85p 0 0
++ I ThisWindow ResizeMove 800p -123p 0 0
 
 DestroyFunc MaximizeRight
 AddToFunc MaximizeRight
-+ I ThisWindow ("URxvt") ResizeMove 80c 58c -0 0
++ I ThisWindow ("URxvt") ResizeMove 80c 56c -0 0
 + I ThisWindow ("URxvt") Break
-+ I ThisWindow ("Gvim") ResizeMove 111c 54c -0 0
++ I ThisWindow ("Gvim") ResizeMove 112c 52c -0 0
 + I ThisWindow ("Gvim") Break
-+ I ThisWindow ("discord") ResizeMove 940p 990p -0 -0
++ I ThisWindow ("discord") ResizeMove 940p 952p -0 -0
 + I ThisWindow ("discord") Break
-+ I ThisWindow ("Google-chrome") ResizeMove 800p -50p -0 0
++ I ThisWindow ("Google-chrome") ResizeMove 800p -88p -0 0
 + I ThisWindow ("Google-chrome") Break
-+ I ThisWindow ResizeMove 800p -85p -0 0
++ I ThisWindow ResizeMove 800p -123p -0 0
 
 DestroyFunc ChangeVolumeUp
 AddToFunc ChangeVolumeUp
@@ -233,7 +234,7 @@ Style * EdgeMoveDelay 350, EdgeMoveResistance 350
 # EwmhBaseStruts [left] [right] [top] [bottom]
 # Reserves space along the edge(s) of the Screen that will not
 # be covered when maximizing or placing windows.
-EwmhBaseStruts 15 285 40 15
+EwmhBaseStruts 15 285 40 53
 
 # This sets the ClickTime and MoveThreshold used to determine
 # Double Clicks, Hold and Move for the mouse.
@@ -287,6 +288,8 @@ Style VolumeLevel !Title, PositionPlacement Center, Layer 6, !Handles, !Borders
 Style FvwmIdent   WindowListSkip
 Style IconManPager BorderColorset 4, !Title, !Handles, Sticky, WindowListSkip, \
       NeverFocus, StaysOnBottom
+Style DockApp     !Borders, !Title, !Handles, Sticky, WindowListSkip, \
+      NeverFocus, StaysOnBottom
 Style dclock      BorderColorset 4, !Title, !Handles, Sticky, WindowListSkip, \
       NeverFocus, StaysOnBottom
 Style console     BorderColorset 4, !Title, !Handles, Sticky, WindowListSkip, \
@@ -337,6 +340,7 @@ Style gnome-calculator    !Borders, !Title, !Handles
 #  16 - Active Buttons Right of Title
 #  17 - FvwmIconMan default
 #  18 - FvwmScript items default
+#  19 - DockApp default
 ###########
 Colorset 0  fg white, bg MidnightBlue, hi grey30, sh black, Plain, NoShape
 Colorset 1  fg grey, bg #0c0c38, hi grey30, sh black, fgsh grey20, \
@@ -364,6 +368,8 @@ Colorset 16 fg white, bg #6464ff, hi grey30, sh black, fgsh, Plain, NoShape
 Colorset 17 Transparent, fg grey, hi grey30, sh black, NoShape
 Colorset 18 DGradient 128 2 MidnightBlue 50 indigo 25 grey15, \
             fg grey, hi grey30, sh black, NoShape
+Colorset 19 RootTransparent, Tint white 10, fg grey, hi grey30, \
+            sh black, NoShape
 
 #######
 # 4: Menus
@@ -388,7 +394,7 @@ AddToMenu   MenuFvwmRoot "Fvwm" Title
 Test (x nautilus) + "Files" Exec exec nautilus
 + "Run Program...%images/icons/run_arrow.png%" \
   Module FvwmForm RunProgram
-Test (x gnome-screenshot) + "Take Screenshot..." \
+Test (x gnome-screenshot) + "Take Screenshot...%images/icons/wallpaper.png%" \
     Exec exec gnome-screenshot -i
 + "XScreenSaver%images/icons/apps.png%" Popup MenuScreenSaver
 + "" Nop
@@ -408,9 +414,9 @@ Test (x gnome-screenshot) + "Take Screenshot..." \
 #
 DestroyMenu MenuScreenSaver
 AddToMenu MenuScreenSaver "  XScreenSaver  " Title
-Test (x xscreensaver-command) + "Stop" \
-    Exec exec xscreensaver-command --exit
-Test (x xscreensaver) + "Start" Exec exec xscreensaver --no-splash &
+#Test (x xscreensaver-command) + "Stop" \
+#    Exec exec xscreensaver-command --exit
+#Test (x xscreensaver) + "Start" Exec exec xscreensaver --no-splash &
 Test (x xscreensaver-settings) + "Settings" Exec exec xscreensaver-settings
 Test (x xscreensaver-command) + "Activate" \
     Exec exec xscreensaver-command --activate
@@ -453,6 +459,9 @@ Test (x jellyfinmediaplayer) + "Jellyfin Media Player" \
     Exec exec jellyfinmediaplayer
 Test (x audacious) + "Audacious" Exec exec audacious
 Test (x easyeffects) + "Easy Effects" Exec exec easyeffects
+Test (x audacity) + "Audacity" Exec exec audacity
+Test (x mkvtoolnix-gui) + "MKVToolNix" Exec exec mkvtoolnix-gui
+Test (x handbrake) + "HandBrake" Exec exec handbrake
 Test (x mixxx) + "Mixxx" Exec exec mixxx
 Test (x vlc) + "VLC" Exec exec vlc
 Test (x cheese) + "Cheese" Exec exec cheese
@@ -567,15 +576,15 @@ AddToMenu   MenuIconOps
 DestroyMenu MenuSendTo
 AddToMenu MenuSendTo
 + "Current" MoveToCurrent
-+ "Top Right"       MoveToPage 0 0
-+ "Center Right"    MoveToPage 0 1
-+ "Bottom Right"    MoveToPage 0 2
++ "Top Left"        MoveToPage 0 0
++ "Center Left"     MoveToPage 0 1
++ "Bottom Left"     MoveToPage 0 2
 + "Top Center"	    MoveToPage 1 0
 + "Center"	        MoveToPage 1 1
-+ "Bottom Center"	MoveToPage 1 2
-+ "Top Left"	    MoveToPage 2 0
-+ "Center Left"	    MoveToPage 2 1
-+ "Bottom Left"     MoveToPage 2 2
++ "Bottom Center"   MoveToPage 1 2
++ "Top Right"	    MoveToPage 2 0
++ "Center Right"    MoveToPage 2 1
++ "Bottom Right"    MoveToPage 2 2
 
 
 # Fvwm Man Pages (Help) Menu
@@ -633,7 +642,8 @@ AddToMenu   MenuFvwmManPages "Help" Title
 # Silent supresses any errors (such as keyboards with no Menu key).
 Silent Key F2 A M Menu MenuFvwmRoot
 Silent Key Menu A A Menu MenuFvwmRoot
-Silent Key Tab A M WindowList Root c c NoDeskSort, SelectOnRelease Meta_L
+Silent Key Tab A M WindowList Root c c NoNumInDeskTitle, NoDeskSort, \
+    SelectOnRelease Meta_L
 Silent Key Up A 4    GotoPage 0p -1p
 Silent Key Down A 4  GotoPage 0p +1p
 Silent Key Left A 4  GotoPage -1p 0p
@@ -674,7 +684,7 @@ Mouse 4	T    A WindowShade True
 Mouse 5	T    A WindowShade False
 Mouse 1	R    A Menu MenuFvwmRoot
 Mouse 2	R    A WindowList
-#Mouse 3	R    A Menu MenuWindowOpsLong
+Mouse 3	R    A Menu MenuWindowOpsLong
 Mouse 1	I    A RaiseMoveX Move "Iconify off"
 Mouse 3	T    A Menu MenuWindowOps
 Mouse 3 I    A Menu MenuIconOps
@@ -689,6 +699,8 @@ Mouse 3 I    A Menu MenuIconOps
 #   4 - Maximize
 #   6 - Minimize
 ###########
+GeometryWindow Position 0 30p
+GeometryWindow Colorset 8
 TitleStyle     AllInactive -- Raised
 TitleStyle     AllActive -- Raised
 #ButtonStyle    All Simple -- UseTitleStyle
@@ -752,7 +764,7 @@ ButtonStyle 6 - MwmDecorMin
 # a window. One use is getting the class/resource/name of a window.
 DestroyModuleConfig FvwmIdent:*
 *FvwmIdent: Colorset 10
-*FvwmIdent: Font "xft:Arial:size=10:antialias=True"
+*FvwmIdent: Font "xft:Arial:size=11:antialias=True"
 
 # FvwmBanner
 #
@@ -838,6 +850,45 @@ DestroyModuleConfig FvwmIconMan:*
 *FvwmIconMan: Resolution global
 *FvwmIconMan: Tips always
 *FvwmIconMan: Sort id
+
+DestroyModuleConfig  DockApp: *
+*DockApp: Geometry +713-0
+*DockApp: Colorset 19
+*DockApp: ActiveColorset 11
+*DockApp: PressColorset 11
+*DockApp: Frame 2
+*DockApp: Padding 5 5
+*DockApp: Rows 1
+*DockApp: Columns 13
+*DockApp: (1x1, Icon "images/icons/dock/terminal.png", \
+    Action(Mouse 1) "Exec exec urxvt"
+*DockApp: (1x1, Icon "images/icons/dock/irssi.png", \
+    Action(Mouse 1) \
+    "Exec exec urxvt -name irssi -e dtach -A /tmp/$[USER]-irssi irssi"
+*DockApp: (1x1, Icon "images/icons/dock/discord.png", \
+    Action(Mouse 1) "Exec exec discord"
+*DockApp: (1x1, Icon "images/icons/dock/gvim.png", \
+    Action(Mouse 1) "Exec exec gvim"
+*DockApp: (1x1, Icon "images/icons/dock/thunderbird.png", \
+    Action(Mouse 1) "Exec exec thunderbird"
+*DockApp: (1x1, Icon "images/icons/dock/google-chrome.png", \
+    Action(Mouse 1) "Exec exec google-chrome-stable"
+*DockApp: (1x1, Icon "images/icons/dock/messages.png", \
+    Action(Mouse 1) \
+    "Exec exec google-chrome --app-id=hpfldicfbfomlpcikngkocigghgafkph"
+*DockApp: (1x1, Icon "images/icons/dock/chat.png", \
+    Action(Mouse 1) \
+    "Exec exec google-chrome --app-id=mdpkiolbdkhdjpekfbkbmhigcaggjagi"
+*DockApp: (1x1, Icon "images/icons/dock/audacious.png", \
+    Action(Mouse 1) "Exec exec audacious"
+*DockApp: (1x1, Icon "images/icons/dock/jellyfin.png", \
+    Action(Mouse 1) "Exec exec jellyfinmediaplayer"
+*DockApp: (1x1, Icon "images/icons/dock/easyeffects.png", \
+    Action(Mouse 1) "Exec exec easyeffects"
+*DockApp: (1x1, Icon "images/icons/dock/transmission-remote-gtk.png", \
+    Action(Mouse 1) "Exec exec transmission-remote-gtk"
+*DockApp: (1x1, Icon "images/icons/dock/virt-manager.png", \
+    Action(Mouse 1) "Exec exec virt-manager"
 
 # FvwmEvent
 #
