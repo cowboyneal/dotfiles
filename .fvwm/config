@@ -103,30 +103,30 @@ AddToFunc ToUpperLeft
 
 DestroyFunc ToLowerLeft
 AddToFunc ToLowerLeft
-+ I ThisWindow ("URxvt") ResizeMove 80c 29c 0 -0
++ I ThisWindow ("URxvt") ResizeMove 80c 28c 0 -0
 
 DestroyFunc MaximizeLeft
 AddToFunc MaximizeLeft
-+ I ThisWindow ("URxvt") ResizeMove 80c 56c 0 0
++ I ThisWindow ("URxvt") ResizeMove 80c 55c 0 0
 + I ThisWindow ("URxvt") Break
-+ I ThisWindow ("Gvim") ResizeMove 112c 52c 0 0
++ I ThisWindow ("Gvim") ResizeMove 112c 51c 0 0
 + I ThisWindow ("Gvim") Break
 + I ThisWindow ("discord") Break
-+ I ThisWindow ("Google-chrome") ResizeMove 800p -88p 0 0
++ I ThisWindow ("Google-chrome") ResizeMove 800p -103p 0 0
 + I ThisWindow ("Google-chrome") Break
-+ I ThisWindow ResizeMove 800p -123p 0 0
++ I ThisWindow ResizeMove 800p -138p 0 0
 
 DestroyFunc MaximizeRight
 AddToFunc MaximizeRight
-+ I ThisWindow ("URxvt") ResizeMove 80c 56c -0 0
++ I ThisWindow ("URxvt") ResizeMove 80c 55c -0 0
 + I ThisWindow ("URxvt") Break
-+ I ThisWindow ("Gvim") ResizeMove 112c 52c -0 0
++ I ThisWindow ("Gvim") ResizeMove 112c 51c -0 0
 + I ThisWindow ("Gvim") Break
-+ I ThisWindow ("discord") ResizeMove 940p 952p -0 -0
++ I ThisWindow ("discord") ResizeMove 940p 937p -0 -0
 + I ThisWindow ("discord") Break
-+ I ThisWindow ("Google-chrome") ResizeMove 800p -88p -0 0
++ I ThisWindow ("Google-chrome") ResizeMove 800p -103p -0 0
 + I ThisWindow ("Google-chrome") Break
-+ I ThisWindow ResizeMove 800p -123p -0 0
++ I ThisWindow ResizeMove 800p -138p -0 0
 
 DestroyFunc ChangeVolumeUp
 AddToFunc ChangeVolumeUp
@@ -241,7 +241,7 @@ Style * EdgeMoveDelay 350, EdgeMoveResistance 350
 # EwmhBaseStruts [left] [right] [top] [bottom]
 # Reserves space along the edge(s) of the Screen that will not
 # be covered when maximizing or placing windows.
-EwmhBaseStruts 15 285 40 53
+EwmhBaseStruts 10 295 45 63 
 
 # This sets the ClickTime and MoveThreshold used to determine
 # Double Clicks, Hold and Move for the mouse.
@@ -293,7 +293,7 @@ Style RunProgram  !Title, PositionPlacement Center, WindowListSkip, Layer 6, \
                   !Handles
 Style VolumeLevel !Title, PositionPlacement Center, Layer 6, !Handles, !Borders
 Style FvwmIdent   WindowListSkip
-Style IconManPager BorderColorset 4, !Title, !Handles, Sticky, WindowListSkip, \
+Style IconManPager !Borders, !Title, !Handles, Sticky, WindowListSkip, \
       NeverFocus, StaysOnBottom
 Style SystemMonitor BorderColorset 4, !Title, !Handles, Sticky, WindowListSkip, \
       NeverFocus, StaysOnBottom, ParentalRelativity
@@ -682,6 +682,7 @@ Mouse 1 4 A Maximize 100 100
 Mouse 2 4 A Maximize 0 100
 Mouse 3 4 A Maximize 100 0
 Mouse 1 6 A Iconify
+Mouse 1 W M RaiseMoveX Move
 
 #   TitleBar: Click to Raise, Move, Double Click to Maximize
 #             Mouse Wheel Up/Down to WindowShade On/Off
@@ -712,7 +713,7 @@ Mouse 3 I    A Menu MenuIconOps
 #   4 - Maximize
 #   6 - Minimize
 ###########
-GeometryWindow Position 0 30p
+GeometryWindow Position 5p 35p
 GeometryWindow Colorset 8
 TitleStyle     AllInactive -- Raised
 TitleStyle     AllActive -- Raised
@@ -811,19 +812,19 @@ DestroyModuleConfig SystemMonitor:*
 # FvwmButtons - IconManPager
 #
 DestroyModuleConfig IconManPager:*
-*IconManPager: Geometry 265x85-0-0
+*IconManPager: Geometry 275x85-10-10
 *IconManPager: Colorset 20
 *IconManPager: Rows 85 
-*IconManPager: Columns 265
+*IconManPager: Columns 275
 *IconManPager: Frame 0
 *IconManPager: Font "xft:Arial:Bold:size=10:antialias=True"
-*IconManPager: (265x5, Frame 0)
+*IconManPager: (275x5, Frame 0)
 *IconManPager: (5x75, Frame 0)
-*IconManPager: (125x75, Swallow FvwmIconMan 'Module FvwmIconMan', Frame 0)
+*IconManPager: (130x75, Swallow FvwmIconMan 'Module FvwmIconMan', Frame 0)
 *IconManPager: (5x75, Frame 0)
-*IconManPager: (125x75, Swallow FvwmPager 'Module FvwmPager *', Frame 0)
+*IconManPager: (130x75, Swallow FvwmPager 'Module FvwmPager *', Frame 0)
 *IconManPager: (5x75, Frame 0)
-*IconManPager: (265x5, Frame 0)
+*IconManPager: (275x5, Frame 0)
 
 # FvwmPager
 #
@@ -851,8 +852,8 @@ DestroyModuleConfig FvwmIconMan:*
 *FvwmIconMan: TitleButton flat
 *FvwmIconMan: UseWinList true
 *FvwmIconMan: ShowOnlyIcons true
-*FvwmIconMan: ButtonGeometry 125x25
-*FvwmIconMan: ManagerGeometry 125x75
+*FvwmIconMan: ButtonGeometry 130x25
+*FvwmIconMan: ManagerGeometry 130x75
 *FvwmIconMan: Colorset 17
 *FvwmIconMan: Style FvwmButtons ParentalRelativity
 *FvwmIconMan: FocusColorset 11
@@ -874,42 +875,66 @@ DestroyModuleConfig FvwmIconMan:*
 *FvwmIconMan: Sort id
 
 DestroyModuleConfig  DockApp: *
-*DockApp: Geometry +713-0
+*DockApp: Geometry 614x38+653-10
 *DockApp: Colorset 19
 *DockApp: ActiveColorset 11
 *DockApp: PressColorset 11
 *DockApp: Frame 2
 *DockApp: Padding 5 5
 *DockApp: Rows 1
-*DockApp: Columns 13
-*DockApp: (1x1, Icon "images/icons/dock/terminal.png", \
+*DockApp: Columns 614
+*DockApp: (38x1, Icon "images/icons/dock/terminal.png", \
     Action(Mouse 1) "Exec exec urxvt"
-*DockApp: (1x1, Icon "images/icons/dock/irssi.png", \
+*DockApp: (10x1, Colorset 20, ActiveColorSet 19, PressColorSet 20, \
+    Frame 0)
+*DockApp: (38x1, Icon "images/icons/dock/irssi.png", \
     Action(Mouse 1) \
     "Exec exec urxvt -name irssi -e dtach -A /tmp/$[USER]-irssi irssi"
-*DockApp: (1x1, Icon "images/icons/dock/discord.png", \
+*DockApp: (10x1, Colorset 20, ActiveColorSet 19, PressColorSet 20, \
+    Frame 0)
+*DockApp: (38x1, Icon "images/icons/dock/discord.png", \
     Action(Mouse 1) "Exec exec discord"
-*DockApp: (1x1, Icon "images/icons/dock/gvim.png", \
+*DockApp: (10x1, Colorset 20, ActiveColorSet 19, PressColorSet 20, \
+    Frame 0)
+*DockApp: (38x1, Icon "images/icons/dock/gvim.png", \
     Action(Mouse 1) "Exec exec gvim"
-*DockApp: (1x1, Icon "images/icons/dock/thunderbird.png", \
+*DockApp: (10x1, Colorset 20, ActiveColorSet 19, PressColorSet 20, \
+    Frame 0)
+*DockApp: (38x1, Icon "images/icons/dock/thunderbird.png", \
     Action(Mouse 1) "Exec exec thunderbird"
-*DockApp: (1x1, Icon "images/icons/dock/google-chrome.png", \
+*DockApp: (10x1, Colorset 20, ActiveColorSet 19, PressColorSet 20, \
+    Frame 0)
+*DockApp: (38x1, Icon "images/icons/dock/google-chrome.png", \
     Action(Mouse 1) "Exec exec google-chrome-stable"
-*DockApp: (1x1, Icon "images/icons/dock/messages.png", \
+*DockApp: (10x1, Colorset 20, ActiveColorSet 19, PressColorSet 20, \
+    Frame 0)
+*DockApp: (38x1, Icon "images/icons/dock/messages.png", \
     Action(Mouse 1) \
     "Exec exec google-chrome --app-id=hpfldicfbfomlpcikngkocigghgafkph"
-*DockApp: (1x1, Icon "images/icons/dock/chat.png", \
+*DockApp: (10x1, Colorset 20, ActiveColorSet 19, PressColorSet 20, \
+    Frame 0)
+*DockApp: (38x1, Icon "images/icons/dock/chat.png", \
     Action(Mouse 1) \
     "Exec exec google-chrome --app-id=mdpkiolbdkhdjpekfbkbmhigcaggjagi"
-*DockApp: (1x1, Icon "images/icons/dock/audacious.png", \
+*DockApp: (10x1, Colorset 20, ActiveColorSet 19, PressColorSet 20, \
+    Frame 0)
+*DockApp: (38x1, Icon "images/icons/dock/audacious.png", \
     Action(Mouse 1) "Exec exec audacious"
-*DockApp: (1x1, Icon "images/icons/dock/jellyfin.png", \
+*DockApp: (10x1, Colorset 20, ActiveColorSet 19, PressColorSet 20, \
+    Frame 0)
+*DockApp: (38x1, Icon "images/icons/dock/jellyfin.png", \
     Action(Mouse 1) "Exec exec jellyfinmediaplayer"
-*DockApp: (1x1, Icon "images/icons/dock/easyeffects.png", \
+*DockApp: (10x1, Colorset 20, ActiveColorSet 19, PressColorSet 20, \
+    Frame 0)
+*DockApp: (38x1, Icon "images/icons/dock/easyeffects.png", \
     Action(Mouse 1) "Exec exec easyeffects"
-*DockApp: (1x1, Icon "images/icons/dock/transmission-remote-gtk.png", \
+*DockApp: (10x1, Colorset 20, ActiveColorSet 19, PressColorSet 20, \
+    Frame 0)
+*DockApp: (38x1, Icon "images/icons/dock/transmission-remote-gtk.png", \
     Action(Mouse 1) "Exec exec transmission-remote-gtk"
-*DockApp: (1x1, Icon "images/icons/dock/virt-manager.png", \
+*DockApp: (10x1, Colorset 20, ActiveColorSet 19, PressColorSet 20, \
+    Frame 0)
+*DockApp: (38x1, Icon "images/icons/dock/virt-manager.png", \
     Action(Mouse 1) "Exec exec virt-manager"
 
 # FvwmEvent
