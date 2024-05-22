@@ -1,4 +1,11 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-amixer get Master | grep \[[0-9]*%\] | sed '1q;d' | awk '{ print $5; }' | \
-    sed -E 's/\[|\]//g'
+muted=$(amixer get Master | grep \[[0-9]*%\] | sed '1q;d' | awk '{ print $6 }')
+
+if [ "$muted" == "[off]" ]; then
+    echo 'Muted'
+    exit
+else
+    amixer get Master | grep \[[0-9]*%\] | sed '1q;d' | awk '{ print $5 }' | \
+        sed -E 's/\[|\]//g' | sed 's/%//'
+fi

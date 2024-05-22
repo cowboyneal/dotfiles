@@ -58,18 +58,20 @@ AddToFunc   StartFunction
 + I Test (Init) Exec exec $[HOME]/bin/btconnect &
 + I Test (Init) Exec exec picom &
 + I Test (Init) InitBackground
+#+ I Module FvwmButtons SystemMonitor
 + I Module FvwmButtons IconManPager
 + I Module FvwmButtons DockApp
 + I Module FvwmEvent EventNewDesk
 + I Module FvwmMFL
 + I Test (Init) Exec exec polybar &
-+ I Test (Init) Exec exec conky &
 + I Test (Init) Exec exec xscreensaver --no-splash &
++ I Test (Init) Exec exec conky &
 #+ I Test (Init) Exec exec urxvt -geometry 80x24+15+40 &
 #+ I Test (Init) Exec exec urxvt -geometry 80x29+15+502 &
 
 DestroyFunc ExitFunction
 AddToFunc ExitFunction
+#+ I Exec exec pkill -U $[USER] conky
 + I Test (Quit) Exec exec pkill -U $[USER] dbus-daemon
 
 # Function to set background when fvwm starts
@@ -128,12 +130,17 @@ AddToFunc MaximizeRight
 
 DestroyFunc ChangeVolumeUp
 AddToFunc ChangeVolumeUp
-+ I Exec exec amixer -q set Master 2%+
++ I Exec exec amixer -q set Master unmute 2%+
 + I FvwmScript VolumeLevel
 
 DestroyFunc ChangeVolumeDown
 AddToFunc ChangeVolumeDown
-+ I Exec exec amixer -q set Master 2%-
++ I Exec exec amixer -q set Master unmute 2%-
++ I FvwmScript VolumeLevel
+
+DestroyFunc ChangeVolumeMute
+AddToFunc ChangeVolumeMute
++ I Exec exec amixer -q set Master toggle
 + I FvwmScript VolumeLevel
 
 # Function: ViewManPage $0
@@ -288,6 +295,8 @@ Style VolumeLevel !Title, PositionPlacement Center, Layer 6, !Handles, !Borders
 Style FvwmIdent   WindowListSkip
 Style IconManPager BorderColorset 4, !Title, !Handles, Sticky, WindowListSkip, \
       NeverFocus, StaysOnBottom
+Style SystemMonitor BorderColorset 4, !Title, !Handles, Sticky, WindowListSkip, \
+      NeverFocus, StaysOnBottom, ParentalRelativity
 Style DockApp     !Borders, !Title, !Handles, Sticky, WindowListSkip, \
       NeverFocus, StaysOnBottom
 Style dclock      BorderColorset 4, !Title, !Handles, Sticky, WindowListSkip, \
@@ -341,6 +350,7 @@ Style gnome-calculator    !Borders, !Title, !Handles
 #  17 - FvwmIconMan default
 #  18 - FvwmScript items default
 #  19 - DockApp default
+#  20 - IconManPager default
 ###########
 Colorset 0  fg white, bg MidnightBlue, hi grey30, sh black, Plain, NoShape
 Colorset 1  fg grey, bg #0c0c38, hi grey30, sh black, fgsh grey20, \
@@ -369,6 +379,8 @@ Colorset 17 Transparent, fg grey, hi grey30, sh black, NoShape
 Colorset 18 DGradient 128 2 MidnightBlue 50 indigo 25 grey15, \
             fg grey, hi grey30, sh black, NoShape
 Colorset 19 RootTransparent, Tint white 10, fg grey, hi grey30, \
+            sh black, NoShape
+Colorset 20 RootTransparent, Tint #191919 75, fg grey, hi grey30, \
             sh black, NoShape
 
 #######
@@ -657,6 +669,7 @@ Silent Key Page_Up A 4 ToUpperLeft
 Silent Key Page_Down A 4 ToLowerLeft
 Silent Key XF86AudioLowerVolume A N ChangeVolumeDown
 Silent Key XF86AudioRaiseVolume A N ChangeVolumeUp
+Silent Key XF86AudioMute A N ChangeVolumeMute
 
 # Window Buttons: [1 3 5 7 9  TTTTT  0 8 6 4 2]
 #   1 - Open the WindowOps menu.
@@ -683,7 +696,7 @@ Mouse 1	FS   A RaiseMove Resize
 Mouse 4	T    A WindowShade True
 Mouse 5	T    A WindowShade False
 Mouse 1	R    A Menu MenuFvwmRoot
-Mouse 2	R    A WindowList
+Mouse 2	R    A WindowList NoNumInDeskTitle
 Mouse 3	R    A Menu MenuWindowOpsLong
 Mouse 1	I    A RaiseMoveX Move "Iconify off"
 Mouse 3	T    A Menu MenuWindowOps
@@ -786,11 +799,20 @@ DestroyModuleConfig FvwmScript:*
 *FvwmScript: DefaultColorset 10
 *FvwmScript: Font "xft:Arial:size=10:antialias=True"
 
+# FvwmButtons - SystemMonitor
+DestroyModuleConfig SystemMonitor:*
+*SystemMonitor: Geometry 265x500-0+25
+*SystemMonitor: Colorset 20
+*SystemMonitor: Rows 1
+*SystemMonitor: Columns 1
+*SystemMonitor: Frame 0
+*SystemMonitor: (1x1, Swallow "Conky" "Exec conky", Frame 0)
+
 # FvwmButtons - IconManPager
 #
 DestroyModuleConfig IconManPager:*
 *IconManPager: Geometry 265x85-0-0
-*IconManPager: Colorset 10
+*IconManPager: Colorset 20
 *IconManPager: Rows 85 
 *IconManPager: Columns 265
 *IconManPager: Frame 0
@@ -808,7 +830,7 @@ DestroyModuleConfig IconManPager:*
 # This module displays the location of the windows on the various Pages
 # and Desks. This is setup to show only the Pages on the current Desk.
 DestroyModuleConfig FvwmPager:*
-*FvwmPager: Colorset * 10
+*FvwmPager: Colorset * 17
 *FvwmPager: HilightColorset * 13
 *FvwmPager: BalloonColorset * 10
 *FvwmPager: WindowColorsets 10 11

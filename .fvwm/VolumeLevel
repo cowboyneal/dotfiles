@@ -1,10 +1,36 @@
 WindowTitle {VolumeLevel}
-WindowSize 130 40
+WindowSize 130 170
 Font "xft:Arial:style=bold:size=14"
 Init
  Begin
-  Set $title = {Volume: } (GetOutput {/home/pater/bin/volume} 1 -1)
-  ChangeTitle 1 $title
+  Set $value = (GetOutput {/home/pater/bin/volume} 1 -1)
+  If $value=={Muted} Then
+    Begin
+      ChangeIcon 1 images/icons/volume/volume0.png
+      ChangeValue 2 0
+      ChangeTitle 3 $value
+    End
+  Else
+    Begin
+      Set $display = $value {%}
+      If $value>66 Then
+        Begin
+          ChangeIcon 1 images/icons/volume/volume3.png
+        End
+      Else
+      Begin
+        If $value>33 Then
+          Begin
+            ChangeIcon 1 images/icons/volume/volume2.png
+          End
+        Else
+          Begin
+            ChangeIcon 1 images/icons/volume/volume1.png
+          End
+      End
+      ChangeValue 2 $value
+      ChangeTitle 3 $display
+    End
  End
 
 PeriodicTasks
@@ -17,15 +43,47 @@ End
 
 Widget 1
 Property
-  Title {TITLE}
-  Size 130 40
-  Position 0 0
+  Colorset 17
+  Size 120 120
+  Position 5 0
   Type ItemDraw
-  Flags NoReliefString
+  Flags NoFocus
+  Icon images/icons/volume/volume3.png
+Main
+  Case message of
+    SingleClic:
+    Begin
+    End
+End
+
+Widget 2
+Property
+  Colorset 18
+  Size 120 15
+  Position 5 120
+  Type HDipstick
+  Flags NoFocus
+  Value 50
+  MinValue 0
+  MaxValue 100
+Main
+  Case message of
+    SingleClic:
+    Begin
+    End
+End
+
+Widget 3
+Property
+  Title { }
+  Colorset 17
+  Size 130 4
+  Position 0 140
+  Type ItemDraw
+  Flags NoReliefString NoFocus
 Main
  Case message of
   SingleClic:
   Begin
-   Quit
   End
 End
