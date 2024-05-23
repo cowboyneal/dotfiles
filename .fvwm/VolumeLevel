@@ -15,17 +15,24 @@ Init
       Set $display = $value {%}
       If $value>66 Then
         Begin
-          ChangeIcon 1 images/icons/volume/volume3.png
+          ChangeIcon 1 images/icons/volume/volume4.png
         End
       Else
       Begin
         If $value>33 Then
           Begin
-            ChangeIcon 1 images/icons/volume/volume2.png
+            ChangeIcon 1 images/icons/volume/volume3.png
           End
         Else
           Begin
-            ChangeIcon 1 images/icons/volume/volume1.png
+            If $value>0 Then
+              Begin
+                ChangeIcon 1 images/icons/volume/volume2.png
+              End
+            Else
+              Begin
+                ChangeIcon 1 images/icons/volume/volume1.png
+              End
           End
       End
       ChangeValue 2 $value
