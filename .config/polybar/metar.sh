@@ -63,7 +63,7 @@ temp_f=$(echo "$metar" | grep Temperature | awk '{ print $5 }')
 
 if [ -z "$NO_WIND" ]; then
     windspeed=$(echo "$metar" | grep "^Wind speed" | awk '{ print $3 }' \
-        | sed 's/0\.00//')
+        | sed 's/0\.00//' | sed 's/[Nn]one//')
     if [ -n "$USE_METRIC" ]; then
         [ -n "$windspeed" ] && windspeed=$(echo "$windspeed * 3.6" \
             | bc -l | sed -r 's/^([0-9]*\.[0-9])[0-9]*$/\1/')
