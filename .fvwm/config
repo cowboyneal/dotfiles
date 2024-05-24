@@ -349,8 +349,11 @@ Style gnome-calculator    !Borders, !Title, !Handles
 #  16 - Active Buttons Right of Title
 #  17 - FvwmIconMan default
 #  18 - FvwmScript items default
-#  19 - DockApp default
-#  20 - IconManPager default
+#  19 - IconManPager default
+#  20 - DockApp default
+#  21 - DockApp button
+#  22 - DockApp active button
+#  23 - DockApp pressed button
 ###########
 Colorset 0  fg white, bg MidnightBlue, hi grey30, sh black, Plain, NoShape
 Colorset 1  fg grey, bg #0c0c38, hi grey30, sh black, fgsh grey20, \
@@ -378,10 +381,16 @@ Colorset 16 fg white, bg #6464ff, hi grey30, sh black, fgsh, Plain, NoShape
 Colorset 17 Transparent, fg grey, hi grey30, sh black, NoShape
 Colorset 18 DGradient 128 2 MidnightBlue 50 indigo 25 grey15, \
             fg grey, hi grey30, sh black, NoShape
-Colorset 19 RootTransparent, Tint white 10, fg grey, hi grey30, \
+Colorset 19 RootTransparent, Tint #191919 75, fg grey, hi grey30, \
             sh black, NoShape
-Colorset 20 RootTransparent, Tint #191919 75, fg grey, hi grey30, \
-            sh black, NoShape
+Colorset 20 RootTransparent, fg grey, hi grey30, sh black
+Colorset 21 RootTransparent, Tint grey 20, \
+            fg grey, hi grey30, sh black, \
+            TiledShape "images/icons/dock/dockmask2.xpm"
+Colorset 22 fg white, bg #6464ff, hi grey30, sh black, fgsh grey20, \
+            Plain, AspectShape "images/icons/dock/dockmask.xpm"
+Colorset 23 fg white, bg #3232e0, hi grey30, sh black, fgsh grey20, \
+            Plain, AspectShape "images/icons/dock/dockmask.xpm"
 
 #######
 # 4: Menus
@@ -800,20 +809,11 @@ DestroyModuleConfig FvwmScript:*
 *FvwmScript: DefaultColorset 10
 *FvwmScript: Font "xft:Arial:size=10:antialias=True"
 
-# FvwmButtons - SystemMonitor
-DestroyModuleConfig SystemMonitor:*
-*SystemMonitor: Geometry 265x500-0+25
-*SystemMonitor: Colorset 20
-*SystemMonitor: Rows 1
-*SystemMonitor: Columns 1
-*SystemMonitor: Frame 0
-*SystemMonitor: (1x1, Swallow "Conky" "Exec conky", Frame 0)
-
 # FvwmButtons - IconManPager
 #
 DestroyModuleConfig IconManPager:*
 *IconManPager: Geometry 275x85-10-10
-*IconManPager: Colorset 20
+*IconManPager: Colorset 19
 *IconManPager: Rows 85 
 *IconManPager: Columns 275
 *IconManPager: Frame 0
@@ -876,65 +876,78 @@ DestroyModuleConfig FvwmIconMan:*
 
 DestroyModuleConfig  DockApp: *
 *DockApp: Geometry 614x38+653-10
-*DockApp: Colorset 19
-*DockApp: ActiveColorset 11
-*DockApp: PressColorset 11
-*DockApp: Frame 2
+*DockApp: Colorset 20 
+*DockApp: ActiveColorset 22 
+*DockApp: PressColorset 23
+*DockApp: Frame 0
 *DockApp: Padding 5 5
 *DockApp: Rows 1
 *DockApp: Columns 614
 *DockApp: (38x1, Icon "images/icons/dock/terminal.png", \
+    Colorset 21, \
     Action(Mouse 1) "Exec exec urxvt"
-*DockApp: (10x1, Colorset 20, ActiveColorSet 19, PressColorSet 20, \
+*DockApp: (10x1, Colorset 19, ActiveColorset 20, \
     Frame 0)
 *DockApp: (38x1, Icon "images/icons/dock/irssi.png", \
+    Colorset 21, \
     Action(Mouse 1) \
     "Exec exec urxvt -name irssi -e dtach -A /tmp/$[USER]-irssi irssi"
-*DockApp: (10x1, Colorset 20, ActiveColorSet 19, PressColorSet 20, \
+*DockApp: (10x1, Colorset 19, ActiveColorset 20, \
     Frame 0)
 *DockApp: (38x1, Icon "images/icons/dock/discord.png", \
+    Colorset 21, \
     Action(Mouse 1) "Exec exec discord"
-*DockApp: (10x1, Colorset 20, ActiveColorSet 19, PressColorSet 20, \
+*DockApp: (10x1, Colorset 19, ActiveColorset 20, \
     Frame 0)
 *DockApp: (38x1, Icon "images/icons/dock/gvim.png", \
+    Colorset 21, \
     Action(Mouse 1) "Exec exec gvim"
-*DockApp: (10x1, Colorset 20, ActiveColorSet 19, PressColorSet 20, \
+*DockApp: (10x1, Colorset 19, ActiveColorset 20, \
     Frame 0)
 *DockApp: (38x1, Icon "images/icons/dock/thunderbird.png", \
+    Colorset 21, \
     Action(Mouse 1) "Exec exec thunderbird"
-*DockApp: (10x1, Colorset 20, ActiveColorSet 19, PressColorSet 20, \
+*DockApp: (10x1, Colorset 19, ActiveColorset 20, \
     Frame 0)
 *DockApp: (38x1, Icon "images/icons/dock/google-chrome.png", \
+    Colorset 21, \
     Action(Mouse 1) "Exec exec google-chrome-stable"
-*DockApp: (10x1, Colorset 20, ActiveColorSet 19, PressColorSet 20, \
+*DockApp: (10x1, Colorset 19, ActiveColorset 20, \
     Frame 0)
 *DockApp: (38x1, Icon "images/icons/dock/messages.png", \
+    Colorset 21, \
     Action(Mouse 1) \
     "Exec exec google-chrome --app-id=hpfldicfbfomlpcikngkocigghgafkph"
-*DockApp: (10x1, Colorset 20, ActiveColorSet 19, PressColorSet 20, \
+*DockApp: (10x1, Colorset 19, ActiveColorset 20, \
     Frame 0)
 *DockApp: (38x1, Icon "images/icons/dock/chat.png", \
+    Colorset 21, \
     Action(Mouse 1) \
     "Exec exec google-chrome --app-id=mdpkiolbdkhdjpekfbkbmhigcaggjagi"
-*DockApp: (10x1, Colorset 20, ActiveColorSet 19, PressColorSet 20, \
+*DockApp: (10x1, Colorset 19, ActiveColorset 20, \
     Frame 0)
 *DockApp: (38x1, Icon "images/icons/dock/audacious.png", \
+    Colorset 21, \
     Action(Mouse 1) "Exec exec audacious"
-*DockApp: (10x1, Colorset 20, ActiveColorSet 19, PressColorSet 20, \
+*DockApp: (10x1, Colorset 19, ActiveColorset 20, \
     Frame 0)
 *DockApp: (38x1, Icon "images/icons/dock/jellyfin.png", \
+    Colorset 21, \
     Action(Mouse 1) "Exec exec jellyfinmediaplayer"
-*DockApp: (10x1, Colorset 20, ActiveColorSet 19, PressColorSet 20, \
+*DockApp: (10x1, Colorset 19, ActiveColorset 20, \
     Frame 0)
 *DockApp: (38x1, Icon "images/icons/dock/easyeffects.png", \
+    Colorset 21, \
     Action(Mouse 1) "Exec exec easyeffects"
-*DockApp: (10x1, Colorset 20, ActiveColorSet 19, PressColorSet 20, \
+*DockApp: (10x1, Colorset 19, ActiveColorset 20, \
     Frame 0)
 *DockApp: (38x1, Icon "images/icons/dock/transmission-remote-gtk.png", \
+    Colorset 21, \
     Action(Mouse 1) "Exec exec transmission-remote-gtk"
-*DockApp: (10x1, Colorset 20, ActiveColorSet 19, PressColorSet 20, \
+*DockApp: (10x1, Colorset 19, ActiveColorset 20, \
     Frame 0)
 *DockApp: (38x1, Icon "images/icons/dock/virt-manager.png", \
+    Colorset 21, \
     Action(Mouse 1) "Exec exec virt-manager"
 
 # FvwmEvent

@@ -45,12 +45,15 @@ real*foreground: #ffffff
 
 Xcursor.theme: jimmac
 
+! URxvt*iconFile:          /usr/share/pixmaps/urxvt.xpm
+URxvt*iconFile:          /home/pater/.fvwm/images/icons/dock/terminal.png
+URxvt*visualBell:        false
 URxvt*geometry:          80x24
-! URxvt*background:        black
-URxvt*foreground:        white
-URxvt*intensityStyles:   False
-! URxvt*font:              fixed
-URxvt*font:              xft:Deja Vu Sans Mono for Powerline:size=9.5
+URxvt*foreground:        grey
+URxvt*intensityStyles:   true 
+URxvt*font:              xft:Deja Vu Sans Mono:size=10, \
+                         xft:PowerLineSymbols:size=10
+! URxvt*font:              xft:Deja Vu Sans Mono:size=9.5
 URxvt*letterSpace:       -1
 URxvt*scrollBar_right:   true
 URxvt*scrollstyle:       plain
@@ -73,8 +76,8 @@ URxvt*color3:  #cdcd00
 URxvt*color4:  #0000cd
 URxvt*color5:  #cd00cd
 URxvt*color6:  #00cdcd
-URxvt*color7:  #cdcdcd
-URxvt*color8:  #5c5c5c
+URxvt*color7:  #e5e5e5
+URxvt*color8:  #7f7f7f
 URxvt*color9:  #ff0000
 URxvt*color10: #00ff00
 URxvt*color11: #ffff00
@@ -86,11 +89,13 @@ URxvt*color15: #ffffff
 mutt*loginShell:    false
 mutt*scrollBar:     false
 mutt*geometry:      80x50+15+15
-mutt*font:          xft:Deja Vu Sans Mono:size=8.5
+mutt*font:          xft:Deja Vu Sans Mono:size=10
+irssi*iconFile:     /home/pater/.icons/irssi-icon-1024x926-jxt8l9ip.png
 irssi*loginShell:   false
 irssi*scrollBar:    false
-irssi*geometry:     80x50+15+767
-irssi*font:         xft:Deja Vu Sans Mono:size=8.5
+! irssi*geometry:     80x50+15+767
+irssi*geometry:     80x55+10+45
+irssi*font:         xft:Deja Vu Sans Mono:size=10
 console*loginShell: false
 console*scrollBar:  false
 console*geometry:   167x6-212-0
@@ -110,7 +115,7 @@ XTerm*saveLines:      1024
 XTerm*loginShell:     true
 XTerm*scrollbar:      true
 
-Xft.dpi:       100
+! Xft.dpi:       100
 Xft.antialias: true
 Xft.rgba:      rgb
 Xft.hinting:   true
@@ -132,7 +137,7 @@ xosview*transparent:       False
 xosview*meterLabelColor:   SkyBlue
 xosview*background:        DarkBlue
 xosview*foreground:        white
-xosview*font:              xft:Deja Vu Sans Mono:bold:size=7
+! xosview*font:              xft:Deja Vu Sans Mono:bold:size=7
 xosview*loadProcColor:     SkyBlue
 xosview*loadIdleColor:     DarkBlue
 xosview*loadWarnColor:     SkyBlue1

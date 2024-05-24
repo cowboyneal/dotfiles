@@ -13,7 +13,7 @@ Init
   Else
     Begin
       Set $display = $value {%}
-      If $value>66 Then
+      If $value>65 Then
         Begin
           ChangeIcon 1 images/icons/volume/volume4.png
         End
