@@ -383,7 +383,7 @@ Colorset 18 DGradient 128 2 MidnightBlue 50 indigo 25 grey15, \
             fg grey, hi grey30, sh black, NoShape
 Colorset 19 RootTransparent, Tint #191919 75, fg grey, hi grey30, \
             sh black, NoShape
-Colorset 20 RootTransparent, fg grey, hi grey30, sh black
+Colorset 20 RootTransparent, fg grey, hi grey30, sh black, fgsh, NoShape
 Colorset 21 RootTransparent, Tint grey 20, \
             fg grey, hi grey30, sh black, \
             TiledShape "images/icons/dock/dockmask2.xpm"
@@ -886,65 +886,65 @@ DestroyModuleConfig  DockApp: *
 *DockApp: (38x1, Icon "images/icons/dock/terminal.png", \
     Colorset 21, \
     Action(Mouse 1) "Exec exec urxvt"
-*DockApp: (10x1, Colorset 19, ActiveColorset 20, \
+*DockApp: (10x1, ActiveColorset 20, \
     Frame 0)
 *DockApp: (38x1, Icon "images/icons/dock/irssi.png", \
     Colorset 21, \
     Action(Mouse 1) \
     "Exec exec urxvt -name irssi -e dtach -A /tmp/$[USER]-irssi irssi"
-*DockApp: (10x1, Colorset 19, ActiveColorset 20, \
+*DockApp: (10x1, ActiveColorset 20, \
     Frame 0)
 *DockApp: (38x1, Icon "images/icons/dock/discord.png", \
     Colorset 21, \
     Action(Mouse 1) "Exec exec discord"
-*DockApp: (10x1, Colorset 19, ActiveColorset 20, \
+*DockApp: (10x1, ActiveColorset 20, \
     Frame 0)
 *DockApp: (38x1, Icon "images/icons/dock/gvim.png", \
     Colorset 21, \
     Action(Mouse 1) "Exec exec gvim"
-*DockApp: (10x1, Colorset 19, ActiveColorset 20, \
+*DockApp: (10x1, ActiveColorset 20, \
     Frame 0)
 *DockApp: (38x1, Icon "images/icons/dock/thunderbird.png", \
     Colorset 21, \
     Action(Mouse 1) "Exec exec thunderbird"
-*DockApp: (10x1, Colorset 19, ActiveColorset 20, \
+*DockApp: (10x1, ActiveColorset 20, \
     Frame 0)
 *DockApp: (38x1, Icon "images/icons/dock/google-chrome.png", \
     Colorset 21, \
     Action(Mouse 1) "Exec exec google-chrome-stable"
-*DockApp: (10x1, Colorset 19, ActiveColorset 20, \
+*DockApp: (10x1, ActiveColorset 20, \
     Frame 0)
 *DockApp: (38x1, Icon "images/icons/dock/messages.png", \
     Colorset 21, \
     Action(Mouse 1) \
     "Exec exec google-chrome --app-id=hpfldicfbfomlpcikngkocigghgafkph"
-*DockApp: (10x1, Colorset 19, ActiveColorset 20, \
+*DockApp: (10x1, ActiveColorset 20, \
     Frame 0)
 *DockApp: (38x1, Icon "images/icons/dock/chat.png", \
     Colorset 21, \
     Action(Mouse 1) \
     "Exec exec google-chrome --app-id=mdpkiolbdkhdjpekfbkbmhigcaggjagi"
-*DockApp: (10x1, Colorset 19, ActiveColorset 20, \
+*DockApp: (10x1, ActiveColorset 20, \
     Frame 0)
 *DockApp: (38x1, Icon "images/icons/dock/audacious.png", \
     Colorset 21, \
     Action(Mouse 1) "Exec exec audacious"
-*DockApp: (10x1, Colorset 19, ActiveColorset 20, \
+*DockApp: (10x1, ActiveColorset 20, \
     Frame 0)
 *DockApp: (38x1, Icon "images/icons/dock/jellyfin.png", \
     Colorset 21, \
     Action(Mouse 1) "Exec exec jellyfinmediaplayer"
-*DockApp: (10x1, Colorset 19, ActiveColorset 20, \
+*DockApp: (10x1, ActiveColorset 20, \
     Frame 0)
 *DockApp: (38x1, Icon "images/icons/dock/easyeffects.png", \
     Colorset 21, \
     Action(Mouse 1) "Exec exec easyeffects"
-*DockApp: (10x1, Colorset 19, ActiveColorset 20, \
+*DockApp: (10x1, ActiveColorset 20, \
     Frame 0)
 *DockApp: (38x1, Icon "images/icons/dock/transmission-remote-gtk.png", \
     Colorset 21, \
     Action(Mouse 1) "Exec exec transmission-remote-gtk"
-*DockApp: (10x1, Colorset 19, ActiveColorset 20, \
+*DockApp: (10x1, ActiveColorset 20, \
     Frame 0)
 *DockApp: (38x1, Icon "images/icons/dock/virt-manager.png", \
     Colorset 21, \
