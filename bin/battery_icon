@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+batt_level=$(cat /sys/class/power_supply/BAT0/capacity)
+
+if [ $batt_level -ge 95 ]; then
+    printf ""
+elif [ $batt_level -ge 70 ]; then
+    printf ""
+elif [ $batt_level -ge 40 ]; then
+    printf ""
+elif [ $batt_level -ge 10 ]; then
+    printf ""
+else
+    printf ""
+fi
