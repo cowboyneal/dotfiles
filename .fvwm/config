@@ -29,7 +29,7 @@
 # that FvwmConsole uses. Change this to your terminal of choice
 InfoStoreAdd terminal urxvt
 
-ModulePath +:$[HOME]/.fvwm/modules
+#ModulePath +:$[HOME]/.fvwm/modules
 
 ###########
 # 1: Functions
@@ -64,8 +64,8 @@ AddToFunc   StartFunction
 + I Module FvwmEvent EventNewDesk
 + I Module FvwmMFL
 + I Test (Init) Exec exec polybar &
-+ I Test (Init) Exec exec xscreensaver --no-splash &
 + I Test (Init) Exec exec conky &
++ I Test (Init) Exec exec xscreensaver --no-splash &
 #+ I Test (Init) Exec exec urxvt -geometry 80x24+15+40 &
 #+ I Test (Init) Exec exec urxvt -geometry 80x29+15+502 &
 
@@ -77,8 +77,7 @@ AddToFunc ExitFunction
 # Function to set background when fvwm starts
 DestroyFunc InitBackground
 AddToFunc InitBackground
-+ I Test (f $[HOME]/.fehbg) \
-    Exec exec $[HOME]/.fehbg
++ I Test (f $[HOME]/.fehbg) Exec exec $[HOME]/.fehbg
 
 # Mouse Bindings Functions
 DestroyFunc RaiseMoveX
@@ -158,17 +157,17 @@ AddToFunc   ViewManPage
 # image and configure it to be loaded the next time fvwm is run.
 # Note, fvwm-root can't use .jpeg or resize images. Use something
 # like display, feh, etc.
-DestroyFunc SetBG
-AddToFunc   SetBG
-+ I Test (f $[FVWM_USERDIR]/images/background/$0) \
-    Exec exec fvwm-root $[FVWM_USERDIR]/images/background/$0
-+ I TestRc (Match) Exec exec ln -fs images/background/$0 \
-    $[FVWM_USERDIR]/.BGdefault
-+ I TestRc (Match) Break
-+ I Test (!f $[FVWM_DATADIR]/default-config/images/background/$0) Break
-+ I Exec exec fvwm-root $[FVWM_DATADIR]/default-config/images/background/$0
-+ I Exec exec ln -fs $[FVWM_DATADIR]/default-config/images/background/$0 \
-    $[FVWM_USERDIR]/.BGdefault
+#DestroyFunc SetBG
+#AddToFunc   SetBG
+#+ I Test (f $[FVWM_USERDIR]/images/background/$0) \
+#    Exec exec fvwm-root $[FVWM_USERDIR]/images/background/$0
+#+ I TestRc (Match) Exec exec ln -fs images/background/$0 \
+#    $[FVWM_USERDIR]/.BGdefault
+#+ I TestRc (Match) Break
+#+ I Test (!f $[FVWM_DATADIR]/default-config/images/background/$0) Break
+#+ I Exec exec fvwm-root $[FVWM_DATADIR]/default-config/images/background/$0
+#+ I Exec exec ln -fs $[FVWM_DATADIR]/default-config/images/background/$0 \
+#    $[FVWM_USERDIR]/.BGdefault
 
 # Function: IconManClick
 #
@@ -295,8 +294,8 @@ Style VolumeLevel !Title, PositionPlacement Center, Layer 6, !Handles, !Borders
 Style FvwmIdent   WindowListSkip
 Style IconManPager !Borders, !Title, !Handles, Sticky, WindowListSkip, \
       NeverFocus, StaysOnBottom
-Style SystemMonitor BorderColorset 4, !Title, !Handles, Sticky, WindowListSkip, \
-      NeverFocus, StaysOnBottom, ParentalRelativity
+Style SystemMonitor BorderColorset 4, !Title, !Handles, Sticky, \
+      WindowListSkip, NeverFocus, StaysOnBottom
 Style DockApp     !Borders, !Title, !Handles, Sticky, WindowListSkip, \
       NeverFocus, StaysOnBottom
 Style dclock      BorderColorset 4, !Title, !Handles, Sticky, WindowListSkip, \
@@ -310,7 +309,6 @@ Style polybar     !Borders, !Title, !Handles, Sticky, WindowListSkip, \
 Style Conky       !Borders, !Title, !Handles, Sticky, WindowListSkip, \
       NeverFocus, StaysOnBottom
 Style audacious           !Borders, !Title, !Handles, Sticky, Layer 4
-#Style audacious           !Borders, Title, !Handles, Sticky, Layer 4
 Style Google-chrome       !Borders, !Title, !Handles
 Style easyeffects         !Borders, !Title, !Handles
 Style eog                 !Borders, !Title, !Handles
@@ -320,6 +318,7 @@ Style evince              !Borders, !Title, !Handles
 Style dconf-editor        !Borders, !Title, !Handles
 Style gnome-screenshot    !Borders, !Title, !Handles
 Style gnome-calculator    !Borders, !Title, !Handles
+Style Foliate             !Borders, !Title, !Handles
 
 #######
 # 3: Colorsets
@@ -435,9 +434,6 @@ Test (x gnome-screenshot) + "Take Screenshot...%images/icons/wallpaper.png%" \
 #
 DestroyMenu MenuScreenSaver
 AddToMenu MenuScreenSaver "  XScreenSaver  " Title
-#Test (x xscreensaver-command) + "Stop" \
-#    Exec exec xscreensaver-command --exit
-#Test (x xscreensaver) + "Start" Exec exec xscreensaver --no-splash &
 Test (x xscreensaver-settings) + "Settings" Exec exec xscreensaver-settings
 Test (x xscreensaver-command) + "Activate" \
     Exec exec xscreensaver-command --activate
@@ -480,6 +476,7 @@ Test (x jellyfinmediaplayer) + "Jellyfin Media Player" \
     Exec exec jellyfinmediaplayer
 Test (x audacious) + "Audacious" Exec exec audacious
 Test (x easyeffects) + "Easy Effects" Exec exec easyeffects
+Test (x foliate) + "Foliate" Exec exec foliate
 Test (x audacity) + "Audacity" Exec exec audacity
 Test (x mkvtoolnix-gui) + "MKVToolNix" Exec exec mkvtoolnix-gui
 Test (x handbrake) + "HandBrake" Exec exec handbrake
@@ -693,7 +690,7 @@ Mouse 3 4 A Maximize 100 0
 Mouse 1 6 A Iconify
 Mouse 1 W M RaiseMoveX Move
 
-#   TitleBar: Click to Raise, Move, Double Click to Maximize
+#   TitleBar: Click to Raise, Move, Double Click to Shade 
 #             Mouse Wheel Up/Down to WindowShade On/Off
 #   Borders: Click to raise, Move to Resize
 #   Root Window: Left Click - Main Menu
@@ -703,8 +700,8 @@ Mouse 1 W M RaiseMoveX Move
 #Mouse 1	T    A RaiseMoveX Move Maximize
 Mouse 1	T    A RaiseMoveX Move WindowShade
 Mouse 1	FS   A RaiseMove Resize
-Mouse 4	T    A WindowShade True
-Mouse 5	T    A WindowShade False
+#Mouse 4	T    A WindowShade True
+#Mouse 5	T    A WindowShade False
 Mouse 1	R    A Menu MenuFvwmRoot
 Mouse 2	R    A WindowList NoNumInDeskTitle
 Mouse 3	R    A Menu MenuWindowOpsLong
@@ -722,51 +719,31 @@ Mouse 3 I    A Menu MenuIconOps
 #   4 - Maximize
 #   6 - Minimize
 ###########
-GeometryWindow Position 5p 35p
+GeometryWindow Position 10p 45p
 GeometryWindow Colorset 8
+BorderStyle    Simple
 TitleStyle     AllInactive -- Raised
 TitleStyle     AllActive -- Raised
-#ButtonStyle    All Simple -- UseTitleStyle
-ButtonStyle    All Simple -- Raised
-BorderStyle    Simple
 TitleStyle     LeftJustified Height MinHeight 25 -- Raised
 AddTitleStyle  Active HGradient 128 2 MidnightBlue 66 Indigo 33 #6464ff
 AddTitleStyle  Inactive HGradient 128 2 #0c0c38 66 #260041 33 MidnightBlue
 
-#ButtonStyle All ActiveUp Vector 5 15x15@4 15x85@3 85x85@3 85x15@3 \
-#                15x15@3 -- Flat
-#ButtonStyle All ToggledActiveUp Vector 5 15x15@4 15x85@3 85x85@3 \
-#                85x15@3 15x15@3 -- Flat
-#ButtonStyle All ActiveDown Vector 5 20x20@4 20x80@3 80x80@3 80x20@3 \
-#                20x20@3 -- Flat
-#ButtonStyle All ToggledActiveDown Vector 5 20x20@4 20x80@3 80x80@3 \
-#                80x20@3 20x20@3 -- Flat
-#ButtonStyle All ToggledInactive Vector 5 47x47@3 57x53@3 53x53@3 \
-#                53x47@3 47x47@3 -- Flat
-#ButtonStyle All Inactive Vector 5 47x47@3 57x53@3 53x53@3 53x47@3 \
-                47x47@3 -- Flat
-#AddButtonStyle 1 Active Vector 5 45x45@3 55x45@3 55x55@3 45x55@3 45x45@3
+ButtonStyle    All Simple -- Raised
 AddButtonStyle 1 Inactive Colorset 1
 AddButtonStyle 1 Vector 3 23x58@0 77x58@0 77x42@0
 AddButtonStyle 1 Vector 3 23x58@1 23x42@1 77x42@1
-#AddButtonStyle 2 Active Vector 4 35x35@3 65x65@3 65x35@4 35x65@3
 AddButtonStyle 2 Active Colorset 16
 AddButtonStyle 2 Inactive Colorset 15
 AddButtonStyle 2 Vector 7 25x65@1 35x75@0 50x59@0 65x75@0 75x65@0 \
                  59x50@0 75x35@0  
 AddButtonStyle 2 Vector 7 75x35@0 65x25@1 50x40@1 35x25@1 25x35@1 \
                  40x50@1 25x65@1
-#AddButtonStyle 4 Active Vector 8 30x70@3 30x30@3 70x30@3 70x70@3 30x70@3 \
-#                 30x50@4 50x50@3 50x70@3
-#AddButtonStyle 4 ToggledActiveUp Vector 8 30x70@3 30x30@3 70x30@3 70x70@3 \
-#                 30x70@3 50x30@4 50x50@3 70x50@3
 AddButtonStyle 4 Active Colorset 16
 AddButtonStyle 4 ToggledActive Colorset 16
 AddButtonStyle 4 Inactive Colorset 15
 AddButtonStyle 4 ToggledInactive Colorset 15
 AddButtonStyle 4 Vector 3 21x79@0 79x79@0 79x21@0
 AddButtonStyle 4 Vector 3 21x79@1 21x21@1 79x21@1
-#AddButtonStyle 6 Active Vector 5 35x60@3 65x60@3 65x50@3 35x50@3 35x60@3
 AddButtonStyle 6 Active Colorset 16
 AddButtonSTyle 6 Inactive Colorset 15
 AddButtonStyle 6 Vector 3 42x58@0 58x58@0 58x42@0
@@ -801,10 +778,6 @@ DestroyModuleConfig FvwmBanner:*
 #
 # FvwmScript is a module that allows one to write custom desktop
 # widgets and various other tools. This config uses two FvwmScripts.
-#   - DateTime - uses the output of "date" to display the date/time
-#     on the RightPanel.
-#   - Quit - This is a popup that asks for quit confirmation before
-#     quitting fvwm.
 DestroyModuleConfig FvwmScript:*
 *FvwmScript: DefaultColorset 10
 *FvwmScript: Font "xft:Arial:size=10:antialias=True"
