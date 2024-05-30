@@ -318,7 +318,7 @@ Style evince              !Borders, !Title, !Handles
 Style dconf-editor        !Borders, !Title, !Handles
 Style gnome-screenshot    !Borders, !Title, !Handles
 Style gnome-calculator    !Borders, !Title, !Handles
-Style Foliate             !Borders, !Title, !Handles
+Style *Foliate*           !Borders, !Title, !Handles
 
 #######
 # 3: Colorsets
@@ -339,7 +339,7 @@ Style Foliate             !Borders, !Title, !Handles
 #   8 - Menu - Title
 #   9 - Reserved
 #  10+ Modules
-#      10 - Module Default
+#      10 - Module Default / FvwmScript Default
 #      11 - Module Hilight
 #      12 - Module ActiveButton (Mouse Hover)
 #      13 - FvwmPager Active Page
@@ -382,10 +382,9 @@ Colorset 18 DGradient 128 2 MidnightBlue 50 indigo 25 grey15, \
             fg grey, hi grey30, sh black, NoShape
 Colorset 19 RootTransparent, Tint #191919 75, fg grey, hi grey30, \
             sh black, NoShape
-Colorset 20 RootTransparent, fg grey, hi grey30, sh black, fgsh, NoShape
-Colorset 21 RootTransparent, Tint grey 20, \
-            fg grey, hi grey30, sh black, \
+Colorset 20 RootTransparent, fg grey, hi grey30, sh black, fgsh, \
             TiledShape "images/icons/dock/dockmask2.xpm"
+Colorset 21 Transparent, Tint grey 20, fg grey, hi grey30, sh black
 Colorset 22 fg white, bg #6464ff, hi grey30, sh black, fgsh grey20, \
             Plain, AspectShape "images/icons/dock/dockmask.xpm"
 Colorset 23 fg white, bg #3232e0, hi grey30, sh black, fgsh grey20, \
