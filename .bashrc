@@ -251,7 +251,10 @@ alias 'du'='du -h'
 alias 'h'='history'
 alias 'j'='jobs -l'
 alias 'xon'='ssh -X'
-alias 'nuke'='kill -9'
+alias 'phup'='pkill -USR1'
+alias 'slay'='pkill'
+alias 'nuke'='pkill -9'
+alias 'pnuke'='kill -9'
 alias 'cdd'='cd "$OLDPWD"'
 alias 'psme'="ps x | $PAGER"
 alias 'pss'="ps aux | $PAGER"
@@ -310,13 +313,6 @@ if [[ "$UNAME" =~ BSD|Darwin ]]; then
 fi
 
 # Shell Functions, because copying tiny scripts sucks, amirite
-slay() { # What we used on Solaris because killall killed all procs
-    local p
-    for p in `ps ${bsd1}axc -o pid= -o command= | awk /"$1"/'{print $1}'`; do
-        kill $p
-    done
-}
-
 got() { # got <process name>?
     local proc=${1%\?}
     local pids=$( ps ${bsd1}axc -o pid= -o command= | awk /"$proc"/'{print $1}' )
