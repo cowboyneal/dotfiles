@@ -42,7 +42,7 @@ done
 if [ -n "$1" ]; then
     pymetarexes=(
         'pymetar'    # Debian
-        'pyemtar2.7' # NetBSD
+        'pymetar2.7' # NetBSD
         'pymet'      # OpenBSD
     )
 
