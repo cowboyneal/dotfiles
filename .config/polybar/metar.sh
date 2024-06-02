@@ -82,7 +82,7 @@ if [ -z "$NO_WIND" ]; then
     fi
 
     winddir=$(echo "$metar" | grep "^Wind dir" | awk '{ print $5 }' \
-        | sed -r 's/\(|\)//g' | sed 's/None//')
+        | sed -r 's/\(|\)//g' | sed 's/[Nn]one//')
 fi
 
 if [ -z "$NO_PRESSURE" ]; then
