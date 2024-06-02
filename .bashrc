@@ -196,27 +196,23 @@ if exists powerline-daemon && [[ ! "$TERM" =~ wsvt25|vt100|vt220|linux ]]; then
     POWERLINE_BASH_CONTINUATION="1"
     POWERLINE_BASH_SELECT="1"
 
-    case $UNAME in
-        Linux* )
-            if [ -e /usr/share/powerline/bindings/bash/powerline.sh ]; then
-                . /usr/share/powerline/bindings/bash/powerline.sh
-            elif [ -e /usr/share/powerline/bash/powerline.sh ]; then
-                . /usr/share/powerline/bash/powerline.sh
-            fi
-            ;;
-        FreeBSD* )
-            test -e /usr/local/lib/python3.9/site-packages/powerline/bindings/bash/powerline.sh && \
-                . /usr/local/lib/python3.9/site-packages/powerline/bindings/bash/powerline.sh
-            ;;
-        NetBSD* )
-            test -e /usr/pkg/lib/python3.11/site-packages/powerline/bindings/bash/powerline.sh && \
-                . /usr/pkg/lib/python3.11/site-packages/powerline/bindings/bash/powerline.sh
-            ;;
-        OpenBSD* )
-            test -e /usr/local/lib/python3.10/site-packages/powerline/bindings/bash/powerline.sh && \
-                . /usr/local/lib/python3.10/site-packages/powerline/bindings/bash/powerline.sh
-            ;;
-    esac
+    powerline_locs=(
+        "/usr/share/powerline/bindings"
+        "/usr/share/powerline"
+        "/usr/lib/python3.12/site-packages/powerline/bindings" # Void Linux
+        "/usr/local/lib/python3.9/site-packages/powerline/bindings"  # FreeBSD
+        "/usr/pkg/lib/python3.11/site-packages/powerline/bindings"   # NetBSD
+        "/usr/local/lib/python3.10/site-packages/powerline/bindings" # OpenBSD
+    )
+
+    for i in ${powerline_locs[@]}; do
+        i=$i"/bash/powerline.sh"
+
+        if [ -e "$i" ]; then
+            . "$i"
+            break
+        fi
+    done
 fi
 
 # Set aliases proper. Uncomment the following line to pull in more external
