@@ -410,7 +410,7 @@ AddToMenu   MenuFvwmRoot "Fvwm" Title
 + "&Programs%images/icons/apps.png%" Popup MenuPrograms
 #+ "XDG &Menu%images/icons/apps.png%" Popup XDGMenu
 + "Ur&xvt%images/icons/terminal.png%" Exec exec $[infostore.terminal]
-Test (x nautilus) + "Files" Exec exec nautilus
+Test (x nautilus) + "Files%images/icons/folder.png%" Exec exec nautilus
 + "Run Program...%images/icons/run_arrow.png%" \
   Module FvwmForm RunProgram
 Test (x gnome-screenshot) + "Take Screenshot...%images/icons/wallpaper.png%" \
@@ -490,7 +490,7 @@ Test (x $[HOME]/bin/btconnect) + "Reconnect AudioEngine B2" \
 DestroyMenu MenuGraphics
 AddToMenu MenuGraphics "  Graphics  " Title
 Test (x eog) + "Eye of Gnome" Exec exec eog
-Test (x gimp) + "Gimp" Exec exec gimp
+Test (x gimp) + "GIMP" Exec exec gimp
 Test (x darktable) + "Darktable" Exec exec darktable
 Test (x inkscape) + "Inkscape" Exec exec inkscape
 Test (x krita) + "Krita" Exec exec krita
