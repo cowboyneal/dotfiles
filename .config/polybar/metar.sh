@@ -3,33 +3,27 @@
 me=$(basename $0)
 DELIMITER='|'
 
-GETOPT=$(getopt -o 'h?cmwpsnd:' --long 'help,no-humidity,no-wind,no-glyphs' \
-    --long 'no-pressure,no-sky-conditions,use-metric,si,delimiter:' \
-    -n "$me" -- "$@")
-eval set -- "$GETOPT"
-unset GETOPT
-
 while true; do
     case "$1" in
-        '-h'|'-?'|'--help')
+        '-h'|'-?'|'-v'|'--help')
             cat << HELP_MESSAGE
 Usage: $me [OPTIONS] [--] <AIRPORT CODE>
 
-  -h, -?,    --help                 This message
-  -c,        --use-metric, --si     Use metric units
-  -m,        --no-humidity          Don't print humidity information
-  -w,        --no-wind              Don't print wind speed/direction
-  -p,        --no-pressure          Don't print atmospheric pressure
-  -s,        --no-sky-conditions    Don't print sky conditions
-  -n,        --no-glyphs            Don't print FontAwesome glyphs
-  -d <char>, --delimiter <char>     Use <char> as a delimiter instead of "|",
-                                    only works with glyphs turned off.
+  -h, -?, -v, --help                 This message
+  -c,         --use-metric, --si     Use metric units
+  -m,         --no-humidity          Don't print humidity information
+  -w,         --no-wind              Don't print wind speed/direction
+  -p,         --no-pressure          Don't print atmospheric pressure
+  -s,         --no-sky-conditions    Don't print sky conditions
+  -n,         --no-glyphs            Don't print FontAwesome glyphs
+  -d <char>,  --delimiter <char>     Use <char> as a delimiter instead of "|",
+                                     only works with glyphs turned off.
 
 An airport code for your local airport can be found at
 https://www.iata.org/en/publications/directories/code-search/
 
-If the glyphs are not showing up, make sure that you have Font Awesome 6
-Free installed. Some fonts may also override the Font Awesome glyphs.
+If the glyphs are not showing up, make sure that you have Font Awesome 6 Free
+installed. Some fonts may also override the Font Awesome glyphs.
 HELP_MESSAGE
             exit                                                            ;;
         '-c'|'--use-metric'|'--si') USE_METRIC=true;        shift; continue ;;
@@ -40,12 +34,27 @@ HELP_MESSAGE
         '-n'|'--no-glyphs')         NO_GLYPHS=true;         shift; continue ;;
         '-d'|'--delimiter')         DELIMITER=${2:0:1};   shift 2; continue ;;
         '--')                                               shift; break    ;;
+        -*)                         exec "$0" -h;                  exit     ;;
+        *)                                                         break    ;;
     esac
 done
 
 if [ -n "$1" ]; then
-    if [ -x "$(which pymetar)" ]; then
-        metar=$(pymetar "$1")
+    pymetarexes=(
+        'pymetar'    # Debian
+        'pyemtar2.7' # NetBSD
+        'pymet'      # OpenBSD
+    )
+
+    for n in ${pymetarexes[@]}; do
+        if [ -x "$(which $n)" ]; then
+            pymetarexe="$n"
+            break
+        fi
+    done
+
+    if [ -n "$pymetarexe" ]; then
+        metar=$($pymetarexe "$1")
     else
         echo "Missing pymetar! Please install the python3-pymetar package."
         exit
