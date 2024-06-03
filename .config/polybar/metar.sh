@@ -47,7 +47,9 @@ if [ -n "$1" ]; then
     )
 
     for n in ${pymetarexes[@]}; do
-        if [ -x "$(which $n)" ]; then
+        type "$n" > /dev/null 2>&1
+
+        if [ $? -eq 0 ]; then
             pymetarexe="$n"
             break
         fi
