@@ -58,14 +58,16 @@ AddToFunc   StartFunction
 + I Test (Init) Exec exec $[HOME]/bin/btconnect &
 + I Test (Init) Exec exec picom &
 + I Test (Init) InitBackground
-#+ I Module FvwmButtons SystemMonitor
 + I Module FvwmButtons IconManPager
 + I Module FvwmButtons DockApp
-+ I Module FvwmEvent EventNewDesk
++ I Module FvwmButtons DockAppIndicator
++ I Module FvwmEvent DockAppWindowAddedEvent
++ I Module FvwmEvent DockAppWindowDestroyedEvent
 + I Module FvwmMFL
 + I Test (Init) Exec exec polybar &
 + I Test (Init) Exec exec conky &
 + I Test (Init) Exec exec xscreensaver --no-splash &
++ I Schedule 1000 DockAppInit
 #+ I Test (Init) Exec exec urxvt -geometry 80x24+15+40 &
 #+ I Test (Init) Exec exec urxvt -geometry 80x29+15+502 &
 
@@ -130,16 +132,25 @@ AddToFunc MaximizeRight
 DestroyFunc ChangeVolumeUp
 AddToFunc ChangeVolumeUp
 + I Exec exec amixer -q set Master unmute 2%+
+#+ I Any (VolumeLevel)
+#+ I TestRc (NoMatch) None (VolumeLevel) FvwmScript VolumeLevel
+#+ I SendToModule VolumeLevel reset
 + I FvwmScript VolumeLevel
 
 DestroyFunc ChangeVolumeDown
 AddToFunc ChangeVolumeDown
 + I Exec exec amixer -q set Master unmute 2%-
+#+ I Any (VolumeLevel)
+#+ I TestRc (NoMatch) None (VolumeLevel) FvwmScript VolumeLevel
+#+ I SendToModule VolumeLevel reset
 + I FvwmScript VolumeLevel
 
 DestroyFunc ChangeVolumeMute
 AddToFunc ChangeVolumeMute
 + I Exec exec amixer -q set Master toggle
+#+ I Any (VolumeLevel)
+#+ I TestRc (NoMatch) None (VolumeLevel) FvwmScript VolumeLevel
+#+ I SendToModule VolumeLevel reset
 + I FvwmScript VolumeLevel
 
 # Function: ViewManPage $0
@@ -192,18 +203,6 @@ AddToFunc   ToggleTitle
 + I TestRc (Match) Break
 + I WindowStyle !Title
 + I State 1 True
-
-# Function: ChangeDesk
-#
-# This function is called by FvwmEvent every time the Desk is changed.
-#DestroyFunc ChangeDesk
-#AddToFunc   ChangeDesk
-#+ I SendToModule FvwmButtons ChangeButton desk0 Colorset 10
-#+ I SendToModule FvwmButtons ChangeButton desk1 Colorset 10
-#+ I SendToModule FvwmButtons ChangeButton desk2 Colorset 10
-#+ I SendToModule FvwmButtons ChangeButton desk3 Colorset 10
-#+ I SendToModule FvwmButtons ChangeButton desk$0 Colorset 11
-
 
 #############
 # 2: Styles #
@@ -298,6 +297,8 @@ Style SystemMonitor BorderColorset 4, !Title, !Handles, Sticky, \
       WindowListSkip, NeverFocus, StaysOnBottom
 Style DockApp     !Borders, !Title, !Handles, Sticky, WindowListSkip, \
       NeverFocus, StaysOnBottom
+Style DockAppIndicator !Borders, !Title, !Handles, Sticky, WindowListSkip, \
+      NeverFocus, StaysOnBottom
 Style dclock      BorderColorset 4, !Title, !Handles, Sticky, WindowListSkip, \
       NeverFocus, StaysOnBottom
 Style console     BorderColorset 4, !Title, !Handles, Sticky, WindowListSkip, \
@@ -319,6 +320,7 @@ Style dconf-editor        !Borders, !Title, !Handles
 Style gnome-screenshot    !Borders, !Title, !Handles
 Style gnome-calculator    !Borders, !Title, !Handles
 Style *Foliate*           !Borders, !Title, !Handles
+Style cheese              !Borders, !Title, !Handles
 
 #######
 # 3: Colorsets
@@ -353,6 +355,8 @@ Style *Foliate*           !Borders, !Title, !Handles
 #  21 - DockApp button
 #  22 - DockApp active button
 #  23 - DockApp pressed button
+#  24 - DockAppIndicator off
+#  25 - DockAppIndicator on
 ###########
 Colorset 0  fg white, bg MidnightBlue, hi grey30, sh black, Plain, NoShape
 Colorset 1  fg grey, bg #0c0c38, hi grey30, sh black, fgsh grey20, \
@@ -384,11 +388,15 @@ Colorset 19 RootTransparent, Tint #191919 75, fg grey, hi grey30, \
             sh black, NoShape
 Colorset 20 RootTransparent, fg grey, hi grey30, sh black, fgsh, \
             TiledShape "images/icons/dock/dockmask2.xpm"
-Colorset 21 Transparent, Tint grey 20, fg grey, hi grey30, sh black
-Colorset 22 fg white, bg #6464ff, hi grey30, sh black, fgsh grey20, \
-            Plain, AspectShape "images/icons/dock/dockmask.xpm"
-Colorset 23 fg white, bg #3232e0, hi grey30, sh black, fgsh grey20, \
-            Plain, AspectShape "images/icons/dock/dockmask.xpm"
+Colorset 21 Transparent, Tint grey 20, fg grey, hi grey30, sh black, fgsh
+Colorset 22 Transparent, Tint #6464ff 50, fg white, hi grey30, sh black, \
+            fgsh grey20, Shape "images/icons/dock/dockmask.xpm"
+Colorset 23 Transparent, Tint #3232e0 50, fg white, hi grey30, sh black, \
+            fgsh grey20, Shape "images/icons/dock/dockmask.xpm"
+Colorset 24 RootTransparent, fg grey, hi grey30, sh black, fgsh, \
+            TiledShape "images/icons/dock/dockmask3.xpm"
+Colorset 25 Transparent, Tint #3232e0 50, fg white, hi grey30, sh black, \
+            fgsh grey20, Shape "images/icons/dock/dockmask4.xpm"
 
 #######
 # 4: Menus
@@ -846,90 +854,155 @@ DestroyModuleConfig FvwmIconMan:*
 *FvwmIconMan: Tips always
 *FvwmIconMan: Sort id
 
-DestroyModuleConfig  DockApp: *
+DestroyFunc DockAppInit
+AddToFunc   DockAppInit
++ I Any ("urxvt") SendToModule DockAppIndicator ChangeButton "urxvt" Colorset 25
++ I Any ("irssi") SendToModule DockAppIndicator ChangeButton "irssi" Colorset 25
++ I Any ("discord") SendToModule \
+    DockAppIndicator ChangeButton "discord" Colorset 25
++ I Any ("Gvim") SendToModule DockAppIndicator ChangeButton "Gvim" Colorset 25
++ I Any ("thunderbird-default") SendToModule \
+    DockAppIndicator ChangeButton "thunderbird-default" Colorset 25
++ I Any ("google-chrome") SendToModule \
+    DockAppIndicator ChangeButton "google-chrome" Colorset 25
++ I Any ("crx_hpfldicfbfomlpcikngkocigghgafkph") SendToModule \
+    DockAppIndicator ChangeButton "crx_hpfldicfbfomlpcikngkocigghgafkph" Colorset 25
++ I Any ("crx_mdpkiolbdkhdjpekfbkbmhigcaggjagi") SendToModule \
+    DockAppIndicator ChangeButton "crx_mdpkiolbdkhdjpekfbkbmhigcaggjagi" Colorset 25
++ I Any ("Audacious") SendToModule \
+    DockAppIndicator ChangeButton "Audacious" Colorset 25
++ I Any ("jellyfinmediaplayer") SendToModule \
+    DockAppIndicator ChangeButton "jellyfinmediaplayer" Colorset 25
++ I Any ("easyeffects") SendToModule \
+    DockAppIndicator ChangeButton "easyeffects" Colorset 25
++ I Any ("transmission-remote-gtk") SendToModule \
+    DockAppIndicator ChangeButton "transmission-remote-gtk" Colorset 25
++ I Any ("virt-manager") SendToModule \
+    DockAppIndicator ChangeButton "virt-manager" Colorset 25
+
+DestroyFunc LaunchApplication
+AddToFunc   LaunchApplication
++ I Next ($0, CurrentDesk, CirculateHit) FlipFocus
++ I TestRc (Match) Break
++ I None ($0, CurrentDesk) Exec exec $[1-]
+
+DestroyModuleConfig  DockApp:*
 *DockApp: Geometry 614x38+653-10
 *DockApp: Colorset 20 
 *DockApp: ActiveColorset 22 
 *DockApp: PressColorset 23
 *DockApp: Frame 0
 *DockApp: Padding 5 5
-*DockApp: Rows 1
+*DockApp: Rows 38
 *DockApp: Columns 614
-*DockApp: (38x1, Icon "images/icons/dock/terminal.png", \
+*DockApp: (38x38, Icon "images/icons/dock/terminal.png", \
     Colorset 21, \
     Action(Mouse 1) "Exec exec urxvt"
-*DockApp: (10x1, ActiveColorset 20, \
-    Frame 0)
-*DockApp: (38x1, Icon "images/icons/dock/irssi.png", \
+*DockApp: (10x38, ActiveColorset 20, Frame 0)
+*DockApp: (38x38, Icon "images/icons/dock/irssi.png", \
     Colorset 21, \
     Action(Mouse 1) \
-    "Exec exec urxvt -name irssi -e dtach -A /tmp/$[USER]-irssi irssi"
-*DockApp: (10x1, ActiveColorset 20, \
-    Frame 0)
-*DockApp: (38x1, Icon "images/icons/dock/discord.png", \
+    "LaunchApplication irssi urxvt -name irssi -e dtach -A /tmp/$[USER]-irssi irssi"
+*DockApp: (10x38, ActiveColorset 20, Frame 0)
+*DockApp: (38x38, Icon "images/icons/dock/discord.png", \
     Colorset 21, \
-    Action(Mouse 1) "Exec exec discord"
-*DockApp: (10x1, ActiveColorset 20, \
-    Frame 0)
-*DockApp: (38x1, Icon "images/icons/dock/gvim.png", \
+    Action(Mouse 1) "LaunchApplication discord discord"
+*DockApp: (10x38, ActiveColorset 20, Frame 0)
+*DockApp: (38x38, Icon "images/icons/dock/gvim.png", \
     Colorset 21, \
-    Action(Mouse 1) "Exec exec gvim"
-*DockApp: (10x1, ActiveColorset 20, \
-    Frame 0)
-*DockApp: (38x1, Icon "images/icons/dock/thunderbird.png", \
+    Action(Mouse 1) "LaunchApplication Gvim gvim"
+*DockApp: (10x38, ActiveColorset 20, Frame 0)
+*DockApp: (38x38, Icon "images/icons/dock/thunderbird.png", \
     Colorset 21, \
-    Action(Mouse 1) "Exec exec thunderbird"
-*DockApp: (10x1, ActiveColorset 20, \
-    Frame 0)
-*DockApp: (38x1, Icon "images/icons/dock/google-chrome.png", \
+    Action(Mouse 1) "LaunchApplication thunderbird-default thunderbird"
+*DockApp: (10x38, ActiveColorset 20, Frame 0)
+*DockApp: (38x38, Icon "images/icons/dock/google-chrome.png", \
     Colorset 21, \
-    Action(Mouse 1) "Exec exec google-chrome-stable"
-*DockApp: (10x1, ActiveColorset 20, \
-    Frame 0)
-*DockApp: (38x1, Icon "images/icons/dock/messages.png", \
+    Action(Mouse 1) "LaunchApplication google-chrome google-chrome-stable"
+*DockApp: (10x38, ActiveColorset 20, Frame 0)
+*DockApp: (38x38, Icon "images/icons/dock/messages.png", \
     Colorset 21, \
     Action(Mouse 1) \
-    "Exec exec google-chrome --app-id=hpfldicfbfomlpcikngkocigghgafkph"
-*DockApp: (10x1, ActiveColorset 20, \
-    Frame 0)
-*DockApp: (38x1, Icon "images/icons/dock/chat.png", \
+    "LaunchApplication crx_hpfldicfbfomlpcikngkocigghgafkph google-chrome --app-id=hpfldicfbfomlpcikngkocigghgafkph"
+*DockApp: (10x38, ActiveColorset 20, Frame 0)
+*DockApp: (38x38, Icon "images/icons/dock/chat.png", \
     Colorset 21, \
     Action(Mouse 1) \
-    "Exec exec google-chrome --app-id=mdpkiolbdkhdjpekfbkbmhigcaggjagi"
-*DockApp: (10x1, ActiveColorset 20, \
-    Frame 0)
-*DockApp: (38x1, Icon "images/icons/dock/audacious.png", \
+    "LaunchApplication crx_mdpkiolbdkhdjpekfbkbmhigcaggjagi google-chrome --app-id=mdpkiolbdkhdjpekfbkbmhigcaggjagi"
+*DockApp: (10x38, ActiveColorset 20, Frame 0)
+*DockApp: (38x38, Icon "images/icons/dock/audacious.png", \
     Colorset 21, \
-    Action(Mouse 1) "Exec exec audacious"
-*DockApp: (10x1, ActiveColorset 20, \
-    Frame 0)
-*DockApp: (38x1, Icon "images/icons/dock/jellyfin.png", \
+    Action(Mouse 1) "LaunchApplication Audacious audacious"
+*DockApp: (10x38, ActiveColorset 20, Frame 0)
+*DockApp: (38x38, Icon "images/icons/dock/jellyfin.png", \
     Colorset 21, \
-    Action(Mouse 1) "Exec exec jellyfinmediaplayer"
-*DockApp: (10x1, ActiveColorset 20, \
-    Frame 0)
-*DockApp: (38x1, Icon "images/icons/dock/easyeffects.png", \
+    Action(Mouse 1) "LaunchApplication jellyfinmediaplayer jellyfinmediaplayer"
+*DockApp: (10x38, ActiveColorset 20, Frame 0)
+*DockApp: (38x38, Icon "images/icons/dock/easyeffects.png", \
     Colorset 21, \
-    Action(Mouse 1) "Exec exec easyeffects"
-*DockApp: (10x1, ActiveColorset 20, \
-    Frame 0)
-*DockApp: (38x1, Icon "images/icons/dock/transmission-remote-gtk.png", \
+    Action(Mouse 1) "LaunchApplication easyeffects easyeffects"
+*DockApp: (10x38, ActiveColorset 20, Frame 0)
+*DockApp: (38x38, Icon "images/icons/dock/transmission-remote-gtk.png", \
     Colorset 21, \
-    Action(Mouse 1) "Exec exec transmission-remote-gtk"
-*DockApp: (10x1, ActiveColorset 20, \
-    Frame 0)
-*DockApp: (38x1, Icon "images/icons/dock/virt-manager.png", \
+    Action(Mouse 1) \
+    "LaunchApplication transmission-remote-gtk transmission-remote-gtk"
+*DockApp: (10x38, ActiveColorset 20, Frame 0)
+*DockApp: (38x38, Icon "images/icons/dock/virt-manager.png", \
     Colorset 21, \
     Action(Mouse 1) "Exec exec virt-manager"
 
+DestroyModuleConfig DockAppIndicator:*
+*DockAppIndicator: Geometry 614x5+653-0
+*DockAppIndicator: Colorset 24
+*DockAppIndicator: Frame 0
+*DockAppIndicator: Rows 5
+*DockAppIndicator: Columns 614
+*DockAppIndicator: (38x5, Id "urxvt", Frame 0)
+*DockAppIndicator: (10x5, Frame 0)
+*DockAppIndicator: (38x5, Id "irssi", Frame 0)
+*DockAppIndicator: (10x5, Frame 0)
+*DockAppIndicator: (38x5, Id "discord", Frame 0)
+*DockAppIndicator: (10x5, Frame 0)
+*DockAppIndicator: (38x5, Id "Gvim", Frame 0)
+*DockAppIndicator: (10x5, Frame 0)
+*DockAppIndicator: (38x5, Id "thunderbird-default", Frame 0)
+*DockAppIndicator: (10x5, Frame 0)
+*DockAppIndicator: (38x5, Id "google-chrome", Frame 0)
+*DockAppIndicator: (10x5, Frame 0)
+*DockAppIndicator: (38x5, Id "crx_hpfldicfbfomlpcikngkocigghgafkph", Frame 0)
+*DockAppIndicator: (10x5, Frame 0)
+*DockAppIndicator: (38x5, Id "crx_mdpkiolbdkhdjpekfbkbmhigcaggjagi", Frame 0)
+*DockAppIndicator: (10x5, Frame 0)
+*DockAppIndicator: (38x5, Id "Audacious", Frame 0)
+*DockAppIndicator: (10x5, Frame 0)
+*DockAppIndicator: (38x5, Id "jellyfinmediaplayer", Frame 0)
+*DockAppIndicator: (10x5, Frame 0)
+*DockAppIndicator: (38x5, Id "easyeffects", Frame 0)
+*DockAppIndicator: (10x5, Frame 0)
+*DockAppIndicator: (38x5, Id "transmission-remote-gtk", Frame 0)
+*DockAppIndicator: (10x5, Frame 0)
+*DockAppIndicator: (38x5, Id "virt-manager", Frame 0)
+
+DestroyFunc DockAppWindowAdded
+AddToFunc   DockAppWindowAdded
++ I Silent SendToModule DockAppIndicator ChangeButton $[w.resource] Colorset 25
+
+DestroyFunc DockAppWindowDestroyed
+AddToFunc   DockAppWindowDestroyed
++ I None ($[w.resource]) Silent SendToModule \
+    DockAppIndicator ChangeButton $[w.resource] Colorset 24
+
 # FvwmEvent
 #
-# FvwmEvent is a module that can run an action or function
-# on specific events. This instance changes which desk number
-# is highlighted when the desk is changed.
-DestroyModuleConfig EventNewDesk:*
-*EventNewDesk: PassID
-*EventNewDesk: new_desk ChangeDesk
+DestroyModuleConfig DockAppWindowAddedEvent:*
+*DockAppWindowAddedEvent: PassID
+*DockAppWindowAddedEvent: Cmd Function
+*DockAppWindowAddedEvent: add_window DockAppWindowAdded
+
+DestroyModuleConfig DockAppWindowDestroyedEvent:*
+*DockAppWindowDestroyedEvent: PassID
+*DockAppWindowDestroyedEvent: Cmd Function
+*DockAppWindowDestroyedEvent: destroy_window DockAppWindowDestroyed
 
 # FvwmForm
 #
