@@ -60,7 +60,6 @@ AddToFunc   StartFunction
 + I Test (Init) InitBackground
 + I Module FvwmButtons IconManPager
 + I Module FvwmButtons DockApp
-+ I Module FvwmButtons DockAppIndicator
 + I Module FvwmEvent DockAppWindowAddedEvent
 + I Module FvwmEvent DockAppWindowDestroyedEvent
 + I Module FvwmMFL
@@ -297,8 +296,6 @@ Style SystemMonitor BorderColorset 4, !Title, !Handles, Sticky, \
       WindowListSkip, NeverFocus, StaysOnBottom
 Style DockApp     !Borders, !Title, !Handles, Sticky, WindowListSkip, \
       NeverFocus, StaysOnBottom
-Style DockAppIndicator !Borders, !Title, !Handles, Sticky, WindowListSkip, \
-      NeverFocus, StaysOnBottom
 Style dclock      BorderColorset 4, !Title, !Handles, Sticky, WindowListSkip, \
       NeverFocus, StaysOnBottom
 Style console     BorderColorset 4, !Title, !Handles, Sticky, WindowListSkip, \
@@ -309,18 +306,19 @@ Style polybar     !Borders, !Title, !Handles, Sticky, WindowListSkip, \
       NeverFocus, StaysOnBottom
 Style Conky       !Borders, !Title, !Handles, Sticky, WindowListSkip, \
       NeverFocus, StaysOnBottom
-Style audacious           !Borders, !Title, !Handles, Sticky, Layer 4
-Style Google-chrome       !Borders, !Title, !Handles
-Style easyeffects         !Borders, !Title, !Handles
-Style eog                 !Borders, !Title, !Handles
-Style gnome-sudoku        !Borders, !Title, !Handles
-Style org.gnome.Nautilus  !Borders, !Title, !Handles
-Style evince              !Borders, !Title, !Handles
-Style dconf-editor        !Borders, !Title, !Handles
-Style gnome-screenshot    !Borders, !Title, !Handles
-Style gnome-calculator    !Borders, !Title, !Handles
-Style *Foliate*           !Borders, !Title, !Handles
-Style cheese              !Borders, !Title, !Handles
+Style audacious             !Borders, !Title, !Handles, Sticky, Layer 4
+Style Google-chrome         !Borders, !Title, !Handles
+Style easyeffects           !Borders, !Title, !Handles
+Style eog                   !Borders, !Title, !Handles
+Style gnome-sudoku          !Borders, !Title, !Handles
+Style gnome-mahjongg        !Borders, !Title, !Handles
+Style org.gnome.Nautilus    !Borders, !Title, !Handles
+Style evince                !Borders, !Title, !Handles
+Style dconf-editor          !Borders, !Title, !Handles
+Style gnome-screenshot      !Borders, !Title, !Handles
+Style gnome-calculator      !Borders, !Title, !Handles
+Style *Foliate*             !Borders, !Title, !Handles
+Style cheese                !Borders, !Title, !Handles
 
 #######
 # 3: Colorsets
@@ -351,12 +349,13 @@ Style cheese              !Borders, !Title, !Handles
 #  17 - FvwmIconMan default
 #  18 - FvwmScript items default
 #  19 - IconManPager default
-#  20 - DockApp default
-#  21 - DockApp button
-#  22 - DockApp active button
-#  23 - DockApp pressed button
+#  20 - DockAppButtons default
+#  21 - DockAppButtons button
+#  22 - DockAppButtons active button
+#  23 - DockAppButtons pressed button
 #  24 - DockAppIndicator off
 #  25 - DockAppIndicator on
+#  26 - DockApp default
 ###########
 Colorset 0  fg white, bg MidnightBlue, hi grey30, sh black, Plain, NoShape
 Colorset 1  fg grey, bg #0c0c38, hi grey30, sh black, fgsh grey20, \
@@ -397,6 +396,7 @@ Colorset 24 RootTransparent, fg grey, hi grey30, sh black, fgsh, \
             TiledShape "images/icons/dock/dockmask3.xpm"
 Colorset 25 Transparent, Tint #3232e0 50, fg white, hi grey30, sh black, \
             fgsh grey20, Shape "images/icons/dock/dockmask4.xpm"
+Colorset 26 RootTransparent, fg white, hi grey30, sh black, fgsh grey20, NoShape
 
 #######
 # 4: Menus
@@ -463,6 +463,7 @@ Test (x gvim) + "Vim" Exec exec gvim
 Test (x gnome-calculator) + "Calculator" Exec exec gnome-calculator
 Test (x virt-manager) + "QEMU" Exec exec virt-manager
 Test (x CubicSDR) + "CubicSDR" Exec exec CubicSDR
+Test (x sc-im) + "SC-IM" Exec exec $[infostore.terminal] -name sc-im -e sc-im
 
 # Google Menu
 #
@@ -509,6 +510,7 @@ Test (x display) + "ImageMagick" Exec exec display
 DestroyMenu MenuGames
 AddToMenu MenuGames "  Games  " Title
 Test (x gnome-sudoku) + "Sudoku" Exec exec gnome-sudoku
+Test (x gnome-mahjongg) + "Mahjongg" Exec exec gnome-mahjongg
 Test (x sol) + "Solitaire" Exec exec sol
 Test (x pcsxr) + "PCSXR" Exec exec pcsxr
 + "PCSX2" Exec exec flatpak run net.pcsx2.PCSX2
@@ -669,10 +671,10 @@ Silent Key F2 A M Menu MenuFvwmRoot
 Silent Key Menu A A Menu MenuFvwmRoot
 Silent Key Tab A M WindowList Root c c NoNumInDeskTitle, NoDeskSort, \
     SelectOnRelease Meta_L
-Silent Key Up A 4    GotoPage 0p -1p
-Silent Key Down A 4  GotoPage 0p +1p
-Silent Key Left A 4  GotoPage -1p 0p
-Silent Key Right A 4 GotoPage +1p 0p
+Silent Key Up A 4    GotoPage wrapy 0p -1p
+Silent Key Down A 4  GotoPage wrapy 0p +1p
+Silent Key Left A 4  GotoPage wrapx -1p 0p
+Silent Key Right A 4 GotoPage wrapx +1p 0p
 Silent Key Space A 4 FvwmForm RunProgram
 Silent Key Space A M FvwmForm RunProgram
 #Silent Key Super_R A A Exec exec $[infostore.terminal]
@@ -861,8 +863,8 @@ AddToFunc   DockAppInit
 + I Any ("discord") SendToModule \
     DockAppIndicator ChangeButton "discord" Colorset 25
 + I Any ("Gvim") SendToModule DockAppIndicator ChangeButton "Gvim" Colorset 25
-+ I Any ("thunderbird-default") SendToModule \
-    DockAppIndicator ChangeButton "thunderbird-default" Colorset 25
++ I Any ("Mail") SendToModule \
+    DockAppIndicator ChangeButton "Mail" Colorset 25
 + I Any ("google-chrome") SendToModule \
     DockAppIndicator ChangeButton "google-chrome" Colorset 25
 + I Any ("crx_hpfldicfbfomlpcikngkocigghgafkph") SendToModule \
@@ -882,77 +884,81 @@ AddToFunc   DockAppInit
 
 DestroyFunc LaunchApplication
 AddToFunc   LaunchApplication
++ I Next ($0, CurrentDesk, CirculateHit, Iconic) MoveToCurrent
++ I Next ($0, CurrentDesk, CirculateHit, Iconic) Iconify off
 + I Next ($0, CurrentDesk, CirculateHit) FlipFocus
 + I TestRc (Match) Break
 + I None ($0, CurrentDesk) Exec exec $[1-]
 
-DestroyModuleConfig  DockApp:*
-*DockApp: Geometry 614x38+653-10
-*DockApp: Colorset 20 
-*DockApp: ActiveColorset 22 
-*DockApp: PressColorset 23
+DestroyModuleConfig DockApp:*
+*DockApp: Geometry 614x48+653-0
+*DockApp: Colorset 26
 *DockApp: Frame 0
-*DockApp: Padding 5 5
-*DockApp: Rows 38
+*DockApp: Padding 0 0
+*DockApp: Rows 48
 *DockApp: Columns 614
-*DockApp: (38x38, Icon "images/icons/dock/terminal.png", \
-    Colorset 21, \
-    Action(Mouse 1) "Exec exec urxvt"
-*DockApp: (10x38, ActiveColorset 20, Frame 0)
-*DockApp: (38x38, Icon "images/icons/dock/irssi.png", \
-    Colorset 21, \
-    Action(Mouse 1) \
+*DockApp: (614x38, \
+    Swallow DockAppButtons "Module FvwmButtons DockAppButtons", Frame 0)
+*DockApp: (614x5, Frame 0)
+*DockApp: (614x5, \
+    Swallow DockAppIndicator "Module FvwmButtons DockAppIndicator", Frame 0)
+
+DestroyModuleConfig  DockAppButtons:*
+*DockAppButtons: Geometry 614x38
+*DockAppButtons: Colorset 20 
+*DockAppButtons: ActiveColorset 22 
+*DockAppButtons: PressColorset 23
+*DockAppButtons: Frame 0
+*DockAppButtons: Padding 5 5
+*DockAppButtons: Rows 38
+*DockAppButtons: Columns 614
+*DockAppButtons: (38x38, Icon "images/icons/dock/terminal.png", \
+    Colorset 21, Action(Mouse 1) "Exec exec urxvt"
+*DockAppButtons: (10x38, ActiveColorset 20, Frame 0)
+*DockAppButtons: (38x38, Icon "images/icons/dock/irssi.png", \
+    Colorset 21, Action(Mouse 1) \
     "LaunchApplication irssi urxvt -name irssi -e dtach -A /tmp/$[USER]-irssi irssi"
-*DockApp: (10x38, ActiveColorset 20, Frame 0)
-*DockApp: (38x38, Icon "images/icons/dock/discord.png", \
-    Colorset 21, \
-    Action(Mouse 1) "LaunchApplication discord discord"
-*DockApp: (10x38, ActiveColorset 20, Frame 0)
-*DockApp: (38x38, Icon "images/icons/dock/gvim.png", \
-    Colorset 21, \
-    Action(Mouse 1) "LaunchApplication Gvim gvim"
-*DockApp: (10x38, ActiveColorset 20, Frame 0)
-*DockApp: (38x38, Icon "images/icons/dock/thunderbird.png", \
-    Colorset 21, \
-    Action(Mouse 1) "LaunchApplication thunderbird-default thunderbird"
-*DockApp: (10x38, ActiveColorset 20, Frame 0)
-*DockApp: (38x38, Icon "images/icons/dock/google-chrome.png", \
-    Colorset 21, \
-    Action(Mouse 1) "LaunchApplication google-chrome google-chrome-stable"
-*DockApp: (10x38, ActiveColorset 20, Frame 0)
-*DockApp: (38x38, Icon "images/icons/dock/messages.png", \
-    Colorset 21, \
-    Action(Mouse 1) \
+*DockAppButtons: (10x38, ActiveColorset 20, Frame 0)
+*DockAppButtons: (38x38, Icon "images/icons/dock/discord.png", \
+    Colorset 21, Action(Mouse 1) "LaunchApplication discord discord"
+*DockAppButtons: (10x38, ActiveColorset 20, Frame 0)
+*DockAppButtons: (38x38, Icon "images/icons/dock/gvim.png", \
+    Colorset 21, Action(Mouse 1) "LaunchApplication Gvim gvim"
+*DockAppButtons: (10x38, ActiveColorset 20, Frame 0)
+*DockAppButtons: (38x38, Icon "images/icons/dock/thunderbird.png", \
+    Colorset 21, Action(Mouse 1) "LaunchApplication Mail thunderbird"
+*DockAppButtons: (10x38, ActiveColorset 20, Frame 0)
+*DockAppButtons: (38x38, Icon "images/icons/dock/google-chrome.png", \
+    Colorset 21, Action(Mouse 1) \
+    "LaunchApplication google-chrome google-chrome-stable"
+*DockAppButtons: (10x38, ActiveColorset 20, Frame 0)
+*DockAppButtons: (38x38, Icon "images/icons/dock/messages.png", \
+    Colorset 21, Action(Mouse 1) \
     "LaunchApplication crx_hpfldicfbfomlpcikngkocigghgafkph google-chrome --app-id=hpfldicfbfomlpcikngkocigghgafkph"
-*DockApp: (10x38, ActiveColorset 20, Frame 0)
-*DockApp: (38x38, Icon "images/icons/dock/chat.png", \
-    Colorset 21, \
-    Action(Mouse 1) \
+*DockAppButtons: (10x38, ActiveColorset 20, Frame 0)
+*DockAppButtons: (38x38, Icon "images/icons/dock/chat.png", \
+    Colorset 21, Action(Mouse 1) \
     "LaunchApplication crx_mdpkiolbdkhdjpekfbkbmhigcaggjagi google-chrome --app-id=mdpkiolbdkhdjpekfbkbmhigcaggjagi"
-*DockApp: (10x38, ActiveColorset 20, Frame 0)
-*DockApp: (38x38, Icon "images/icons/dock/audacious.png", \
-    Colorset 21, \
-    Action(Mouse 1) "LaunchApplication Audacious audacious"
-*DockApp: (10x38, ActiveColorset 20, Frame 0)
-*DockApp: (38x38, Icon "images/icons/dock/jellyfin.png", \
-    Colorset 21, \
-    Action(Mouse 1) "LaunchApplication jellyfinmediaplayer jellyfinmediaplayer"
-*DockApp: (10x38, ActiveColorset 20, Frame 0)
-*DockApp: (38x38, Icon "images/icons/dock/easyeffects.png", \
-    Colorset 21, \
-    Action(Mouse 1) "LaunchApplication easyeffects easyeffects"
-*DockApp: (10x38, ActiveColorset 20, Frame 0)
-*DockApp: (38x38, Icon "images/icons/dock/transmission-remote-gtk.png", \
-    Colorset 21, \
-    Action(Mouse 1) \
+*DockAppButtons: (10x38, ActiveColorset 20, Frame 0)
+*DockAppButtons: (38x38, Icon "images/icons/dock/audacious.png", \
+    Colorset 21, Action(Mouse 1) "LaunchApplication Audacious audacious"
+*DockAppButtons: (10x38, ActiveColorset 20, Frame 0)
+*DockAppButtons: (38x38, Icon "images/icons/dock/jellyfin.png", \
+    Colorset 21, Action(Mouse 1) \
+    "LaunchApplication jellyfinmediaplayer jellyfinmediaplayer"
+*DockAppButtons: (10x38, ActiveColorset 20, Frame 0)
+*DockAppButtons: (38x38, Icon "images/icons/dock/easyeffects.png", \
+    Colorset 21, Action(Mouse 1) "LaunchApplication easyeffects easyeffects"
+*DockAppButtons: (10x38, ActiveColorset 20, Frame 0)
+*DockAppButtons: (38x38, Icon "images/icons/dock/transmission-remote-gtk.png", \
+    Colorset 21, Action(Mouse 1) \
     "LaunchApplication transmission-remote-gtk transmission-remote-gtk"
-*DockApp: (10x38, ActiveColorset 20, Frame 0)
-*DockApp: (38x38, Icon "images/icons/dock/virt-manager.png", \
-    Colorset 21, \
-    Action(Mouse 1) "Exec exec virt-manager"
+*DockAppButtons: (10x38, ActiveColorset 20, Frame 0)
+*DockAppButtons: (38x38, Icon "images/icons/dock/virt-manager.png", \
+    Colorset 21, Action(Mouse 1) "Exec exec virt-manager"
 
 DestroyModuleConfig DockAppIndicator:*
-*DockAppIndicator: Geometry 614x5+653-0
+*DockAppIndicator: Geometry 614x5
 *DockAppIndicator: Colorset 24
 *DockAppIndicator: Frame 0
 *DockAppIndicator: Rows 5
@@ -965,7 +971,7 @@ DestroyModuleConfig DockAppIndicator:*
 *DockAppIndicator: (10x5, Frame 0)
 *DockAppIndicator: (38x5, Id "Gvim", Frame 0)
 *DockAppIndicator: (10x5, Frame 0)
-*DockAppIndicator: (38x5, Id "thunderbird-default", Frame 0)
+*DockAppIndicator: (38x5, Id "Mail", Frame 0)
 *DockAppIndicator: (10x5, Frame 0)
 *DockAppIndicator: (38x5, Id "google-chrome", Frame 0)
 *DockAppIndicator: (10x5, Frame 0)
