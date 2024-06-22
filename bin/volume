@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
 
-muted=$(amixer get Master | grep \[[0-9]*%\] | sed '1q;d' | awk '{ print $6 }')
+muted=$(pamixer --get-volume-human)
 
-if [ "$muted" == "[off]" ]; then
+if [ "$muted" == "muted" ]; then
     echo 'Muted'
     exit
 else
-    amixer get Master | grep \[[0-9]*%\] | sed '1q;d' | awk '{ print $5 }' | \
-        sed -E 's/\[|\]//g' | sed 's/%//'
+    pamixer --get-volume
 fi
