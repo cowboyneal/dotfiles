@@ -57,28 +57,46 @@ DestroyFunc StartFunction
 AddToFunc   StartFunction
 + I Test (Init) Exec exec $[HOME]/bin/btconnect &
 + I Test (Init) Exec exec picom &
-+ I InitBackground
+# + I InitBackground
 + I Module FvwmButtons IconManPager
 + I Module FvwmButtons DockApp
 + I Module FvwmEvent DockAppWindowAddedEvent
 + I Module FvwmEvent DockAppWindowDestroyedEvent
++ I Module FvwmBacker
 + I Module FvwmMFL
 + I Test (Init) Exec exec polybar &
 + I Test (Init) Exec exec conky &
 + I Test (Init) Exec exec xscreensaver --no-splash &
 + I Schedule 1000 DockAppInit
-#+ I Test (Init) Exec exec urxvt -geometry 80x24+15+40 &
-#+ I Test (Init) Exec exec urxvt -geometry 80x29+15+502 &
 
 DestroyFunc ExitFunction
-AddToFunc ExitFunction
-#+ I Exec exec pkill -U $[USER] conky
+AddToFunc   ExitFunction
 + I Test (Quit) Exec exec pkill -U $[USER] dbus-daemon
 
 # Function to set background when fvwm starts
 DestroyFunc InitBackground
-AddToFunc InitBackground
+AddToFunc   InitBackground
 + I Test (f $[HOME]/.fehbg) Exec exec $[HOME]/.fehbg
+
+DestroyModuleConfig FvwmBacker:*
+*FvwmBacker: Command (Desk 0, Page 0 0) Exec exec feh --bg-fill \
+    $[FVWM_USERDIR]/images/wallpapers/miriam-espacio.jpg
+*FvwmBacker: Command (Desk 0, Page 0 1) Exec exec feh --bg-fill \
+    $[FVWM_USERDIR]/images/wallpapers/blue_space_2.jpg
+*FvwmBacker: Command (Desk 0, Page 0 2) Exec exec feh --bg-fill \
+    $[FVWM_USERDIR]/images/wallpapers/blue_and_purple_space_2.jpg
+*FvwmBacker: Command (Desk 0, Page 1 0) Exec exec feh --bg-fill \
+    $[FVWM_USERDIR]/images/wallpapers/blue_and_purple_space_1.jpg
+*FvwmBacker: Command (Desk 0, Page 1 1) Exec exec feh --bg-fill \
+    $[FVWM_USERDIR]/images/wallpapers/riverscape.jpg
+*FvwmBacker: Command (Desk 0, Page 1 2) Exec exec feh --bg-fill \
+    $[FVWM_USERDIR]/images/wallpapers/lightscape.jpg
+*FvwmBacker: Command (Desk 0, Page 2 0) Exec exec feh --bg-fill \
+    $[FVWM_USERDIR]/images/wallpapers/blue_space_1.jpg
+*FvwmBacker: Command (Desk 0, Page 2 1) Exec exec feh --bg-fill \
+    $[FVWM_USERDIR]/images/wallpapers/purple_space_1.jpg
+*FvwmBacker: Command (Desk 0, Page 2 2) Exec exec feh --bg-fill \
+    $[FVWM_USERDIR]/images/wallpapers/purple_space_2.jpg
 
 # Mouse Bindings Functions
 DestroyFunc RaiseMoveX
@@ -100,11 +118,12 @@ AddToFunc MoveToCurrent
 DestroyFunc ToUpperLeft
 AddToFunc ToUpperLeft
 + I ThisWindow ("URxvt") ResizeMove 80c 24c 0 0
-+ I ThisWindow ("steam") ResizeMove 400p 400p 979p 0p
++ I ThisWindow ("steam") ResizeMove 419p 447p 236p 0p
 
 DestroyFunc ToLowerLeft
 AddToFunc ToLowerLeft
 + I ThisWindow ("URxvt") ResizeMove 80c 28c 0 -0
++ I ThisWindow ("steam") ResizeMove 400p 400p 979p 0p
 
 DestroyFunc MaximizeLeft
 AddToFunc MaximizeLeft
@@ -115,6 +134,8 @@ AddToFunc MaximizeLeft
 + I ThisWindow ("discord") Break
 + I ThisWindow ("Google-chrome") ResizeMove 800p -103p 0 0
 + I ThisWindow ("Google-chrome") Break
++ I ThisWindow ("steam") ResizeMove 226p 447p 0 0
++ I ThisWindow ("steam") Break
 + I ThisWindow ResizeMove 800p -138p 0 0
 
 DestroyFunc MaximizeRight
@@ -323,6 +344,8 @@ Style gnome-calculator      !Borders, !Title, !Handles
 Style *Foliate*             !Borders, !Title, !Handles
 Style cheese                !Borders, !Title, !Handles
 Style steam                 !Borders, !Title, !Handles
+Style apostrophe            !Borders, !Title, !Handles
+Style obsidian              !Borders, !Title, !Handles
 
 #######
 # 3: Colorsets
@@ -401,6 +424,8 @@ Colorset 25 RootTransparent, fg grey, hi grey30, sh black, fgsh, \
             TiledShape "images/icons/dock/dockmask3.xpm"
 Colorset 26 Transparent, Tint #3232e0 50, fg white, hi grey30, sh black, \
             fgsh grey20, Shape "images/icons/dock/dockmask4.xpm"
+Colorset 40 Pixmap $[FVWM_USERDIR]/images/wallpapers/pager_bg.png, \
+            fg grey, hi grey30, sh black, NoShape
 
 #######
 # 4: Menus
@@ -459,16 +484,13 @@ Test (x xscreensaver-command) + "Lock Screen" \
 DestroyMenu MenuPrograms
 AddToMenu   MenuPrograms "  Programs  " Title
 + "Google%images/icons/apps.png%" Popup MenuGoogle
++ "Productivity%images/icons/apps.png%" Popup MenuProductivity
 + "Media%images/icons/apps.png%" Popup MenuMedia
 + "Graphics%images/icons/apps.png%" Popup MenuGraphics
 + "Games%images/icons/apps.png%" Popup MenuGames
 + "Net%images/icons/apps.png%" Popup MenuNet
-Test (x gvim) + "Vim" Exec exec gvim
-Test (x libreoffice) + "LibreOffice" Exec exec libreoffice
-Test (x gnome-calculator) + "Calculator" Exec exec gnome-calculator
 Test (x virt-manager) + "QEMU" Exec exec virt-manager
 Test (x CubicSDR) + "CubicSDR" Exec exec CubicSDR
-Test (x sc-im) + "SC-IM" Exec exec $[infostore.terminal] -name sc-im -e sc-im
 
 # Google Menu
 #
@@ -480,6 +502,17 @@ Test (x google-chrome) + "Messages" \
     Exec exec google-chrome --app-id=hpfldicfbfomlpcikngkocigghgafkph
 Test (x google-chrome) + "Chat" \
     Exec exec google-chrome --app-id=mdpkiolbdkhdjpekfbkbmhigcaggjagi
+
+# Productivity Menu
+#
+DestroyMenu MenuProductivity
+AddToMenu   MenuProductivity "  Productivity  " Title
+Test (x gvim) + "Vim" Exec exec gvim
+Test (x apostrophe) + "Apostrophe" Exec exec apostrophe
+Test (x obsidian) + "Obsidian" Exec exec obsidian
+Test (x libreoffice) + "LibreOffice" Exec exec libreoffice
+Test (x gnome-calculator) + "Calculator" Exec exec gnome-calculator
+Test (x sc-im) + "SC-IM" Exec exec $[infostore.terminal] -name sc-im -e sc-im
 
 # Media Menu
 #
@@ -819,10 +852,10 @@ DestroyModuleConfig IconManPager:*
 # This module displays the location of the windows on the various Pages
 # and Desks. This is setup to show only the Pages on the current Desk.
 DestroyModuleConfig FvwmPager:*
-*FvwmPager: Colorset * 17
+*FvwmPager: Colorset * 40
 *FvwmPager: HilightColorset * 13
 *FvwmPager: BalloonColorset * 10
-*FvwmPager: WindowColorsets 10 11
+*FvwmPager: WindowColorsets 17 11
 *FvwmPager: Font None
 *FvwmPager: Balloons All
 *FvwmPager: BalloonFont "xft:Arial:Bold:size=8:antialias=True"
