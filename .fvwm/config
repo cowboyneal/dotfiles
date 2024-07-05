@@ -376,13 +376,14 @@ Style obsidian              !Borders, !Title, !Handles
 #  17 - FvwmIconMan default
 #  18 - FvwmScript items default
 #  19 - IconManPager default
-#  20 - DockApp default
-#  21 - DockAppButtons default
-#  22 - DockAppButtons button
-#  23 - DockAppButtons active button
-#  24 - DockAppButtons pressed button
-#  25 - DockAppIndicator off
-#  26 - DockAppIndicator on
+#  20 - IconMan Hilight
+#  21 - DockApp default
+#  22 - DockAppButtons default
+#  23 - DockAppButtons button
+#  24 - DockAppButtons active button
+#  25 - DockAppButtons pressed button
+#  26 - DockAppIndicator off
+#  27 - DockAppIndicator on
 ###########
 Colorset 0  fg white, bg MidnightBlue, hi grey30, sh black, Plain, NoShape
 Colorset 1  fg grey, bg #0c0c38, hi grey30, sh black, fgsh grey20, \
@@ -401,8 +402,8 @@ Colorset 10 DGradient 128 3 #6464ff 25 MidnightBlue 50 indigo 25 grey15, \
 Colorset 11 fg white, bg #6464ff, hi grey30, sh black, fgsh grey20, \
             Plain, NoShape
 Colorset 12 fg grey20, bg white, hi, sh, Plain, NoShape
-Colorset 13 fg white, bg #3232e0, hi grey30, sh black, fgsh grey20, \
-            Plain, NoShape
+Colorset 13 Transparent, Tint #3232e0 50, fg white, hi grey30, sh black, \
+            fgsh grey20, NoShape
 Colorset 14 HGradient 128 2 MidnightBlue 66 indigo 33 #6464ff, \
             fg white, hi grey30, sh black, fgsh grey20, NoShape
 Colorset 15 fg grey, bg MidnightBlue, hi grey30, sh black, fgsh, Plain, NoShape
@@ -412,17 +413,19 @@ Colorset 18 DGradient 128 2 MidnightBlue 50 indigo 25 grey15, \
             fg grey, hi grey30, sh black, NoShape
 Colorset 19 RootTransparent, Tint #191919 75, fg grey, hi grey30, \
             sh black, NoShape
-Colorset 20 RootTransparent, fg white, hi grey30, sh black, fgsh grey20, NoShape
-Colorset 21 RootTransparent, fg grey, hi grey30, sh black, fgsh, \
+Colorset 20 Transparent, Tint #6464ff 50, fg white, hi grey30, sh black \
+            fgsh grey20, NoShape
+Colorset 21 RootTransparent, fg white, hi grey30, sh black, fgsh grey20, NoShape
+Colorset 22 RootTransparent, fg grey, hi grey30, sh black, fgsh, \
             TiledShape "images/icons/dock/dockmask2.xpm"
-Colorset 22 Transparent, Tint grey 20, fg grey, hi grey30, sh black, fgsh
-Colorset 23 Transparent, Tint #6464ff 50, fg white, hi grey30, sh black, \
+Colorset 23 Transparent, Tint grey 20, fg grey, hi grey30, sh black, fgsh
+Colorset 24 Transparent, Tint #6464ff 50, fg white, hi grey30, sh black, \
             fgsh grey20, Shape "images/icons/dock/dockmask.xpm"
-Colorset 24 Transparent, Tint #3232e0 50, fg white, hi grey30, sh black, \
+Colorset 25 Transparent, Tint #3232e0 50, fg white, hi grey30, sh black, \
             fgsh grey20, Shape "images/icons/dock/dockmask.xpm"
-Colorset 25 RootTransparent, fg grey, hi grey30, sh black, fgsh, \
+Colorset 26 RootTransparent, fg grey, hi grey30, sh black, fgsh, \
             TiledShape "images/icons/dock/dockmask3.xpm"
-Colorset 26 Transparent, Tint #3232e0 50, fg white, hi grey30, sh black, \
+Colorset 27 Transparent, Tint #3232e0 50, fg white, hi grey30, sh black, \
             fgsh grey20, Shape "images/icons/dock/dockmask4.xpm"
 Colorset 40 Pixmap $[FVWM_USERDIR]/images/wallpapers/pager_bg.png, \
             fg grey, hi grey30, sh black, NoShape
@@ -855,7 +858,7 @@ DestroyModuleConfig FvwmPager:*
 *FvwmPager: Colorset * 40
 *FvwmPager: HilightColorset * 13
 *FvwmPager: BalloonColorset * 10
-*FvwmPager: WindowColorsets 17 11
+*FvwmPager: WindowColorsets 17 20
 *FvwmPager: Font None
 *FvwmPager: Balloons All
 *FvwmPager: BalloonFont "xft:Arial:Bold:size=8:antialias=True"
@@ -895,33 +898,29 @@ DestroyModuleConfig FvwmIconMan:*
 *FvwmIconMan: Tips always
 *FvwmIconMan: Sort id
 
+DestroyFunc DockAppChangeButton
+AddToFunc   DockAppChangeButton
++ I SendToModule DockAppIndicator ChangeButton "$0" Colorset $1
+
 DestroyFunc DockAppInit
 AddToFunc   DockAppInit
-+ I Any ("urxvt") SendToModule DockAppIndicator ChangeButton "urxvt" Colorset 26
-+ I Any ("irssi") SendToModule DockAppIndicator ChangeButton "irssi" Colorset 26
-+ I Any ("discord") SendToModule \
-    DockAppIndicator ChangeButton "discord" Colorset 26
-+ I Any ("Gvim") SendToModule DockAppIndicator ChangeButton "Gvim" Colorset 26
-+ I Any ("Mail") SendToModule \
-    DockAppIndicator ChangeButton "Mail" Colorset 26
-+ I Any ("google-chrome") SendToModule \
-    DockAppIndicator ChangeButton "google-chrome" Colorset 26
-+ I Any ("crx_hpfldicfbfomlpcikngkocigghgafkph") SendToModule \
-    DockAppIndicator ChangeButton "crx_hpfldicfbfomlpcikngkocigghgafkph" Colorset 26
-+ I Any ("crx_mdpkiolbdkhdjpekfbkbmhigcaggjagi") SendToModule \
-    DockAppIndicator ChangeButton "crx_mdpkiolbdkhdjpekfbkbmhigcaggjagi" Colorset 26
-+ I Any ("jellyfinmediaplayer") SendToModule \
-    DockAppIndicator ChangeButton "jellyfinmediaplayer" Colorset 26
-+ I Any ("easyeffects") SendToModule \
-    DockAppIndicator ChangeButton "easyeffects" Colorset 26
-+ I Any ("transmission-remote-gtk") SendToModule \
-    DockAppIndicator ChangeButton "transmission-remote-gtk" Colorset 26
-+ I Any ("steamwebhelper") SendToModule \
-    DockAppIndicator ChangeButton "steamwebhelper" Colorset 26
-+ I Any ("virt-manager") SendToModule \
-    DockAppIndicator ChangeButton "virt-manager" Colorset 26
-+ I Any ("Audacious") SendToModule \
-    DockAppIndicator ChangeButton "Audacious" Colorset 26
++ I Any ("urxvt") DockAppChangeButton urxvt 27
++ I Any ("irssi") DockAppChangeButton irssi 27
++ I Any ("discord") DockAppChangeButton discord 27
++ I Any ("Gvim") DockAppChangeButton Gvim 27
++ I Any ("Mail") DockAppChangeButton "Mail" 27
++ I Any ("google-chrome") DockAppChangeButton google-chrome 27
++ I Any ("crx_hpfldicfbfomlpcikngkocigghgafkph") \
+    DockAppChangeButton crx_hpfldicfbfomlpcikngkocigghgafkph 27
++ I Any ("crx_mdpkiolbdkhdjpekfbkbmhigcaggjagi") \
+    DockAppChangeButton crx_mdpkiolbdkhdjpekfbkbmhigcaggjagi 27
++ I Any ("jellyfinmediaplayer") DockAppChangeButton jellyfinmediaplayer 27
++ I Any ("easyeffects") DockAppChangeButton easyeffects 27
++ I Any ("transmission-remote-gtk") \
+    DockAppChangeButton transmission-remote-gtk 27
++ I Any ("steamwebhelper") DockAppChangeButton steamwebhelper 27
++ I Any ("virt-manager") DockAppChangeButton virt-manager 27
++ I Any ("Audacious") DockAppChangeButton Audacious 27
 
 DestroyFunc LaunchApplication
 AddToFunc   LaunchApplication
@@ -933,7 +932,7 @@ AddToFunc   LaunchApplication
 
 DestroyModuleConfig DockApp:*
 *DockApp: Geometry 662x48+629-0
-*DockApp: Colorset 20
+*DockApp: Colorset 21
 *DockApp: Frame 0
 *DockApp: Padding 0 0
 *DockApp: Rows 48
@@ -946,64 +945,64 @@ DestroyModuleConfig DockApp:*
 
 DestroyModuleConfig  DockAppButtons:*
 *DockAppButtons: Geometry 662x38
-*DockAppButtons: Colorset 21 
-*DockAppButtons: ActiveColorset 23 
-*DockAppButtons: PressColorset 24
+*DockAppButtons: Colorset 22 
+*DockAppButtons: ActiveColorset 24 
+*DockAppButtons: PressColorset 25
 *DockAppButtons: Frame 0
 *DockAppButtons: Padding 5 5
 *DockAppButtons: Rows 38
 *DockAppButtons: Columns 662
 *DockAppButtons: (38x38, Icon "images/icons/dock/terminal.png", \
-    Colorset 22, Action(Mouse 1) "Exec exec urxvt"
+    Colorset 23, Action(Mouse 1) "Exec exec urxvt"
 *DockAppButtons: (10x38, ActiveColorset 21, Frame 0)
 *DockAppButtons: (38x38, Icon "images/icons/dock/irssi.png", \
-    Colorset 22, Action(Mouse 1) \
+    Colorset 23, Action(Mouse 1) \
     "LaunchApplication irssi urxvt -name irssi -e dtach -A /tmp/$[USER]-irssi irssi"
-*DockAppButtons: (10x38, ActiveColorset 21, Frame 0)
+*DockAppButtons: (10x38, ActiveColorset 22, Frame 0)
 *DockAppButtons: (38x38, Icon "images/icons/dock/discord.png", \
-    Colorset 22, Action(Mouse 1) "LaunchApplication discord discord"
-*DockAppButtons: (10x38, ActiveColorset 21, Frame 0)
+    Colorset 23, Action(Mouse 1) "LaunchApplication discord discord"
+*DockAppButtons: (10x38, ActiveColorset 22, Frame 0)
 *DockAppButtons: (38x38, Icon "images/icons/dock/gvim.png", \
-    Colorset 22, Action(Mouse 1) "LaunchApplication Gvim gvim"
-*DockAppButtons: (10x38, ActiveColorset 21, Frame 0)
+    Colorset 23, Action(Mouse 1) "LaunchApplication Gvim gvim"
+*DockAppButtons: (10x38, ActiveColorset 22, Frame 0)
 *DockAppButtons: (38x38, Icon "images/icons/dock/thunderbird.png", \
-    Colorset 22, Action(Mouse 1) "LaunchApplication Mail thunderbird"
-*DockAppButtons: (10x38, ActiveColorset 21, Frame 0)
+    Colorset 23, Action(Mouse 1) "LaunchApplication Mail thunderbird"
+*DockAppButtons: (10x38, ActiveColorset 22, Frame 0)
 *DockAppButtons: (38x38, Icon "images/icons/dock/google-chrome.png", \
-    Colorset 22, Action(Mouse 1) \
+    Colorset 23, Action(Mouse 1) \
     "LaunchApplication google-chrome google-chrome-stable"
-*DockAppButtons: (10x38, ActiveColorset 21, Frame 0)
+*DockAppButtons: (10x38, ActiveColorset 22, Frame 0)
 *DockAppButtons: (38x38, Icon "images/icons/dock/messages.png", \
-    Colorset 22, Action(Mouse 1) \
+    Colorset 23, Action(Mouse 1) \
     "LaunchApplication crx_hpfldicfbfomlpcikngkocigghgafkph google-chrome --app-id=hpfldicfbfomlpcikngkocigghgafkph"
-*DockAppButtons: (10x38, ActiveColorset 21, Frame 0)
+*DockAppButtons: (10x38, ActiveColorset 22, Frame 0)
 *DockAppButtons: (38x38, Icon "images/icons/dock/chat.png", \
-    Colorset 22, Action(Mouse 1) \
+    Colorset 23, Action(Mouse 1) \
     "LaunchApplication crx_mdpkiolbdkhdjpekfbkbmhigcaggjagi google-chrome --app-id=mdpkiolbdkhdjpekfbkbmhigcaggjagi"
-*DockAppButtons: (10x38, ActiveColorset 21, Frame 0)
+*DockAppButtons: (10x38, ActiveColorset 22, Frame 0)
 *DockAppButtons: (38x38, Icon "images/icons/dock/jellyfin.png", \
-    Colorset 22, Action(Mouse 1) \
+    Colorset 23, Action(Mouse 1) \
     "LaunchApplication jellyfinmediaplayer jellyfinmediaplayer"
-*DockAppButtons: (10x38, ActiveColorset 21, Frame 0)
+*DockAppButtons: (10x38, ActiveColorset 22, Frame 0)
 *DockAppButtons: (38x38, Icon "images/icons/dock/easyeffects.png", \
-    Colorset 22, Action(Mouse 1) "LaunchApplication easyeffects easyeffects"
-*DockAppButtons: (10x38, ActiveColorset 21, Frame 0)
+    Colorset 23, Action(Mouse 1) "LaunchApplication easyeffects easyeffects"
+*DockAppButtons: (10x38, ActiveColorset 22, Frame 0)
 *DockAppButtons: (38x38, Icon "images/icons/dock/transmission-remote-gtk.png", \
-    Colorset 22, Action(Mouse 1) \
+    Colorset 23, Action(Mouse 1) \
     "LaunchApplication transmission-remote-gtk transmission-remote-gtk"
-*DockAppButtons: (10x38, ActiveColorset 21, Frame 0)
+*DockAppButtons: (10x38, ActiveColorset 22, Frame 0)
 *DockAppButtons: (38x38, Icon "images/icons/dock/steam.png", \
-    Colorset 22, Action(Mouse 1) "LaunchApplication steamwebhelper steam"
-*DockAppButtons: (10x38, ActiveColorset 21, Frame 0)
+    Colorset 23, Action(Mouse 1) "LaunchApplication steamwebhelper steam"
+*DockAppButtons: (10x38, ActiveColorset 22, Frame 0)
 *DockAppButtons: (38x38, Icon "images/icons/dock/virt-manager.png", \
-    Colorset 22, Action(Mouse 1) "Exec exec virt-manager"
-*DockAppButtons: (10x38, ActiveColorset 21, Frame 0)
+    Colorset 23, Action(Mouse 1) "Exec exec virt-manager"
+*DockAppButtons: (10x38, ActiveColorset 22, Frame 0)
 *DockAppButtons: (38x38, Icon "images/icons/dock/audacious.png", \
-    Colorset 22, Action(Mouse 1) "LaunchApplication Audacious audacious"
+    Colorset 23, Action(Mouse 1) "LaunchApplication Audacious audacious"
 
 DestroyModuleConfig DockAppIndicator:*
 *DockAppIndicator: Geometry 662x5
-*DockAppIndicator: Colorset 25
+*DockAppIndicator: Colorset 26
 *DockAppIndicator: Frame 0
 *DockAppIndicator: Rows 5
 *DockAppIndicator: Columns 662
@@ -1037,12 +1036,11 @@ DestroyModuleConfig DockAppIndicator:*
 
 DestroyFunc DockAppWindowAdded
 AddToFunc   DockAppWindowAdded
-+ I Silent SendToModule DockAppIndicator ChangeButton $[w.resource] Colorset 26
++ I Silent DockAppChangeButton $[w.resource] 27
 
 DestroyFunc DockAppWindowDestroyed
 AddToFunc   DockAppWindowDestroyed
-+ I None ($[w.resource]) Silent SendToModule \
-    DockAppIndicator ChangeButton $[w.resource] Colorset 25
++ I None ($[w.resource]) Silent DockAppChangeButton $[w.resource] 26
 
 # FvwmEvent
 #
