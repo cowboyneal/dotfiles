@@ -42,12 +42,6 @@ case $UNAME in
         PATH=/opt/local/bin:/opt/local/sbin:$PATH
         unset PROMPT_COMMAND
         ;;
-    CYGWIN* )
-        PATH=$PATH:/cygdrive/c/Windows/system32:/cygdrive/c/Windows
-        PATH=$PATH:/cygdrive/c/Windows/System32/Wbem
-        PATH=$PATH:/cygdrive/c/Windows/System32/WindowsPowerShell/v1.0/
-        PATH="$PATH:/cygdrive/c/Program Files (x86)/MIT/Kerberos/bin"
-        ;;
 esac
 export PATH
 export CDPATH=.:..
@@ -223,7 +217,7 @@ alias 'reload'='source ~/.bashrc'
 
 case $UNAME in
     FreeBSD | Darwin* ) lsopts='-GF' ;;
-    Linux | CYGWIN* )   lsopts='--color=auto -F' ;;
+    Linux )             lsopts='--color=auto -F' ;;
     * )                 lsopts='-F' ;;
 esac
 
@@ -352,8 +346,6 @@ fi
 #if [ -z "$SSH_AGENT_PID" ]; then
 #  eval $(ssh-agent) > /dev/null 2>&1
 #fi
-
-[[ "$UNAME" =~ CYGWIN ]] && cd ~ # hack for mintty
 
 # Enable bash-completion on a plethora of systems
 if [[ "$UNAME" =~ FreeBSD|OpenBSD ]] && [ -f /usr/local/share/bash-completion/bash_completion ]; then
