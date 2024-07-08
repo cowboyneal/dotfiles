@@ -33,9 +33,11 @@ set wildmenu
 map <C-J> gqap
 map <C-R> :r ~/doc/
 
-python3 from powerline.vim import setup as powerline_setup
-python3 powerline_setup()
-python3 del powerline_setup
+if &l:term !=? "vt100" && &l:term !=? "vt220"
+    python3 from powerline.vim import setup as powerline_setup
+    python3 powerline_setup()
+    python3 del powerline_setup
+    set noshowmode
+endif
 
 set laststatus=2
-set noshowmode
