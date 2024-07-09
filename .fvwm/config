@@ -336,6 +336,7 @@ Style easyeffects           !Borders, !Title, !Handles
 Style eog                   !Borders, !Title, !Handles
 Style gnome-sudoku          !Borders, !Title, !Handles
 Style gnome-mahjongg        !Borders, !Title, !Handles
+Style gnome-mines           !Borders, !Title, !Handles
 Style org.gnome.Nautilus    !Borders, !Title, !Handles
 Style evince                !Borders, !Title, !Handles
 Style dconf-editor          !Borders, !Title, !Handles
@@ -346,6 +347,7 @@ Style cheese                !Borders, !Title, !Handles
 Style steam                 !Borders, !Title, !Handles
 Style apostrophe            !Borders, !Title, !Handles
 Style obsidian              !Borders, !Title, !Handles
+Style ettercap              !Borders, !Title, !Handles
 
 #######
 # 3: Colorsets
@@ -472,7 +474,7 @@ Test (x gnome-screenshot) + "Take Screenshot...%images/icons/wallpaper.png%" \
 # ScreenSaver Menu
 #
 DestroyMenu MenuScreenSaver
-AddToMenu MenuScreenSaver "  XScreenSaver  " Title
+AddToMenu   MenuScreenSaver "  XScreenSaver  " Title
 Test (x xscreensaver-settings) + "Settings" Exec exec xscreensaver-settings
 Test (x xscreensaver-command) + "Activate" \
     Exec exec xscreensaver-command --activate
@@ -488,92 +490,127 @@ DestroyMenu MenuPrograms
 AddToMenu   MenuPrograms "  Programs  " Title
 + "Google%images/icons/apps.png%" Popup MenuGoogle
 + "Productivity%images/icons/apps.png%" Popup MenuProductivity
++ "Readers%images/icons/apps.png%" Popup MenuReaders
 + "Media%images/icons/apps.png%" Popup MenuMedia
 + "Graphics%images/icons/apps.png%" Popup MenuGraphics
 + "Games%images/icons/apps.png%" Popup MenuGames
 + "Net%images/icons/apps.png%" Popup MenuNet
-Test (x virt-manager) + "QEMU" Exec exec virt-manager
-Test (x CubicSDR) + "CubicSDR" Exec exec CubicSDR
+Test (x virt-manager) + "VM Manager%images/icons/menu/virt-manager.png%" \
+    Exec exec virt-manager
+Test (x CubicSDR) + "CubicSDR%images/icons/menu/cubicsdr.png%" \
+    Exec exec CubicSDR
 
 # Google Menu
 #
 DestroyMenu MenuGoogle
-AddToMenu MenuGoogle "  Google  " Title
-Test (x google-chrome-stable) + "Chrome" \
+AddToMenu   MenuGoogle "  Google  " Title
+Test (x google-chrome-stable) + "Chrome%images/icons/menu/google-chrome.png%" \
     Exec exec google-chrome-stable
-Test (x google-chrome) + "Messages" \
+Test (x google-chrome) + "Messages%images/icons/menu/messages.png%" \
     Exec exec google-chrome --app-id=hpfldicfbfomlpcikngkocigghgafkph
-Test (x google-chrome) + "Chat" \
+Test (x google-chrome) + "Chat%images/icons/menu/chat.png%" \
     Exec exec google-chrome --app-id=mdpkiolbdkhdjpekfbkbmhigcaggjagi
 
 # Productivity Menu
 #
 DestroyMenu MenuProductivity
 AddToMenu   MenuProductivity "  Productivity  " Title
-Test (x gvim) + "Vim" Exec exec gvim
-Test (x apostrophe) + "Apostrophe" Exec exec apostrophe
-Test (x obsidian) + "Obsidian" Exec exec obsidian
-Test (x libreoffice) + "LibreOffice" Exec exec libreoffice
-Test (x gnome-calculator) + "Calculator" Exec exec gnome-calculator
-Test (x sc-im) + "SC-IM" Exec exec $[infostore.terminal] -name sc-im -e sc-im
+Test (x gvim) + "Vim%images/icons/menu/gvim.png%" Exec exec gvim
+Test (x apostrophe) + "Apostrophe%images/icons/menu/apostrophe.png%" \
+    Exec exec apostrophe
+Test (x obsidian) + "Obsidian%images/icons/menu/obsidian.png%" \
+    Exec exec obsidian
+Test (x libreoffice) + "LibreOffice%images/icons/menu/libreoffice.png%" \
+    Exec exec libreoffice
+Test (x gnome-calculator) + "Calculator%images/icons/menu/calc.png%" \
+    Exec exec gnome-calculator
+Test (x sc-im) + "SC-IM%images/icons/menu/sc-im.png%" \
+    Exec exec $[infostore.terminal] -name sc-im -e sc-im
+
+# Readers Menu
+#
+DestroyMenu MenuReaders
+AddToMenu   MenuReaders "  Readers  " Title
+Test (x evince) + "Evince%images/icons/menu/evince.png%" Exec exec evince
+Test (x foliate) + "Foliate%images/icons/menu/foliate.png%" Exec exec foliate
 
 # Media Menu
 #
 DestroyMenu MenuMedia
-AddToMenu MenuMedia "  Media  " Title
-Test (x jellyfinmediaplayer) + "Jellyfin Media Player" \
+AddToMenu   MenuMedia "  Media  " Title
+Test (x jellyfinmediaplayer) + \
+    "Jellyfin Media Player%images/icons/menu/jellyfin.png%" \
     Exec exec jellyfinmediaplayer
-Test (x audacious) + "Audacious" Exec exec audacious
-Test (x easyeffects) + "Easy Effects" Exec exec easyeffects
-Test (x foliate) + "Foliate" Exec exec foliate
-Test (x audacity) + "Audacity" Exec exec audacity
-Test (x mkvtoolnix-gui) + "MKVToolNix" Exec exec mkvtoolnix-gui
-Test (x handbrake) + "HandBrake" Exec exec handbrake
-Test (x mixxx) + "Mixxx" Exec exec mixxx
-Test (x vlc) + "VLC" Exec exec vlc
-Test (x cheese) + "Cheese" Exec exec cheese
-Test (x $[HOME]/bin/btconnect) + "Reconnect AudioEngine B2" \
+Test (x audacious) + "Audacious%images/icons/menu/audacious.png%" \
+    Exec exec audacious
+Test (x easyeffects) + "Easy Effects%images/icons/menu/easyeffects.png%" \
+    Exec exec easyeffects
+Test (x audacity) + "Audacity%images/icons/menu/audacity.xpm%" \
+    Exec exec audacity
+Test (x mkvtoolnix-gui) + "MKVToolNix%images/icons/menu/mkvtoolnix.png%" \
+    Exec exec mkvtoolnix-gui
+Test (x handbrake) + "HandBrake%images/icons/menu/handbrake.png%" \
+    Exec exec handbrake
+Test (x mixxx) + "Mixxx%images/icons/menu/mixxx.png%" Exec exec mixxx
+Test (x vlc) + "VLC%images/icons/menu/vlc.png%" Exec exec vlc
+Test (x cheese) + "Cheese%images/icons/menu/cheese.png%" Exec exec cheese
+Test (x $[HOME]/bin/btconnect) + \
+    "Reconnect AudioEngine B2%images/icons/menu/bluetooth.png%" \
     Exec exec $[HOME]/bin/btconnect &
 
 # Graphics Menu
 #
 DestroyMenu MenuGraphics
-AddToMenu MenuGraphics "  Graphics  " Title
-Test (x eog) + "Eye of Gnome" Exec exec eog
-Test (x gimp) + "GIMP" Exec exec gimp
-Test (x darktable) + "Darktable" Exec exec darktable
-Test (x inkscape) + "Inkscape" Exec exec inkscape
-Test (x krita) + "Krita" Exec exec krita
-Test (x display) + "ImageMagick" Exec exec display
+AddToMenu   MenuGraphics "  Graphics  " Title
+Test (x eog) + "Eye of Gnome%images/icons/menu/eog.png%" Exec exec eog
+Test (x gimp) + "GIMP%images/icons/menu/gimp.png%" Exec exec gimp
+Test (x darktable) + "Darktable%images/icons/menu/darktable.png%" \
+    Exec exec darktable
+Test (x inkscape) + "Inkscape%images/icons/menu/inkscape.png%" \
+    Exec exec inkscape
+Test (x krita) + "Krita%images/icons/menu/krita.png%" Exec exec krita
+Test (x display) + "ImageMagick%images/icons/menu/display-im.png%" \
+    Exec exec display
 
 # Games Menu
 #
 DestroyMenu MenuGames
-AddToMenu MenuGames "  Games  " Title
-Test (x steam) + "Steam" Exec exec steam
-Test (x gnome-sudoku) + "Sudoku" Exec exec gnome-sudoku
-Test (x gnome-mahjongg) + "Mahjongg" Exec exec gnome-mahjongg
-Test (x sol) + "Solitaire" Exec exec sol
-Test (x pcsxr) + "PCSXR" Exec exec pcsxr
-+ "PCSX2" Exec exec flatpak run net.pcsx2.PCSX2
+AddToMenu   MenuGames "  Games  " Title
+Test (x steam) + "Steam%images/icons/menu/steam.png%" Exec exec steam
+Test (x steam) + "Dwarf Fortress" Exec exec steam steam://rungameid/975370
+Test (x gnome-sudoku) + "Sudoku%images/icons/menu/sudoku.png%" \
+    Exec exec gnome-sudoku
+Test (x gnome-mines) + "Mines%images/icons/menu/mines.png%" \
+    Exec exec gnome-mines
+Test (x gnome-mahjongg) + "Mahjongg%images/icons/menu/mahjongg.png%" \
+    Exec exec gnome-mahjongg
+Test (x sol) + "Solitaire%images/icons/menu/sol.png%" Exec exec sol
+Test (x pcsxr) + "PCSXR%images/icons/menu/pcsxr.png%" Exec exec pcsxr
++ "PCSX2%images/icons/menu/pcsx2.png%" Exec exec flatpak run net.pcsx2.PCSX2
 
 # Net Menu
 #
 DestroyMenu MenuNet
-AddToMenu MenuNet "  Net  " Title
-Test (x irssi) + "irssi" Exec exec urxvt -name irssi -e \
+AddToMenu   MenuNet "  Net  " Title
+Test (x irssi) + "irssi%images/icons/menu/irssi.png%" \
+    Exec exec $[infostore.terminal] -name irssi -e \
     dtach -A /tmp/$[USER]-irssi irssi
-Test (x discord) + "Discord" Exec exec discord
-Test (x thunderbird) + "Thunderbird" Exec exec thunderbird
-Test (x transmission-remote-gtk) + "Transmission Remote" \
+Test (x discord) + "Discord%images/icons/menu/discord.png%" Exec exec discord
+Test (x thunderbird) + "Thunderbird%images/icons/menu/thunderbird.png%" \
+    Exec exec thunderbird
+Test (x transmission-remote-gtk) + \
+    "Transmission Remote%images/icons/menu/transmission-remote.png%" \
     Exec exec transmission-remote-gtk
-Test (x hexchat) + "HexChat" Exec exec hexchat
-Test (x gftp) + "gFTP" Exec exec gftp
-Test (x mtr) + "mtr" Exec exec mtr
-Test (x wireshark) + "Wireshark" Exec exec wireshark
-Test (x ettercap) + "Ettercap" Exec exec ettercap -G
-Test (x nicotine) + "Nicotine" Exec exec nicotine
-Test (x firefox) + "Firefox" Exec exec firefox
+Test (x firefox) + "Firefox%images/icons/menu/firefox.png%" Exec exec firefox
+Test (x hexchat) + "HexChat%images/icons/menu/hexchat.png%" Exec exec hexchat
+Test (x gftp) + "gFTP%images/icons/menu/gftp.png%" Exec exec gftp
+Test (x mtr) + "mtr%images/icons/menu/mtr.png%" Exec exec mtr
+Test (x wireshark) + "Wireshark%images/icons/menu/wireshark.png%" \
+    Exec exec wireshark
+Test (x ettercap) + "Ettercap%images/icons/menu/ettercap.png%" \
+    Exec exec ettercap -G
+Test (x nicotine) + "Nicotine%images/icons/menu/nicotine.png%" \
+    Exec exec nicotine
 
 # Background Menu
 #
