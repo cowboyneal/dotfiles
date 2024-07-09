@@ -577,7 +577,8 @@ Test (x display) + "ImageMagick%images/icons/menu/display-im.png%" \
 DestroyMenu MenuGames
 AddToMenu   MenuGames "  Games  " Title
 Test (x steam) + "Steam%images/icons/menu/steam.png%" Exec exec steam
-Test (x steam) + "Dwarf Fortress" Exec exec steam steam://rungameid/975370
+Test (x steam) + "Dwarf Fortress%images/icons/menu/dwarfort.png%" \
+    Exec exec steam steam://rungameid/975370
 Test (x gnome-sudoku) + "Sudoku%images/icons/menu/sudoku.png%" \
     Exec exec gnome-sudoku
 Test (x gnome-mines) + "Mines%images/icons/menu/mines.png%" \
