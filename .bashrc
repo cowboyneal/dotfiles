@@ -92,7 +92,8 @@ export LANG='en_US.UTF-8'
 export LC_ALL='en_US.UTF-8'
 
 # try to set DISPLAY smart
-if [ -z "$DISPLAY" ] && [[ "$TERM" =~ xterm|rxvt ]] && [ -n "$SSH_CLIENT" ];
+if [ -z "$DISPLAY" ] && [[ "$TERM" =~ xterm|rxvt ]] \
+    && [ -n "$SSH_CLIENT" ] && [[ ! "$(uname -r)" =~ WSL2 ]];
 then
     export DISPLAY="`echo $SSH_CLIENT | awk '{ print $1 }'`:0.0"
 fi
