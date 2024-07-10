@@ -132,7 +132,7 @@ AddToFunc MaximizeLeft
 + I ThisWindow ("Gvim") ResizeMove 112c 51c 0 0
 + I ThisWindow ("Gvim") Break
 + I ThisWindow ("discord") Break
-+ I ThisWindow ("Google-chrome") ResizeMove 800p -103p 0 0
++ I ThisWindow ("Google-chrome") ResizeMove 802p -103p 0 0
 + I ThisWindow ("Google-chrome") Break
 + I ThisWindow ("steam") ResizeMove 226p 447p 0 0
 + I ThisWindow ("steam") Break
@@ -146,7 +146,7 @@ AddToFunc MaximizeRight
 + I ThisWindow ("Gvim") Break
 + I ThisWindow ("discord") ResizeMove 940p 937p -0 -0
 + I ThisWindow ("discord") Break
-+ I ThisWindow ("Google-chrome") ResizeMove 800p -103p -0 0
++ I ThisWindow ("Google-chrome") ResizeMove 802p -103p -0 0
 + I ThisWindow ("Google-chrome") Break
 + I ThisWindow ("steam") ResizeMove 226p 972p -0 0
 + I ThisWindow ("steam") Break
@@ -155,25 +155,16 @@ AddToFunc MaximizeRight
 DestroyFunc ChangeVolumeUp
 AddToFunc ChangeVolumeUp
 + I Exec exec pamixer -u -i 2
-#+ I Any (VolumeLevel)
-#+ I TestRc (NoMatch) None (VolumeLevel) FvwmScript VolumeLevel
-#+ I SendToModule VolumeLevel reset
 + I FvwmScript VolumeLevel
 
 DestroyFunc ChangeVolumeDown
 AddToFunc ChangeVolumeDown
 + I Exec exec pamixer -u -d 2
-#+ I Any (VolumeLevel)
-#+ I TestRc (NoMatch) None (VolumeLevel) FvwmScript VolumeLevel
-#+ I SendToModule VolumeLevel reset
 + I FvwmScript VolumeLevel
 
 DestroyFunc ChangeVolumeMute
 AddToFunc ChangeVolumeMute
 + I Exec exec amixer -q set Master toggle
-#+ I Any (VolumeLevel)
-#+ I TestRc (NoMatch) None (VolumeLevel) FvwmScript VolumeLevel
-#+ I SendToModule VolumeLevel reset
 + I FvwmScript VolumeLevel
 
 # Function: ViewManPage $0
@@ -348,6 +339,7 @@ Style steam                 !Borders, !Title, !Handles
 Style apostrophe            !Borders, !Title, !Handles
 Style obsidian              !Borders, !Title, !Handles
 Style ettercap              !Borders, !Title, !Handles
+Style org.gnome.clocks      !Borders, !Title, !Handles
 
 #######
 # 3: Colorsets
@@ -450,7 +442,6 @@ MenuStyle * VerticalItemSpacing 5 5
 DestroyMenu MenuFvwmRoot
 AddToMenu   MenuFvwmRoot "Fvwm" Title
 + "&Programs%images/icons/apps.png%" Popup MenuPrograms
-#+ "XDG &Menu%images/icons/apps.png%" Popup XDGMenu
 + "Ur&xvt%images/icons/terminal.png%" Exec exec $[infostore.terminal]
 Test (x nautilus) + "Files%images/icons/folder.png%" Exec exec nautilus
 + "Run Program...%images/icons/run_arrow.png%" \
@@ -469,7 +460,7 @@ Test (x gnome-screenshot) + "Take Screenshot...%images/icons/wallpaper.png%" \
 + "&Quit%images/icons/quit.png%" Module FvwmForm QuitVerify
 
 # Generate XDGMenu
-# PipeRead "fvwm-menu-desktop -e"
+PipeRead "fvwm-menu-desktop -e"
 
 # ScreenSaver Menu
 #
@@ -495,6 +486,7 @@ AddToMenu   MenuPrograms "  Programs  " Title
 + "Graphics%images/icons/apps.png%" Popup MenuGraphics
 + "Games%images/icons/apps.png%" Popup MenuGames
 + "Net%images/icons/apps.png%" Popup MenuNet
++ "XDG &Menu%images/icons/apps.png%" Popup XDGMenu
 Test (x virt-manager) + "VM Manager%images/icons/menu/virt-manager.png%" \
     Exec exec virt-manager
 Test (x CubicSDR) + "CubicSDR%images/icons/menu/cubicsdr.png%" \
@@ -692,7 +684,6 @@ AddToMenu MenuSendTo
 + "Top Right"	    MoveToPage 2 0
 + "Center Right"    MoveToPage 2 1
 + "Bottom Right"    MoveToPage 2 2
-
 
 # Fvwm Man Pages (Help) Menu
 DestroyMenu MenuFvwmManPages
@@ -957,6 +948,7 @@ AddToFunc   DockAppInit
 + I Any ("transmission-remote-gtk") \
     DockAppChangeButton transmission-remote-gtk 27
 + I Any ("steamwebhelper") DockAppChangeButton steamwebhelper 27
++ I Any ("dwarfort") DockAppChangeButton dwarfort 27
 + I Any ("virt-manager") DockAppChangeButton virt-manager 27
 + I Any ("Audacious") DockAppChangeButton Audacious 27
 
@@ -969,27 +961,27 @@ AddToFunc   LaunchApplication
 + I None ($0, CurrentDesk) Exec exec $[1-]
 
 DestroyModuleConfig DockApp:*
-*DockApp: Geometry 662x48+629-0
+*DockApp: Geometry 710x48+605-0
 *DockApp: Colorset 21
 *DockApp: Frame 0
 *DockApp: Padding 0 0
 *DockApp: Rows 48
-*DockApp: Columns 662
-*DockApp: (662x38, \
+*DockApp: Columns 710
+*DockApp: (710x38, \
     Swallow DockAppButtons "Module FvwmButtons DockAppButtons", Frame 0)
-*DockApp: (662x5, Frame 0)
-*DockApp: (662x5, \
+*DockApp: (710x5, Frame 0)
+*DockApp: (710x5, \
     Swallow DockAppIndicator "Module FvwmButtons DockAppIndicator", Frame 0)
 
 DestroyModuleConfig  DockAppButtons:*
-*DockAppButtons: Geometry 662x38
+*DockAppButtons: Geometry 710x38
 *DockAppButtons: Colorset 22 
 *DockAppButtons: ActiveColorset 24 
 *DockAppButtons: PressColorset 25
 *DockAppButtons: Frame 0
 *DockAppButtons: Padding 5 5
 *DockAppButtons: Rows 38
-*DockAppButtons: Columns 662
+*DockAppButtons: Columns 710
 *DockAppButtons: (38x38, Icon "images/icons/dock/terminal.png", \
     Colorset 23, Action(Mouse 1) "Exec exec urxvt"
 *DockAppButtons: (10x38, ActiveColorset 21, Frame 0)
@@ -1032,6 +1024,10 @@ DestroyModuleConfig  DockAppButtons:*
 *DockAppButtons: (38x38, Icon "images/icons/dock/steam.png", \
     Colorset 23, Action(Mouse 1) "LaunchApplication steamwebhelper steam"
 *DockAppButtons: (10x38, ActiveColorset 22, Frame 0)
+*DockAppButtons: (38x38, Icon "images/icons/dock/dwarfort.png", \
+    Colorset 23, Action(Mouse 1) \
+    "LaunchApplication dwarfort steam steam://rungameid/975370"
+*DockAppButtons: (10x38, ActiveColorset 22, Frame 0)
 *DockAppButtons: (38x38, Icon "images/icons/dock/virt-manager.png", \
     Colorset 23, Action(Mouse 1) "Exec exec virt-manager"
 *DockAppButtons: (10x38, ActiveColorset 22, Frame 0)
@@ -1039,11 +1035,11 @@ DestroyModuleConfig  DockAppButtons:*
     Colorset 23, Action(Mouse 1) "LaunchApplication Audacious audacious"
 
 DestroyModuleConfig DockAppIndicator:*
-*DockAppIndicator: Geometry 662x5
+*DockAppIndicator: Geometry 710x5
 *DockAppIndicator: Colorset 26
 *DockAppIndicator: Frame 0
 *DockAppIndicator: Rows 5
-*DockAppIndicator: Columns 662
+*DockAppIndicator: Columns 710
 *DockAppIndicator: (38x5, Id "urxvt", Frame 0)
 *DockAppIndicator: (10x5, Frame 0)
 *DockAppIndicator: (38x5, Id "irssi", Frame 0)
@@ -1067,6 +1063,8 @@ DestroyModuleConfig DockAppIndicator:*
 *DockAppIndicator: (38x5, Id "transmission-remote-gtk", Frame 0)
 *DockAppIndicator: (10x5, Frame 0)
 *DockAppIndicator: (38x5, Id "steamwebhelper", Frame 0)
+*DockAppIndicator: (10x5, Frame 0)
+*DockAppIndicator: (38x5, Id "dwarfort", Frame 0)
 *DockAppIndicator: (10x5, Frame 0)
 *DockAppIndicator: (38x5, Id "virt-manager", Frame 0)
 *DockAppIndicator: (10x5, Frame 0)
