@@ -78,25 +78,63 @@ DestroyFunc InitBackground
 AddToFunc   InitBackground
 + I Test (f $[HOME]/.fehbg) Exec exec $[HOME]/.fehbg
 
-DestroyModuleConfig FvwmBacker:*
-*FvwmBacker: Command (Desk 0, Page 0 0) Exec exec feh --bg-fill \
-    $[FVWM_USERDIR]/images/wallpapers/miriam-espacio.jpg
-*FvwmBacker: Command (Desk 0, Page 0 1) Exec exec feh --bg-fill \
-    $[FVWM_USERDIR]/images/wallpapers/blue_space_2.jpg
-*FvwmBacker: Command (Desk 0, Page 0 2) Exec exec feh --bg-fill \
+DestroyFunc SwitchToDesktop1
+AddToFunc   SwitchToDesktop1
++ I DockAppButtonsColorset 23
++ I Exec exec feh --bg-fill $[FVWM_USERDIR]/images/wallpapers/miriam-espacio.jpg
+
+DestroyFunc SwitchToDesktop2
+AddToFunc   SwitchToDesktop2
++ I DockAppButtonsColorset 23
++ I Exec exec feh --bg-fill $[FVWM_USERDIR]/images/wallpapers/blue_space_2.jpg
+
+DestroyFunc SwitchToDesktop3
+AddToFunc   SwitchToDesktop3
++ I DockAppButtonsColorset 24
++ I Exec exec feh --bg-fill \
     $[FVWM_USERDIR]/images/wallpapers/blue_and_purple_space_2.jpg
-*FvwmBacker: Command (Desk 0, Page 1 0) Exec exec feh --bg-fill \
+
+DestroyFunc SwitchToDesktop4
+AddToFunc   SwitchToDesktop4
++ I DockAppButtonsColorset 23
++ I Exec exec feh --bg-fill \
     $[FVWM_USERDIR]/images/wallpapers/blue_and_purple_space_1.jpg
-*FvwmBacker: Command (Desk 0, Page 1 1) Exec exec feh --bg-fill \
-    $[FVWM_USERDIR]/images/wallpapers/riverscape.jpg
-*FvwmBacker: Command (Desk 0, Page 1 2) Exec exec feh --bg-fill \
-    $[FVWM_USERDIR]/images/wallpapers/lightscape.jpg
-*FvwmBacker: Command (Desk 0, Page 2 0) Exec exec feh --bg-fill \
-    $[FVWM_USERDIR]/images/wallpapers/blue_space_1.jpg
-*FvwmBacker: Command (Desk 0, Page 2 1) Exec exec feh --bg-fill \
-    $[FVWM_USERDIR]/images/wallpapers/purple_space_1.jpg
-*FvwmBacker: Command (Desk 0, Page 2 2) Exec exec feh --bg-fill \
-    $[FVWM_USERDIR]/images/wallpapers/purple_space_2.jpg
+
+DestroyFunc SwitchToDesktop5
+AddToFunc   SwitchToDesktop5
++ I DockAppButtonsColorset 23
++ I Exec exec feh --bg-fill $[FVWM_USERDIR]/images/wallpapers/purple_space_3.jpg
+
+DestroyFunc SwitchToDesktop6
+AddToFunc   SwitchToDesktop6
++ I DockAppButtonsColorset 24
++ I Exec exec feh --bg-fill $[FVWM_USERDIR]/images/wallpapers/jeremy-thomas.jpg
+
+DestroyFunc SwitchToDesktop7
+AddToFunc   SwitchToDesktop7
++ I DockAppButtonsColorset 23
++ I Exec exec feh --bg-fill $[FVWM_USERDIR]/images/wallpapers/blue_space_1.jpg
+
+DestroyFunc SwitchToDesktop8
+AddToFunc   SwitchToDesktop8
++ I DockAppButtonsColorset 23
++ I Exec exec feh --bg-fill $[FVWM_USERDIR]/images/wallpapers/purple_space_1.jpg
+
+DestroyFunc SwitchToDesktop9
+AddToFunc   SwitchToDesktop9
++ I DockAppButtonsColorset 23
++ I Exec exec feh --bg-fill $[FVWM_USERDIR]/images/wallpapers/purple_space_2.jpg
+
+DestroyModuleConfig FvwmBacker:*
+*FvwmBacker: Command (Desk 0, Page 0 0) SwitchToDesktop1
+*FvwmBacker: Command (Desk 0, Page 0 1) SwitchToDesktop2
+*FvwmBacker: Command (Desk 0, Page 0 2) SwitchToDesktop3
+*FvwmBacker: Command (Desk 0, Page 1 0) SwitchToDesktop4
+*FvwmBacker: Command (Desk 0, Page 1 1) SwitchToDesktop5
+*FvwmBacker: Command (Desk 0, Page 1 2) SwitchToDesktop6
+*FvwmBacker: Command (Desk 0, Page 2 0) SwitchToDesktop7
+*FvwmBacker: Command (Desk 0, Page 2 1) SwitchToDesktop8
+*FvwmBacker: Command (Desk 0, Page 2 2) SwitchToDesktop9
 
 # Mouse Bindings Functions
 DestroyFunc RaiseMoveX
@@ -300,10 +338,11 @@ Style * NoIcon
 
 # Window Specific Styles
 Style QuitVerify  !Title, PositionPlacement Center, WindowListSkip, Layer 6, \
-                  !Handles
+                  !Handles, Sticky
 Style RunProgram  !Title, PositionPlacement Center, WindowListSkip, Layer 6, \
-                  !Handles
-Style VolumeLevel !Title, PositionPlacement Center, Layer 6, !Handles, !Borders
+                  !Handles, Sticky
+Style VolumeLevel !Title, PositionPlacement Center, Layer 6, !Handles, \
+      BorderColorset 4
 Style FvwmIdent   WindowListSkip
 Style IconManPager !Borders, !Title, !Handles, Sticky, WindowListSkip, \
       NeverFocus, StaysOnBottom
@@ -374,10 +413,11 @@ Style org.gnome.clocks      !Borders, !Title, !Handles
 #  21 - DockApp default
 #  22 - DockAppButtons default
 #  23 - DockAppButtons button
-#  24 - DockAppButtons active button
-#  25 - DockAppButtons pressed button
-#  26 - DockAppIndicator off
-#  27 - DockAppIndicator on
+#  24 - DockAppBUttons button alt (darker)
+#  25 - DockAppButtons active button
+#  26 - DockAppButtons pressed button
+#  27 - DockAppIndicator off
+#  28 - DockAppIndicator on
 ###########
 Colorset 0  fg white, bg MidnightBlue, hi grey30, sh black, Plain, NoShape
 Colorset 1  fg grey, bg #0c0c38, hi grey30, sh black, fgsh grey20, \
@@ -413,13 +453,14 @@ Colorset 21 RootTransparent, fg white, hi grey30, sh black, fgsh grey20, NoShape
 Colorset 22 RootTransparent, fg grey, hi grey30, sh black, fgsh, \
             TiledShape "images/icons/dock/dockmask2.xpm"
 Colorset 23 Transparent, Tint grey 20, fg grey, hi grey30, sh black, fgsh
-Colorset 24 Transparent, Tint #6464ff 50, fg white, hi grey30, sh black, \
+Colorset 24 Transparent, Tint #191919 80, fg grey, hi grey30, sh black, fgsh
+Colorset 25 Transparent, Tint #6464ff 50, fg white, hi grey30, sh black, \
             fgsh grey20, Shape "images/icons/dock/dockmask.xpm"
-Colorset 25 Transparent, Tint #3232e0 50, fg white, hi grey30, sh black, \
+Colorset 26 Transparent, Tint #3232e0 50, fg white, hi grey30, sh black, \
             fgsh grey20, Shape "images/icons/dock/dockmask.xpm"
-Colorset 26 RootTransparent, fg grey, hi grey30, sh black, fgsh, \
+Colorset 27 RootTransparent, fg grey, hi grey30, sh black, fgsh, \
             TiledShape "images/icons/dock/dockmask3.xpm"
-Colorset 27 Transparent, Tint #3232e0 50, fg white, hi grey30, sh black, \
+Colorset 28 Transparent, Tint #3232e0 50, fg white, hi grey30, sh black, \
             fgsh grey20, Shape "images/icons/dock/dockmask4.xpm"
 Colorset 40 Pixmap $[FVWM_USERDIR]/images/wallpapers/pager_bg.png, \
             fg grey, hi grey30, sh black, NoShape
@@ -931,26 +972,44 @@ DestroyFunc DockAppChangeButton
 AddToFunc   DockAppChangeButton
 + I SendToModule DockAppIndicator ChangeButton "$0" Colorset $1
 
+DestroyFunc DockAppButtonsColorset
+AddToFunc   DockAppButtonsColorset
++ I SendToModule DockAppButtons ChangeButton 0 Colorset $0
++ I SendToModule DockAppButtons ChangeButton 2 Colorset $0
++ I SendToModule DockAppButtons ChangeButton 4 Colorset $0
++ I SendToModule DockAppButtons ChangeButton 6 Colorset $0
++ I SendToModule DockAppButtons ChangeButton 8 Colorset $0
++ I SendToModule DockAppButtons ChangeButton 10 Colorset $0
++ I SendToModule DockAppButtons ChangeButton 12 Colorset $0
++ I SendToModule DockAppButtons ChangeButton 14 Colorset $0
++ I SendToModule DockAppButtons ChangeButton 16 Colorset $0
++ I SendToModule DockAppButtons ChangeButton 18 Colorset $0
++ I SendToModule DockAppButtons ChangeButton 20 Colorset $0
++ I SendToModule DockAppButtons ChangeButton 22 Colorset $0
++ I SendToModule DockAppButtons ChangeButton 24 Colorset $0
++ I SendToModule DockAppButtons ChangeButton 26 Colorset $0
++ I SendToModule DockAppButtons ChangeButton 28 Colorset $0
+
 DestroyFunc DockAppInit
 AddToFunc   DockAppInit
-+ I Any ("urxvt") DockAppChangeButton urxvt 27
-+ I Any ("irssi") DockAppChangeButton irssi 27
-+ I Any ("discord") DockAppChangeButton discord 27
-+ I Any ("Gvim") DockAppChangeButton Gvim 27
-+ I Any ("Mail") DockAppChangeButton "Mail" 27
-+ I Any ("google-chrome") DockAppChangeButton google-chrome 27
++ I Any ("urxvt") DockAppChangeButton urxvt 28
++ I Any ("irssi") DockAppChangeButton irssi 28
++ I Any ("discord") DockAppChangeButton discord 28
++ I Any ("Gvim") DockAppChangeButton Gvim 28
++ I Any ("Mail") DockAppChangeButton "Mail" 28
++ I Any ("google-chrome") DockAppChangeButton google-chrome 28
 + I Any ("crx_hpfldicfbfomlpcikngkocigghgafkph") \
-    DockAppChangeButton crx_hpfldicfbfomlpcikngkocigghgafkph 27
+    DockAppChangeButton crx_hpfldicfbfomlpcikngkocigghgafkph 28
 + I Any ("crx_mdpkiolbdkhdjpekfbkbmhigcaggjagi") \
-    DockAppChangeButton crx_mdpkiolbdkhdjpekfbkbmhigcaggjagi 27
-+ I Any ("jellyfinmediaplayer") DockAppChangeButton jellyfinmediaplayer 27
-+ I Any ("easyeffects") DockAppChangeButton easyeffects 27
+    DockAppChangeButton crx_mdpkiolbdkhdjpekfbkbmhigcaggjagi 28
++ I Any ("jellyfinmediaplayer") DockAppChangeButton jellyfinmediaplayer 28
++ I Any ("easyeffects") DockAppChangeButton easyeffects 28
 + I Any ("transmission-remote-gtk") \
-    DockAppChangeButton transmission-remote-gtk 27
-+ I Any ("steamwebhelper") DockAppChangeButton steamwebhelper 27
-+ I Any ("dwarfort") DockAppChangeButton dwarfort 27
-+ I Any ("virt-manager") DockAppChangeButton virt-manager 27
-+ I Any ("Audacious") DockAppChangeButton Audacious 27
+    DockAppChangeButton transmission-remote-gtk 28
++ I Any ("steamwebhelper") DockAppChangeButton steamwebhelper 28
++ I Any ("dwarfort") DockAppChangeButton dwarfort 28
++ I Any ("virt-manager") DockAppChangeButton virt-manager 28
++ I Any ("Audacious") DockAppChangeButton Audacious 28
 
 DestroyFunc LaunchApplication
 AddToFunc   LaunchApplication
@@ -976,8 +1035,8 @@ DestroyModuleConfig DockApp:*
 DestroyModuleConfig  DockAppButtons:*
 *DockAppButtons: Geometry 710x38
 *DockAppButtons: Colorset 22 
-*DockAppButtons: ActiveColorset 24 
-*DockAppButtons: PressColorset 25
+*DockAppButtons: ActiveColorset 25 
+*DockAppButtons: PressColorset 26
 *DockAppButtons: Frame 0
 *DockAppButtons: Padding 5 5
 *DockAppButtons: Rows 38
@@ -1036,7 +1095,7 @@ DestroyModuleConfig  DockAppButtons:*
 
 DestroyModuleConfig DockAppIndicator:*
 *DockAppIndicator: Geometry 710x5
-*DockAppIndicator: Colorset 26
+*DockAppIndicator: Colorset 27
 *DockAppIndicator: Frame 0
 *DockAppIndicator: Rows 5
 *DockAppIndicator: Columns 710
@@ -1072,11 +1131,11 @@ DestroyModuleConfig DockAppIndicator:*
 
 DestroyFunc DockAppWindowAdded
 AddToFunc   DockAppWindowAdded
-+ I Silent DockAppChangeButton $[w.resource] 27
++ I Silent DockAppChangeButton $[w.resource] 28
 
 DestroyFunc DockAppWindowDestroyed
 AddToFunc   DockAppWindowDestroyed
-+ I None ($[w.resource]) Silent DockAppChangeButton $[w.resource] 26
++ I None ($[w.resource]) Silent DockAppChangeButton $[w.resource] 27
 
 # FvwmEvent
 #
