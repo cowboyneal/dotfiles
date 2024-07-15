@@ -85,7 +85,7 @@ AddToFunc   SwitchToDesktop1
 
 DestroyFunc SwitchToDesktop2
 AddToFunc   SwitchToDesktop2
-+ I DockAppButtonsColorset 23
++ I DockAppButtonsColorset 24
 + I Exec exec feh --bg-fill $[FVWM_USERDIR]/images/wallpapers/blue_space_2.jpg
 
 DestroyFunc SwitchToDesktop3

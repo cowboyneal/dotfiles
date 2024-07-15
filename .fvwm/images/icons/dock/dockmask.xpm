@@ -1,5 +1,5 @@
 /* XPM */
-static char * dockmask2_xpm[] = {
+static char * dockmask_xpm[] = {
 "38 38 3 1",
 " 	c None",
 ".	c #000000",
