@@ -103,7 +103,8 @@ AddToFunc   SwitchToDesktop4
 DestroyFunc SwitchToDesktop5
 AddToFunc   SwitchToDesktop5
 + I DockAppButtonsColorset 23
-+ I Exec exec feh --bg-fill $[FVWM_USERDIR]/images/wallpapers/purple_space_3.jpg
++ I Exec exec feh --bg-fill \
+    $[FVWM_USERDIR]/images/wallpapers/blue_and_purple_space_4.jpg
 
 DestroyFunc SwitchToDesktop6
 AddToFunc   SwitchToDesktop6
