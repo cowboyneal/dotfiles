@@ -85,7 +85,7 @@ AddToFunc   SwitchToDesktop1
 
 DestroyFunc SwitchToDesktop2
 AddToFunc   SwitchToDesktop2
-+ I DockAppButtonsColorset 24
++ I DockAppButtonsColorset 23
 + I Exec exec feh --bg-fill $[FVWM_USERDIR]/images/wallpapers/blue_space_2.jpg
 
 DestroyFunc SwitchToDesktop3
@@ -118,13 +118,15 @@ AddToFunc   SwitchToDesktop7
 
 DestroyFunc SwitchToDesktop8
 AddToFunc   SwitchToDesktop8
-+ I DockAppButtonsColorset 23
-+ I Exec exec feh --bg-fill $[FVWM_USERDIR]/images/wallpapers/purple_space_1.jpg
++ I DockAppButtonsColorset 24
++ I Exec exec feh --bg-fill \
+    $[FVWM_USERDIR]/images/wallpapers/fantasy-style-galaxy-2.jpg
 
 DestroyFunc SwitchToDesktop9
 AddToFunc   SwitchToDesktop9
 + I DockAppButtonsColorset 23
-+ I Exec exec feh --bg-fill $[FVWM_USERDIR]/images/wallpapers/purple_space_2.jpg
++ I Exec exec feh --bg-fill \
+    $[FVWM_USERDIR]/images/wallpapers/fantasy-style-galaxy.jpg
 
 DestroyModuleConfig FvwmBacker:*
 *FvwmBacker: Command (Desk 0, Page 0 0) SwitchToDesktop1
@@ -447,7 +449,7 @@ Colorset 17 Transparent, fg grey, hi grey30, sh black, NoShape
 Colorset 18 DGradient 128 2 MidnightBlue 50 indigo 25 grey15, \
             fg grey, hi grey30, sh black, NoShape
 Colorset 19 RootTransparent, Tint #191919 75, fg grey, hi grey30, \
-            sh black, NoShape
+            sh black, Shape "images/iconmanpagermask.xpm"
 Colorset 20 Transparent, Tint #6464ff 50, fg white, hi grey30, sh black \
             fgsh grey20, NoShape
 Colorset 21 RootTransparent, fg white, hi grey30, sh black, fgsh grey20, NoShape
@@ -565,6 +567,7 @@ Test (x sc-im) + "SC-IM%images/icons/menu/sc-im.png%" \
 #
 DestroyMenu MenuReaders
 AddToMenu   MenuReaders "  Readers  " Title
+Test (x liferea) + "Liferea%images/icons/menu/liferea.xpm%" Exec exec liferea
 Test (x evince) + "Evince%images/icons/menu/evince.png%" Exec exec evince
 Test (x foliate) + "Foliate%images/icons/menu/foliate.png%" Exec exec foliate
 
