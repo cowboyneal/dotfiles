@@ -99,10 +99,13 @@ function conky_main_box()
     
 	---------------------- PARAMETERS BEGIN HERE
     local boxes_settings={
-        {
-        colour={ {0,0x191919,0.8} },
-        corners={ {"circle",4},}
-        }
+        { h=25, colour={ {0,0x191919,0.8} }, corners={ {"circle",4} } },
+        { y=35, h=231, colour={ {0,0x191919,0.8} }, corners={ {"circle",4} } },
+        { y=276, h=81, colour={ {0,0x191919,0.8} }, corners={ {"circle",4} } },
+        { y=367, h=78, colour={ {0,0x191919,0.8} }, corners={ {"circle",4} } },
+        { y=455, h=122, colour={ {0,0x191919,0.8} }, corners={ {"circle",4} } },
+        { y=587, h=78, colour={ {0,0x191919,0.8} }, corners={ {"circle",4} } },
+        { y=675, h=186, colour={ {0,0x191919,0.8} }, corners={ {"circle",4} } }
     }
     ---------------------------- PARAMETERS END HERE
     
