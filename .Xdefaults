@@ -45,7 +45,7 @@ real*foreground: #ffffff
 
 Xcursor.theme: jimmac
 
-URxvt*iconFile:             /home/pater/.fvwm/images/icons/dock/terminal.png
+URxvt*iconFile:             /home/pater/.fvwm/images/icons/mini/terminal.png
 URxvt*visualBell:           false
 URxvt*geometry:             80x24
 URxvt*foreground:           grey
@@ -70,51 +70,60 @@ URxvt*perl-lib:             /usr/lib/x86_64-linux-gnu/urxvt/perl
 URxvt*perl-ext-common:      default,matcher,selection-to-clipboard
 URxvt*url-launcher:         /bin/google-chrome
 URxvt*matcher.button:       1
-URxvt*color0:  #000000
-URxvt*color1:  #cd0000
-URxvt*color2:  #00cd00
-URxvt*color3:  #cdcd00
-URxvt*color4:  #0000cd
-URxvt*color5:  #cd00cd
-URxvt*color6:  #00cdcd
-URxvt*color7:  #e5e5e5
-URxvt*color8:  #7f7f7f
-URxvt*color9:  #ff0000
-URxvt*color10: #00ff00
-URxvt*color11: #ffff00
-URxvt*color12: #5c5cff
-URxvt*color13: #ff00ff
-URxvt*color14: #00ffff
-URxvt*color15: #ffffff
+URxvt*color0:               #000000
+URxvt*color1:               #cd0000
+URxvt*color2:               #00cd00
+URxvt*color3:               #cdcd00
+URxvt*color4:               #0000cd
+URxvt*color5:               #cd00cd
+URxvt*color6:               #00cdcd
+URxvt*color7:               #e5e5e5
+URxvt*color8:               #7f7f7f
+URxvt*color9:               #ff0000
+URxvt*color10:              #00ff00
+URxvt*color11:              #ffff00
+URxvt*color12:              #5c5cff
+URxvt*color13:              #ff00ff
+URxvt*color14:              #00ffff
+URxvt*color15:              #ffffff
 
-mutt*loginShell:        false
-mutt*scrollBar:         false
-mutt*geometry:          80x50+15+15
-mutt*font:              xft:Deja Vu Sans Mono:size=10
-irssi*iconFile:         /home/pater/.fvwm/images/icons/dock/irssi.png
-irssi*loginShell:       false
-irssi*scrollBar:        false
-! irssi*geometry:         80x50+15+767
-irssi*geometry:         80x55+10+45
-irssi*font:             xft:Deja Vu Sans Mono:size=10
-console*loginShell:     false
-console*scrollBar:      false
-console*geometry:       167x6-212-0
-console*font:           xft:Deja Vu Sans Mono:size=7
-top*loginShell:         false
-top*scrollBar:          false
-top*geometry:           80x24
-top*font:               xft:Deja Vu Sans Mono:size=8.5
+mutt*loginShell:            false
+mutt*scrollBar:             false
+mutt*geometry:              80x50+15+15
+mutt*font:                  xft:Deja Vu Sans Mono:size=10
 
-XTerm.termName:         xterm-color
-XTerm*background:       black
-XTerm*cursorColor:      white
-XTerm*foreground:       white
-XTerm*geometry:         80x24
-XTerm*rightScrollBar:   true
-XTerm*saveLines:        1024
-XTerm*loginShell:       true
-XTerm*scrollbar:        true
+irssi*iconFile:             /home/pater/.fvwm/images/icons/mini/irssi.png
+irssi*loginShell:           false
+irssi*scrollBar:            false
+irssi*geometry:             80x28+10+502
+irssi*font:                 xft:Deja Vu Sans Mono:size=10
+
+sc-im*iconFile:             /home/pater/.fvwm/images/icons/mini/sc-im.png
+sc-im*loginShell:           false
+sc-im*scrollBar:            false
+sc-im*geometry:             80x24
+sc-im*font:                 xft:Deja Vu Sans Mono:size=10
+sc-im*title:                SC-IM
+
+console*loginShell:         false
+console*scrollBar:          false
+console*geometry:           167x6-212-0
+console*font:               xft:Deja Vu Sans Mono:size=7
+
+top*loginShell:             false
+top*scrollBar:              false
+top*geometry:               80x24
+top*font:                   xft:Deja Vu Sans Mono:size=10
+
+XTerm.termName:             xterm-color
+XTerm*background:           black
+XTerm*cursorColor:          white
+XTerm*foreground:           white
+XTerm*geometry:             80x24
+XTerm*rightScrollBar:       true
+XTerm*saveLines:            1024
+XTerm*loginShell:           true
+XTerm*scrollbar:            true
 
 ! Xft.dpi:       100
 Xft.antialias: true

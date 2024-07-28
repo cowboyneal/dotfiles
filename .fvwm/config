@@ -463,7 +463,7 @@ Colorset 26 Transparent, Tint #3232e0 50, fg white, hi grey30, sh black, \
             fgsh grey20, Shape "images/icons/dock/dockmask.xpm"
 Colorset 27 RootTransparent, fg grey, hi grey30, sh black, fgsh, \
             TiledShape "images/icons/dock/dockmask3.xpm"
-Colorset 28 Transparent, Tint #3232e0 50, fg white, hi grey30, sh black, \
+Colorset 28 Transparent, Tint #3232e0 80, fg white, hi grey30, sh black, \
             fgsh grey20, Shape "images/icons/dock/dockmask4.xpm"
 Colorset 40 Pixmap $[FVWM_USERDIR]/images/wallpapers/pager_bg.png, \
             fg grey, hi grey30, sh black, NoShape
@@ -531,123 +531,123 @@ AddToMenu   MenuPrograms "  Programs  " Title
 + "Games%images/icons/apps.png%" Popup MenuGames
 + "Net%images/icons/apps.png%" Popup MenuNet
 + "XDG &Menu%images/icons/apps.png%" Popup XDGMenu
-Test (x virt-manager) + "VM Manager%images/icons/menu/virt-manager.png%" \
+Test (x virt-manager) + "VM Manager%images/icons/mini/virt-manager.png%" \
     Exec exec virt-manager
-Test (x CubicSDR) + "CubicSDR%images/icons/menu/cubicsdr.png%" \
+Test (x CubicSDR) + "CubicSDR%images/icons/mini/cubicsdr.png%" \
     Exec exec CubicSDR
 
 # Google Menu
 #
 DestroyMenu MenuGoogle
 AddToMenu   MenuGoogle "  Google  " Title
-Test (x google-chrome-stable) + "Chrome%images/icons/menu/google-chrome.png%" \
+Test (x google-chrome-stable) + "Chrome%images/icons/mini/google-chrome.png%" \
     Exec exec google-chrome-stable
-Test (x google-chrome) + "Messages%images/icons/menu/messages.png%" \
+Test (x google-chrome) + "Messages%images/icons/mini/messages.png%" \
     Exec exec google-chrome --app-id=hpfldicfbfomlpcikngkocigghgafkph
-Test (x google-chrome) + "Chat%images/icons/menu/chat.png%" \
+Test (x google-chrome) + "Chat%images/icons/mini/chat.png%" \
     Exec exec google-chrome --app-id=mdpkiolbdkhdjpekfbkbmhigcaggjagi
 
 # Productivity Menu
 #
 DestroyMenu MenuProductivity
 AddToMenu   MenuProductivity "  Productivity  " Title
-Test (x gvim) + "Vim%images/icons/menu/gvim.png%" Exec exec gvim
-Test (x apostrophe) + "Apostrophe%images/icons/menu/apostrophe.png%" \
+Test (x gvim) + "Vim%images/icons/mini/gvim.png%" Exec exec gvim
+Test (x apostrophe) + "Apostrophe%images/icons/mini/apostrophe.png%" \
     Exec exec apostrophe
-Test (x obsidian) + "Obsidian%images/icons/menu/obsidian.png%" \
+Test (x obsidian) + "Obsidian%images/icons/mini/obsidian.png%" \
     Exec exec obsidian
-Test (x libreoffice) + "LibreOffice%images/icons/menu/libreoffice.png%" \
+Test (x libreoffice) + "LibreOffice%images/icons/mini/libreoffice.png%" \
     Exec exec libreoffice
-Test (x gnome-calculator) + "Calculator%images/icons/menu/calc.png%" \
+Test (x gnome-calculator) + "Calculator%images/icons/mini/calc.png%" \
     Exec exec gnome-calculator
-Test (x sc-im) + "SC-IM%images/icons/menu/sc-im.png%" \
+Test (x sc-im) + "SC-IM%images/icons/mini/sc-im.png%" \
     Exec exec $[infostore.terminal] -name sc-im -e sc-im
 
 # Readers Menu
 #
 DestroyMenu MenuReaders
 AddToMenu   MenuReaders "  Readers  " Title
-Test (x liferea) + "Liferea%images/icons/menu/liferea.xpm%" Exec exec liferea
-Test (x evince) + "Evince%images/icons/menu/evince.png%" Exec exec evince
-Test (x foliate) + "Foliate%images/icons/menu/foliate.png%" Exec exec foliate
+Test (x liferea) + "Liferea%images/icons/mini/liferea.xpm%" Exec exec liferea
+Test (x evince) + "Evince%images/icons/mini/evince.png%" Exec exec evince
+Test (x foliate) + "Foliate%images/icons/mini/foliate.png%" Exec exec foliate
 
 # Media Menu
 #
 DestroyMenu MenuMedia
 AddToMenu   MenuMedia "  Media  " Title
 Test (x jellyfinmediaplayer) + \
-    "Jellyfin Media Player%images/icons/menu/jellyfin.png%" \
+    "Jellyfin Media Player%images/icons/mini/jellyfin.png%" \
     Exec exec jellyfinmediaplayer
-Test (x audacious) + "Audacious%images/icons/menu/audacious.png%" \
+Test (x audacious) + "Audacious%images/icons/mini/audacious.png%" \
     Exec exec audacious
-Test (x easyeffects) + "Easy Effects%images/icons/menu/easyeffects.png%" \
+Test (x easyeffects) + "Easy Effects%images/icons/mini/easyeffects.png%" \
     Exec exec easyeffects
-Test (x audacity) + "Audacity%images/icons/menu/audacity.xpm%" \
+Test (x audacity) + "Audacity%images/icons/mini/audacity.xpm%" \
     Exec exec audacity
-Test (x mkvtoolnix-gui) + "MKVToolNix%images/icons/menu/mkvtoolnix.png%" \
+Test (x mkvtoolnix-gui) + "MKVToolNix%images/icons/mini/mkvtoolnix.png%" \
     Exec exec mkvtoolnix-gui
-Test (x handbrake) + "HandBrake%images/icons/menu/handbrake.png%" \
+Test (x handbrake) + "HandBrake%images/icons/mini/handbrake.png%" \
     Exec exec handbrake
-Test (x mixxx) + "Mixxx%images/icons/menu/mixxx.png%" Exec exec mixxx
-Test (x vlc) + "VLC%images/icons/menu/vlc.png%" Exec exec vlc
-Test (x cheese) + "Cheese%images/icons/menu/cheese.png%" Exec exec cheese
+Test (x mixxx) + "Mixxx%images/icons/mini/mixxx.png%" Exec exec mixxx
+Test (x vlc) + "VLC%images/icons/mini/vlc.png%" Exec exec vlc
+Test (x cheese) + "Cheese%images/icons/mini/cheese.png%" Exec exec cheese
 Test (x $[HOME]/bin/btconnect) + \
-    "Reconnect AudioEngine B2%images/icons/menu/bluetooth.png%" \
+    "Reconnect AudioEngine B2%images/icons/mini/bluetooth.png%" \
     Exec exec $[HOME]/bin/btconnect &
 
 # Graphics Menu
 #
 DestroyMenu MenuGraphics
 AddToMenu   MenuGraphics "  Graphics  " Title
-Test (x eog) + "Eye of Gnome%images/icons/menu/eog.png%" Exec exec eog
-Test (x gimp) + "GIMP%images/icons/menu/gimp.png%" Exec exec gimp
-Test (x darktable) + "Darktable%images/icons/menu/darktable.png%" \
+Test (x eog) + "Eye of Gnome%images/icons/mini/eog.png%" Exec exec eog
+Test (x gimp) + "GIMP%images/icons/mini/gimp.png%" Exec exec gimp
+Test (x darktable) + "Darktable%images/icons/mini/darktable.png%" \
     Exec exec darktable
-Test (x inkscape) + "Inkscape%images/icons/menu/inkscape.png%" \
+Test (x inkscape) + "Inkscape%images/icons/mini/inkscape.png%" \
     Exec exec inkscape
-Test (x krita) + "Krita%images/icons/menu/krita.png%" Exec exec krita
-Test (x display) + "ImageMagick%images/icons/menu/display-im.png%" \
+Test (x krita) + "Krita%images/icons/mini/krita.png%" Exec exec krita
+Test (x display) + "ImageMagick%images/icons/mini/display-im.png%" \
     Exec exec display
 
 # Games Menu
 #
 DestroyMenu MenuGames
 AddToMenu   MenuGames "  Games  " Title
-Test (x steam) + "Steam%images/icons/menu/steam.png%" Exec exec steam
-Test (x steam) + "Dwarf Fortress%images/icons/menu/dwarfort.png%" \
+Test (x steam) + "Steam%images/icons/mini/steam.png%" Exec exec steam
+Test (x steam) + "Dwarf Fortress%images/icons/mini/dwarfort.png%" \
     Exec exec steam steam://rungameid/975370
-Test (x gnome-sudoku) + "Sudoku%images/icons/menu/sudoku.png%" \
+Test (x gnome-sudoku) + "Sudoku%images/icons/mini/sudoku.png%" \
     Exec exec gnome-sudoku
-Test (x gnome-mines) + "Mines%images/icons/menu/mines.png%" \
+Test (x gnome-mines) + "Mines%images/icons/mini/mines.png%" \
     Exec exec gnome-mines
-Test (x gnome-mahjongg) + "Mahjongg%images/icons/menu/mahjongg.png%" \
+Test (x gnome-mahjongg) + "Mahjongg%images/icons/mini/mahjongg.png%" \
     Exec exec gnome-mahjongg
-Test (x sol) + "Solitaire%images/icons/menu/sol.png%" Exec exec sol
-Test (x pcsxr) + "PCSXR%images/icons/menu/pcsxr.png%" Exec exec pcsxr
-+ "PCSX2%images/icons/menu/pcsx2.png%" Exec exec flatpak run net.pcsx2.PCSX2
+Test (x sol) + "Solitaire%images/icons/mini/sol.png%" Exec exec sol
+Test (x pcsxr) + "PCSXR%images/icons/mini/pcsxr.png%" Exec exec pcsxr
++ "PCSX2%images/icons/mini/pcsx2.png%" Exec exec flatpak run net.pcsx2.PCSX2
 
 # Net Menu
 #
 DestroyMenu MenuNet
 AddToMenu   MenuNet "  Net  " Title
-Test (x irssi) + "irssi%images/icons/menu/irssi.png%" \
+Test (x irssi) + "irssi%images/icons/mini/irssi.png%" \
     Exec exec $[infostore.terminal] -name irssi -e \
     dtach -A /tmp/$[USER]-irssi irssi
-Test (x discord) + "Discord%images/icons/menu/discord.png%" Exec exec discord
-Test (x thunderbird) + "Thunderbird%images/icons/menu/thunderbird.png%" \
+Test (x discord) + "Discord%images/icons/mini/discord.png%" Exec exec discord
+Test (x thunderbird) + "Thunderbird%images/icons/mini/thunderbird.png%" \
     Exec exec thunderbird
 Test (x transmission-remote-gtk) + \
-    "Transmission Remote%images/icons/menu/transmission-remote.png%" \
+    "Transmission Remote%images/icons/mini/transmission-remote.png%" \
     Exec exec transmission-remote-gtk
-Test (x firefox) + "Firefox%images/icons/menu/firefox.png%" Exec exec firefox
-Test (x hexchat) + "HexChat%images/icons/menu/hexchat.png%" Exec exec hexchat
-Test (x gftp) + "gFTP%images/icons/menu/gftp.png%" Exec exec gftp
-Test (x mtr) + "mtr%images/icons/menu/mtr.png%" Exec exec mtr
-Test (x wireshark) + "Wireshark%images/icons/menu/wireshark.png%" \
+Test (x firefox) + "Firefox%images/icons/mini/firefox.png%" Exec exec firefox
+Test (x hexchat) + "HexChat%images/icons/mini/hexchat.png%" Exec exec hexchat
+Test (x gftp) + "gFTP%images/icons/mini/gftp.png%" Exec exec gftp
+Test (x mtr) + "mtr%images/icons/mini/mtr.png%" Exec exec mtr
+Test (x wireshark) + "Wireshark%images/icons/mini/wireshark.png%" \
     Exec exec wireshark
-Test (x ettercap) + "Ettercap%images/icons/menu/ettercap.png%" \
+Test (x ettercap) + "Ettercap%images/icons/mini/ettercap.png%" \
     Exec exec ettercap -G
-Test (x nicotine) + "Nicotine%images/icons/menu/nicotine.png%" \
+Test (x nicotine) + "Nicotine%images/icons/mini/nicotine.png%" \
     Exec exec nicotine
 
 # Background Menu
@@ -855,8 +855,9 @@ AddTitleStyle  Inactive HGradient 128 2 #0c0c38 66 #260041 33 MidnightBlue
 
 ButtonStyle    All Simple -- Raised
 AddButtonStyle 1 Inactive Colorset 1
-AddButtonStyle 1 Vector 3 23x58@0 77x58@0 77x42@0
-AddButtonStyle 1 Vector 3 23x58@1 23x42@1 77x42@1
+AddButtonStyle 1 MiniIcon
+#AddButtonStyle 1 Vector 3 23x58@0 77x58@0 77x42@0
+#AddButtonStyle 1 Vector 3 23x58@1 23x42@1 77x42@1
 AddButtonStyle 2 Active Colorset 16
 AddButtonStyle 2 Inactive Colorset 15
 AddButtonStyle 2 Vector 7 25x65@1 35x75@0 50x59@0 65x75@0 75x65@0 \
@@ -873,6 +874,8 @@ AddButtonStyle 6 Active Colorset 16
 AddButtonSTyle 6 Inactive Colorset 15
 AddButtonStyle 6 Vector 3 42x58@0 58x58@0 58x42@0
 AddButtonStyle 6 Vector 3 42x58@1 42x42@1 58x42@1
+#AddButtonStyle 6 Vector 3 23x58@0 77x58@0 77x42@0
+#AddButtonStyle 6 Vector 3 23x58@1 23x42@1 77x42@1
 
 ButtonStyle All - Clear
 ButtonStyle 1 - MwmDecorMenu
