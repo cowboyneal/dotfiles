@@ -344,8 +344,10 @@ Style QuitVerify  !Title, PositionPlacement Center, WindowListSkip, Layer 6, \
                   !Handles, Sticky
 Style RunProgram  !Title, PositionPlacement Center, WindowListSkip, Layer 6, \
                   !Handles, Sticky
-Style VolumeLevel !Title, PositionPlacement Center, Layer 6, !Handles, \
-      BorderColorset 4
+Style FvwmScript  !Title, PositionPlacement Center, !Handles, \
+      BorderColorset 4, WindowListSkip, StaysOnTop, NeverFocus
+Style VolumeLevel !Title, PositionPlacement Center, !Handles, \
+      BorderColorset 4, WindowListSkip, StaysOnTop, NeverFocus
 Style FvwmIdent   WindowListSkip
 Style IconManPager !Borders, !Title, !Handles, Sticky, WindowListSkip, \
       NeverFocus, StaysOnBottom
@@ -872,10 +874,10 @@ AddButtonStyle 4 Vector 3 21x79@0 79x79@0 79x21@0
 AddButtonStyle 4 Vector 3 21x79@1 21x21@1 79x21@1
 AddButtonStyle 6 Active Colorset 16
 AddButtonSTyle 6 Inactive Colorset 15
-AddButtonStyle 6 Vector 3 42x58@0 58x58@0 58x42@0
-AddButtonStyle 6 Vector 3 42x58@1 42x42@1 58x42@1
-#AddButtonStyle 6 Vector 3 23x58@0 77x58@0 77x42@0
-#AddButtonStyle 6 Vector 3 23x58@1 23x42@1 77x42@1
+#AddButtonStyle 6 Vector 3 42x58@0 58x58@0 58x42@0
+#AddButtonStyle 6 Vector 3 42x58@1 42x42@1 58x42@1
+AddButtonStyle 6 Vector 3 21x79@0 79x79@0 79x63@0
+AddButtonStyle 6 Vector 3 21x79@1 21x63@1 79x63@1
 
 ButtonStyle All - Clear
 ButtonStyle 1 - MwmDecorMenu
