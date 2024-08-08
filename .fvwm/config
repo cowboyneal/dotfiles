@@ -58,7 +58,6 @@ AddToFunc   StartFunction
 + I Test (Init) Exec exec $[HOME]/bin/btconnect &
 + I Test (Init) Exec exec picom &
 # + I InitBackground
-+ I Module FvwmButtons IconManPager
 + I Module FvwmButtons DockApp
 + I Module FvwmEvent DockAppWindowAddedEvent
 + I Module FvwmEvent DockAppWindowDestroyedEvent
@@ -67,6 +66,7 @@ AddToFunc   StartFunction
 + I Test (Init) Exec exec polybar &
 + I Test (Init) Exec exec conky &
 + I Test (Init) Exec exec xscreensaver --no-splash &
++ I Schedule 1000 Module FvwmButtons IconManPager
 + I Schedule 1000 DockAppInit
 
 DestroyFunc ExitFunction
@@ -266,7 +266,7 @@ AddToFunc   ToggleTitle
 # Desktops and Pages
 #
 # Fvwm has both Virtual Desktops and Pages. Each Desktop is built from
-# a grid of Pages. The following sets the name of four Desktops and then
+# a grid of Pages. The following sets the name of the Desktop and then
 # divides each Desktop into a 3x3 grid of Pages that are positioned as
 #
 #   +---+---+---+
@@ -366,13 +366,13 @@ Style polybar     !Borders, !Title, !Handles, Sticky, WindowListSkip, \
 Style Conky       !Borders, !Title, !Handles, Sticky, WindowListSkip, \
       NeverFocus, StaysOnBottom
 Style audacious             !Borders, !Title, !Handles, Sticky, Layer 4
-Style Google-chrome         !Borders, !Title, !Handles
-Style easyeffects           !Borders, !Title, !Handles
-Style eog                   !Borders, !Title, !Handles
+Style Google-chrome         !Borders, !Title, !Handles, DecorateTransient
+Style easyeffects           !Borders, !Title, !Handles, DecorateTransient
+Style eog                   !Borders, !Title, !Handles, DecorateTransient
 Style gnome-sudoku          !Borders, !Title, !Handles
 Style gnome-mahjongg        !Borders, !Title, !Handles
 Style gnome-mines           !Borders, !Title, !Handles
-Style org.gnome.Nautilus    !Borders, !Title, !Handles
+Style org.gnome.Nautilus    !Borders, !Title, !Handles, DecorateTransient
 Style evince                !Borders, !Title, !Handles
 Style dconf-editor          !Borders, !Title, !Handles
 Style gnome-screenshot      !Borders, !Title, !Handles
@@ -384,6 +384,7 @@ Style apostrophe            !Borders, !Title, !Handles
 Style obsidian              !Borders, !Title, !Handles
 Style ettercap              !Borders, !Title, !Handles
 Style org.gnome.clocks      !Borders, !Title, !Handles
+Style Navigator             !Borders, !Title, !Handles, DecorateTransient
 
 #######
 # 3: Colorsets
@@ -739,7 +740,7 @@ AddToMenu   MenuFvwmManPages "Help" Title
 + "FvwmAnimate"         ViewManPage FvwmAnimate
 + "FvwmAuto"            ViewManPage FvwmAuto
 + "FvwmBacker"          ViewManPage FvwmBacker
-+ "FvwmBanner"          ViewManPage FvwmBanner
+#+ "FvwmBanner"          ViewManPage FvwmBanner
 + "FvwmButtons"         ViewManPage FvwmButtons
 + "FvwmCommand"         ViewManPage FvwmCommand
 + "FvwmConsole"         ViewManPage FvwmConsole
@@ -749,16 +750,16 @@ AddToMenu   MenuFvwmManPages "Help" Title
 + "FvwmIdent"           ViewManPage FvwmIdent
 + "FvwmPager"           ViewManPage FvwmPager
 + "FvwmPerl"            ViewManPage FvwmPerl
-+ "FvwmProxy"           ViewManPage FvwmProxy
+#+ "FvwmProxy"           ViewManPage FvwmProxy
 + "FvwmRearrange"       ViewManPage FvwmRearrange
 + "FvwmScript"          ViewManPage FvwmScript
 + "" Nop
 + "fvwm-root"	        ViewManPage fvwm-root
 + "fvwm-menu-desktop"   ViewManPage fvwm-menu-desktop
 + "fvwm-menu-directory" ViewManPage fvwm-menu-directory
-+ "fvwm-menu-headlines" ViewManPage fvwm-menu-headlines
+#+ "fvwm-menu-headlines" ViewManPage fvwm-menu-headlines
 + "fvwm-menu-xlock"     ViewManPage fvwm-menu-xlock
-+ "fvwm-config"         ViewManPage fvwm-config
+#+ "fvwm-config"         ViewManPage fvwm-config
 
 #######
 # 5: Mouse and Key bindings
