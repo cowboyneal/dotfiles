@@ -1,0 +1,6 @@
+#!/bin/sh
+
+export LANG=en_US.UTF-8
+export GTK_THEME=Flat-Remix-GTK-SUPERBLUE-Darkest
+xrdb -merge ~/.Xdefaults
+setxkbmap -option ctrl:nocaps
