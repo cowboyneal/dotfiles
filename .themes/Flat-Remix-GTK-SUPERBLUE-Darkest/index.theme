@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=Flat-Remix-GTK-SUPERBLUE-Darkest
+Comment=Flat-Remix-GTK-SUPERBLUE-Darkest theme"
+Encoding=UTF-8
+
+
+[X-GNOME-Metatheme]
+GtkTheme=Flat-Remix-GTK-SUPERBLUE-Darkest
+MetacityTheme=Flat-Remix-Darkest-Metacity
+IconTheme=Flat-Remix-SUPERBLUE-Darkest
+CursorTheme=Adwaita
+ButtonLayout=:minimize,maximize,close
