@@ -68,7 +68,7 @@ AddToFunc   StartFunction
 + I Test (Init) Exec exec xscreensaver --no-splash &
 + I Schedule 1000 Module FvwmButtons IconManPager
 + I Schedule 1000 DockAppInit
-+ I Test (Init) Schedule 5000 Exec exec opensnitch-ui
++ I Test (Init) Schedule 5000 Exec exec opensnitch-ui &
 
 DestroyFunc ExitFunction
 AddToFunc   ExitFunction
@@ -438,7 +438,7 @@ Colorset 6  fg white, bg #6464ff, hi, sh, Plain, NoShape
 Colorset 7  fg grey30, bg white, hi, sh, Plain, NoShape
 Colorset 8  HGradient 128 2 MidnightBlue 66 indigo 33 #6464ff, \
             fg white, hi grey30, sh black, fgsh grey20, NoShape
-Colorset 10 DGradient 128 3 #6464ff 25 MidnightBlue 50 indigo 25 grey15, \
+Colorset 10 DGradient 128 3 #3232e0 25 MidnightBlue 50 indigo 25 grey15, \
             fg grey, hi grey30, sh black, NoShape
 Colorset 11 fg white, bg #6464ff, hi grey30, sh black, fgsh grey20, \
             Plain, NoShape

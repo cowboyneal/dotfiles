@@ -56,7 +56,7 @@ URxvt*letterSpace:          -1
 URxvt*scrollBar_right:      true
 URxvt*scrollstyle:          plain
 URxvt*saveLines:            1024
-URxvt*termName:             xterm-color
+URxvt*termName:             xterm-256color
 URxvt*loginShell:           true
 ! URxvt*transparent:        true
 ! URxvt*tintColor:          white
@@ -96,6 +96,7 @@ mutt*geometry:              80x50+15+15
 mutt*font:                  xft:Deja Vu Sans Mono:size=10
 
 irssi*iconFile:             /home/pater/.fvwm/images/icons/mini/irssi.png
+irssi*termName:             xterm-color
 irssi*loginShell:           false
 irssi*scrollBar:            false
 irssi*geometry:             80x28+10+502
