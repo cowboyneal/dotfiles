@@ -373,6 +373,7 @@ Style eog                   !Borders, !Title, !Handles, DecorateTransient
 Style gnome-sudoku          !Borders, !Title, !Handles
 Style gnome-mahjongg        !Borders, !Title, !Handles
 Style gnome-mines           !Borders, !Title, !Handles
+Style tali                  !Borders, !Title, !Handles
 Style org.gnome.Nautilus    !Borders, !Title, !Handles, DecorateTransient
 Style evince                !Borders, !Title, !Handles
 Style dconf-editor          !Borders, !Title, !Handles
@@ -468,7 +469,7 @@ Colorset 26 Transparent, Tint #3232e0 50, fg white, hi grey30, sh black, \
             fgsh grey20, Shape "images/icons/dock/dockmask.xpm"
 Colorset 27 Transparent, fg grey, hi grey30, sh black, fgsh, \
             TiledShape "images/icons/dock/dockmask3.xpm"
-Colorset 28 Transparent, Tint #3232e0 80, fg white, hi grey30, sh black, \
+Colorset 28 Transparent, Tint #3232e0 50, fg white, hi grey30, sh black, \
             fgsh grey20, Shape "images/icons/dock/dockmask4.xpm"
 Colorset 40 Pixmap $[FVWM_USERDIR]/images/wallpapers/pager_bg.png, \
             fg grey, hi grey30, sh black, NoShape
@@ -627,6 +628,7 @@ Test (x gnome-mines) + "Mines%images/icons/mini/mines.png%" \
     Exec exec gnome-mines
 Test (x gnome-mahjongg) + "Mahjongg%images/icons/mini/mahjongg.png%" \
     Exec exec gnome-mahjongg
+Test (x tali) + "Tali%images/icons/mini/tali.png%" Exec exec tali
 Test (x sol) + "Solitaire%images/icons/mini/sol.png%" Exec exec sol
 Test (x pcsxr) + "PCSXR%images/icons/mini/pcsxr.png%" Exec exec pcsxr
 + "PCSX2%images/icons/mini/pcsx2.png%" Exec exec flatpak run net.pcsx2.PCSX2
