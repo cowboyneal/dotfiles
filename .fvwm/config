@@ -81,51 +81,51 @@ AddToFunc   InitBackground
 
 DestroyFunc SwitchToDesktop1
 AddToFunc   SwitchToDesktop1
-+ I DockAppButtonsColorset 23
+# + I DockAppButtonsColorset 23
 + I Exec exec feh --bg-fill $[FVWM_USERDIR]/images/wallpapers/miriam-espacio.jpg
 
 DestroyFunc SwitchToDesktop2
 AddToFunc   SwitchToDesktop2
-+ I DockAppButtonsColorset 23
+# + I DockAppButtonsColorset 23
 + I Exec exec feh --bg-fill $[FVWM_USERDIR]/images/wallpapers/blue_space_2.jpg
 
 DestroyFunc SwitchToDesktop3
 AddToFunc   SwitchToDesktop3
-+ I DockAppButtonsColorset 24
+# + I DockAppButtonsColorset 24
 + I Exec exec feh --bg-fill \
     $[FVWM_USERDIR]/images/wallpapers/blue_and_purple_space_2.jpg
 
 DestroyFunc SwitchToDesktop4
 AddToFunc   SwitchToDesktop4
-+ I DockAppButtonsColorset 23
+# + I DockAppButtonsColorset 23
 + I Exec exec feh --bg-fill \
     $[FVWM_USERDIR]/images/wallpapers/blue_and_purple_space_1.jpg
 
 DestroyFunc SwitchToDesktop5
 AddToFunc   SwitchToDesktop5
-+ I DockAppButtonsColorset 23
+# + I DockAppButtonsColorset 23
 + I Exec exec feh --bg-fill \
     $[FVWM_USERDIR]/images/wallpapers/blue_and_purple_space_4.jpg
 
 DestroyFunc SwitchToDesktop6
 AddToFunc   SwitchToDesktop6
-+ I DockAppButtonsColorset 24
+# + I DockAppButtonsColorset 24
 + I Exec exec feh --bg-fill $[FVWM_USERDIR]/images/wallpapers/jeremy-thomas.jpg
 
 DestroyFunc SwitchToDesktop7
 AddToFunc   SwitchToDesktop7
-+ I DockAppButtonsColorset 23
+# + I DockAppButtonsColorset 23
 + I Exec exec feh --bg-fill $[FVWM_USERDIR]/images/wallpapers/blue_space_1.jpg
 
 DestroyFunc SwitchToDesktop8
 AddToFunc   SwitchToDesktop8
-+ I DockAppButtonsColorset 24
+# + I DockAppButtonsColorset 24
 + I Exec exec feh --bg-fill \
     $[FVWM_USERDIR]/images/wallpapers/fantasy-style-galaxy-2.jpg
 
 DestroyFunc SwitchToDesktop9
 AddToFunc   SwitchToDesktop9
-+ I DockAppButtonsColorset 23
+# + I DockAppButtonsColorset 23
 + I Exec exec feh --bg-fill \
     $[FVWM_USERDIR]/images/wallpapers/fantasy-style-galaxy.jpg
 
@@ -456,16 +456,17 @@ Colorset 19 RootTransparent, Tint #191919 75, fg grey, hi grey30, \
             sh black, Shape "images/iconmanpagermask.xpm"
 Colorset 20 Transparent, Tint #6464ff 50, fg white, hi grey30, sh black \
             fgsh grey20, NoShape
-Colorset 21 RootTransparent, fg white, hi grey30, sh black, fgsh grey20, NoShape
-Colorset 22 RootTransparent, fg grey, hi grey30, sh black, fgsh, \
+Colorset 21 RootTransparent, Tint #191919 75, fg white, hi grey30, sh black, \
+            fgsh grey20, Shape "images/dockappmask.xpm"
+Colorset 22 Transparent, fg grey, hi grey30, sh black, fgsh, \
             TiledShape "images/icons/dock/dockmask2.xpm"
-Colorset 23 Transparent, Tint grey 20, fg grey, hi grey30, sh black, fgsh
-Colorset 24 Transparent, Tint #191919 80, fg grey, hi grey30, sh black, fgsh
+Colorset 23 Transparent, Tint grey80 20, fg grey, hi grey30, sh black, fgsh
+Colorset 24 Transparent, Tint #191919 75, fg grey, hi grey30, sh black, fgsh
 Colorset 25 Transparent, Tint #6464ff 50, fg white, hi grey30, sh black, \
             fgsh grey20, Shape "images/icons/dock/dockmask.xpm"
 Colorset 26 Transparent, Tint #3232e0 50, fg white, hi grey30, sh black, \
             fgsh grey20, Shape "images/icons/dock/dockmask.xpm"
-Colorset 27 RootTransparent, fg grey, hi grey30, sh black, fgsh, \
+Colorset 27 Transparent, fg grey, hi grey30, sh black, fgsh, \
             TiledShape "images/icons/dock/dockmask3.xpm"
 Colorset 28 Transparent, Tint #3232e0 80, fg white, hi grey30, sh black, \
             fgsh grey20, Shape "images/icons/dock/dockmask4.xpm"
@@ -1029,17 +1030,24 @@ AddToFunc   LaunchApplication
 + I None ($0, CurrentDesk) Exec exec $[1-]
 
 DestroyModuleConfig DockApp:*
-*DockApp: Geometry 662x48+629-0
+*DockApp: Geometry 672x53+624-0
 *DockApp: Colorset 21
 *DockApp: Frame 0
 *DockApp: Padding 0 0
-*DockApp: Rows 48
-*DockApp: Columns 662
+*DockApp: Rows 53
+*DockApp: Columns 672
+*DockApp: (672x5, Frame 0)
+*DockApp: (5x38, Frame 0)
 *DockApp: (662x38, \
     Swallow DockAppButtons "Module FvwmButtons DockAppButtons", Frame 0)
+*DockApp: (5x38, Frame 0)
+*DockApp: (5x5, Frame 0)
 *DockApp: (662x5, Frame 0)
+*DockApp: (5x5, Frame 0)
+*DockApp: (5x5, Frame 0)
 *DockApp: (662x5, \
     Swallow DockAppIndicator "Module FvwmButtons DockAppIndicator", Frame 0)
+*DockApp: (5x5, Frame 0)
 
 DestroyModuleConfig  DockAppButtons:*
 *DockAppButtons: Geometry 662x38
