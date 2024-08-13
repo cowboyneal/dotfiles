@@ -1041,9 +1041,7 @@ DestroyModuleConfig DockApp:*
 *DockApp: (662x38, \
     Swallow DockAppButtons "Module FvwmButtons DockAppButtons", Frame 0)
 *DockApp: (5x38, Frame 0)
-*DockApp: (5x5, Frame 0)
-*DockApp: (662x5, Frame 0)
-*DockApp: (5x5, Frame 0)
+*DockApp: (672x5, Frame 0)
 *DockApp: (5x5, Frame 0)
 *DockApp: (662x5, \
     Swallow DockAppIndicator "Module FvwmButtons DockAppIndicator", Frame 0)
