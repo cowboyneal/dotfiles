@@ -99,13 +99,13 @@ function conky_main_box()
     
 	---------------------- PARAMETERS BEGIN HERE
     local boxes_settings={
-        { y=5, h=25, colour={ {0,0x191919,0.78} }, corners={ {"circle",4} } },
-        { y=40, h=232, colour={ {0,0x191919,0.78} }, corners={ {"circle",4} } },
-        { y=282, h=81, colour={ {0,0x191919,0.78} }, corners={ {"circle",4} } },
-        { y=373, h=78, colour={ {0,0x191919,0.78} }, corners={ {"circle",4} } },
-        { y=461, h=122, colour={ {0,0x191919,0.78} }, corners={ {"circle",4} } },
-        { y=593, h=78, colour={ {0,0x191919,0.78} }, corners={ {"circle",4} } },
-        { y=681, h=186, colour={ {0,0x191919,0.78} }, corners={ {"circle",4} } }
+        { y=5, h=25, colour={ {0,0x191919,0.78} }, corners={ {"circle",5} } },
+        { y=40, h=232, colour={ {0,0x191919,0.78} }, corners={ {"circle",5} } },
+        { y=282, h=81, colour={ {0,0x191919,0.78} }, corners={ {"circle",5} } },
+        { y=373, h=78, colour={ {0,0x191919,0.78} }, corners={ {"circle",5} } },
+        { y=461, h=122, colour={ {0,0x191919,0.78} }, corners={ {"circle",5} } },
+        { y=593, h=78, colour={ {0,0x191919,0.78} }, corners={ {"circle",5} } },
+        { y=681, h=186, colour={ {0,0x191919,0.78} }, corners={ {"circle",5} } }
     }
     ---------------------------- PARAMETERS END HERE
     

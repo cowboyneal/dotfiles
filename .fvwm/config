@@ -460,7 +460,7 @@ Colorset 21 RootTransparent, Tint #191919 78, fg white, hi grey30, sh black, \
             fgsh grey20, Shape "images/dockappmask.xpm"
 Colorset 22 Transparent, fg grey, hi grey30, sh black, fgsh, \
             TiledShape "images/icons/dock/dockmask2.xpm"
-Colorset 23 Transparent, Tint grey80 20, fg grey, hi grey30, sh black, fgsh
+Colorset 23 Transparent, Tint grey 20, fg grey, hi grey30, sh black, fgsh
 Colorset 24 Transparent, Tint #191919 78, fg grey, hi grey30, sh black, fgsh
 Colorset 25 Transparent, Tint #6464ff 50, fg white, hi grey30, sh black, \
             fgsh grey20, Shape "images/icons/dock/dockmask.xpm"
