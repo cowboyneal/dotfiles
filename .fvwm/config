@@ -452,16 +452,16 @@ Colorset 16 fg white, bg #6464ff, hi grey30, sh black, fgsh, Plain, NoShape
 Colorset 17 Transparent, fg grey, hi grey30, sh black, NoShape
 Colorset 18 DGradient 128 2 MidnightBlue 50 indigo 25 grey15, \
             fg grey, hi grey30, sh black, NoShape
-Colorset 19 RootTransparent, Tint #191919 75, fg grey, hi grey30, \
+Colorset 19 RootTransparent, Tint #191919 78, fg grey, hi grey30, \
             sh black, Shape "images/iconmanpagermask.xpm"
 Colorset 20 Transparent, Tint #6464ff 50, fg white, hi grey30, sh black \
             fgsh grey20, NoShape
-Colorset 21 RootTransparent, Tint #191919 75, fg white, hi grey30, sh black, \
+Colorset 21 RootTransparent, Tint #191919 78, fg white, hi grey30, sh black, \
             fgsh grey20, Shape "images/dockappmask.xpm"
 Colorset 22 Transparent, fg grey, hi grey30, sh black, fgsh, \
             TiledShape "images/icons/dock/dockmask2.xpm"
 Colorset 23 Transparent, Tint grey80 20, fg grey, hi grey30, sh black, fgsh
-Colorset 24 Transparent, Tint #191919 75, fg grey, hi grey30, sh black, fgsh
+Colorset 24 Transparent, Tint #191919 78, fg grey, hi grey30, sh black, fgsh
 Colorset 25 Transparent, Tint #6464ff 50, fg white, hi grey30, sh black, \
             fgsh grey20, Shape "images/icons/dock/dockmask.xpm"
 Colorset 26 Transparent, Tint #3232e0 50, fg white, hi grey30, sh black, \
