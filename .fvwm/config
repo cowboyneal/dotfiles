@@ -178,7 +178,7 @@ AddToFunc MaximizeLeft
 + I ThisWindow ("Google-chrome") Break
 + I ThisWindow ("steam") ResizeMove 226p 447p 0 0
 + I ThisWindow ("steam") Break
-+ I ThisWindow ResizeMove 793p -138p 0 0
++ I ThisWindow ResizeMove 793p -143p 0 0
 
 DestroyFunc MaximizeRight
 AddToFunc MaximizeRight
@@ -192,7 +192,7 @@ AddToFunc MaximizeRight
 + I ThisWindow ("Google-chrome") Break
 + I ThisWindow ("steam") ResizeMove 226p 972p -0 0
 + I ThisWindow ("steam") Break
-+ I ThisWindow ResizeMove 793p -138p -0 0
++ I ThisWindow ResizeMove 793p -143p -0 0
 
 DestroyFunc ChangeVolumeUp
 AddToFunc ChangeVolumeUp
