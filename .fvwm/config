@@ -460,17 +460,17 @@ Colorset 20 Transparent, Tint #6464ff 50, fg white, hi grey30, sh black \
 Colorset 21 RootTransparent, Tint #191919 78, fg white, hi grey30, sh black, \
             fgsh grey20, Shape "images/dockappmask.xpm"
 Colorset 22 Transparent, fg grey, hi grey30, sh black, fgsh, \
-            TiledShape "images/icons/dock/dockmask2.xpm"
+            TiledShape "images/dockmask2.xpm"
 Colorset 23 Transparent, Tint grey 20, fg grey, hi grey30, sh black, fgsh
 Colorset 24 Transparent, Tint #191919 78, fg grey, hi grey30, sh black, fgsh
 Colorset 25 Transparent, Tint #6464ff 50, fg white, hi grey30, sh black, \
-            fgsh grey20, Shape "images/icons/dock/dockmask.xpm"
+            fgsh grey20, Shape "images/dockmask.xpm"
 Colorset 26 Transparent, Tint #3232e0 50, fg white, hi grey30, sh black, \
-            fgsh grey20, Shape "images/icons/dock/dockmask.xpm"
+            fgsh grey20, Shape "images/dockmask.xpm"
 Colorset 27 Transparent, fg grey, hi grey30, sh black, fgsh, \
-            TiledShape "images/icons/dock/dockmask3.xpm"
+            TiledShape "images/dockmask4.xpm"
 Colorset 28 Transparent, Tint #3232e0 50, fg white, hi grey30, sh black, \
-            fgsh grey20, Shape "images/icons/dock/dockmask4.xpm"
+            fgsh grey20, Shape "images/dockmask3.xpm"
 Colorset 40 Pixmap $[FVWM_USERDIR]/images/wallpapers/pager_bg.png, \
             fg grey, hi grey30, sh black, NoShape
 
@@ -694,8 +694,8 @@ AddToMenu   MenuWindowOpsLong
 + "Close"           Close
 + "Destroy"         Destroy
 + "" Nop
-+ "Raise"		Raise
-+ "Lower"		Lower
++ "Raise"           Raise
++ "Lower"           Lower
 + "" Nop
 + "StaysOnTop"      Pick (CirculateHit) Layer 0 6
 + "StaysPut"        Pick (CirculateHit) Layer 0 4
@@ -705,24 +705,24 @@ AddToMenu   MenuWindowOpsLong
 
 DestroyMenu MenuIconOps
 AddToMenu   MenuIconOps
-+ "(De)Iconify"         Iconify
-+ "(Un)Maximize"        Maximize
-+ "(Un)Shade"           WindowShade
++ "(De)Iconify"     Iconify
++ "(Un)Maximize"    Maximize
++ "(Un)Shade"       WindowShade
 + "(Un)Sticky"		Stick
 + "(No)TitleBar"	Pick (CirculateHit) ToggleTitle
-+ "Send To"             Popup MenuSendTo
++ "Send To"         Popup MenuSendTo
 + "" Nop
-+ "Close"               Close
-+ "Destroy"             Destroy
++ "Close"           Close
++ "Destroy"         Destroy
 + "" Nop
-+ "Raise"		Raise
-+ "Lower"		Lower
++ "Raise"           Raise
++ "Lower"           Lower
 + "" Nop
-+ "StaysOnTop"          Pick (CirculateHit) Layer 0 6
-+ "StaysPut"            Pick (CirculateHit) Layer 0 4
-+ "StaysOnBottom"       Pick (CirculateHit) Layer 0 2
++ "StaysOnTop"      Pick (CirculateHit) Layer 0 6
++ "StaysPut"        Pick (CirculateHit) Layer 0 4
++ "StaysOnBottom"   Pick (CirculateHit) Layer 0 2
 + "" Nop
-+ "Identify"            Module FvwmIdent
++ "Identify"        Module FvwmIdent
 
 DestroyMenu MenuSendTo
 AddToMenu MenuSendTo
@@ -1032,113 +1032,113 @@ AddToFunc   LaunchApplication
 + I None ($0, CurrentDesk) Exec exec $[1-]
 
 DestroyModuleConfig DockApp:*
-*DockApp: Geometry 672x53+624-0
+*DockApp: Geometry 607x53+656-0
 *DockApp: Colorset 21
 *DockApp: Frame 0
 *DockApp: Padding 0 0
 *DockApp: Rows 53
-*DockApp: Columns 672
-*DockApp: (672x5, Frame 0)
+*DockApp: Columns 607
+*DockApp: (607x5, Frame 0)
 *DockApp: (5x38, Frame 0)
-*DockApp: (662x38, \
+*DockApp: (597x38, \
     Swallow DockAppButtons "Module FvwmButtons DockAppButtons", Frame 0)
 *DockApp: (5x38, Frame 0)
-*DockApp: (672x5, Frame 0)
+*DockApp: (607x5, Frame 0)
 *DockApp: (5x5, Frame 0)
-*DockApp: (662x5, \
+*DockApp: (597x5, \
     Swallow DockAppIndicator "Module FvwmButtons DockAppIndicator", Frame 0)
 *DockApp: (5x5, Frame 0)
 
 DestroyModuleConfig  DockAppButtons:*
-*DockAppButtons: Geometry 662x38
+*DockAppButtons: Geometry 597x38
 *DockAppButtons: Colorset 22 
 *DockAppButtons: ActiveColorset 25 
 *DockAppButtons: PressColorset 26
 *DockAppButtons: Frame 0
 *DockAppButtons: Padding 5 5
 *DockAppButtons: Rows 38
-*DockAppButtons: Columns 662
+*DockAppButtons: Columns 597
 *DockAppButtons: (38x38, Icon "images/icons/dock/terminal.png", \
     Colorset 23, Action(Mouse 1) "Exec exec urxvt"
-*DockAppButtons: (10x38, ActiveColorset 21, Frame 0)
+*DockAppButtons: (5x38, ActiveColorset 22, Frame 0)
 *DockAppButtons: (38x38, Icon "images/icons/dock/irssi.png", \
     Colorset 23, Action(Mouse 1) \
     "LaunchApplication irssi urxvt -name irssi -e dtach -A /tmp/$[USER]-irssi irssi"
-*DockAppButtons: (10x38, ActiveColorset 22, Frame 0)
+*DockAppButtons: (5x38, ActiveColorset 22, Frame 0)
 *DockAppButtons: (38x38, Icon "images/icons/dock/discord.png", \
     Colorset 23, Action(Mouse 1) "LaunchApplication discord discord"
-*DockAppButtons: (10x38, ActiveColorset 22, Frame 0)
+*DockAppButtons: (5x38, ActiveColorset 22, Frame 0)
 *DockAppButtons: (38x38, Icon "images/icons/dock/gvim.png", \
     Colorset 23, Action(Mouse 1) "LaunchApplication Gvim gvim"
-*DockAppButtons: (10x38, ActiveColorset 22, Frame 0)
+*DockAppButtons: (5x38, ActiveColorset 22, Frame 0)
 *DockAppButtons: (38x38, Icon "images/icons/dock/thunderbird.png", \
     Colorset 23, Action(Mouse 1) "LaunchApplication Mail thunderbird"
-*DockAppButtons: (10x38, ActiveColorset 22, Frame 0)
+*DockAppButtons: (5x38, ActiveColorset 22, Frame 0)
 *DockAppButtons: (38x38, Icon "images/icons/dock/google-chrome.png", \
     Colorset 23, Action(Mouse 1) \
     "LaunchApplication google-chrome google-chrome-stable"
-*DockAppButtons: (10x38, ActiveColorset 22, Frame 0)
+*DockAppButtons: (5x38, ActiveColorset 22, Frame 0)
 *DockAppButtons: (38x38, Icon "images/icons/dock/messages.png", \
     Colorset 23, Action(Mouse 1) \
     "LaunchApplication crx_hpfldicfbfomlpcikngkocigghgafkph google-chrome --app-id=hpfldicfbfomlpcikngkocigghgafkph"
-*DockAppButtons: (10x38, ActiveColorset 22, Frame 0)
+*DockAppButtons: (5x38, ActiveColorset 22, Frame 0)
 *DockAppButtons: (38x38, Icon "images/icons/dock/chat.png", \
     Colorset 23, Action(Mouse 1) \
     "LaunchApplication crx_mdpkiolbdkhdjpekfbkbmhigcaggjagi google-chrome --app-id=mdpkiolbdkhdjpekfbkbmhigcaggjagi"
-*DockAppButtons: (10x38, ActiveColorset 22, Frame 0)
+*DockAppButtons: (5x38, ActiveColorset 22, Frame 0)
 *DockAppButtons: (38x38, Icon "images/icons/dock/jellyfin.png", \
     Colorset 23, Action(Mouse 1) \
     "LaunchApplication jellyfinmediaplayer jellyfinmediaplayer"
-*DockAppButtons: (10x38, ActiveColorset 22, Frame 0)
+*DockAppButtons: (5x38, ActiveColorset 22, Frame 0)
 *DockAppButtons: (38x38, Icon "images/icons/dock/easyeffects.png", \
     Colorset 23, Action(Mouse 1) "LaunchApplication easyeffects easyeffects"
-*DockAppButtons: (10x38, ActiveColorset 22, Frame 0)
+*DockAppButtons: (5x38, ActiveColorset 22, Frame 0)
 *DockAppButtons: (38x38, Icon "images/icons/dock/transmission-remote-gtk.png", \
     Colorset 23, Action(Mouse 1) \
     "LaunchApplication transmission-remote-gtk transmission-remote-gtk"
-*DockAppButtons: (10x38, ActiveColorset 22, Frame 0)
+*DockAppButtons: (5x38, ActiveColorset 22, Frame 0)
 *DockAppButtons: (38x38, Icon "images/icons/dock/steam.png", \
     Colorset 23, Action(Mouse 1) "LaunchApplication steamwebhelper steam"
-*DockAppButtons: (10x38, ActiveColorset 22, Frame 0)
+*DockAppButtons: (5x38, ActiveColorset 22, Frame 0)
 *DockAppButtons: (38x38, Icon "images/icons/dock/dwarfort.png", \
     Colorset 23, Action(Mouse 1) \
     "LaunchApplication dwarfort steam steam://rungameid/975370"
-*DockAppButtons: (10x38, ActiveColorset 22, Frame 0)
+*DockAppButtons: (5x38, ActiveColorset 22, Frame 0)
 *DockAppButtons: (38x38, Icon "images/icons/dock/virt-manager.png", \
     Colorset 23, Action(Mouse 1) "Exec exec virt-manager"
 
 DestroyModuleConfig DockAppIndicator:*
-*DockAppIndicator: Geometry 662x5
+*DockAppIndicator: Geometry 597x5
 *DockAppIndicator: Colorset 27
 *DockAppIndicator: Frame 0
 *DockAppIndicator: Rows 5
-*DockAppIndicator: Columns 662
+*DockAppIndicator: Columns 597
 *DockAppIndicator: (38x5, Id "urxvt", Frame 0)
-*DockAppIndicator: (10x5, Frame 0)
+*DockAppIndicator: (5x5, Frame 0)
 *DockAppIndicator: (38x5, Id "irssi", Frame 0)
-*DockAppIndicator: (10x5, Frame 0)
+*DockAppIndicator: (5x5, Frame 0)
 *DockAppIndicator: (38x5, Id "discord", Frame 0)
-*DockAppIndicator: (10x5, Frame 0)
+*DockAppIndicator: (5x5, Frame 0)
 *DockAppIndicator: (38x5, Id "Gvim", Frame 0)
-*DockAppIndicator: (10x5, Frame 0)
+*DockAppIndicator: (5x5, Frame 0)
 *DockAppIndicator: (38x5, Id "Mail", Frame 0)
-*DockAppIndicator: (10x5, Frame 0)
+*DockAppIndicator: (5x5, Frame 0)
 *DockAppIndicator: (38x5, Id "google-chrome", Frame 0)
-*DockAppIndicator: (10x5, Frame 0)
+*DockAppIndicator: (5x5, Frame 0)
 *DockAppIndicator: (38x5, Id "crx_hpfldicfbfomlpcikngkocigghgafkph", Frame 0)
-*DockAppIndicator: (10x5, Frame 0)
+*DockAppIndicator: (5x5, Frame 0)
 *DockAppIndicator: (38x5, Id "crx_mdpkiolbdkhdjpekfbkbmhigcaggjagi", Frame 0)
-*DockAppIndicator: (10x5, Frame 0)
+*DockAppIndicator: (5x5, Frame 0)
 *DockAppIndicator: (38x5, Id "jellyfinmediaplayer", Frame 0)
-*DockAppIndicator: (10x5, Frame 0)
+*DockAppIndicator: (5x5, Frame 0)
 *DockAppIndicator: (38x5, Id "easyeffects", Frame 0)
-*DockAppIndicator: (10x5, Frame 0)
+*DockAppIndicator: (5x5, Frame 0)
 *DockAppIndicator: (38x5, Id "transmission-remote-gtk", Frame 0)
-*DockAppIndicator: (10x5, Frame 0)
+*DockAppIndicator: (5x5, Frame 0)
 *DockAppIndicator: (38x5, Id "steamwebhelper", Frame 0)
-*DockAppIndicator: (10x5, Frame 0)
+*DockAppIndicator: (5x5, Frame 0)
 *DockAppIndicator: (38x5, Id "dwarfort", Frame 0)
-*DockAppIndicator: (10x5, Frame 0)
+*DockAppIndicator: (5x5, Frame 0)
 *DockAppIndicator: (38x5, Id "virt-manager", Frame 0)
 
 DestroyFunc DockAppWindowAdded
@@ -1209,3 +1209,6 @@ DestroyModuleConfig  QuitVerify: *
 # without needing a full copy of the default-config. This will also allow
 # default-config changes to get used after upgrades (if applicable).
 Test (f $[FVWM_USERDIR]/local.config) Read $[FVWM_USERDIR]/local.config
+
+Test (f $[FVWM_USERDIR]/theme.config) Read $[FVWM_USERDIR]/theme.config
+Test (f $[FVWM_USERDIR]/modules.config) Read $[FVWM_USERDIR]/modules.config
