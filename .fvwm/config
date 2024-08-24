@@ -93,58 +93,6 @@ AddToFunc MoveToCurrent
 + I ThisWindow MoveToPage
 + I ThisWindow MoveToDesk
 
-DestroyFunc ToUpperLeft
-AddToFunc ToUpperLeft
-+ I ThisWindow ("URxvt") ResizeMove 80c 24c 0 0
-+ I ThisWindow ("steam") ResizeMove 419p 447p 236p 0p
-
-DestroyFunc ToLowerLeft
-AddToFunc ToLowerLeft
-+ I ThisWindow ("URxvt") ResizeMove 80c 28c 0 -0
-+ I ThisWindow ("steam") ResizeMove 400p 400p 979p 0p
-
-DestroyFunc MaximizeLeft
-AddToFunc MaximizeLeft
-+ I ThisWindow ("URxvt") ResizeMove 80c 55c 0 0
-+ I ThisWindow ("URxvt") Break
-+ I ThisWindow ("Gvim") ResizeMove 112c 51c 0 0
-+ I ThisWindow ("Gvim") Break
-+ I ThisWindow ("discord") Break
-+ I ThisWindow ("Google-chrome") ResizeMove 802p -103p 0 0
-+ I ThisWindow ("Google-chrome") Break
-+ I ThisWindow ("steam") ResizeMove 226p 447p 0 0
-+ I ThisWindow ("steam") Break
-+ I ThisWindow ResizeMove 793p -143p 0 0
-
-DestroyFunc MaximizeRight
-AddToFunc MaximizeRight
-+ I ThisWindow ("URxvt") ResizeMove 80c 55c -0 0
-+ I ThisWindow ("URxvt") Break
-+ I ThisWindow ("Gvim") ResizeMove 112c 51c -0 0
-+ I ThisWindow ("Gvim") Break
-+ I ThisWindow ("discord") ResizeMove 940p 937p -0 -0
-+ I ThisWindow ("discord") Break
-+ I ThisWindow ("Google-chrome") ResizeMove 802p -103p -0 0
-+ I ThisWindow ("Google-chrome") Break
-+ I ThisWindow ("steam") ResizeMove 226p 972p -0 0
-+ I ThisWindow ("steam") Break
-+ I ThisWindow ResizeMove 793p -143p -0 0
-
-DestroyFunc ChangeVolumeUp
-AddToFunc ChangeVolumeUp
-+ I Exec exec pamixer -u -i 2
-+ I FvwmScript VolumeLevel
-
-DestroyFunc ChangeVolumeDown
-AddToFunc ChangeVolumeDown
-+ I Exec exec pamixer -u -d 2
-+ I FvwmScript VolumeLevel
-
-DestroyFunc ChangeVolumeMute
-AddToFunc ChangeVolumeMute
-+ I Exec exec amixer -q set Master toggle
-+ I FvwmScript VolumeLevel
-
 # Function: ViewManPage $0
 #
 # This function loads the man page $0 in an terminal
@@ -637,27 +585,12 @@ AddToMenu   MenuFvwmManPages "Help" Title
 
 # Alt-F1 or Menu to load the root menu and Alt-Tab for a WindowList.
 # Ctrl-F1/F2/F3/F4 will switch between the Virtual Desktops.
-# Super_R (windows key) will launch a terminal.
 #
 # Silent supresses any errors (such as keyboards with no Menu key).
 Silent Key F2 A M Menu MenuFvwmRoot
 Silent Key Menu A A Menu MenuFvwmRoot
 Silent Key Tab A M WindowList Root c c NoNumInDeskTitle, NoDeskSort, \
     SelectOnRelease Meta_L
-Silent Key Up A 4    GotoPage wrapy 0p -1p
-Silent Key Down A 4  GotoPage wrapy 0p +1p
-Silent Key Left A 4  GotoPage wrapx -1p 0p
-Silent Key Right A 4 GotoPage wrapx +1p 0p
-Silent Key Space A 4 FvwmForm RunProgram
-Silent Key Space A M FvwmForm RunProgram
-#Silent Key Super_R A A Exec exec $[infostore.terminal]
-Silent Key Home A 4  MaximizeLeft
-Silent Key End A 4   MaximizeRight
-Silent Key Page_Up A 4 ToUpperLeft
-Silent Key Page_Down A 4 ToLowerLeft
-Silent Key XF86AudioLowerVolume A N ChangeVolumeDown
-Silent Key XF86AudioRaiseVolume A N ChangeVolumeUp
-Silent Key XF86AudioMute A N ChangeVolumeMute
 
 # Window Buttons: [1 3 5 7 9  TTTTT  0 8 6 4 2]
 #   1 - Open the WindowOps menu.
@@ -698,6 +631,3 @@ Mouse 3 I    A Menu MenuIconOps
 # without needing a full copy of the default-config. This will also allow
 # default-config changes to get used after upgrades (if applicable).
 Test (f $[FVWM_USERDIR]/local.config) Read $[FVWM_USERDIR]/local.config
-
-Test (f $[FVWM_USERDIR]/theme.config) Read $[FVWM_USERDIR]/theme.config
-Test (f $[FVWM_USERDIR]/modules.config) Read $[FVWM_USERDIR]/modules.config
