@@ -4,6 +4,7 @@ set guifont=DejaVu\ Sans\ Mono\ 9
 
 map <C-S-X> "+x
 map <C-S-C> "+y
+map <C-S-V> "+gP
 map! <C-S-V> <C-O>"+gP
 
 set lines=54 columns=116
