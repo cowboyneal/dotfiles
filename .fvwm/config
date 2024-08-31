@@ -179,7 +179,7 @@ Style * EdgeMoveDelay 350, EdgeMoveResistance 350
 # EwmhBaseStruts [left] [right] [top] [bottom]
 # Reserves space along the edge(s) of the Screen that will not
 # be covered when maximizing or placing windows.
-EwmhBaseStruts 10 295 45 63 
+EwmhBaseStruts 10 295 45 78
 
 # This sets the ClickTime and MoveThreshold used to determine
 # Double Clicks, Hold and Move for the mouse.
@@ -270,6 +270,7 @@ Style apostrophe            !Borders, !Title, !Handles
 Style obsidian              !Borders, !Title, !Handles
 Style ettercap              !Borders, !Title, !Handles
 Style org.gnome.clocks      !Borders, !Title, !Handles
+Style amberol               !Borders, !Title, !Handles
 Style Navigator             !Borders, !Title, !Handles, DecorateTransient
 
 #######
