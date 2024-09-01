@@ -54,17 +54,16 @@ DestroyFunc StartFunction
 AddToFunc   StartFunction
 + I Test (Init) Exec exec $[HOME]/bin/btconnect &
 + I Test (Init) Exec exec picom &
-# + I InitBackground
-+ I Module FvwmButtons DockApp
-+ I Module FvwmEvent DockAppWindowAddedEvent
-+ I Module FvwmEvent DockAppWindowDestroyedEvent
 + I Module FvwmBacker
 + I Module FvwmMFL
 + I Test (Init) Exec exec polybar &
 + I Test (Init) Exec exec conky &
 + I Test (Init) Exec exec xscreensaver --no-splash &
++ I Schedule 1000 Module FvwmButtons DockApp
++ I Schedule 1000 Module FvwmEvent DockAppWindowAddedEvent
++ I Schedule 1000 Module FvwmEvent DockAppWindowDestroyedEvent
 + I Schedule 1000 Module FvwmButtons IconManPager
-+ I Schedule 1000 DockAppInit
++ I Schedule 2000 DockAppInit
 + I Test (Init) Schedule 5000 Exec exec opensnitch-ui &
 
 DestroyFunc ExitFunction

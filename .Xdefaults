@@ -99,7 +99,7 @@ irssi*iconFile:             /home/pater/.fvwm/images/icons/mini/irssi.png
 irssi*termName:             xterm-color
 irssi*loginShell:           false
 irssi*scrollBar:            false
-irssi*geometry:             80x28+10+502
+irssi*geometry:             80x27+10+504
 irssi*font:                 xft:Deja Vu Sans Mono:size=10
 
 sc-im*iconFile:             /home/pater/.fvwm/images/icons/mini/sc-im.png
