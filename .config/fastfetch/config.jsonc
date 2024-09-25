@@ -18,7 +18,7 @@
     {
         "type": "gpu",
         "key": "GPU",
-        "format": "{1} {2} @ {12} GHz"
+        "format": "{1} {2} @ {12}"
     },
     "memory",
     "swap",
