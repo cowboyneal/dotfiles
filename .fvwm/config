@@ -62,8 +62,8 @@ AddToFunc   StartFunction
 + I Schedule 1000 Module FvwmButtons DockApp
 + I Schedule 1000 Module FvwmEvent DockAppWindowAddedEvent
 + I Schedule 1000 Module FvwmEvent DockAppWindowDestroyedEvent
-+ I Schedule 1000 Module FvwmButtons IconManPager
-+ I Schedule 2000 DockAppInit
++ I Schedule 2000 Module FvwmButtons IconManPager
++ I Schedule 3000 DockAppInit
 + I Test (Init) Schedule 5000 Exec exec opensnitch-ui &
 
 DestroyFunc ExitFunction
@@ -230,7 +230,7 @@ Style RunProgram  !Title, PositionPlacement Center, WindowListSkip, Layer 6, \
                   !Handles, Sticky
 Style FvwmScript  !Title, PositionPlacement Center, !Handles, \
       BorderColorset 4, WindowListSkip, StaysOnTop, NeverFocus
-Style VolumeLevel !Title, PositionPlacement Center, !Handles, \
+Style VolumeLevel !Borders, !Title, PositionPlacement Center, !Handles, \
       BorderColorset 4, WindowListSkip, StaysOnTop, NeverFocus
 Style FvwmIdent   WindowListSkip
 Style IconManPager !Borders, !Title, !Handles, Sticky, WindowListSkip, \
@@ -270,6 +270,8 @@ Style obsidian              !Borders, !Title, !Handles
 Style ettercap              !Borders, !Title, !Handles
 Style org.gnome.clocks      !Borders, !Title, !Handles
 Style amberol               !Borders, !Title, !Handles
+Style d-feet                !Borders, !Title, !Handles
+Style org.remmina.Remmina   !Borders, !Title, !Handles
 Style Navigator             !Borders, !Title, !Handles, DecorateTransient
 
 #######
@@ -328,6 +330,7 @@ Test (x xscreensaver-command) + "Lock Screen" \
 DestroyMenu MenuPrograms
 AddToMenu   MenuPrograms "  Programs  " Title
 + "Google%images/icons/apps.png%" Popup MenuGoogle
++ "Programming%images/icons/apps.png%" Popup MenuCode
 + "Productivity%images/icons/apps.png%" Popup MenuProductivity
 + "Readers%images/icons/apps.png%" Popup MenuReaders
 + "Media%images/icons/apps.png%" Popup MenuMedia
@@ -351,13 +354,20 @@ Test (x google-chrome) + "Messages%images/icons/mini/messages.png%" \
 Test (x google-chrome) + "Chat%images/icons/mini/chat.png%" \
     Exec exec google-chrome --app-id=mdpkiolbdkhdjpekfbkbmhigcaggjagi
 
+# Code Menu
+#
+DestroyMenu MenuCode
+AddToMenu   MenuCode "  Code  " Title
+Test (x gvim) + "Vim%images/icons/mini/gvim.png%" Exec exec gvim
+Test (x ddd) + "Data Display Debugger%images/icons/mini/ddd.png%" Exec exec ddd
+Test (x d-feet) + "D-Feet%images/icons/mini/dfeet.png%" Exec exec d-feet
+Test (x apostrophe) + "Apostrophe%images/icons/mini/apostrophe.png%" \
+    Exec exec apostrophe
+
 # Productivity Menu
 #
 DestroyMenu MenuProductivity
 AddToMenu   MenuProductivity "  Productivity  " Title
-Test (x gvim) + "Vim%images/icons/mini/gvim.png%" Exec exec gvim
-Test (x apostrophe) + "Apostrophe%images/icons/mini/apostrophe.png%" \
-    Exec exec apostrophe
 Test (x obsidian) + "Obsidian%images/icons/mini/obsidian.png%" \
     Exec exec obsidian
 Test (x libreoffice) + "LibreOffice%images/icons/mini/libreoffice.png%" \
@@ -444,6 +454,7 @@ Test (x thunderbird) + "Thunderbird%images/icons/mini/thunderbird.png%" \
 Test (x transmission-remote-gtk) + \
     "Transmission Remote%images/icons/mini/transmission-remote.png%" \
     Exec exec transmission-remote-gtk
+Test (x remmina) + "Remmina%images/icons/mini/remmina.png%" Exec exec remmina
 Test (x firefox) + "Firefox%images/icons/mini/firefox.png%" Exec exec firefox
 Test (x hexchat) + "HexChat%images/icons/mini/hexchat.png%" Exec exec hexchat
 Test (x gftp) + "gFTP%images/icons/mini/gftp.png%" Exec exec gftp
