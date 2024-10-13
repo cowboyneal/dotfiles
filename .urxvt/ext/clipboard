@@ -21,10 +21,17 @@
 
 #! perl
 
-sub on_sel_grab {
-    my $query = $_[0]->selection;
+#sub on_sel_grab {
+#    my $query = $_[0]->selection;
+#    open (my $pipe,'| /usr/bin/xclip -in -selection clipboard') or die;
+#    print $pipe $query;
+#    close $pipe;
+#}
+
+sub copy {
+    my ($self) = @_;
     open (my $pipe,'| /usr/bin/xclip -in -selection clipboard') or die;
-    print $pipe $query;
+    print $pipe $self->selection;
     close $pipe;
 }
 
@@ -38,5 +45,7 @@ sub on_user_command {
     my ($self, $cmd) = @_;
     if ($cmd eq "clipboard:paste") {
         $self->paste;
+    } elsif ($cmd eq "clipboard:copy") {
+        $self->copy;
     }
 }

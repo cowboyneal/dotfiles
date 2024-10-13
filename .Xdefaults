@@ -72,7 +72,8 @@ URxvt*url-launcher:         /bin/google-chrome
 URxvt*matcher.button:       1
 URxvt*iso14755:             false
 URxvt.keysym.C-V:           perl:clipboard:paste
-URxvt.keysym.C-C:           string:
+!URxvt.keysym.C-C:           string:
+URxvt.keysym.C-C:           perl:clipboard:copy
 URxvt*color0:               #000000
 URxvt*color1:               #cd0000
 URxvt*color2:               #00cd00
