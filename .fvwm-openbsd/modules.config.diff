@@ -1,0 +1,176 @@
+68c68
+< *FvwmIdent: Font "xft:Arial:size=11:antialias=True"
+---
+> *FvwmIdent: Font "xft:Liberation Sans:size=11:antialias=True"
+84c84
+< *FvwmScript: Font "xft:Arial:size=10:antialias=True"
+---
+> *FvwmScript: Font "xft:Liberation Sans:size=10:antialias=True"
+94c94
+< *IconManPager: Font "xft:Arial:Bold:size=10:antialias=True"
+---
+> *IconManPager: Font "xft:Liberation Sans:Bold:size=10:antialias=True"
+108c108
+< *FvwmPager: Colorset * 40
+---
+> *FvwmPager: Colorset * 17
+114c114
+< *FvwmPager: BalloonFont "xft:Arial:Bold:size=8:antialias=True"
+---
+> *FvwmPager: BalloonFont "xft:Liberation Sans:Bold:size=8:antialias=True"
+143c143
+< *FvwmIconMan: Font "Shadow=3 0 All:xft:Arial:style=bold:size=10:antialias=True"
+---
+> *FvwmIconMan: Font "Shadow=3 0 All:xft:Liberation Sans:style=bold:size=9:antialias=True"
+175a176
+> + I Any ("mutt") DockAppChangeButton mutt 28
+177d177
+< + I Any ("discord") DockAppChangeButton discord 28
+179,192c179
+< + I Any ("Mail") DockAppChangeButton "Mail" 28
+< + I Any ("google-chrome") DockAppChangeButton google-chrome 28
+< + I Any ("crx_hpfldicfbfomlpcikngkocigghgafkph") \
+<     DockAppChangeButton crx_hpfldicfbfomlpcikngkocigghgafkph 28
+< + I Any ("crx_mdpkiolbdkhdjpekfbkbmhigcaggjagi") \
+<     DockAppChangeButton crx_mdpkiolbdkhdjpekfbkbmhigcaggjagi 28
+< + I Any ("jellyfinmediaplayer") DockAppChangeButton jellyfinmediaplayer 28
+< + I Any ("easyeffects") DockAppChangeButton easyeffects 28
+< + I Any ("transmission-remote-gtk") \
+<     DockAppChangeButton transmission-remote-gtk 28
+< + I Any ("steamwebhelper") DockAppChangeButton steamwebhelper 28
+< + I Any ("dwarfort") DockAppChangeButton dwarfort 28
+< + I Any ("org.remmina.Remmina") DockAppChangeButton org.remmina.Remmina 28
+< + I Any ("virt-manager") DockAppChangeButton virt-manager 28
+---
+> + I Any ("Navigator") DockAppChangeButton Navigator 28
+203c190
+< *DockApp: Geometry 650x58+635-10
+---
+> *DockApp: Geometry 220x58+10-10
+208,209c195,196
+< *DockApp: Columns 650
+< *DockApp: (650x5, Frame 0)
+---
+> *DockApp: Columns 220
+> *DockApp: (220x5, Frame 0)
+211c198
+< *DockApp: (640x38, \
+---
+> *DockApp: (210x38, \
+214c201
+< *DockApp: (650x5, Frame 0)
+---
+> *DockApp: (220x5, Frame 0)
+216c203
+< *DockApp: (640x5, \
+---
+> *DockApp: (210x5, \
+219c206
+< *DockApp: (650x5, Frame 0)
+---
+> *DockApp: (220x5, Frame 0)
+222c209
+< *DockAppButtons: Geometry 640x38
+---
+> *DockAppButtons: Geometry 210x38
+229c216
+< *DockAppButtons: Columns 640
+---
+> *DockAppButtons: Columns 210
+232a220,223
+> *DockAppButtons: (38x38, Icon "images/icons/dock/mutt.png", \
+>     Colorset 23, Action(Mouse 1) \
+>     "LaunchApplication mutt urxvt -name mutt -e ~/bin/mutt"
+> *DockAppButtons: (5x38, ActiveColorset 22, Frame 0)
+237,239d227
+< *DockAppButtons: (38x38, Icon "images/icons/dock/discord.png", \
+<     Colorset 23, Action(Mouse 1) "LaunchApplication discord discord"
+< *DockAppButtons: (5x38, ActiveColorset 22, Frame 0)
+243,280c231,232
+< *DockAppButtons: (38x38, Icon "images/icons/dock/thunderbird.png", \
+<     Colorset 23, Action(Mouse 1) "LaunchApplication Mail thunderbird"
+< *DockAppButtons: (5x38, ActiveColorset 22, Frame 0)
+< *DockAppButtons: (38x38, Icon "images/icons/dock/google-chrome.png", \
+<     Colorset 23, Action(Mouse 1) \
+<     "LaunchApplication google-chrome google-chrome-stable"
+< *DockAppButtons: (5x38, ActiveColorset 22, Frame 0)
+< *DockAppButtons: (38x38, Icon "images/icons/dock/messages.png", \
+<     Colorset 23, Action(Mouse 1) \
+<     "LaunchApplication crx_hpfldicfbfomlpcikngkocigghgafkph google-chrome --app-id=hpfldicfbfomlpcikngkocigghgafkph"
+< *DockAppButtons: (5x38, ActiveColorset 22, Frame 0)
+< *DockAppButtons: (38x38, Icon "images/icons/dock/chat.png", \
+<     Colorset 23, Action(Mouse 1) \
+<     "LaunchApplication crx_mdpkiolbdkhdjpekfbkbmhigcaggjagi google-chrome --app-id=mdpkiolbdkhdjpekfbkbmhigcaggjagi"
+< *DockAppButtons: (5x38, ActiveColorset 22, Frame 0)
+< *DockAppButtons: (38x38, Icon "images/icons/dock/jellyfin.png", \
+<     Colorset 23, Action(Mouse 1) \
+<     "LaunchApplication jellyfinmediaplayer jellyfinmediaplayer"
+< *DockAppButtons: (5x38, ActiveColorset 22, Frame 0)
+< *DockAppButtons: (38x38, Icon "images/icons/dock/easyeffects.png", \
+<     Colorset 23, Action(Mouse 1) "LaunchApplication easyeffects easyeffects"
+< *DockAppButtons: (5x38, ActiveColorset 22, Frame 0)
+< *DockAppButtons: (38x38, Icon "images/icons/dock/transmission-remote-gtk.png", \
+<     Colorset 23, Action(Mouse 1) \
+<     "LaunchApplication transmission-remote-gtk transmission-remote-gtk"
+< *DockAppButtons: (5x38, ActiveColorset 22, Frame 0)
+< *DockAppButtons: (38x38, Icon "images/icons/dock/steam.png", \
+<     Colorset 23, Action(Mouse 1) "LaunchApplication steamwebhelper steam"
+< *DockAppButtons: (5x38, ActiveColorset 22, Frame 0)
+< *DockAppButtons: (38x38, Icon "images/icons/dock/dwarfort.png", \
+<     Colorset 23, Action(Mouse 1) \
+<     "LaunchApplication dwarfort steam steam://rungameid/975370"
+< *DockAppButtons: (5x38, ActiveColorset 22, Frame 0)
+< *DockAppButtons: (38x38, Icon "images/icons/dock/remmina.png", \
+<     Colorset 23, Action(Mouse 1) "LaunchApplication org.remmina.Remmina remmina"
+< *DockAppButtons: (5x38, ActiveColorset 22, Frame 0)
+< *DockAppButtons: (38x38, Icon "images/icons/dock/virt-manager.png", \
+<     Colorset 23, Action(Mouse 1) "Exec exec virt-manager"
+---
+> *DockAppButtons: (38x38, Icon "images/icons/dock/firefox.png", \
+>     Colorset 23, Action(Mouse 1) "LaunchApplication Navigator firefox"
+283c235
+< *DockAppIndicator: Geometry 640x5
+---
+> *DockAppIndicator: Geometry 210x5
+287c239
+< *DockAppIndicator: Columns 640
+---
+> *DockAppIndicator: Columns 210
+289a242,243
+> *DockAppIndicator: (38x5, Id "mutt", Frame 0)
+> *DockAppIndicator: (5x5, Frame 0)
+292,293d245
+< *DockAppIndicator: (38x5, Id "discord", Frame 0)
+< *DockAppIndicator: (5x5, Frame 0)
+296,316c248
+< *DockAppIndicator: (38x5, Id "Mail", Frame 0)
+< *DockAppIndicator: (5x5, Frame 0)
+< *DockAppIndicator: (38x5, Id "google-chrome", Frame 0)
+< *DockAppIndicator: (5x5, Frame 0)
+< *DockAppIndicator: (38x5, Id "crx_hpfldicfbfomlpcikngkocigghgafkph", Frame 0)
+< *DockAppIndicator: (5x5, Frame 0)
+< *DockAppIndicator: (38x5, Id "crx_mdpkiolbdkhdjpekfbkbmhigcaggjagi", Frame 0)
+< *DockAppIndicator: (5x5, Frame 0)
+< *DockAppIndicator: (38x5, Id "jellyfinmediaplayer", Frame 0)
+< *DockAppIndicator: (5x5, Frame 0)
+< *DockAppIndicator: (38x5, Id "easyeffects", Frame 0)
+< *DockAppIndicator: (5x5, Frame 0)
+< *DockAppIndicator: (38x5, Id "transmission-remote-gtk", Frame 0)
+< *DockAppIndicator: (5x5, Frame 0)
+< *DockAppIndicator: (38x5, Id "steamwebhelper", Frame 0)
+< *DockAppIndicator: (5x5, Frame 0)
+< *DockAppIndicator: (38x5, Id "dwarfort", Frame 0)
+< *DockAppIndicator: (5x5, Frame 0)
+< *DockAppIndicator: (38x5, Id "org.remmina.Remmina", Frame 0)
+< *DockAppIndicator: (5x5, Frame 0)
+< *DockAppIndicator: (38x5, Id "virt-manager", Frame 0)
+---
+> *DockAppIndicator: (38x5, Id "Navigator", Frame 0)
+345,347c277,279
+< *FvwmFormDefault: Font "xft:Arial:style=bold:size=11:antialias=True"
+< *FvwmFormDefault: InputFont "xft:Arial:style=bold:size=11:antialias=True"
+< *FvwmFormDefault: ButtonFont "xft:Arial:style=bold:size=11:antialias=True"
+---
+> *FvwmFormDefault: Font "xft:Liberation Sans:style=bold:size=11:antialias=True"
+> *FvwmFormDefault: InputFont "xft:Liberation Sans:style=bold:size=11:antialias=True"
+> *FvwmFormDefault: ButtonFont "xft:Liberation Sans:style=bold:size=11:antialias=True"

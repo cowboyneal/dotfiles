@@ -1,0 +1,76 @@
+55c55
+< + I Test (Init) Exec exec $[HOME]/bin/btconnect &
+---
+> #+ I Test (Init) Exec exec $[HOME]/bin/btconnect &
+57c57,58
+< + I Module FvwmBacker
+---
+> + I InitBackground
+> #+ I Module FvwmBacker
+61c62,64
+< + I Test (Init) Exec exec xscreensaver --no-splash &
+---
+> #+ I Test (Init) Exec exec xscreensaver --no-splash &
+> + I Test (Init) Exec exec urxvt -name console -e colortail \
+>     -k ~/.colortailrc -f /var/log/messages &
+67c70
+< + I Test (Init) Schedule 5000 Exec exec opensnitch-ui &
+---
+> #+ I Test (Init) Schedule 5000 Exec exec opensnitch-ui &
+71c74
+< + I Test (Quit) Exec exec pkill -U $[USER] dbus-daemon
+---
+> #+ I Test (Quit) Exec exec pkill -U $[USER] dbus-daemon
+165c168
+< DesktopSize 3x3
+---
+> DesktopSize 2x2
+193c196
+< DefaultFont "Shadow=3 0 All:xft:Arial:Bold:size=10:antialias=True"
+---
+> DefaultFont "Shadow=3 0 All:xft:Liberation Sans:Bold:size=9:antialias=True"
+245c248
+<       NeverFocus, StaysOnBottom
+---
+>       NeverFocus, StaysOnBottom, !Borders
+275c278
+< Style Navigator             !Borders, !Title, !Handles, DecorateTransient
+---
+> #Style Navigator             !Borders, !Title, !Handles, DecorateTransient
+284,285c287,288
+< MenuStyle * Font "xft:Arial:size=10:antialias=True"
+< MenuStyle * TitleFont "Shadow=3 0 All:xft:Arial:bold:size=10:antialias=True"
+---
+> MenuStyle * Font "xft:Liberation Sans:size=9:antialias=True"
+> MenuStyle * TitleFont "Shadow=3 0 All:xft:Liberation Sans:bold:size=9:antialias=True"
+301c304
+< + "XScreenSaver%images/icons/apps.png%" Popup MenuScreenSaver
+---
+> #+ "XScreenSaver%images/icons/apps.png%" Popup MenuScreenSaver
+310c313
+< + "&Quit%images/icons/quit.png%" Module FvwmForm QuitVerify
+---
+> + "&Quit%images/icons/quit.png%" Module FvwmScript FvwmScript-ConfirmQuit
+313c316
+< PipeRead "fvwm-menu-desktop -e"
+---
+> #PipeRead "fvwm-menu-desktop -e"
+417c420
+< Test (x gimp) + "GIMP%images/icons/mini/gimp.png%" Exec exec gimp
+---
+> Test (x gimp-2.99) + "GIMP%images/icons/mini/gimp.png%" Exec exec gimp-2.99
+467a471
+> Test (x tor-browser) + "Tor Browser" Exec exec tor-browser
+540,547c544,546
+< + "Center Left"     MoveToPage 0 1
+< + "Bottom Left"     MoveToPage 0 2
+< + "Top Center"	    MoveToPage 1 0
+< + "Center"	        MoveToPage 1 1
+< + "Bottom Center"   MoveToPage 1 2
+< + "Top Right"	    MoveToPage 2 0
+< + "Center Right"    MoveToPage 2 1
+< + "Bottom Right"    MoveToPage 2 2
+---
+> + "Bottom Left"     MoveToPage 0 1
+> + "Top Right"	    MoveToPage 1 0
+> + "Bottom Right"	MoveToPage 1 1
