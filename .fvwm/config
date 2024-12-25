@@ -232,6 +232,8 @@ Style FvwmScript  !Title, PositionPlacement Center, !Handles, \
       BorderColorset 4, WindowListSkip, StaysOnTop, NeverFocus
 Style VolumeLevel !Borders, !Title, PositionPlacement Center, !Handles, \
       BorderColorset 4, WindowListSkip, StaysOnTop, NeverFocus
+Style volume-level !Borders, !Title, PositionPlacement Center, !Handles, \
+      BorderColorset 4, WindowListSkip, StaysOnTop, NeverFocus
 Style FvwmIdent   WindowListSkip
 Style IconManPager !Borders, !Title, !Handles, Sticky, WindowListSkip, \
       NeverFocus, StaysOnBottom
@@ -273,6 +275,8 @@ Style amberol               !Borders, !Title, !Handles
 Style d-feet                !Borders, !Title, !Handles
 Style org.remmina.Remmina   !Borders, !Title, !Handles
 Style Navigator             !Borders, !Title, !Handles, DecorateTransient
+Style Terraria.bin.x86_64   !Borders, !Title, !Handles
+Style pavucontrol           MiniIcon images/icons/mini/pavucontrol.png
 
 #######
 # 3: Menus
@@ -389,6 +393,8 @@ Test (x foliate) + "Foliate%images/icons/mini/foliate.png%" Exec exec foliate
 #
 DestroyMenu MenuMedia
 AddToMenu   MenuMedia "  Media  " Title
+Test (x pavucontrol) + "Volume Control%images/icons/mini/pavucontrol.png%" \
+    Exec exec pavucontrol
 Test (x jellyfinmediaplayer) + \
     "Jellyfin Media Player%images/icons/mini/jellyfin.png%" \
     Exec exec jellyfinmediaplayer
