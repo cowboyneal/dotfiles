@@ -222,6 +222,8 @@ Style * Colorset 1, HilightColorset 2, \
 # Disable Icons from appearing on desktop.
 # Comment this out or use Style * Icon to get the icons back.
 Style * NoIcon
+Style * IconBox 630x58+0-0, IconFill left bottom, IconSize 24 24 24 24, \
+    StickyIcon
 
 # Window Specific Styles
 Style QuitVerify  !Title, PositionPlacement Center, WindowListSkip, Layer 6, \
@@ -436,6 +438,8 @@ AddToMenu   MenuGames "  Games  " Title
 Test (x steam) + "Steam%images/icons/mini/steam.png%" Exec exec steam
 Test (x steam) + "Dwarf Fortress%images/icons/mini/dwarfort.png%" \
     Exec exec steam steam://rungameid/975370
+Test (x steam) + "Terraria%images/icons/mini/terraria.png%" \
+    Exec exec steam steam://rungameid/105600
 Test (x gnome-sudoku) + "Sudoku%images/icons/mini/sudoku.png%" \
     Exec exec gnome-sudoku
 Test (x gnome-mines) + "Mines%images/icons/mini/mines.png%" \
