@@ -77,8 +77,11 @@ fi
 
 time_hour=$(date +%H | sed 's/^0//')
 temp_f=$(echo "$metar" | grep Temperature | awk '{ print $5 }')
+windchill_f=$(echo "$metar" | grep "Wind chill" | awk '{ print $6 }')
 [ -n "$USE_METRIC" ] && temp_c=$(echo "$metar" | grep Temperature \
     | awk '{ print $2 }')
+[ -n "$USE_METRIC" ] && windchill_c=$(echo "$metar" | grep "Wind chill" \
+    | awk '{print $3 }')
 [ -z "$NO_HUMIDITY" ] && humidity=$(echo "$metar" | grep ^Rel \
     | awk '{ print $3 }')
 
@@ -135,8 +138,16 @@ fi
 
 if [ -n "$USE_METRIC" ]; then
     printf "%s°C" "$temp_c"
+
+    if [ -n "$windchill_c" ]; then
+        printf " (%s° wind chill)" "$windchill_c"
+    fi
 else
     printf "%s°F" "$temp_f"
+
+    if [ -n "$windchill_f" ]; then
+        printf " (%s° wind chill)" "$windchill_f"
+    fi
 fi
 
 if [ -n "$humidity" ]; then
