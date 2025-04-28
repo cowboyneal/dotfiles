@@ -198,7 +198,7 @@ if exists powerline-daemon && [[ ! "$TERM" =~ wsvt25|vt100|vt220|linux ]]; then
         "/usr/lib/python3.12/site-packages/powerline/bindings" # Void Linux
         "/usr/local/lib/python3.11/site-packages/powerline/bindings"  # FreeBSD
         "/usr/pkg/lib/python3.12/site-packages/powerline/bindings"   # NetBSD
-        "$HOME/.python3/lib/python3.11/site-packages/powerline/bindings" # OpenBSD
+        "$HOME/.python3/lib/python3.12/site-packages/powerline/bindings" # OpenBSD
     )
 
     for i in ${powerline_locs[@]}; do
