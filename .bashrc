@@ -48,14 +48,24 @@ export PATH
 export CDPATH=.:..
 
 # set pager smartly
-if exists less; then
+alias 'more'='less'
+if exists batcat; then
+    PAGER='batcat -n'
+    MANPAGER='batcat -p'
+    alias 'bat'='batcat -n'
+    alias 'less'='batcat -p'
+elif exists bat; then
+    PAGER='bat -n'
+    MANPAGER='bat -p'
+    alias 'less'='bat -p'
+elif exists less; then
     PAGER=less
     export LESS='-ir'
-    alias 'more'='less'
 else
     PAGER=more
+    unalias 'more'
 fi
-export PAGER
+export PAGER MANPAGER
 
 # set editor smartly
 if exists vim; then
