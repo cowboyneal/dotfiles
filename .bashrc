@@ -50,13 +50,16 @@ export CDPATH=.:..
 # set pager smartly
 alias 'more'='less'
 if exists batcat; then
+    export BAT_THEME=Nord
     PAGER='batcat -n'
     MANPAGER='batcat -p'
     alias 'bat'='batcat -n'
     alias 'less'='batcat -p'
 elif exists bat; then
+    export BAT_THEME=Nord
     PAGER='bat -n'
     MANPAGER='bat -p'
+    alias 'bat'='bat -n'
     alias 'less'='bat -p'
 elif exists less; then
     PAGER=less
