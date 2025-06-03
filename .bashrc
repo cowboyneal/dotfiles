@@ -48,24 +48,20 @@ export PATH
 export CDPATH=.:..
 
 bat_prep () {
-    export BAT_THEME='Catppuccin Mocha'
-    alias 'man'='env BAT_THEME=Nord man'
+    export BAT_THEME=cowboyfox
+    alias 'bat-cache'="\\$1 cache"
+    PAGER="$1 -n"
+    MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | $1 -p -lman'"
+    alias 'bat'="$1 -n"
+    alias 'less'="$1 -p"
 }
 
 # set pager smartly
 alias 'more'='less'
 if exists batcat; then
-    bat_prep
-    PAGER='batcat -n'
-    MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | batcat -p -lman'"
-    alias 'bat'='batcat -n'
-    alias 'less'='batcat -p'
+    bat_prep batcat
 elif exists bat; then
-    bat_prep
-    PAGER='bat -n'
-    MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman'"
-    alias 'bat'='bat -n'
-    alias 'less'='bat -p'
+    bat_prep bat
 elif exists less; then
     PAGER=less
     export LESS='-ir'
