@@ -50,15 +50,15 @@ export CDPATH=.:..
 # set pager smartly
 alias 'more'='less'
 if exists batcat; then
-    export BAT_THEME=Nord
+    export BAT_THEME='Catppuccin Mocha'
     PAGER='batcat -n'
-    MANPAGER='batcat -p'
+    MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | batcat -p -lman'"
     alias 'bat'='batcat -n'
     alias 'less'='batcat -p'
 elif exists bat; then
-    export BAT_THEME=Nord
+    export BAT_THEME='Catppuccin Mocha'
     PAGER='bat -n'
-    MANPAGER='bat -p'
+    MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman'"
     alias 'bat'='bat -n'
     alias 'less'='bat -p'
 elif exists less; then
