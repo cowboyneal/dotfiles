@@ -47,16 +47,21 @@ esac
 export PATH
 export CDPATH=.:..
 
+bat_prep () {
+    export BAT_THEME='Catppuccin Mocha'
+    alias 'man'='env BAT_THEME=Nord man'
+}
+
 # set pager smartly
 alias 'more'='less'
 if exists batcat; then
-    export BAT_THEME='Catppuccin Mocha'
+    bat_prep
     PAGER='batcat -n'
     MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | batcat -p -lman'"
     alias 'bat'='batcat -n'
     alias 'less'='batcat -p'
 elif exists bat; then
-    export BAT_THEME='Catppuccin Mocha'
+    bat_prep
     PAGER='bat -n'
     MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman'"
     alias 'bat'='bat -n'
@@ -69,6 +74,7 @@ else
     unalias 'more'
 fi
 export PAGER MANPAGER
+unset bat_prep
 
 # set editor smartly
 if exists vim; then
