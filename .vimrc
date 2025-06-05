@@ -3,9 +3,9 @@ execute pathogen#infect()
 set encoding=UTF-8
 syntax on
 set title
-set t_Co=256
 set background=dark
 colorscheme paterscheme
+set t_Co=256
 
 set number
 set ruler
@@ -33,7 +33,7 @@ set wildmenu
 map <C-J> gqap
 map <C-R> :r ~/doc/
 
-if &l:term !=? "vt100" && &l:term !=? "vt220"
+if &l:term !=? "vt100" && &l:term !=? "vt220" && &l:term !=? "linux"
     python3 from powerline.vim import setup as powerline_setup
     python3 powerline_setup()
     python3 del powerline_setup

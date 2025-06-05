@@ -1,5 +1,4 @@
-colorscheme paterscheme
-"set guifont=Fixed\ Medium\ Semi-Condensed\ 9.5
+colorscheme paterscheme 
 set guifont=DejaVu\ Sans\ Mono\ 10
 
 map <C-S-X> "+x
@@ -20,3 +19,4 @@ let g:NERDTreeWinSize=26
 autocmd GUIEnter * winpos 688 75
 autocmd vimenter * NERDTree /home/$USER
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
