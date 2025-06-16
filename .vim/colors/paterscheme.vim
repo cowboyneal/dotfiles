@@ -53,7 +53,7 @@ hi Constant     ctermfg=44  guifg=#00d7d7
 hi Identifier   ctermfg=15  gui=bold    guifg=#ffffff
 hi Statement    cterm=bold  ctermfg=14  guifg=#00ffff
 hi PreProc      ctermfg=44  guifg=#00d7d7
-hi Type         ctermfg=254 guifg=#e5e5e5
+hi Type         cterm=bold ctermfg=254 gui=bold guifg=#e5e5e5
 hi Special      cterm=bold  ctermfg=63  gui=bold    guifg=#5f5fff
 hi Underlined	ctermfg=63  guifg=#5f5fff
 hi Ignore       ctermfg=238 guifg=#444444
