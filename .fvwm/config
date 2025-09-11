@@ -212,13 +212,6 @@ Style * WindowShadeScrolls, WindowShadeSteps 10
 # See http://fvwm.org/documentation/faq/#why-do-numlock-capslock-and-scrolllock-interfere-with-clicktofocus-andor-my-mouse-bindings
 IgnoreModifiers L25
 
-# Decor Styles
-Style * Colorset 1, HilightColorset 2, \
-        BorderColorset 3, HilightBorderColorset 4, \
-        BorderWidth 5, HandleWidth 5, \
-        MWMBorder, DepressableBorder, \
-        MWMButtons
-
 # Disable Icons from appearing on desktop.
 # Comment this out or use Style * Icon to get the icons back.
 Style * NoIcon
