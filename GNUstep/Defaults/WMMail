@@ -1,0 +1,50 @@
+{
+  DisableBeep = Yes;
+  DoubleClickTime = 250;
+  DisplayEachMailbox = No;
+  DisplayMessageCount = None;
+  DisplayColor = "#FFFFFF";
+  DisplayFont = "-*-helvetica-medium-r-*-*-10-*-*-*-*-*-*-*";
+  DisplayLocation = (0, 10);
+  ExecuteOnClick = "urxvt -name mutt -e /home/pater/bin/mutt";
+  ExecuteOnNew = "play /opt/GNUstep/Apps/WMMail.app/Sounds/doorbell.au";
+  ExecuteOnNewOnce = No;
+  Animations = {
+    Empty = {
+      Delay = 10;
+      Frames = ("/opt/GNUstep/Apps/WMMail.app/Anims/e/e-no.xpm");
+    };
+    Old = {
+      Delay = 10;
+      Frames = ("/opt/GNUstep/Apps/WMMail.app/Anims/e/e1.xpm");
+    };
+    New = {
+      Delay = 2;
+      Frames = (
+        "/opt/GNUstep/Apps/WMMail.app/Anims/e/e1.xpm",
+        "/opt/GNUstep/Apps/WMMail.app/Anims/e/e2.xpm",
+        "/opt/GNUstep/Apps/WMMail.app/Anims/e/e3.xpm",
+        "/opt/GNUstep/Apps/WMMail.app/Anims/e/e4.xpm",
+        "/opt/GNUstep/Apps/WMMail.app/Anims/e/e5.xpm",
+        "/opt/GNUstep/Apps/WMMail.app/Anims/e/e6.xpm",
+        "/opt/GNUstep/Apps/WMMail.app/Anims/e/e7.xpm",
+        "/opt/GNUstep/Apps/WMMail.app/Anims/e/e8.xpm",
+        "/opt/GNUstep/Apps/WMMail.app/Anims/e/e9.xpm",
+        "/opt/GNUstep/Apps/WMMail.app/Anims/e/e10.xpm",
+        "/opt/GNUstep/Apps/WMMail.app/Anims/e/e11.xpm"
+      );
+    };
+  };
+  Mailboxes = (
+    {
+      Name = "Home";
+      Type = mbox;
+      UpdateInterval = 15;
+      Options = {
+        CheckTimeStampOnly = No;
+        Path = "/var/mail/pater";
+        MailboxHasInternalData = Yes;
+      };
+    }
+  );
+}

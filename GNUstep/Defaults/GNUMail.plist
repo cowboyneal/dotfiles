@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>ACCOUNTS</key>
+    <dict>
+	<key>General</key>
+	<dict>
+	    <key>MAILBOXES</key>
+	    <dict>
+		<key>DRAFTSFOLDERNAME</key>
+		<string>local:///home/pater/Mailboxes/Drafts</string>
+		<key>INBOXFOLDERNAME</key>
+		<string>local:///home/pater/Mailboxes/Inbox</string>
+		<key>SENTFOLDERNAME</key>
+		<string>local:///home/pater/Mailboxes/Sent</string>
+		<key>TRASHFOLDERNAME</key>
+		<string>local:///home/pater/Mailboxes/Trash</string>
+	    </dict>
+	    <key>PERSONAL</key>
+	    <dict>
+		<key>EMAILADDR</key>
+		<string>Your E-Mail address</string>
+		<key>NAME</key>
+		<string>Your name</string>
+	    </dict>
+	    <key>SEND</key>
+	    <dict>
+		<key>SMTP_HOST</key>
+		<string>smtp.server.com</string>
+		<key>TRANSPORT_METHOD</key>
+		<integer>2</integer>
+	    </dict>
+	</dict>
+	<key>dilla</key>
+	<dict>
+	    <key>ENABLED</key>
+	    <true/>
+	    <key>MAILBOXES</key>
+	    <dict>
+		<key>INBOXFOLDERNAME</key>
+		<string>local:///home/pater/Mailboxes/Inbox</string>
+	    </dict>
+	    <key>PERSONAL</key>
+	    <dict>
+		<key>EMAILADDR</key>
+		<string>pater@dilla.cowboyneal.org</string>
+		<key>NAME</key>
+		<string>Jonathan Pater</string>
+		<key>ORGANIZATION</key>
+		<string>CowboyNeal.Org</string>
+		<key>REPLYTOADDR</key>
+		<string></string>
+		<key>SIGNATURE</key>
+		<string>.signature</string>
+		<key>SIGNATURE_SOURCE</key>
+		<integer>0</integer>
+	    </dict>
+	    <key>RECEIVE</key>
+	    <dict>
+		<key>AUTH_MECHANISM</key>
+		<string>Password</string>
+		<key>CHECKONSTARTUP</key>
+		<integer>0</integer>
+		<key>LEAVEONSERVER</key>
+		<integer>0</integer>
+		<key>MAILSPOOLFILE</key>
+		<string>/var/mail/pater</string>
+		<key>REMEMBERPASSWORD</key>
+		<integer>0</integer>
+		<key>RETAINPERIOD</key>
+		<integer>365</integer>
+		<key>RETRIEVEMETHOD</key>
+		<integer>1</integer>
+		<key>RETRIEVEMINUTES</key>
+		<integer>10</integer>
+		<key>SERVERNAME</key>
+		<string></string>
+		<key>SERVERTYPE</key>
+		<integer>3</integer>
+		<key>SHOW_WHICH_MAILBOXES</key>
+		<integer>0</integer>
+		<key>SUBSCRIBED_FOLDERS</key>
+		<array>
+		</array>
+		<key>USEAPOP</key>
+		<integer>0</integer>
+		<key>USERNAME</key>
+		<string></string>
+		<key>USESECURECONNECTION</key>
+		<integer>0</integer>
+	    </dict>
+	    <key>SEND</key>
+	    <dict>
+		<key>MAILER_PATH</key>
+		<string></string>
+		<key>REMEMBERPASSWORD</key>
+		<integer>1</integer>
+		<key>SMTP_AUTH</key>
+		<integer>1</integer>
+		<key>SMTP_AUTH_MECHANISM</key>
+		<string>Plain</string>
+		<key>SMTP_HOST</key>
+		<string>medrengard.cowboyneal.org</string>
+		<key>SMTP_PASSWORD</key>
+		<string>AQBQAA4ABAAAAEQA</string>
+		<key>SMTP_PORT</key>
+		<integer>465</integer>
+		<key>SMTP_USERNAME</key>
+		<string>pater</string>
+		<key>TRANSPORT_METHOD</key>
+		<integer>2</integer>
+		<key>USESECURECONNECTION</key>
+		<integer>1</integer>
+	    </dict>
+	</dict>
+    </dict>
+    <key>COLOR_QUOTED_TEXT</key>
+    <integer>1</integer>
+    <key>DEFAULT_CHARSET</key>
+    <string>Automatic</string>
+    <key>DOUBLECLICKACTION</key>
+    <integer>1</integer>
+    <key>DrawerPosition</key>
+    <integer>2</integer>
+    <key>FOLDERS_TO_OPEN</key>
+    <array>
+    </array>
+    <key>HEADER_NAME_FONT_NAME</key>
+    <string>DejaVu Sans</string>
+    <key>HEADER_NAME_FONT_SIZE</key>
+    <string>12</string>
+    <key>HEADER_VALUE_FONT_NAME</key>
+    <string>DejaVu Sans</string>
+    <key>HEADER_VALUE_FONT_SIZE</key>
+    <string>12</string>
+    <key>HIDE_DELETED_MESSAGES</key>
+    <true/>
+    <key>HIGHLIGHT_URL</key>
+    <true/>
+    <key>IconSize</key>
+    <integer>1</integer>
+    <key>LINE_WRAP_LIMIT</key>
+    <integer>72</integer>
+    <key>LOCALMAILDIR</key>
+    <string>/home/pater/Mailboxes</string>
+    <key>LOCALMAILDIR_PREVIOUS</key>
+    <string>/home/pater/Mailboxes</string>
+    <key>MAILHEADERCELL_COLOR</key>
+    <string>0.900000 0.900000 1.000000</string>
+    <key>MESSAGE_FONT_NAME</key>
+    <string>DejaVu Sans</string>
+    <key>MESSAGE_FONT_SIZE</key>
+    <string>12</string>
+    <key>MailWindowColumnWidth</key>
+    <dict>
+	<key>Date</key>
+	<real>152</real>
+	<key>Flagged</key>
+	<real>17</real>
+	<key>From</key>
+	<real>155</real>
+	<key>Number</key>
+	<real>40</real>
+	<key>Size</key>
+	<real>70</real>
+	<key>Status</key>
+	<real>17</real>
+	<key>Subject</key>
+	<real>409</real>
+    </dict>
+    <key>NSTableView Columns MailboxManager</key>
+    <dict>
+	<key>Mailbox</key>
+	<array>
+	    <integer>150</integer>
+	    <integer>0</integer>
+	</array>
+	<key>Messages</key>
+	<array>
+	    <integer>100</integer>
+	    <integer>1</integer>
+	</array>
+    </dict>
+    <key>NSTableView Frame MailWindow</key>
+    <string>{x = 0; y = 0; width = 888; height = 290}</string>
+    <key>NSTextView Frame MailWindow</key>
+    <string>{x = 0; y = 296; width = 888; height = 464}</string>
+    <key>NSWindow Frame AboutPanel</key>
+    <string>244 138 476 472 0 0  1920 1080 </string>
+    <key>NSWindow Frame AccountEditorWindow</key>
+    <string>210 103 412 425 0 0  1920 1080 </string>
+    <key>NSWindow Frame AddressBookPanel</key>
+    <string>204 161 522 350 0 0  1920 1080 </string>
+    <key>NSWindow Frame ConsoleWindow</key>
+    <string>191 481 477 235 0 0  1920 1080 </string>
+    <key>NSWindow Frame EditWindow</key>
+    <string>152 116 639 442 0 0  1920 1080 </string>
+    <key>NSWindow Frame MailWindow</key>
+    <string>498 205 890 813 0 0  1920 1080 </string>
+    <key>NSWindow Frame MailboxInspectorPanel</key>
+    <string>212 0 252 533 0 0  1920 1080 </string>
+    <key>NSWindow Frame MailboxManager</key>
+    <string>162 696 222 333 0 0  1920 1080 </string>
+    <key>NSWindow Frame PreferencesWindow</key>
+    <string>1141 110 480 437 0 0  1920 1080 </string>
+    <key>OPEN_MAILBOX_AFTER_TRANSFER</key>
+    <integer>0</integer>
+    <key>PATH_TO_SOUND</key>
+    <string></string>
+    <key>PGPBUNDLE_ALWAYS_ENCRYPT</key>
+    <integer>0</integer>
+    <key>PGPBUNDLE_ALWAYS_MULTIPART</key>
+    <integer>0</integer>
+    <key>PGPBUNDLE_ALWAYS_SIGN</key>
+    <integer>0</integer>
+    <key>PGPBUNDLE_GPG_PATH</key>
+    <string>/usr/bin/gpg</string>
+    <key>PGPBUNDLE_GPG_PINELOOP</key>
+    <integer>1</integer>
+    <key>PGPBUNDLE_PASSPHRASE_EXPIRY</key>
+    <integer>0</integer>
+    <key>PGPBUNDLE_PASSPHRASE_EXPIRY_VALUE</key>
+    <integer>5</integer>
+    <key>PGPBUNDLE_USER_EMAIL_ADDRESS</key>
+    <string></string>
+    <key>PGPBUNDLE_USE_FROM_FOR_SIGNING</key>
+    <integer>1</integer>
+    <key>PLAIN_TEXT_MESSAGE_FONT_NAME</key>
+    <string>DejaVu Sans</string>
+    <key>PLAIN_TEXT_MESSAGE_FONT_SIZE</key>
+    <string>12</string>
+    <key>PLAY_SOUND</key>
+    <integer>0</integer>
+    <key>PREFERENCES_MODE</key>
+    <integer>1</integer>
+    <key>PreferredViewStyle</key>
+    <integer>2</integer>
+    <key>QUOTE_COLOR_LEVEL_1</key>
+    <string>0.000000 0.000000 1.000000</string>
+    <key>QUOTE_COLOR_LEVEL_2</key>
+    <string>1.000000 0.000000 0.000000</string>
+    <key>QUOTE_COLOR_LEVEL_3</key>
+    <string>0.000000 1.000000 0.000000</string>
+    <key>QUOTE_COLOR_LEVEL_4</key>
+    <string>0.000000 1.000000 1.000000</string>
+    <key>SHOWALLHEADERS</key>
+    <integer>0</integer>
+    <key>SHOWNHEADERS</key>
+    <array>
+	<string>Date</string>
+	<string>From</string>
+	<string>To</string>
+	<string>Cc</string>
+	<string>Subject</string>
+    </array>
+    <key>SHOWNTABLECOLUMNS</key>
+    <array>
+	<string>Flagged</string>
+	<string>Status</string>
+	<string>Number</string>
+	<string>Date</string>
+	<string>From</string>
+	<string>Subject</string>
+	<string>Size</string>
+    </array>
+    <key>SHOW_FILTER_PANEL</key>
+    <integer>1</integer>
+    <key>SHOW_NO_NEW_MESSAGES_PANEL</key>
+    <integer>1</integer>
+    <key>SIGNATURE_FORWARD_POSITION</key>
+    <integer>0</integer>
+    <key>SIGNATURE_REPLY_POSITION</key>
+    <integer>1</integer>
+    <key>SORTINGORDER</key>
+    <string>Date</string>
+    <key>SORTINGSTATE</key>
+    <integer>0</integer>
+    <key>USE_FIXED_FONT_FOR_TEXT_PLAIN_MESSAGES</key>
+    <integer>0</integer>
+</dict>
+</plist>

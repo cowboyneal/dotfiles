@@ -1,0 +1,415 @@
+{
+  Dock = {
+    AutoRaiseLower = No;
+    Applications = (
+      {
+        Forced = No;
+        Name = Logo.WMDock;
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,0";
+        Lock = No;
+        Command = "-";
+      },
+      {
+        Forced = No;
+        Name = urxvt.URxvt;
+        DropCommand = "urxvt %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,14";
+        Lock = Yes;
+        PasteCommand = "urxvt %s";
+        Command = urxvt;
+      },
+      {
+        Forced = No;
+        Name = wmtime.wmtime;
+        DropCommand = "wmtime %d";
+        BuggyApplication = No;
+        AutoLaunch = Yes;
+        Position = "0,1";
+        Lock = Yes;
+        PasteCommand = "wmtime %s";
+        Command = wmtime;
+      },
+      {
+        Forced = No;
+        Name = WMMail.WMMail;
+        DropCommand = "/opt/GNUstep/Apps/WMMail.app/WMMail %d";
+        BuggyApplication = No;
+        AutoLaunch = Yes;
+        Position = "0,2";
+        Lock = Yes;
+        PasteCommand = " opt/GNUstep/Apps/WMMail.app/WMMail %s";
+        Command = "/opt/GNUstep/Apps/WMMail.app/WMMail";
+      },
+      {
+        Forced = No;
+        Name = firefox.Firefox;
+        DropCommand = "firefox %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,9";
+        Lock = Yes;
+        PasteCommand = "firefox %s";
+        Command = firefox;
+      },
+      {
+        Forced = No;
+        Name = wmifs.wmifs;
+        DropCommand = "wmifs %d";
+        BuggyApplication = No;
+        AutoLaunch = Yes;
+        Position = "0,5";
+        Lock = Yes;
+        PasteCommand = "wmifs %s";
+        Command = "wmifs -I 0.5";
+      },
+      {
+        Forced = No;
+        Name = gvim.Gvim;
+        DropCommand = "gvim %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,11";
+        Lock = Yes;
+        PasteCommand = "gvim %s";
+        Command = gvim;
+      },
+      {
+        Forced = No;
+        Name = wmmon.wmmon;
+        DropCommand = "wmmon %d";
+        BuggyApplication = No;
+        AutoLaunch = Yes;
+        Position = "0,3";
+        Lock = Yes;
+        PasteCommand = "wmmon %s";
+        Command = "wmmon -l";
+      },
+      {
+        Forced = No;
+        Name = wmmon.wmmon;
+        DropCommand = "wmmon -s %d";
+        BuggyApplication = No;
+        AutoLaunch = Yes;
+        Position = "0,4";
+        Lock = Yes;
+        PasteCommand = "wmmon -s %s";
+        Command = "wmmon -l -s";
+      },
+      {
+        Forced = No;
+        Name = mutt.URxvt;
+        DropCommand = "urxvt -name mutt %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,12";
+        Lock = Yes;
+        PasteCommand = "urxvt -name mutt %s";
+        Command = "urxvt -name mutt -e /home/pater/bin/mutt";
+      },
+      {
+        Forced = No;
+        Name = gimp.Gimp;
+        DropCommand = "gimp %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,7";
+        Lock = Yes;
+        PasteCommand = "gimp %s";
+        Command = gimp;
+      },
+      {
+        Forced = No;
+        Name = irssi.URxvt;
+        DropCommand = "urxvt -name irssi %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,13";
+        Lock = Yes;
+        PasteCommand = "urxvt -name irssi %s";
+        Command = "urxvt -name irssi -e dtach -A /tmp/pater-irssi irssi";
+      },
+      {
+        Forced = No;
+        Name = thunar.Thunar;
+        DropCommand = "thunar %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,8";
+        Lock = Yes;
+        PasteCommand = "thunar %s";
+        Command = "/home/pater/bin/thunar";
+      },
+      {
+        Forced = No;
+        Name = paginator.Paginator;
+        DropCommand = "paginator 2 3 %d";
+        BuggyApplication = No;
+        AutoLaunch = Yes;
+        Position = "0,6";
+        Lock = Yes;
+        PasteCommand = "paginator 2 3 %s";
+        Command = "paginator 2 3";
+      },
+      {
+        Forced = No;
+        Name = "chromium-browser.Chromium-browser";
+        DropCommand = "\"chrome \" %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,10";
+        Lock = No;
+        PasteCommand = "\"chrome \" %s";
+        Command = "\"chrome\"";
+      }
+    );
+    Applications1080 = (
+      {
+        Forced = No;
+        Name = Logo.WMDock;
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,0";
+        Lock = No;
+        Command = "-";
+      },
+      {
+        Forced = No;
+        Name = urxvt.URxvt;
+        DropCommand = "urxvt %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,14";
+        Lock = Yes;
+        PasteCommand = "urxvt %s";
+        Command = urxvt;
+      },
+      {
+        Forced = No;
+        Name = wmtime.wmtime;
+        DropCommand = "wmtime %d";
+        BuggyApplication = No;
+        AutoLaunch = Yes;
+        Position = "0,1";
+        Lock = Yes;
+        PasteCommand = "wmtime %s";
+        Command = wmtime;
+      },
+      {
+        Forced = No;
+        Name = WMMail.WMMail;
+        DropCommand = "/opt/GNUstep/Apps/WMMail.app/WMMail %d";
+        BuggyApplication = No;
+        AutoLaunch = Yes;
+        Position = "0,2";
+        Lock = Yes;
+        PasteCommand = " opt/GNUstep/Apps/WMMail.app/WMMail %s";
+        Command = "/opt/GNUstep/Apps/WMMail.app/WMMail";
+      },
+      {
+        Forced = No;
+        Name = firefox.Firefox;
+        DropCommand = "firefox %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,9";
+        Lock = Yes;
+        PasteCommand = "firefox %s";
+        Command = firefox;
+      },
+      {
+        Forced = No;
+        Name = wmifs.wmifs;
+        DropCommand = "wmifs %d";
+        BuggyApplication = No;
+        AutoLaunch = Yes;
+        Position = "0,5";
+        Lock = Yes;
+        PasteCommand = "wmifs %s";
+        Command = "wmifs -I 0.5";
+      },
+      {
+        Forced = No;
+        Name = gvim.Gvim;
+        DropCommand = "gvim %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,11";
+        Lock = Yes;
+        PasteCommand = "gvim %s";
+        Command = gvim;
+      },
+      {
+        Forced = No;
+        Name = wmmon.wmmon;
+        DropCommand = "wmmon %d";
+        BuggyApplication = No;
+        AutoLaunch = Yes;
+        Position = "0,3";
+        Lock = Yes;
+        PasteCommand = "wmmon %s";
+        Command = "wmmon -l";
+      },
+      {
+        Forced = No;
+        Name = wmmon.wmmon;
+        DropCommand = "wmmon -s %d";
+        BuggyApplication = No;
+        AutoLaunch = Yes;
+        Position = "0,4";
+        Lock = Yes;
+        PasteCommand = "wmmon -s %s";
+        Command = "wmmon -l -s";
+      },
+      {
+        Forced = No;
+        Name = mutt.URxvt;
+        DropCommand = "urxvt -name mutt %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,12";
+        Lock = Yes;
+        PasteCommand = "urxvt -name mutt %s";
+        Command = "urxvt -name mutt -e /home/pater/bin/mutt";
+      },
+      {
+        Forced = No;
+        Name = gimp.Gimp;
+        DropCommand = "gimp %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,7";
+        Lock = Yes;
+        PasteCommand = "gimp %s";
+        Command = gimp;
+      },
+      {
+        Forced = No;
+        Name = irssi.URxvt;
+        DropCommand = "urxvt -name irssi %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,13";
+        Lock = Yes;
+        PasteCommand = "urxvt -name irssi %s";
+        Command = "urxvt -name irssi -e dtach -A /tmp/pater-irssi irssi";
+      },
+      {
+        Forced = No;
+        Name = thunar.Thunar;
+        DropCommand = "thunar %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,8";
+        Lock = Yes;
+        PasteCommand = "thunar %s";
+        Command = "/home/pater/bin/thunar";
+      },
+      {
+        Forced = No;
+        Name = paginator.Paginator;
+        DropCommand = "paginator 2 3 %d";
+        BuggyApplication = No;
+        AutoLaunch = Yes;
+        Position = "0,6";
+        Lock = Yes;
+        PasteCommand = "paginator 2 3 %s";
+        Command = "paginator 2 3";
+      },
+      {
+        Forced = No;
+        Name = "chromium-browser.Chromium-browser";
+        DropCommand = "\"chrome \" %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,10";
+        Lock = No;
+        PasteCommand = "\"chrome \" %s";
+        Command = "\"chrome\"";
+      }
+    );
+    Lowered = Yes;
+    Position = "1856,0";
+  };
+  Clip = {
+    Forced = No;
+    Name = Logo.WMClip;
+    BuggyApplication = No;
+    AutoLaunch = No;
+    Position = "1856,1016";
+    Lock = No;
+    Command = "-";
+  };
+  Drawers = ();
+  Workspaces = (
+    {
+      Clip = {
+        AutoRaiseLower = No;
+        AutoCollapse = No;
+        Applications = ();
+        Collapsed = No;
+        AutoAttractIcons = No;
+        Lowered = Yes;
+      };
+      Name = Home;
+    },
+    {
+      Clip = {
+        AutoRaiseLower = No;
+        AutoCollapse = No;
+        Applications = ();
+        Collapsed = No;
+        AutoAttractIcons = No;
+        Lowered = Yes;
+      };
+      Name = Social;
+    },
+    {
+      Clip = {
+        AutoRaiseLower = No;
+        AutoCollapse = No;
+        Applications = ();
+        Collapsed = No;
+        AutoAttractIcons = No;
+        Lowered = Yes;
+      };
+      Name = Web;
+    },
+    {
+      Clip = {
+        AutoRaiseLower = No;
+        AutoCollapse = No;
+        Applications = ();
+        Collapsed = No;
+        AutoAttractIcons = No;
+        Lowered = Yes;
+      };
+      Name = Media;
+    },
+    {
+      Clip = {
+        AutoRaiseLower = No;
+        AutoCollapse = No;
+        Applications = ();
+        Collapsed = No;
+        AutoAttractIcons = No;
+        Lowered = Yes;
+      };
+      Name = "Workspace 5";
+    },
+    {
+      Clip = {
+        AutoRaiseLower = No;
+        AutoCollapse = No;
+        Applications = ();
+        Collapsed = No;
+        AutoAttractIcons = No;
+        Lowered = Yes;
+      };
+      Name = "Workspace 6";
+    }
+  );
+}

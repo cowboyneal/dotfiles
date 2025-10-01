@@ -1,0 +1,74 @@
+{
+  WindowTitleFont = "Arial:slant=0:weight=200:width=100:pixelsize=13";
+  MenuTitleFont = "Arial:slant=0:weight=200:width=100:pixelsize=13";
+  MenuTextFont = "Arial:slant=0:weight=80:width=100:pixelsize=13";
+  IconTitleFont = "Arial:slant=0:weight=80:width=100:pixelsize=10";
+  ClipTitleFont = "Arial:slant=0:weight=200:width=100:pixelsize=10";
+  LargeDisplayFont = "Arial:slant=0:weight=200:width=100:pixelsize=32";
+  TitleJustify = left;
+  HighlightColor = SkyBlue2;
+  HighlightTextColor = black;
+  ClipTitleColor = white;
+  CClipTitleColor = gray;
+  FrameBorderColor = gray25;
+  FrameFocusedBorderColor = gray40;
+  FrameSelectedBorderColor = white;
+  FTitleColor = white;
+  PTitleColor = gray;
+  UTitleColor = gray50;
+  FTitleBack = (mhgradient,
+                MidnightBlue,
+                MidnightBlue,
+                MidnightBlue,
+                indigo,
+                indigo,
+                grey15);
+  PTitleBack = (mhgradient,
+                MidnightBlue,
+                MidnightBlue,
+                MidnightBlue,
+                indigo,
+                indigo,
+                grey15);
+  UTitleBack = (mhgradient,
+                "#0c0c38",
+                "#0c0c38",
+                "#0c0c38",
+                "#260041",
+                "#260041",
+                grey15);
+  ResizebarBack = (mhgradient,
+                MidnightBlue,
+                MidnightBlue,
+                MidnightBlue,
+                indigo,
+                indigo,
+                grey15);
+  MenuTitleColor = white;
+  MenuTextColor = white;
+  MenuDisabledColor = grey50;
+  MenuTitleBack = (mhgradient,
+                MidnightBlue,
+                MidnightBlue,
+                MidnightBlue,
+                indigo,
+                indigo,
+                grey15);
+  MenuTextBack = (mdgradient,
+                MidnightBlue,
+                grey15,
+                MidnightBlue,
+                indigo,
+                grey15,
+                black);
+  IconBack = (mdgradient,
+                MidnightBlue,
+                grey15,
+                MidnightBlue,
+                indigo,
+                grey15,
+                black);
+  IconTitleColor = white;
+  IconTitleBack = MidnightBlue;
+  MenuStyle = flat;
+}

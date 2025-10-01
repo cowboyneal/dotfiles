@@ -1,0 +1,95 @@
+{
+  FTitleColor = "#ffffff";
+  FrameBorderColor = "#404040";
+  SelectCursor = (builtin, cross);
+  QuestionCursor = (builtin, question_arrow);
+  MenuDisabledColor = "#7f7f7f";
+  IconTitleBack = "#191970";
+  FTitleBack = (
+    mhgradient,
+    MidnightBlue,
+    MidnightBlue,
+    MidnightBlue,
+    indigo,
+    indigo,
+    grey15
+  );
+  BottomLeftResizeCursor = (builtin, bottom_left_corner);
+  TopLeftResizeCursor = (builtin, top_left_corner);
+  ClipTitleFont = "Liberation Sans:slant=0:weight=200:width=100:pixelsize=10";
+  IconTitleFont = "Liberation Sans:slant=0:weight=80:width=100:pixelsize=10";
+  MenuTextBack = (mdgradient, MidnightBlue, grey15, MidnightBlue, indigo, grey15, black);
+  LargeDisplayFont = "Liberation Sans:slant=0:weight=200:width=100:pixelsize=32";
+  ResizeCursor = (builtin, sizing);
+  TextCursor = (builtin, xterm);
+  TitleJustify = left;
+  IconTitleColor = "#ffffff";
+  MenuTextColor = "#ffffff";
+  IconBack = (mdgradient, MidnightBlue, grey15, MidnightBlue, indigo, grey15, black);
+  MenuTitleColor = "#ffffff";
+  MenuTitleFont = "Liberation Sans:slant=0:weight=200:width=100:pixelsize=13";
+  WindowTitleExtendSpace = 0;
+  NormalCursor = (builtin, left_ptr);
+  ArrowCursor = (builtin, top_left_arrow);
+  MenuTextFont = "Liberation Sans:slant=0:weight=80:width=100:pixelsize=13";
+  WorkspaceBack = (
+    fpixmap,
+    "/home/pater/Pictures/Wallpapers/purple_space_1.jpg",
+    "#000000"
+  );
+  VerticalResizeCursor = (builtin, sb_v_double_arrow);
+  HighlightTextColor = "#000000";
+  MenuTitleBack = (
+    mhgradient,
+    MidnightBlue,
+    MidnightBlue,
+    MidnightBlue,
+    indigo,
+    indigo,
+    grey15
+  );
+  ClipTitleColor = "#ffffff";
+  TopRightResizeCursor = (builtin, top_right_corner);
+  WaitCursor = (builtin, watch);
+  HighlightColor = "#7ec0ee";
+  FrameFocusedBorderColor = "#666666";
+  BottomRightResizeCursor = (builtin, bottom_right_corner);
+  WindowTitleFont = "Liberation Sans:slant=0:weight=200:width=100:pixelsize=13";
+  CClipTitleColor = "#bebebe";
+  MoveCursor = (builtin, fleur);
+  ResizebarBack = (
+    mhgradient,
+    MidnightBlue,
+    MidnightBlue,
+    MidnightBlue,
+    indigo,
+    indigo,
+    grey15
+  );
+  MenuStyle = flat;
+  HorizontalResizeCursor = (builtin, sb_h_double_arrow);
+  FrameBorderWidth = 1;
+  PTitleBack = (
+    mhgradient,
+    MidnightBlue,
+    MidnightBlue,
+    MidnightBlue,
+    indigo,
+    indigo,
+    grey15
+  );
+  MenuTextExtendSpace = 0;
+  UTitleColor = "#7f7f7f";
+  UTitleBack = (
+    mhgradient,
+    "#0c0c38",
+    "#0c0c38",
+    "#0c0c38",
+    "#260041",
+    "#260041",
+    grey15
+  );
+  PTitleColor = "#bebebe";
+  MenuTitleExtendSpace = 0;
+  FrameSelectedBorderColor = "#ffffff";
+}

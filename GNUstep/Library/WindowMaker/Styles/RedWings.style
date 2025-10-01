@@ -1,0 +1,53 @@
+{
+  WindowTitleFont = "Arial:slant=0:weight=200:width=100:pixelsize=13";
+  MenuTitleFont = "Arial:slant=0:weight=200:width=100:pixelsize=13";
+  MenuTextFont = "Arial:slant=0:weight=80:width=100:pixelsize=13";
+  IconTitleFont = "Arial:slant=0:weight=80:width=100:pixelsize=10";
+  ClipTitleFont = "Arial:slant=0:weight=200:width=100:pixelsize=10";
+  LargeDisplayFont = "Arial:slant=0:weight=200:width=100:pixelsize=32";
+  TitleJustify = left;
+  HighlightColor = "#b0b7bc";
+  HighlightTextColor = black;
+  ClipTitleColor = white;
+  CClipTitleColor = gray;
+  FrameBorderColor = gray20;
+  FrameFocusedBorderColor = gray40;
+  FrameSelectedBorderColor = white;
+  FTitleColor = white;
+  PTitleColor = gray;
+  UTitleColor = "#b0b7bc";
+  FTitleBack = (mhgradient,
+                "#c8102e",
+                "#c8102e",
+                "#191919");
+  PTitleBack = (mhgradient,
+                "#c8102e",
+                "#c8102e",
+                "#191919");
+  UTitleBack = (solid, "#191919");
+  ResizebarBack = (mhgradient,
+                "#c8102e",
+                "#c8102e",
+                "#191919");
+  MenuTitleColor = white;
+  MenuTextColor = white;
+  MenuDisabledColor = grey50;
+  MenuTitleBack = (mhgradient,
+                "#c8102e",
+                "#c8102e",
+                "#191919");
+  MenuTextBack = (mdgradient,
+                "#c8102e",
+                "#191919",
+                "#c8102e",
+                "#191919");
+  IconBack = (mdgradient,
+                "#c8102e",
+                "#191919",
+                "#c8102e",
+                "#b0b7bc",
+                "#191919");
+  IconTitleColor = white;
+  IconTitleBack = "#c8102e";
+  MenuStyle = flat;
+}

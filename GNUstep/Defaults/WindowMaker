@@ -1,0 +1,146 @@
+{
+  FTitleColor = "#ffffff";
+  FrameBorderColor = "#404040";
+  ScreenCaptureKey = None;
+  MenuDisabledColor = "#7f7f7f";
+  HotCornerEdge = 2;
+  PixmapPath = (
+    "/home/pater/GNUstep/Library/WindowMaker/Pixmaps",
+    "/home/pater/GNUstep/Library/WindowMaker/Backgrounds",
+    "/home/pater/GNUstep/Library/WindowMaker/CachedPixmaps",
+    "~/pixmaps",
+    "/usr/local/share/WindowMaker/Pixmaps",
+    "/usr/local/share/WindowMaker/Backgrounds",
+    "/usr/local/include/X11/pixmaps"
+  );
+  IconTitleBack = "#191970";
+  FTitleBack = (
+    mhgradient,
+    MidnightBlue,
+    MidnightBlue,
+    MidnightBlue,
+    indigo,
+    indigo,
+    grey15
+  );
+  ToggleKbdModeKey = None;
+  DoNotMakeAppIconsBounce = YES;
+  ClipTitleFont = "Liberation Sans:slant=0:weight=200:width=100:pixelsize=10";
+  MiniwindowTitleBalloons = YES;
+  IconTitleFont = "Liberation Sans:slant=0:weight=80:width=100:pixelsize=10";
+  MenuTextBack = (mdgradient, MidnightBlue, grey15, MidnightBlue, indigo, grey15, black);
+  MouseLeftButtonAction = OpenApplicationsMenu;
+  WindowPlacement = smart;
+  LargeDisplayFont = "Liberation Sans:slant=0:weight=200:width=100:pixelsize=32";
+  DisableClip = YES;
+  HotCornerDelay = 250;
+  CycleWorkspaces = YES;
+  IconificationStyle = twist;
+  CenterKey = None;
+  TitleJustify = left;
+  IconTitleColor = "#ffffff";
+  MenuTextColor = "#ffffff";
+  IconBack = (mdgradient, MidnightBlue, grey15, MidnightBlue, indigo, grey15, black);
+  BLCMaximizeKey = "Mod4+Next";
+  AntialiasedText = YES;
+  MenuTitleColor = "#ffffff";
+  MenuTitleFont = "Liberation Sans:slant=0:weight=200:width=100:pixelsize=13";
+  HotCorners = NO;
+  EnableWorkspacePager = YES;
+  MoveTo6to12Head = None;
+  DbClickFullScreen = NO;
+  TLCMaximizeKey = "Mod4+Prior";
+  MenuTextFont = "Liberation Sans:slant=0:weight=80:width=100:pixelsize=13";
+  NoWindowOverDock = YES;
+  NoWindowOverIcons = YES;
+  WorkspaceBack = (
+    fpixmap,
+    "/home/pater/Pictures/Wallpapers/purple_space_1.jpg",
+    "#000000"
+  );
+  HighlightTextColor = "#000000";
+  MenuTitleBack = (
+    mhgradient,
+    MidnightBlue,
+    MidnightBlue,
+    MidnightBlue,
+    indigo,
+    indigo,
+    grey15
+  );
+  EnforceIconMargin = NO;
+  MouseRightButtonAction = SelectWindows;
+  AutoArrangeIcons = YES;
+  PrevWorkspaceKey = "Shift+Left";
+  ClipTitleColor = "#ffffff";
+  MoveTo12to6Head = None;
+  IgnoreFocusClick = YES;
+  HotCornerActions = (None, None, None, None);
+  HighlightColor = "#7ec0ee";
+  WorkspaceBorder = AllDirections;
+  FrameFocusedBorderColor = "#666666";
+  FocusMode = sloppy;
+  WindowTitleFont = "Liberation Sans:slant=0:weight=200:width=100:pixelsize=13";
+  NextWorkspaceKey = "Shift+Right";
+  WrapMenus = YES;
+  WindowPlaceOrigin = (15, 15);
+  Workspace8Key = "Mod4+8";
+  Workspace10Key = "Mod4+0";
+  Workspace9Key = "Mod4+9";
+  CClipTitleColor = "#bebebe";
+  MenuStyle = flat;
+  ResizebarBack = (
+    mhgradient,
+    MidnightBlue,
+    MidnightBlue,
+    MidnightBlue,
+    indigo,
+    indigo,
+    grey15
+  );
+  IconPath = (
+    "/home/pater/GNUstep/Library/Icons",
+    "/home/pater/GNUstep/Library/WindowMaker/Pixmaps",
+    "/home/pater/GNUstep/Library/WindowMaker/CachedPixmaps",
+    "~/pixmaps",
+    "/usr/local/share/WindowMaker/Icons",
+    "/usr/local/share/WindowMaker/Pixmaps",
+    "/usr/local/include/X11/pixmaps",
+    "/usr/local/share/icons"
+  );
+  Workspace4Key = "Mod4+4";
+  MiniPreviewSize = 512;
+  Workspace5Key = "Mod4+5";
+  KbdModeLock = NO;
+  Workspace6Key = "Mod4+6";
+  PTitleBack = (
+    mhgradient,
+    MidnightBlue,
+    MidnightBlue,
+    MidnightBlue,
+    indigo,
+    indigo,
+    grey15
+  );
+  WorkspaceBorderSize = 5;
+  Workspace7Key = "Mod4+7";
+  OpenTransientOnOwnerWorkspace = YES;
+  UTitleColor = "#7f7f7f";
+  UTitleBack = (
+    mhgradient,
+    "#0c0c38",
+    "#0c0c38",
+    "#0c0c38",
+    "#260041",
+    "#260041",
+    grey15
+  );
+  PTitleColor = "#bebebe";
+  CloseRootMenuByLeftOrRightMouseClick = NO;
+  Workspace1Key = "Mod4+1";
+  ResizeDisplay = line;
+  StickyIcons = YES;
+  Workspace2Key = "Mod4+2";
+  Workspace3Key = "Mod4+3";
+  FrameSelectedBorderColor = "#ffffff";
+}

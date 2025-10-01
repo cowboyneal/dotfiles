@@ -1,0 +1,74 @@
+{
+  WindowTitleFont = "Arial:slant=0:weight=200:width=100:pixelsize=13";
+  MenuTitleFont = "Arial:slant=0:weight=200:width=100:pixelsize=13";
+  MenuTextFont = "Arial:slant=0:weight=80:width=100:pixelsize=13";
+  IconTitleFont = "Arial:slant=0:weight=80:width=100:pixelsize=10";
+  ClipTitleFont = "Arial:slant=0:weight=200:width=100:pixelsize=10";
+  LargeDisplayFont = "Arial:slant=0:weight=200:width=100:pixelsize=32";
+  TitleJustify = left;
+  HighlightColor = "#b0b7bc";
+  HighlightTextColor = black;
+  ClipTitleColor = white;
+  CClipTitleColor = gray;
+  FrameBorderColor = gray20;
+  FrameFocusedBorderColor = gray40;
+  FrameSelectedBorderColor = white;
+  FTitleColor = white;
+  PTitleColor = gray;
+  UTitleColor = "#b0b7bc";
+  FTitleBack = (mhgradient,
+                "#004569",
+                "#004569",
+                "#004569",
+                "#0076b6",
+                "#0076b6",
+                "#002f33");
+  PTitleBack = (mhgradient,
+                "#004569",
+                "#004569",
+                "#004569",
+                "#0076b6",
+                "#0076b6",
+                "#002f33");
+  UTitleBack = (mhgradient,
+                "#00303d",
+                "#00303d",
+                "#00303d",
+                "#004569",
+                "#004569",
+                "#002f33");
+  ResizebarBack = (mhgradient,
+                "#004569",
+                "#004569",
+                "#004569",
+                "#0076b6",
+                "#0076b6",
+                "#002f33");
+  MenuTitleColor = white;
+  MenuTextColor = white;
+  MenuDisabledColor = grey50;
+  MenuTitleBack = (mhgradient,
+                "#004569",
+                "#004569",
+                "#004569",
+                "#0076b6",
+                "#0076b6",
+                "#002f33");
+  MenuTextBack = (mdgradient,
+                "#004569",
+                "#002f33",
+                "#004569",
+                "#0076b6",
+                "#002f33",
+                black);
+  IconBack = (mdgradient,
+                "#004569",
+                "#002f33",
+                "#004569",
+                "#0076b6",
+                "#002f33",
+                black);
+  IconTitleColor = white;
+  IconTitleBack = "#004569";
+  MenuStyle = flat;
+}

@@ -1,0 +1,4 @@
+{
+  BoldSystemFont = "Liberation Sans:slant=0:weight=200:width=100:pixelsize=13";
+  SystemFont = "Liberation Sans:slant=0:weight=80:width=100:pixelsize=13";
+}

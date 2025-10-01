@@ -1,0 +1,87 @@
+{
+  pcmanfm.Pcmanfm = {
+    AlwaysUserIcon = Yes;
+    Icon = "FileManager-ISO-48x48.tiff";
+  };
+  firefox.Firefox = {
+    Icon = firefox.Firefox.xpm;
+  };
+  "chromium-browser.Chromium-browser" = {
+    AlwaysUserIcon = Yes;
+    EmulateAppIcon = Yes;
+    Icon = chrome.png;
+  };
+  console.URxvt = {
+    SharedAppIcon = No;
+    Unfocusable = Yes;
+    SkipWindowList = Yes;
+    NoTitlebar = Yes;
+    SkipSwitchPanel = Yes;
+    KeepInsideScreen = Yes;
+    NoMiniaturizable = Yes;
+    NoAppIcon = Yes;
+    NoLanguageButton = Yes;
+    NoMiniaturizeButton = Yes;
+    AlwaysUserIcon = No;
+    NoResizebar = Yes;
+    KeepOnBottom = Yes;
+    NoCloseButton = Yes;
+    Omnipresent = Yes;
+  };
+  thunderbird.Thunderbird = {
+    Icon = thunderbird.Thunderbird.xpm;
+  };
+  gimp.Gimp = {
+    AlwaysUserIcon = Yes;
+    Icon = "gimp-icon.xpm";
+  };
+  xterm.XTerm = {
+    Icon = xterm.XTerm.xpm;
+  };
+  jumbotron.URxvt = {
+    SharedAppIcon = No;
+    NoAppIcon = Yes;
+    AlwaysUserIcon = No;
+    Icon = reddevil.xpm;
+  };
+  "mkvtoolnix-gui.mkvtoolnix-gui" = {
+    Icon = "mkvtoolnix-gui.mkvtoolnix-gui.xpm";
+  };
+  thunar.Thunar = {
+    AlwaysUserIcon = Yes;
+    Icon = "FileManager-ISO-48x48.tiff";
+  };
+  midori.Midori = {
+    Icon = midori.Midori.xpm;
+  };
+  epiphany.Epiphany = {
+    Icon = epiphany.Epiphany.xpm;
+  };
+  irssi.URxvt = {
+    Icon = "irssi-48x48.xpm";
+  };
+  urxvt.URxvt = {
+    SharedAppIcon = No;
+    NoAppIcon = Yes;
+    AlwaysUserIcon = Yes;
+    Icon = reddevil.xpm;
+  };
+  groupLeader.WPrefs = {
+    Icon = groupLeader.WPrefs.xpm;
+  };
+  fr.handbrake.ghb.Fr.handbrake.ghb = {
+    Icon = fr.handbrake.ghb.Fr.handbrake.ghb.xpm;
+  };
+  "<unknown>.<unknown>" = {
+    Icon = inkscape.Inkscape.xpm;
+  };
+  mutt.URxvt = {
+    Icon = mutt.tif;
+  };
+  gvim.Gvim = {
+    Icon = gvim.Gvim.xpm;
+  };
+  GWorkspace.GNUstep = {
+    Icon = GWorkspace.GNUstep.xpm;
+  };
+}
