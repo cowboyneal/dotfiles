@@ -29,6 +29,7 @@ xsession    : ~/.xsessionrc
 
 fluxbox     : ~/.fluxbox
 fvwm        : ~/.fvwm
+wmaker      : ~/GNUstep
 
 x11         : $(x11)
 .PHONY: x11 $(x11)
