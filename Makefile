@@ -30,6 +30,9 @@ xsession    : ~/.xsessionrc
 fluxbox     : ~/.fluxbox
 fvwm        : ~/.fvwm
 
+x11         : $(x11)
+.PHONY: x11 $(x11)
+
 all         : $(all)
 .PHONY: all $(all)
 .DEFAULT_GOAL := all
