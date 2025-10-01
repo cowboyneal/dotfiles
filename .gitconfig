@@ -1,0 +1,9 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+    name = Jonathan Pater
+    email = cowboyneal@gmail.com
+[init]
+    defaultBranch = master
+[pull]
+    rebase = false
