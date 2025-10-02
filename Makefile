@@ -6,7 +6,7 @@ force:
 define rule.template
 $(1)/% : $(2)/% force
 	mkdir -p $$(@D)
-	cp -R $$< $$@
+	cp -R $$< $$(@D)
 endef
 
 rule.define = $(eval $(call rule.template,$(1),$(2)))
