@@ -1,12 +1,12 @@
 #!/bin/sh
 
 # cleanup
-rm -rf ~/.config/.config
-rm -rf ~/.vim/.vim
+rm -rvf ~/.config/.config
+rm -rvf ~/.vim/.vim
 
-rm -rf ~/.themes/.themes
-rm -rf ~/.urxvt/.urxvt
+rm -rvf ~/.themes/.themes
+rm -rvf ~/.urxvt/.urxvt
 
-rm -rf ~/.fluxbox/.fluxbox
-rm -rf ~/.fvwm/.fvwm
-rm -rf ~/GNUstep/GNUstep
+rm -rvf ~/.fluxbox/.fluxbox
+rm -rvf ~/.fvwm/.fvwm
+rm -rvf ~/GNUstep/GNUstep
