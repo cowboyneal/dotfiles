@@ -190,7 +190,7 @@ MoveThreshold 3
 Style * MouseFocus, MouseFocusClickRaises
 
 # Default Font
-DefaultFont "Shadow=3 0 All:xft:Arial:Bold:size=10:antialias=True"
+DefaultFont "Shadow=3 0 All:xft:Liberation Sans:Bold:size=10:antialias=True"
 DefaultColorset 2
 
 # Window Placement
@@ -280,8 +280,8 @@ MenuStyle * MenuColorset 5, ActiveColorset 6, GreyedColorset 7, TitleColorset 8
 MenuStyle * Hilight3DOff, HilightBack, HilightTitleBack, SeparatorsLong
 MenuStyle * TrianglesSolid, TrianglesUseFore
 MenuStyle * ItemFormat "%|%3.1i%5.3l%5.3>%|"
-MenuStyle * Font "xft:Arial:size=10:antialias=True"
-MenuStyle * TitleFont "Shadow=3 0 All:xft:Arial:bold:size=10:antialias=True"
+MenuStyle * Font "xft:Liberation Sans:size=10:antialias=True"
+MenuStyle * TitleFont "Shadow=3 0 All:xft:Liberation Sans:bold:size=10:antialias=True"
 MenuStyle * VerticalItemSpacing 5 5
 
 # Root Menu
