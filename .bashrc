@@ -164,9 +164,6 @@ set_bash_prompt() {
     local black_blue="\[\033[0;30;44m\]"
     local white_blue="\[\033[0;0;44m\]"
 
-    #PS1=" \! $black_blue $white_blue$PS1"
-    PS1=" \! $PS1"
-
     if ! exists powerline-daemon || [[ "$TERM" =~ wsvt25|vt100|vt220|linux ]]; then
       PS1="$default2[$blue2\!$default2] $blue2\h $default2:$blue2 \w$default2 "
     fi
