@@ -40,7 +40,8 @@ case $UNAME in
         PATH=$PATH:/usr/X11R7/bin
         ;;
     Darwin* )
-        PATH=/opt/local/bin:/opt/local/sbin:$PATH
+        PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$PATH
+        PATH=~/.python3/bin:$PATH
         unset PROMPT_COMMAND
         ;;
 esac
@@ -163,7 +164,8 @@ set_bash_prompt() {
     local black_blue="\[\033[0;30;44m\]"
     local white_blue="\[\033[0;0;44m\]"
 
-    PS1=" \! $black_blue$white_blue$PS1"
+    #PS1=" \! $black_blue $white_blue$PS1"
+    PS1=" \! $PS1"
 
     if ! exists powerline-daemon || [[ "$TERM" =~ wsvt25|vt100|vt220|linux ]]; then
       PS1="$default2[$blue2\!$default2] $blue2\h $default2:$blue2 \w$default2 "
@@ -214,6 +216,7 @@ if exists powerline-daemon && [[ ! "$TERM" =~ wsvt25|vt100|vt220|linux ]]; then
         "/usr/local/lib/python3.11/site-packages/powerline/bindings"  # FreeBSD
         "/usr/pkg/lib/python3.12/site-packages/powerline/bindings"   # NetBSD
         "$HOME/.python3/lib/python3.12/site-packages/powerline/bindings" # OpenBSD
+        "$HOME/.python3/lib/python3.11/site-packages/powerline/bindings" # Darwin
     )
 
     for i in ${powerline_locs[@]}; do
