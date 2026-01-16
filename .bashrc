@@ -17,6 +17,7 @@ PATH=$PATH:/usr/local/bin:/usr/local/sbin   # local first for mit k5
 PATH=$PATH:/bin:/usr/bin:/usr/games         # usual path
 PATH=$PATH:/sbin:/usr/sbin                  # sudo/root stuff
 [ -d /opt/bin ] && PATH=$PATH:/opt/bin
+[ -d ~/.python3 ] && source ~/.python3/bin/activate
 
 MANPATH=/usr/share/man:/usr/local/share/man
 [ -d /usr/local/man ] && MANPATH=$MANPATH:/usr/local/man
@@ -32,7 +33,6 @@ UNAME=`uname`
 
 case $UNAME in
     OpenBSD* )
-        PATH=~/.python3/bin:$PATH
         PATH=$PATH:/usr/X11R6/bin
         ;;
     NetBSD* )
@@ -41,7 +41,6 @@ case $UNAME in
         ;;
     Darwin* )
         PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$PATH
-        PATH=~/.python3/bin:$PATH
         unset PROMPT_COMMAND
         ;;
 esac
