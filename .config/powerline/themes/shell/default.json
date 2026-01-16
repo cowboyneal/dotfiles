@@ -1,13 +1,6 @@
 {
 	"segments": {
 		"left": [
-            {
-                "function": "powerline.segments.common.env.environment",
-                "args": {
-                    "variable": "HISTCMD"
-                },
-                "priority": 10
-            },
 			{
 				"function": "powerline.segments.common.net.hostname",
                 "before": "",
