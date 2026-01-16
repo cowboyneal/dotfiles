@@ -20,6 +20,8 @@ mutt        : ~/.muttrc
 tmux        : ~/.tmux.conf
 vim         : ~/.gvimrc ~/.vim ~/.vimrc
 
+powerline	: ~/.config/powerline
+
 x11 += alacritty themes urxvt Xdefaults xsession
 alacritty   : ~/.alacritty.toml
 themes      : ~/.themes
