@@ -18,6 +18,11 @@ PATH=$PATH:/bin:/usr/bin:/usr/games         # usual path
 PATH=$PATH:/sbin:/usr/sbin                  # sudo/root stuff
 [ -d /opt/bin ] && PATH=$PATH:/opt/bin
 [ -d ~/.python3 ] && source ~/.python3/bin/activate
+export POWERLINE_DAEMON="$HOME/.python3/bin/powerline-daemon"
+$POWERLINE_DAEMON -q
+POWERLINE_BASH_CONTINUATION="1"
+POWERLINE_BASH_SELECT="1"
+
 
 MANPATH=/usr/share/man:/usr/local/share/man
 [ -d /usr/local/man ] && MANPATH=$MANPATH:/usr/local/man
@@ -146,14 +151,7 @@ unset local256
 export COLORFGBG='lightgray;black'
 export PF_COL3=1
 
-# if exists git && [ -f ~/.git-prompt.sh ]; then
-#     source ~/.git-prompt.sh
-#     export GIT_PS1_SHOWDIRTYSTATE=true
-#     export GIT_PS1_SHOWSTASHSTATE=true
-#     export GIT_PS1_SHOWUPSTREAM="auto"
-# fi
-
-set_bash_prompt() {
+_set_bash_prompt() {
     # prompt stuff
     local blue1="\033[1;34m"
     local blue2="\[$blue1\]"
@@ -163,25 +161,11 @@ set_bash_prompt() {
     local black_blue="\[\033[0;30;44m\]"
     local white_blue="\[\033[0;0;44m\]"
 
-    if ! exists powerline-daemon || [[ "$TERM" =~ wsvt25|vt100|vt220|linux ]]; then
-      PS1="$default2[$blue2\!$default2] $blue2\h $default2:$blue2 \w$default2 "
+    if [ ! -x "$POWERLINE_DAEMON" ] || \
+            [[ "$TERM" =~ wsvt25|vt100|vt220|linux ]]; then
+        PS1="$default2[$blue2\!$default2] $blue2\h $default2:$blue2 \w$default2 "
     fi
 
-#    if [ -n "$GIT_PS1_SHOWDIRTYSTATE" ]; then
-#        local git_info=$(__git_ps1 "%s")
-#
-#        if [ -n "$git_info" ]; then
-#            if [[ "$git_info" =~ ^\(.+\) ]]; then
-#                local tag=`echo "$git_info" | grep -oP '\(.*?\)'`
-#                local new_tag=${tag#(}
-#                new_tag=${new_tag%)}
-#                git_info=${git_info/$tag/$new_tag}
-#            fi
-#
-#            PS1="$PS1($blue2$git_info$default2) "
-#        fi
-#    fi
-    
     case `/usr/bin/whoami` in
       root* ) PS1=$PS1'# ' ;;
       * ) PS1=$PS1"\$ " ;;
@@ -198,25 +182,17 @@ set_bash_prompt() {
 
 export PS2
 export PROMPT_DIRTRIM=3
-export PROMPT_COMMAND=set_bash_prompt
 
-if exists powerline-daemon && [[ ! "$TERM" =~ wsvt25|vt100|vt220|linux ]]; then
-    powerline-daemon -q
-    POWERLINE_BASH_CONTINUATION="1"
-    POWERLINE_BASH_SELECT="1"
+[[ ! "$PROMPT_COMMAND" =~ _set_bash_prompt ]] && \
+    export PROMPT_COMMAND+=_set_bash_prompt
 
-    powerline_locs=(
-        "$HOME/.python3/lib/python3.13/site-packages/powerline/bindings" # Darwin
-        "$HOME/.python3/lib/python3.12/site-packages/powerline/bindings" # OpenBSD
-        "$HOME/.python3/lib/python3.11/site-packages/powerline/bindings" # FreeBSD
-        "/usr/pkg/lib/python3.12/site-packages/powerline/bindings"   # NetBSD
-        "/usr/lib/python3.12/site-packages/powerline/bindings" # Void Linux
-        "/usr/share/powerline/bindings"
-        "/usr/share/powerline"
-    )
+if [ -x "$POWERLINE_DAEMON" ] && \
+        [[ ! "$TERM" =~ wsvt25|vt100|vt220|linux ]]; then
+    powerline_locs=( "3.13" "3.12" "3.11" )
 
     for i in ${powerline_locs[@]}; do
-        i=$i"/bash/powerline.sh"
+        i="$HOME/.python3/lib/python"$i
+        i=$i"/site-packages/powerline/bindings/bash/powerline.sh"
 
         if [ -e "$i" ]; then
             . "$i"
