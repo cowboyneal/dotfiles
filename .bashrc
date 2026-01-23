@@ -19,7 +19,7 @@ PATH=$PATH:/sbin:/usr/sbin                  # sudo/root stuff
 [ -d /opt/bin ] && PATH=$PATH:/opt/bin
 [ -d ~/.python3 ] && source ~/.python3/bin/activate
 export POWERLINE_DAEMON="$HOME/.python3/bin/powerline-daemon"
-$POWERLINE_DAEMON -q --replace
+[ -x "$POWERLINE_DAEMON" ] && $POWERLINE_DAEMON -q --replace
 POWERLINE_BASH_CONTINUATION="1"
 POWERLINE_BASH_SELECT="1"
 
