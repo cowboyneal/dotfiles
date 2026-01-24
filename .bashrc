@@ -183,7 +183,7 @@ export PS2
 export PROMPT_DIRTRIM=3
 
 [[ ! "$PROMPT_COMMAND" =~ _set_bash_prompt ]] && \
-    export PROMPT_COMMAND="$PROMPT_COMMAND "_set_bash_prompt
+    export PROMPT_COMMAND+=_set_bash_prompt
 
 if [ -x "$POWERLINE_DAEMON" ] && \
         [[ ! "$TERM" =~ wsvt25|vt100|vt220|linux ]]; then
