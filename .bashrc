@@ -10,6 +10,11 @@ exists () { # returns true if $1 is an executable file in our path
 }
 # end of internal functions
 
+# Some programs support several languages for their output.
+# If you want them to use english, please uncomment the following line.
+export LANG='en_US.UTF-8'
+export LC_ALL='en_US.UTF-8'
+
 # Set up path carefully
 PATH=~/bin                                  # script overrides for EoU
 PATH=$PATH:~/.local/bin                     # Python installed packages
@@ -107,11 +112,6 @@ if [ -z "$TERM" ]; then
     eval `tset -s -Q`
     [[ "$TERM" =~ con|vt100 ]] && tset -Q -e ^?
 fi
-
-# Some programs support several languages for their output.
-# If you want them to use english, please uncomment the following line.
-export LANG='en_US.UTF-8'
-export LC_ALL='en_US.UTF-8'
 
 # try to set DISPLAY smart
 #if [ -z "$DISPLAY" ] && [[ "$TERM" =~ xterm|rxvt ]] \
