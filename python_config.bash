@@ -20,8 +20,7 @@ $HOME/.python3/bin/pip3 install powerline-status
 
 # install my powerline mods
 if [ -d powerline-status-histcmd ]; then
-    cd ./powerline-status-histcmd
-    $HOME/.python3/bin/pip3 install ./
+    $HOME/.python3/bin/pip3 install powerline-status-histcmd/
 else
     echo 'No powerline-status-histcmd dir found. Skipping powerline-status-histcmd installation.'
 fi
