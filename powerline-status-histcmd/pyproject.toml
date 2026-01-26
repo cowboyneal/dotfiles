@@ -9,7 +9,7 @@ version = "1.1.1"
 description = "A powerline-status segment for HISTCMD."
 # readme = "README.md"
 requires-python = ">=3.9"
-license = {text = "MIT"}
+license = "BSD-3-Clause"
 
 authors = [
     {name = "CowboyNeal", email = "cowboyneal@cowboyneal.org"}
