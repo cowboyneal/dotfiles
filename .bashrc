@@ -17,11 +17,6 @@ PATH=$PATH:/usr/local/bin:/usr/local/sbin   # local first for mit k5
 PATH=$PATH:/bin:/usr/bin:/usr/games         # usual path
 PATH=$PATH:/sbin:/usr/sbin                  # sudo/root stuff
 [ -d /opt/bin ] && PATH=$PATH:/opt/bin
-[ -d ~/.python3 ] && source ~/.python3/bin/activate
-export POWERLINE_DAEMON="$HOME/.python3/bin/powerline-daemon"
-[ -x "$POWERLINE_DAEMON" ] && $POWERLINE_DAEMON -q --replace
-POWERLINE_BASH_CONTINUATION="1"
-POWERLINE_BASH_SELECT="1"
 
 MANPATH=/usr/share/man:/usr/local/share/man
 [ -d /usr/local/man ] && MANPATH=$MANPATH:/usr/local/man
@@ -48,6 +43,13 @@ case $UNAME in
         unset PROMPT_COMMAND
         ;;
 esac
+
+[ -d ~/.python3 ] && source ~/.python3/bin/activate
+export POWERLINE_DAEMON="$HOME/.python3/bin/powerline-daemon"
+[ -x "$POWERLINE_DAEMON" ] && $POWERLINE_DAEMON -q --replace
+POWERLINE_BASH_CONTINUATION="1"
+POWERLINE_BASH_SELECT="1"
+
 export PATH
 export CDPATH=.:..
 
