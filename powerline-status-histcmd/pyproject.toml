@@ -1,0 +1,28 @@
+[build-system]
+# Tells tools like pip how to build your project
+requires = ["setuptools >= 77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "powerline-status-histcmd"
+version = "1.1.1"
+description = "A powerline-status segment for HISTCMD."
+# readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+
+authors = [
+    {name = "CowboyNeal", email = "cowboyneal@cowboyneal.org"}
+    ]
+
+# Libraries your package needs to run
+dependencies = [
+    "powerline-status",
+]
+
+[project.urls]
+Homepage = "https://cowboyneal.org/"
+
+# [project.scripts]
+# # Creates a terminal command 'my-command' that runs main() in my_package/app.py
+# my-command = "my_package.app:main"
