@@ -18,9 +18,9 @@ export LC_ALL='en_US.UTF-8'
 # Set up path carefully
 PATH=~/bin                                  # script overrides for EoU
 PATH=$PATH:~/.local/bin                     # Python installed packages
-PATH=$PATH:/usr/local/bin:/usr/local/sbin   # local first for mit k5
 PATH=$PATH:/bin:/usr/bin:/usr/games         # usual path
-PATH=$PATH:/sbin:/usr/sbin                  # sudo/root stuff
+PATH=$PATH:/usr/local/bin:/usr/local/games
+PATH=$PATH:/sbin:/usr/sbin:/usr/local/sbin  # sudo/root stuff
 [ -d /opt/bin ] && PATH=$PATH:/opt/bin
 
 MANPATH=/usr/share/man:/usr/local/share/man
