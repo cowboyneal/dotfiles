@@ -3,6 +3,8 @@
 # when leaving the console clear the screen to increase privacy
 
 if [ "$SHLVL" = 1 ]; then
+    pkill -U $USER -f powerline-daemon
+
     if [ -x /usr/bin/clear_console ]; then
         /usr/bin/clear_console -q
     elif [ -x /bin/clear ]; then
@@ -10,7 +12,5 @@ if [ "$SHLVL" = 1 ]; then
     elif [ -x /usr/bin/clear ]; then
         clear
     fi
-
-    pkill -U $USER -f powerline-daemon
 fi
 
