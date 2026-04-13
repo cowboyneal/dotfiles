@@ -51,7 +51,8 @@ URxvt*geometry:             80x24
 URxvt*foreground:           grey
 URxvt*intensityStyles:      true 
 URxvt*font:                 xft:Deja Vu Sans Mono:size=10, \
-                            xft:PowerLineSymbols:size=10
+                            xft:PowerLineSymbols:size=10, \
+                            xft:Noto Color Emoji:size=10
 URxvt*letterSpace:          -1
 URxvt*scrollBar_right:      true
 URxvt*scrollstyle:          plain
@@ -100,8 +101,10 @@ irssi*iconFile:             /home/pater/.fvwm/images/icons/mini/irssi.png
 irssi*termName:             xterm-color
 irssi*loginShell:           false
 irssi*scrollBar:            false
-irssi*geometry:             80x27+10+504
-irssi*font:                 xft:Deja Vu Sans Mono:size=10
+irssi*geometry:             80x27+10+508
+irssi*font:                 xft:Deja Vu Sans Mono:size=10, \
+                            xft:Noto Color Emoji:size=10, \
+                            xft:PowerLineSymbols:size=10
 
 sc-im*iconFile:             /home/pater/.fvwm/images/icons/mini/sc-im.png
 sc-im*loginShell:           false

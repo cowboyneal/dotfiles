@@ -64,6 +64,7 @@ AddToFunc   StartFunction
 + I Schedule 1000 Module FvwmEvent DockAppWindowDestroyedEvent
 + I Schedule 2000 Module FvwmButtons IconManPager
 + I Schedule 3000 DockAppInit
++ I Test (Init) Schedule 5000 Exec exec easyeffects -w &
 + I Test (Init) Schedule 5000 Exec exec opensnitch-ui &
 
 DestroyFunc ExitFunction
@@ -161,7 +162,7 @@ AddToFunc   ToggleTitle
 #   |   |   |   |
 #   +---+---+---+
 #
-DesktopName 0 Fvwm
+DesktopName 0 Window List
 DesktopSize 3x3
 
 # EdgeScroll will move the view port between the Pages when the mouse
@@ -248,12 +249,13 @@ Style Conky       !Borders, !Title, !Handles, Sticky, WindowListSkip, \
       NeverFocus, StaysOnBottom
 Style audacious             !Borders, !Title, !Handles, Sticky, Layer 4
 Style Google-chrome         !Borders, !Title, !Handles, DecorateTransient
-Style easyeffects           !Borders, !Title, !Handles, DecorateTransient
+#Style easyeffects           !Borders, !Title, !Handles, DecorateTransient
+Style discord               !Borders, !Title, !Handles, DecorateTransient
 Style eog                   !Borders, !Title, !Handles, DecorateTransient
-Style gnome-sudoku          !Borders, !Title, !Handles
-Style gnome-mahjongg        !Borders, !Title, !Handles
-Style gnome-mines           !Borders, !Title, !Handles
-Style tali                  !Borders, !Title, !Handles
+Style gnome-sudoku          !Borders, !Title, !Handles, DecorateTransient
+Style gnome-mahjongg        !Borders, !Title, !Handles, DecorateTransient
+Style gnome-mines           !Borders, !Title, !Handles, DecorateTransient
+Style tali                  !Borders, !Title, !Handles, DecorateTransient
 Style org.gnome.Nautilus    !Borders, !Title, !Handles, DecorateTransient
 Style evince                !Borders, !Title, !Handles
 Style dconf-editor          !Borders, !Title, !Handles
@@ -283,7 +285,7 @@ MenuStyle * ItemFormat "%|%3.1i%5.3l%5.3>%|"
 MenuStyle * Font "xft:Liberation Sans:size=10:antialias=True"
 MenuStyle * TitleFont "Shadow=3 0 All:xft:Liberation Sans:bold:size=10:antialias=True"
 MenuStyle * VerticalItemSpacing 5 5
-MenuStyle * BorderWidth 0, TitleUnderlines0
+MenuStyle * BorderWidth 0, TitleUnderlines0, Translucent 85
 
 # Root Menu
 #
