@@ -30,6 +30,7 @@ MANPATH=/usr/share/man:/usr/local/share/man
 [ -d /usr/pkg/man ] && MANPATH=$MANPATH:/usr/pkg/man
 [ -d /opt/share/man ] && MANPATH=$MANPATH:/opt/share/man
 [ -d /opt/local/man ] && MANPATH=$MANPATH:/opt/local/man
+[ -d /opt/homebrew/share/man ] && MANPATH=$MANPATH:/opt/homebrew/share/man
 export MANPATH
 
 # Determine host type
