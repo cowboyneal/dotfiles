@@ -251,7 +251,7 @@ Style audacious             !Borders, !Title, !Handles, Sticky, Layer 4
 Style Google-chrome         !Borders, !Title, !Handles, DecorateTransient
 #Style easyeffects           !Borders, !Title, !Handles, DecorateTransient
 Style discord               !Borders, !Title, !Handles, DecorateTransient
-Style eog                   !Borders, !Title, !Handles, DecorateTransient
+Style org.gnome.eog         !Borders, !Title, !Handles, DecorateTransient
 Style gnome-sudoku          !Borders, !Title, !Handles, DecorateTransient
 Style gnome-mahjongg        !Borders, !Title, !Handles, DecorateTransient
 Style gnome-mines           !Borders, !Title, !Handles, DecorateTransient
