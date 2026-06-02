@@ -346,8 +346,8 @@ if [[ "$UNAME" =~ FreeBSD|OpenBSD ]] && [ -f /usr/local/share/bash-completion/ba
     . /usr/local/share/bash-completion/bash_completion
 elif [[ "$UNAME" =~ NetBSD ]] && [ -f /usr/pkg/share/bash-completion/bash_completion ]; then
     . /usr/pkg/share/bash-completion/bash_completion
-elif [[ "$UNAME" =~ Darwin ]] && [ -f /opt/local/etc/bash_completion ]; then
-    . /opt/local/etc/bash_completion
+elif [[ "$UNAME" =~ Darwin ]] && [ -f /opt/homebrew/etc/profile.d/bash_completion.sh ]; then
+    . /opt/homebrew/etc/profile.d/bash_completion.sh
 elif [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
