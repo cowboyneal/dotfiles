@@ -10,7 +10,7 @@ if [ ! -x "$exe" ]; then
 fi
 
 # now we install the virtualenv
-virtualenv $HOME/.python3
+virtualenv -p 3.13 $HOME/.python3
 
 # activate the new virtualenv
 source $HOME/.python3/bin/activate
