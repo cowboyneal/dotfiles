@@ -9,6 +9,9 @@ if [ ! -x "$exe" ]; then
     exit 1
 fi
 
+# clear out the old install if it exists
+[ -d "$HOME/.python3" ] && rm -r "$HOME/.python3"
+
 # now we install the virtualenv
 virtualenv -p 3.13 $HOME/.python3
 
