@@ -18,6 +18,9 @@ virtualenv -p 3.13 $HOME/.python3
 # activate the new virtualenv
 source $HOME/.python3/bin/activate
 
+# upgrade pip
+$HOME/.python3/bin/pip3 install --upgrade pip
+
 # install powerline into our virtualenv
 $HOME/.python3/bin/pip3 install powerline-status
 
