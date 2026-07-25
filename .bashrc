@@ -22,6 +22,7 @@ PATH=$PATH:/bin:/usr/bin:/usr/games         # usual path
 PATH=$PATH:/usr/local/bin:/usr/local/games
 PATH=$PATH:/sbin:/usr/sbin:/usr/local/sbin  # sudo/root stuff
 [ -d /opt/bin ] && PATH=$PATH:/opt/bin
+[ -d ~/go ] && PATH=$PATH:~/go
 
 MANPATH=/usr/share/man:/usr/local/share/man
 [ -d /usr/local/man ] && MANPATH=$MANPATH:/usr/local/man
