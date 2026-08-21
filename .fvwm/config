@@ -56,9 +56,9 @@ AddToFunc   StartFunction
 + I Test (Init) Exec exec picom &
 + I Module FvwmBacker
 + I Module FvwmMFL
++ I Test (Init) Exec exec xscreensaver --no-splash &
 + I Test (Init) Exec exec polybar &
 + I Test (Init) Exec exec conky &
-+ I Test (Init) Exec exec xscreensaver --no-splash &
 + I Schedule 1000 Module FvwmButtons DockApp
 + I Schedule 1000 Module FvwmEvent DockAppWindowAddedEvent
 + I Schedule 1000 Module FvwmEvent DockAppWindowDestroyedEvent
@@ -262,7 +262,7 @@ Style dconf-editor          !Borders, !Title, !Handles
 Style gnome-screenshot      !Borders, !Title, !Handles
 Style gnome-calculator      !Borders, !Title, !Handles
 Style *Foliate*             !Borders, !Title, !Handles
-Style cheese                !Borders, !Title, !Handles
+Style snapshot              !Borders, !Title, !Handles
 Style steam                 !Borders, !Title, !Handles
 Style apostrophe            !Borders, !Title, !Handles
 Style obsidian              !Borders, !Title, !Handles
@@ -271,6 +271,7 @@ Style org.gnome.clocks      !Borders, !Title, !Handles
 Style amberol               !Borders, !Title, !Handles
 Style d-feet                !Borders, !Title, !Handles
 Style org.remmina.Remmina   !Borders, !Title, !Handles
+#Style mpvk                  !Borders, !Title, !Handles
 Style Navigator             !Borders, !Title, !Handles, DecorateTransient
 Style Terraria.bin.x86_64   !Borders, !Title, !Handles
 Style pavucontrol           MiniIcon images/icons/mini/pavucontrol.png
@@ -409,6 +410,7 @@ Test (x handbrake) + "HandBrake%images/icons/mini/handbrake.png%" \
 Test (x mixxx) + "Mixxx%images/icons/mini/mixxx.png%" Exec exec mixxx
 Test (x vlc) + "VLC%images/icons/mini/vlc.png%" Exec exec vlc
 Test (x cheese) + "Cheese%images/icons/mini/cheese.png%" Exec exec cheese
+Test (x snapshot) + "Snapshot%images/icons/mini/snapshot.png%" Exec exec snapshot
 Test (x $[HOME]/bin/btconnect) + \
     "Reconnect AudioEngine B2%images/icons/mini/bluetooth.png%" \
     Exec exec $[HOME]/bin/btconnect &
