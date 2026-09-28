@@ -3,8 +3,8 @@
 add_newline = false
 
 format = """
-[░▒▓](#a3aed2)\
 ${env_var.HISTNUM}\
+[░▒▓](#a3aed2)\
 $os\
 $hostname\
 [](bg:#769ff0 fg:#a3aed2)\
@@ -25,7 +25,8 @@ $time\
 
 [env_var.HISTNUM]
 variable = "STARSHIP_HISTNUM"
-style = "bg:#a3aed2 fg:#090c0c"
+#style = "bg:#a3aed2 fg:#090c0c"
+style = "fg:#a0a9cb"
 format = "[ $env_value ]($style)"
 
 [character]
@@ -92,7 +93,7 @@ format = '[[ $time](fg:#a0a9cb bg:#1d2230)]($style)'
 
 [os]
 style = "bg:#a3aed2 fg:#090c0c"
-format = "[$symbol ]($style)"
+format = "[ $symbol ]($style)"
 disabled = false
 
 [os.symbols]
