@@ -22,7 +22,6 @@ PATH=$PATH:/bin:/usr/bin:/usr/games         # usual path
 PATH=$PATH:/usr/local/bin:/usr/local/games
 PATH=$PATH:/sbin:/usr/sbin:/usr/local/sbin  # sudo/root stuff
 [ -d /opt/bin ] && PATH=$PATH:/opt/bin
-[ -d ~/go ] && PATH=$PATH:~/go
 
 MANPATH=/usr/share/man:/usr/local/share/man
 [ -d /usr/local/man ] && MANPATH=$MANPATH:/usr/local/man
@@ -52,10 +51,10 @@ case $UNAME in
 esac
 
 [ -d ~/.python3 ] && source ~/.python3/bin/activate
-export POWERLINE_DAEMON="$HOME/.python3/bin/powerline-daemon"
-[ -x "$POWERLINE_DAEMON" ] && $POWERLINE_DAEMON -q --replace
-POWERLINE_BASH_CONTINUATION="1"
-POWERLINE_BASH_SELECT="1"
+#export POWERLINE_DAEMON="$HOME/.python3/bin/powerline-daemon"
+#[ -x "$POWERLINE_DAEMON" ] && $POWERLINE_DAEMON -q --replace
+#POWERLINE_BASH_CONTINUATION="1"
+#POWERLINE_BASH_SELECT="1"
 
 export PATH
 export CDPATH=.:..
@@ -153,56 +152,20 @@ unset local256
 
 export COLORFGBG='lightgray;black'
 export PF_COL3=1
-
-_set_bash_prompt() {
-    # prompt stuff
-    local blue1="\033[1;34m"
-    local blue2="\[$blue1\]"
-    local default1="\033[0m"
-    local default2="\[$default1\]"
-    #local cyan_blue="\[\033[0;36;44m\]"
-    local black_blue="\[\033[0;30;44m\]"
-    local white_blue="\[\033[0;0;44m\]"
-
-    if [ ! -x "$POWERLINE_DAEMON" ] || \
-            [[ "$TERM" =~ wsvt25|vt100|vt220|linux ]]; then
-        PS1="$default2[$blue2\!$default2] $blue2\h $default2:$blue2 \w$default2 "
-    fi
-
-    case `/usr/bin/whoami` in
-      root* ) PS1=$PS1'# ' ;;
-      * ) PS1=$PS1"\$ " ;;
-    esac
-    
-    PS1=$PS1$default2
-    
-    if [[ "$TERM" =~ xterm|rxvt|screen|tmux ]]; then
-        PS1="\[\033]0;[ \u @ \h ] - "`tty | sed 's!/dev/!!'`" : \w\007\]$PS1"
-    fi
-
-    export PS1
-}
-
 export PS2
 export PROMPT_DIRTRIM=3
 
-[[ ! "$PROMPT_COMMAND" =~ _set_bash_prompt ]] && \
-    export PROMPT_COMMAND+=_set_bash_prompt
+_tty=$(tty); _tty=${_tty#/dev/}
+_title_fmt='[ \u @ \h ] - '"$_tty"' : \w'
+export STARSHIP_HISTNUM
 
-if [ -x "$POWERLINE_DAEMON" ] && \
-        [[ ! "$TERM" =~ wsvt25|vt100|vt220|linux ]]; then
-    powerline_locs=( "3.13" "3.12" "3.11" )
+function set_win_title(){
+    STARSHIP_HISTNUM=$HISTCMD
+    printf '\033]0;%s\007' "${_title_fmt@P}"
+}
 
-    for i in ${powerline_locs[@]}; do
-        i="$HOME/.python3/lib/python"$i
-        i=$i"/site-packages/powerline/bindings/bash/powerline.sh"
-
-        if [ -e "$i" ]; then
-            . "$i"
-            break
-        fi
-    done
-fi
+starship_precmd_user_func="set_win_title"
+eval "$(starship init bash)"
 
 # Set aliases proper. Uncomment the following line to pull in more external
 # aliases.
