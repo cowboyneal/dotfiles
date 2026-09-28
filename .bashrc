@@ -51,10 +51,6 @@ case $UNAME in
 esac
 
 [ -d ~/.python3 ] && source ~/.python3/bin/activate
-#export POWERLINE_DAEMON="$HOME/.python3/bin/powerline-daemon"
-#[ -x "$POWERLINE_DAEMON" ] && $POWERLINE_DAEMON -q --replace
-#POWERLINE_BASH_CONTINUATION="1"
-#POWERLINE_BASH_SELECT="1"
 
 export PATH
 export CDPATH=.:..
