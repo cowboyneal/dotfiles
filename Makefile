@@ -21,6 +21,7 @@ tmux        : ~/.tmux.conf
 vim         : ~/.gvimrc ~/.vim ~/.vimrc
 
 powerline	: ~/.config/powerline
+starship	: ~/.config/starship.toml
 
 x11 += alacritty themes urxvt Xdefaults xsession
 alacritty   : ~/.alacritty.toml
