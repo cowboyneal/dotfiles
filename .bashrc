@@ -164,12 +164,14 @@ if exists starship; then
     starship_precmd_user_func="set_win_title"
     eval "$(starship init bash)"
 else
-    local blue1="\033[1;34m"
-    local blue2="\[$blue1\]"
-    local default1="\033[0m"
-    local default2="\[$default1\]"
+    blue1="\033[1;34m"
+    blue2="\[$blue1\]"
+    default1="\033[0m"
+    default2="\[$default1\]"
 
     PS1="$default2[$blue2\!$default2] $blue2\h $default2:$blue2 \w$default2 "
+
+    unset blue1 blue2 default1 default2
 
     case `/usr/bin/whoami` in
       root* ) PS1=$PS1'# ' ;;
