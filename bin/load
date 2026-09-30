@@ -4,7 +4,9 @@ case $(uname) in
     Linux)
         cat /proc/loadavg | awk '{ print $1, $2, $3 }'
         ;;
-    FreeBSD|NetBSD|OpenBSD)
+    FreeBSD|NetBSD)
         sysctl vm.loadavg | awk '{ print $3, $4, $5 }'
         ;;
+    OpenBSD)
+        sysctl vm.loadavg | sed 's/^.*=//'
 esac
