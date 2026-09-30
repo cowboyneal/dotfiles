@@ -17,7 +17,7 @@ bash        : ~/.bash_logout ~/.bash_profile ~/.bashrc ~/.inputrc ~/.profile
 config      : ~/.config
 git         : ~/.gitconfig
 mutt        : ~/.muttrc
-tmux        : ~/.tmux.conf
+tmux        : ~/.tmux.conf ~/bin/load
 vim         : ~/.vim ~/.vimrc
 
 powerline	: ~/.config/powerline
