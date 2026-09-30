@@ -51,3 +51,8 @@ if &l:term !=? "vt100" && &l:term !=? "vt220" && &l:term !=? "linux"
 endif
 
 set laststatus=2
+
+highlight Normal ctermbg=NONE guibg=NONE
+highlight LineNr ctermbg=NONE guibg=NONE
+highlight SignColumn ctermbg=NONE guibg=NONE
+highlight EndOfBuffer ctermbg=NONE guibg=NONE
