@@ -151,17 +151,39 @@ export PF_COL3=1
 export PS2
 export PROMPT_DIRTRIM=3
 
-_tty=$(tty); _tty=${_tty#/dev/}
-_title_fmt='[ \u @ \h ] - '"$_tty"' : \w'
-export STARSHIP_HISTNUM
-
 function set_win_title(){
     STARSHIP_HISTNUM=$HISTCMD
     printf '\033]0;%s\007' "${_title_fmt@P}"
 }
 
-starship_precmd_user_func="set_win_title"
-eval "$(starship init bash)"
+if exists starship; then
+    _tty=$(tty); _tty=${_tty#/dev/}
+    _title_fmt='[ \u @ \h ] - '"$_tty"' : \w'
+    export STARSHIP_HISTNUM
+
+    starship_precmd_user_func="set_win_title"
+    eval "$(starship init bash)"
+else
+    local blue1="\033[1;34m"
+    local blue2="\[$blue1\]"
+    local default1="\033[0m"
+    local default2="\[$default1\]"
+
+    PS1="$default2[$blue2\!$default2] $blue2\h $default2:$blue2 \w$default2 "
+
+    case `/usr/bin/whoami` in
+      root* ) PS1=$PS1'# ' ;;
+      * ) PS1=$PS1"\$ " ;;
+    esac
+
+    PS1=$PS1$default2
+
+    if [[ "$TERM" =~ xterm|rxvt|screen|tmux ]]; then
+        PS1="\[\033]0;[ \u @ \h ] - "`tty | sed 's!/dev/!!'`" : \w\007\]$PS1"
+    fi
+
+    export PS1
+fi
 
 # Set aliases proper. Uncomment the following line to pull in more external
 # aliases.
