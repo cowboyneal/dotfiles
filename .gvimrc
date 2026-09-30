@@ -1,5 +1,5 @@
 colorscheme paterscheme 
-set guifont=DejaVu\ Sans\ Mono\ 10
+set guifont=DejaVuSansM\ Nerd\ Font\ Mono\ 10
 
 map <C-S-X> "+x
 map <C-S-C> "+y

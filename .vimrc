@@ -1,6 +1,19 @@
 execute pathogen#infect()
 
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline_theme = 'tokyonight'
+let g:airline_powerline_fonts = 1
+set termguicolors
 set encoding=UTF-8
+
+" Use semi-circles for main sections (Corrected Outer Direction)
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+
+" Use semi-circles for inner/sub sections (Corrected Inner Direction)
+let g:airline_left_alt_sep = ''
+let g:airline_right_alt_sep = ''
+
 syntax on
 set title
 set background=dark
@@ -34,19 +47,6 @@ map <C-J> gqap
 map <C-R> :r ~/doc/
 
 if &l:term !=? "vt100" && &l:term !=? "vt220" && &l:term !=? "linux"
-python3 << EOF
-import sys, os, glob
-prefix = os.path.expanduser('~/.python3')
-for sp in glob.glob(os.path.join(prefix, 'lib', 'python3.*', 'site-packages')):
-    if sp not in sys.path:
-        sys.path.append(sp)
-try:
-    from powerline.vim import setup as powerline_setup
-    powerline_setup()
-    del powerline_setup
-except ImportError:
-    pass
-EOF
     set noshowmode
 endif
 
