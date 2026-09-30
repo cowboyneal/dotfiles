@@ -18,13 +18,14 @@ config      : ~/.config
 git         : ~/.gitconfig
 mutt        : ~/.muttrc
 tmux        : ~/.tmux.conf
-vim         : ~/.gvimrc ~/.vim ~/.vimrc
+vim         : ~/.vim ~/.vimrc
 
 powerline	: ~/.config/powerline
 starship	: ~/.config/starship.toml
 
-x11 += alacritty themes urxvt Xdefaults xsession
+x11 += alacritty gvim themes urxvt Xdefaults xsession
 alacritty   : ~/.alacritty.toml
+gvim		: ~/.gvimrc
 themes      : ~/.themes
 urxvt       : ~/.urxvt
 Xdefaults   : ~/.Xdefaults
