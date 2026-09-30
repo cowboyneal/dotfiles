@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+case $(uname) in
+    Linux)
+        cat /proc/loadavg | awk '{ print $1, $2, $3 }'
+        ;;
+    FreeBSD|NetBSD|OpenBSD)
+        sysctl vm.loadavg | awk '{ print $3, $4, $5 }'
+        ;;
+esac
