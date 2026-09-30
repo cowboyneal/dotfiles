@@ -25,7 +25,7 @@ starship	: ~/.config/starship.toml
 
 x11 += alacritty gvim themes urxvt Xdefaults xsession
 alacritty   : ~/.alacritty.toml
-gvim		: ~/.gvimrc
+gvim        : ~/.gvimrc
 themes      : ~/.themes
 urxvt       : ~/.urxvt
 Xdefaults   : ~/.Xdefaults
