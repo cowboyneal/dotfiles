@@ -59,7 +59,14 @@ bat_prep () {
     export BAT_THEME=cowboyfox
     alias 'bat-cache'="\\$1 cache"
     PAGER="$1 -n"
-    MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | $1 -p -lman'"
+
+    case $UNAME in
+        OpenBSD* ) MANPAGER=less ;;
+        * )
+            MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | $1 -p -lman'"
+            ;;
+    esac
+
     alias 'bat'="\\$1 -n"
     alias 'less'="\\$1 -p"
 }
