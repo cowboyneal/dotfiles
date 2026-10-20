@@ -163,7 +163,7 @@ function set_win_title(){
     printf '\033]0;%s\007' "${_title_fmt@P}"
 }
 
-if exists starship && [[ ! "$TERM" =~ wsvt25|vt100|vt220|linux ]]; then
+if exists starship && [[ ! "$TERM" =~ ^(wsvt25|vt100|vt220|linux)$ ]]; then
     _tty=$(tty); _tty=${_tty#/dev/}
     _title_fmt='[ \u @ \h ] - '"$_tty"' : \w'
     export STARSHIP_HISTNUM
