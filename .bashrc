@@ -20,7 +20,7 @@ PATH=~/bin                                  # script overrides for EoU
 PATH=$PATH:~/.local/bin                     # Python installed packages
 PATH=$PATH:/bin:/usr/bin:/usr/games         # usual path
 PATH=$PATH:/usr/local/bin:/usr/local/games
-PATH=$PATH:/sbin:/usr/sbin:/usr/local/sbin  # sudo/root stuff
+PATH=$PATH:/usr/local/sbin:/usr/sbin:/sbin  # sudo/root stuff
 [ -d /opt/bin ] && PATH=$PATH:/opt/bin
 
 MANPATH=/usr/share/man:/usr/local/share/man
