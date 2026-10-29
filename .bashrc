@@ -18,8 +18,8 @@ export LC_ALL='en_US.UTF-8'
 # Set up path carefully
 PATH=~/bin                                  # script overrides for EoU
 PATH=$PATH:~/.local/bin                     # Python installed packages
-PATH=$PATH:/bin:/usr/bin:/usr/games         # usual path
-PATH=$PATH:/usr/local/bin:/usr/local/games
+PATH=$PATH:/usr/local/games:/usr/local/bin
+PATH=$PATH:/usr/games:/usr/bin:/bin         # usual path
 PATH=$PATH:/usr/local/sbin:/usr/sbin:/sbin  # sudo/root stuff
 [ -d /opt/bin ] && PATH=$PATH:/opt/bin
 
